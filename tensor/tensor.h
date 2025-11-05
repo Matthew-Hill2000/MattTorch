@@ -48,10 +48,10 @@ class Tensor {
 
   // Operator Overloads for Tensor-Tensor maths
   /////////////////////////////////////////////////////////////////////////////
-  Tensor operator+(const Tensor& rOther) const;
-  Tensor operator-(const Tensor& rOther) const;
-  Tensor operator*(const Tensor& rOther) const;
-  Tensor operator/(const Tensor& rOther) const;
+  Tensor operator+(const Tensor& rOther);
+  Tensor operator-(const Tensor& rOther);
+  Tensor operator*(const Tensor& rOther);
+  Tensor operator/(const Tensor& rOther);
 
   Tensor& operator+=(const Tensor& rOther);
   Tensor& operator-=(const Tensor& rOther);
@@ -62,10 +62,10 @@ class Tensor {
 
   // Operator overloads for Tensor-scalar maths
   /////////////////////////////////////////////////////////////////////////////
-  Tensor operator+(double scalar) const;
-  Tensor operator-(double scalar) const;
-  Tensor operator*(double scalar) const;
-  Tensor operator/(double scalar) const;
+  Tensor operator+(double scalar);
+  Tensor operator-(double scalar);
+  Tensor operator*(double scalar);
+  Tensor operator/(double scalar);
 
   Tensor& operator+=(double scalar);
   Tensor& operator-=(double scalar);
@@ -74,11 +74,11 @@ class Tensor {
 
   // Getters and Setters for member attributes
   /////////////////////////////////////////////////////////////////////////////
-  TensorView getData();
-  TensorView getGradient();
-  GradFunction* getGradFunction();
-  bool getIsLeaf();
-  bool getRequiresGrad();
+  TensorView getData() const;
+  TensorView getGradient() const;
+  GradFunction* getGradFunction() const;
+  bool getIsLeaf() const;
+  bool getRequiresGrad() const;
 
   void setLeaf(bool leaf);
   void setRequiresGrad();

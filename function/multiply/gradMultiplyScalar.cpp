@@ -3,7 +3,7 @@
 
 #include "../../tensor/tensor.h"
 
-GradMultiplyScalar::GradMultiplyScalar(std::vector<Tensor*> savedTensors,
+GradMultiplyScalar::GradMultiplyScalar(std::vector<const Tensor*> savedTensors,
                                        std::vector<GradFunction*> nextFunctions)
     : savedTensors{savedTensors}, nextFunctions{nextFunctions} {}
 

@@ -1,6 +1,6 @@
 #include "gradExponent.h"
 
-GradExponent::GradExponent(std::vector<Tensor*> savedTensors,
+GradExponent::GradExponent(std::vector<const Tensor*> savedTensors,
                            std::vector<GradFunction*> nextFunctions,
                            int exponent)
     : savedTensors{savedTensors},

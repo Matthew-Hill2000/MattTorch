@@ -1,6 +1,6 @@
 #include "gradAdd.h"
 
-GradAdd::GradAdd(std::vector<Tensor*> savedTensors,
+GradAdd::GradAdd(std::vector<const Tensor*> savedTensors,
                  std::vector<GradFunction*> nextFunctions)
     : savedTensors{savedTensors}, nextFunctions{nextFunctions} {}
 

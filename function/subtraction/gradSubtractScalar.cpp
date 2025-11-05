@@ -4,7 +4,7 @@
 
 #include "../../tensor/tensor.h"
 
-GradSubtractScalar::GradSubtractScalar(std::vector<Tensor*> savedTensors,
+GradSubtractScalar::GradSubtractScalar(std::vector<const Tensor*> savedTensors,
                                        std::vector<GradFunction*> nextFunctions)
     : savedTensors{savedTensors}, nextFunctions{nextFunctions} {}
 

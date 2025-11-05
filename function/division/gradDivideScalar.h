@@ -8,11 +8,11 @@ class Tensor;
 
 class GradDivideScalar : public GradFunction {
  private:
-  std::vector<Tensor*> savedTensors;
+  std::vector<const Tensor*> savedTensors;
   std::vector<GradFunction*> nextFunctions;
 
  public:
-  GradDivideScalar(std::vector<Tensor*> savedTensors,
+  GradDivideScalar(std::vector<const Tensor*> savedTensors,
                    std::vector<GradFunction*> nextFunctions);
   void backward(Tensor& inputGradient) override;
 };

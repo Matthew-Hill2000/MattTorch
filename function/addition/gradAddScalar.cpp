@@ -1,7 +1,7 @@
 
 #include "gradAddScalar.h"
 
-GradAddScalar::GradAddScalar(std::vector<Tensor*> savedTensors,
+GradAddScalar::GradAddScalar(std::vector<const Tensor*> savedTensors,
                              std::vector<GradFunction*> nextFunctions)
     : savedTensors{savedTensors}, nextFunctions{nextFunctions} {}
 

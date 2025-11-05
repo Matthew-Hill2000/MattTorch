@@ -6,12 +6,12 @@
 
 class GradExponent : public GradFunction {
  private:
-  std::vector<Tensor*> savedTensors;
+  std::vector<const Tensor*> savedTensors;
   int exponent;
   std::vector<GradFunction*> nextFunctions;
 
  public:
-  GradExponent(std::vector<Tensor*> savedTensors,
+  GradExponent(std::vector<const Tensor*> savedTensors,
                std::vector<GradFunction*> nextFunctions, int exponent);
   void backward(Tensor& inputGradient) override;
 };

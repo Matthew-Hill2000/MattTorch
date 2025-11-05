@@ -8,11 +8,11 @@ class Tensor;
 class GradSubtractScalar : public GradFunction {
  private:
   // The tensors needed to calculate the gradient.
-  std::vector<Tensor*> savedTensors;
+  std::vector<const Tensor*> savedTensors;
   std::vector<GradFunction*> nextFunctions;
 
  public:
-  GradSubtractScalar(std::vector<Tensor*> savedTensors,
+  GradSubtractScalar(std::vector<const Tensor*> savedTensors,
                      std::vector<GradFunction*> nextFunctions);
   void backward(Tensor& inputGradient) override;
 };

@@ -7,11 +7,11 @@ class Tensor;
 
 class GradMultiply : public GradFunction {
  private:
-  std::vector<Tensor*> savedTensors;
+  std::vector<const Tensor*> savedTensors;
   std::vector<GradFunction*> nextFunctions;
 
  public:
-  GradMultiply(std::vector<Tensor*> savedTensors,
+  GradMultiply(std::vector<const Tensor*> savedTensors,
                std::vector<GradFunction*> nextFunctions);
   void backward(Tensor& inputGradient) override;
 };

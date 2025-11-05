@@ -78,43 +78,45 @@ void Tensor::addGradient(Tensor& inputGradient) {
 
 // Operator Overloads for Tensor-Tensor maths
 /////////////////////////////////////////////////////////////////////////////////
-Tensor Tensor::operator+(const Tensor& other) const {
+Tensor Tensor::operator+(const Tensor& other) {
   TensorView outputData = this->data + other.data;
 
   GradAdd* gradFunction = new GradAdd(
-      std::vector<Tensor*>{this, &other},
+      std::vector<const Tensor*>{this, &other},
       std::vector<GradFunction*>{this->gradFunction, other.gradFunction});
 
   Tensor output(outputData, gradFunction);
   return output;
 }
 
-Tensor Tensor::operator-(const Tensor& other) const {
+Tensor Tensor::operator-(const Tensor& other) {
   TensorView outputData = this->data - other.data;
 
   GradSubtract* gradFunction = new GradSubtract(
-      std::vector<Tensor*>{this, &other},
+      std::vector<const Tensor*>{this, &other},
       std::vector<GradFunction*>{this->gradFunction, other.gradFunction});
 
   Tensor output(outputData, gradFunction);
   return output;
 }
 
-Tensor Tensor::operator*(const Tensor& other) const {
+Tensor Tensor::operator*(const Tensor& other) {
   TensorView outputData = this->data * other.data;
 
   GradMultiply* gradFunction = new GradMultiply(
-      std::vector<Tensor*>{this, &other},
+      std::vector<const Tensor*>{this, &other},
       std::vector<GradFunction*>{this->gradFunction, other.gradFunction});
 
   Tensor output(outputData, gradFunction);
   return output;
 }
 
-Tensor Tensor::operator/(const Tensor& other) const {
+Tensor Tensor::operator/(const Tensor& other) {
   TensorView outputData = this->data - other.data;
 
-  GradDivide* gradFunction = new GradDivide(std::vector<Tensor*>{this, &other});
+  GradDivide* gradFunction = new GradDivide(
+      std::vector<const Tensor*>{this, &other},
+      std::vector<GradFunction*>{this->gradFunction, other.gradFunction});
 
   Tensor output(outputData, gradFunction);
   return output;
@@ -127,8 +129,9 @@ Tensor Tensor::exponent(int exponent) {
     outputData *= this->data;
   }
 
-  GradExponent* gradFunction =
-      new GradExponent(std::vector<Tensor*>{this}, exponent);
+  GradExponent* gradFunction = new GradExponent(
+      std::vector<const Tensor*>{this},
+      std::vector<GradFunction*>{this->gradFunction}, exponent);
 
   Tensor output(outputData, gradFunction);
   return output;
@@ -136,44 +139,44 @@ Tensor Tensor::exponent(int exponent) {
 
 // Operator overloads for Tensor-double maths
 ///////////////////////////////////////////////////////////////////////////////
-Tensor Tensor::operator+(double scalar) const {
+Tensor Tensor::operator+(double scalar) {
   TensorView outputData = this->data + scalar;
 
   GradAddScalar* gradFunction =
-      new GradAddScalar(std::vector<Tensor*>{this},
+      new GradAddScalar(std::vector<const Tensor*>{this},
                         std::vector<GradFunction*>{this->gradFunction});
 
   Tensor output(outputData, gradFunction);
   return output;
 }
 
-Tensor Tensor::operator-(double scalar) const {
+Tensor Tensor::operator-(double scalar) {
   TensorView outputData = this->data - scalar;
 
   GradSubtractScalar* gradFunction =
-      new GradSubtractScalar(std::vector<Tensor*>{this},
+      new GradSubtractScalar(std::vector<const Tensor*>{this},
                              std::vector<GradFunction*>{this->gradFunction});
 
   Tensor output(outputData, gradFunction);
   return output;
 }
 
-Tensor Tensor::operator*(double scalar) const {
+Tensor Tensor::operator*(double scalar) {
   TensorView outputData = this->data * scalar;
 
   GradMultiplyScalar* gradFunction =
-      new GradMultiplyScalar(std::vector<Tensor*>{this},
+      new GradMultiplyScalar(std::vector<const Tensor*>{this},
                              std::vector<GradFunction*>{this->gradFunction});
 
   Tensor output(outputData, gradFunction);
   return output;
 }
 
-Tensor Tensor::operator/(double scalar) const {
+Tensor Tensor::operator/(double scalar) {
   TensorView outputData = this->data / scalar;
 
   GradDivideScalar* gradFunction =
-      new GradDivideScalar(std::vector<Tensor*>{this},
+      new GradDivideScalar(std::vector<const Tensor*>{this},
                            std::vector<GradFunction*>{this->gradFunction});
 
   Tensor output(outputData, gradFunction);
@@ -182,8 +185,8 @@ Tensor Tensor::operator/(double scalar) const {
 
 // Getters and Setters for member attributes
 ///////////////////////////////////////////////////////////////////////////////
-TensorView Tensor::getData { return this->data; }
-TensorView Tensor::getGradient { return this->gradient; }
-GradFunction* Tensor::getGradFunction { return this->gradFunction; }
-bool Tensor::getIsLeaf { return this->isLeaf; }
-bool Tensor::getRequiresGrad { return this->requiresGrad; }
+TensorView Tensor::getData() const { return this->data; }
+TensorView Tensor::getGradient() const { return this->gradient; }
+GradFunction* Tensor::getGradFunction() const { return this->gradFunction; }
+bool Tensor::getIsLeaf() const { return this->isLeaf; }
+bool Tensor::getRequiresGrad() const { return this->requiresGrad; }

@@ -2,7 +2,7 @@
 
 #include "../../tensor/tensor.h"
 
-GradMultiply::GradMultiply(std::vector<Tensor*> savedTensors,
+GradMultiply::GradMultiply(std::vector<const Tensor*> savedTensors,
                            std::vector<GradFunction*> nextFunctions)
     : savedTensors{savedTensors}, nextFunctions{nextFunctions} {}
 

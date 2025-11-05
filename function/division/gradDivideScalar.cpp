@@ -2,7 +2,7 @@
 
 #include "../../tensor/tensor.h"
 
-GradDivideScalar::GradDivideScalar(std::vector<Tensor*> savedTensors,
+GradDivideScalar::GradDivideScalar(std::vector<const Tensor*> savedTensors,
                                    std::vector<GradFunction*> nextFunctions)
     : savedTensors{savedTensors}, nextFunctions{nextFunctions} {}
 
