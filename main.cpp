@@ -1,7 +1,7 @@
-#include "./function/function.h"
-#include "./tensor/tensor.h"
-#include "./tensorStorage/tensorStorage.h"
-#include "./tensorView/tensorView.h"
+#include "function/gradFunction.h"
+#include "tensor/tensor.h"
+#include "tensorStorage/tensorStorage.h"
+#include "tensorView/tensorView.h"
 
 int main() {
   Tensor a({1});
@@ -10,4 +10,5 @@ int main() {
   b[0] = 3.0;
 
   Tensor c = a * b;
+  Tensor d = c.exponent(2);
 }

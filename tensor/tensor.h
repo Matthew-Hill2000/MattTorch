@@ -5,6 +5,7 @@
 #include <memory>
 #include <vector>
 
+#include "../function/gradFunction.h"
 #include "../tensorView/tensorView.h"
 
 class Function;
@@ -13,78 +14,77 @@ class TensorView;
 
 class Tensor {
  private:
-  // The actual value of the tensor
-  TensorView data;
-  // The accumulated value of the gradient of the tensor. It starts out as zero
-  // when the tensor is created.
-  TensorView gradient;
-  // Stores pointers to the tensors that this tensor is used to create.
-  std::vector<Tensor*> children;
-  // A pointer to the function object that was used to create this tensor. The
-  // function object has the parents of this tensor stored as pointers and has
-  // the function to calculate the derivatives of the parents given this tensors
-  // gradient.
-  Function* parentFunction;
+  TensorView data;             // Value of the tensor
+  TensorView gradient;         // Value of the gradient of the tensor
+  GradFunction* gradFunction;  // pointer to the functor to calculate gradient
+  bool isLeaf;
+  bool requiresGrad;
 
  public:
-  // Default Constructor
+  // Constructors
+  /////////////////////////////////////////////////////////////////////////////
   Tensor();
-  // Creates a tensor object with the specificed dimension and parents. uses the
-  // dimensions to call the constructor for the TensorView object to create the
-  // TensorView Data object for this Tensor.
-  Tensor(const std::vector<int>& dims, std::vector<Tensor*> children);
-  // Creates a Tensor object with the specific dimensions. uses the dimensions
-  // to call the constructor for the TensorView object to create the TensorView
-  // Data object for this Tensor. Leaves the parents unset
-  Tensor(const std::vector<int>& dims);
-  // Copy constructor that just sets all of the values of this tensor to that of
-  // the other tensor
+  Tensor(const TensorView& data, bool requiresGrad = true,
+         GradFunction* gradFunction = nullptr);
+  Tensor(const std::vector<int>& dims, bool requiresGrad = true);
   Tensor(const Tensor& other);
-  // Creates a Tensor object by directly specifying all of its member variables
-  // and the member variables of its TensorView Data object. Sets the parents
-  // explicitly.
-  Tensor(std::shared_ptr<TensorStorage> storage, std::vector<int> dims,
-         std::vector<int> strides, int offset, int nVals, int rnk,
-         std::vector<Tensor*> children);
 
-  // Sets this tensor to be the same as the 'other' tensor
+  // Assignment Operators
+  /////////////////////////////////////////////////////////////////////////////
   Tensor& operator=(const Tensor& rOther);
-  // Sets all of the values in this tensor to 'double val'
   Tensor& operator=(double val);
 
-  // Set the value in this tensor at the position specified by 'indices' to
-  // 'value'. this function just acts as a wrapper of the TensorView function
-  // with the same name, calling it to change the value in this Tensor objets
-  // data attribute.
+  // Set Value / Get Value Functions
+  /////////////////////////////////////////////////////////////////////////////
   void setValue(const std::vector<int>& indices, double value);
-  // Get the value in this tensor at the position specified by 'indices' to
-  // 'value'. This function just acts as a wrapper of the TensorView function
-  // with the same name, calling it to get the value in this Tensor objets data
-  // attribute.
   double getValue(const std::vector<int>& indices) const;
-  // Set the value in the tensorStorage of the data Tensorview object of this
-  // Tensor at the position specified by index to 'value'. This function just
-  // acts as a wrapper of the TensorView function with the same name, calling it
-  // to change the value.
   void setValueDirect(int index, double value);
-  // Get the value in the tensorStorage of the data Tensorview object of this
-  // Tensor at the position specified by index. this function just
-  // acts as a wrapper of the TensorView function with the same name, calling it
-  // to get the value in this Tensor objets data attribute.
   double getValueDirect(int index) const;
 
-  // Itteratively calls the backward method associated with the parentFunction
-  // of this object and each of the objects upstream in the computational graph
-  void backward();
+  // Functions for computational graph algorithm
+  /////////////////////////////////////////////////////////////////////////////
+  void backward(Tensor& inputGradient);
+  void addGradient(Tensor& inputGradient);
 
+  // Operator Overloads for Tensor-Tensor maths
+  /////////////////////////////////////////////////////////////////////////////
   Tensor operator+(const Tensor& rOther) const;
   Tensor operator-(const Tensor& rOther) const;
   Tensor operator*(const Tensor& rOther) const;
   Tensor operator/(const Tensor& rOther) const;
-  Tensor getData();
 
-  void setBackwardFunction(Function backwardFunction);
+  Tensor& operator+=(const Tensor& rOther);
+  Tensor& operator-=(const Tensor& rOther);
+  Tensor& operator*=(const Tensor& rOther);
+  Tensor& operator/=(const Tensor& rOther);
 
+  Tensor exponent(int exponent);
+
+  // Operator overloads for Tensor-scalar maths
+  /////////////////////////////////////////////////////////////////////////////
+  Tensor operator+(double scalar) const;
+  Tensor operator-(double scalar) const;
+  Tensor operator*(double scalar) const;
+  Tensor operator/(double scalar) const;
+
+  Tensor& operator+=(double scalar);
+  Tensor& operator-=(double scalar);
+  Tensor& operator*=(double scalar);
+  Tensor& operator/=(double scalar);
+
+  // Getters and Setters for member attributes
+  /////////////////////////////////////////////////////////////////////////////
+  TensorView getData();
+  TensorView getGradient();
+  Function* getGradFunction();
+  bool getIsLeaf();
+  bool getRequiresGrad();
+
+  void setLeaf(bool leaf);
+  void setRequiresGrad();
+
+  // Overloads for indexing of data values
+  /////////////////////////////////////////////////////////////////////////////
   Tensor operator[](int index);
   const Tensor operator[](int index) const;
   double& operator[](const std::vector<int>& rIndices);
