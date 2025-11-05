@@ -1,7 +1,7 @@
 #include "gradAdd.h"
 
 GradAdd::GradAdd(std::vector<Tensor*> savedTensors,
-                 std::vector<Tensor*> nextFunctions)
+                 std::vector<GradFunction*> nextFunctions)
     : savedTensors{savedTensors}, nextFunctions{nextFunctions} {}
 
 void GradAdd::backward(Tensor& inputGradient) {

@@ -1,3 +1,6 @@
+#ifndef GRAD_FUNCTION_H
+#define GRAD_FUNCTION_H
+
 #include <vector>
 
 class Tensor;
@@ -10,3 +13,5 @@ class GradFunction {
   virtual void backward(Tensor& inputGradient) = 0;
   virtual ~GradFunction() = default;
 };
+
+#endif

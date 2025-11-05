@@ -1,5 +1,5 @@
-#ifndef TENSOR_STORAGE_H
-#define TENSOR_STORAGE_H
+#ifndef TENSOR_H
+#define TENSOR_H
 
 #include <iostream>
 #include <memory>
@@ -76,7 +76,7 @@ class Tensor {
   /////////////////////////////////////////////////////////////////////////////
   TensorView getData();
   TensorView getGradient();
-  Function* getGradFunction();
+  GradFunction* getGradFunction();
   bool getIsLeaf();
   bool getRequiresGrad();
 

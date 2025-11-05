@@ -1,3 +1,6 @@
+#ifndef GRAD_ADD_H
+#define GRAD_ADD_H
+
 #include "../gradFunction.h"
 
 class Tensor;
@@ -9,6 +12,9 @@ class GradAdd : public GradFunction {
   std::vector<GradFunction*> nextFunctions;
 
  public:
-  GradAdd(std::vector<Tensor*> savedTensors);
+  GradAdd(std::vector<Tensor*> savedTensors,
+          std::vector<GradFunction*> nextFunctions);
   void backward(Tensor& inputGradient) override;
 };
+
+#endif

@@ -1,4 +1,4 @@
-#include "tensor_view.h"
+#include "tensorView.h"
 
 TensorView& TensorView::operator=(const TensorView& rOther) {
   if (this != &rOther) {

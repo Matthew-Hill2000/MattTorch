@@ -1,13 +1,14 @@
 
-#include "gradSubtract.h"
+
+#include "gradSubtractScalar.h"
 
 #include "../../tensor/tensor.h"
 
-GradSubtract::GradSubtract(std::vector<Tensor*> savedTensors,
-                           std::vector<GradFunction*> nextFunctions)
+GradSubtractScalar::GradSubtractScalar(std::vector<Tensor*> savedTensors,
+                                       std::vector<GradFunction*> nextFunctions)
     : savedTensors{savedTensors}, nextFunctions{nextFunctions} {}
 
-void GradSubtract::backward(Tensor& inputGradient) {
+void GradSubtractScalar::backward(Tensor& inputGradient) {
   TensorView negativeGradient = inputGradient.getData() * -1;
   Tensor negGrad(negativeGradient);
 

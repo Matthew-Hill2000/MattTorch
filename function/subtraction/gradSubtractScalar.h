@@ -1,19 +1,19 @@
-#ifndef GRAD_SUBTRACT_H
-#define GRAD_SUBTRACT_H
+#ifndef GRAD_SUBTRACT_SCALAR_H
+#define GRAD_SUBTRACT_SCALAR_H
 
 #include "../gradFunction.h"
 
 class Tensor;
 
-class GradSubtract : public GradFunction {
+class GradSubtractScalar : public GradFunction {
  private:
   // The tensors needed to calculate the gradient.
   std::vector<Tensor*> savedTensors;
   std::vector<GradFunction*> nextFunctions;
 
  public:
-  GradSubtract(std::vector<Tensor*> savedTensors,
-               std::vector<GradFunction*> nextFunctions);
+  GradSubtractScalar(std::vector<Tensor*> savedTensors,
+                     std::vector<GradFunction*> nextFunctions);
   void backward(Tensor& inputGradient) override;
 };
 

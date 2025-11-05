@@ -1,12 +1,13 @@
-#include "gradMultiply.h"
+
+#include "gradMultiplyScalar.h"
 
 #include "../../tensor/tensor.h"
 
-GradMultiply::GradMultiply(std::vector<Tensor*> savedTensors,
-                           std::vector<GradFunction*> nextFunctions)
+GradMultiplyScalar::GradMultiplyScalar(std::vector<Tensor*> savedTensors,
+                                       std::vector<GradFunction*> nextFunctions)
     : savedTensors{savedTensors}, nextFunctions{nextFunctions} {}
 
-void GradMultiply::backward(Tensor& inputGradient) {
+void GradMultiplyScalar::backward(Tensor& inputGradient) {
   TensorView gradOneData = savedTensors[1]->getData() * inputGradient.getData();
   TensorView gradTwoData = savedTensors[0]->getData() * inputGradient.getData();
 

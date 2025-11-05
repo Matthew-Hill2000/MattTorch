@@ -1,5 +1,5 @@
-#ifndef TENSOR_H
-#define TENSOR_H
+#ifndef TENSOR_VIEW_H
+#define TENSOR_VIEW_H
 
 #include <iostream>
 #include <memory>
