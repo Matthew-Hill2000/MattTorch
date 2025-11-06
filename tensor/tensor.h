@@ -19,14 +19,18 @@ class Tensor {
   GradFunction* gradFunction;  // pointer to the functor to calculate gradient
   bool isLeaf;
   bool requiresGrad;
+  bool hasGrad = false;
 
  public:
   // Constructors
   /////////////////////////////////////////////////////////////////////////////
   Tensor();
-  Tensor(const TensorView& data, bool requiresGrad = true,
+  Tensor(const TensorView& data, bool requiresGrad = true, bool isLeaf = true,
          GradFunction* gradFunction = nullptr);
-  Tensor(const std::vector<int>& dims, bool requiresGrad = true);
+
+  Tensor(const std::vector<int>& dims, bool requiresGrad = true,
+         bool isLeaf = true);
+
   Tensor(const Tensor& other);
 
   // Assignment Operators

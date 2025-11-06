@@ -1,3 +1,5 @@
+#include <ostream>
+
 #include "function/gradFunction.h"
 #include "tensor/tensor.h"
 #include "tensorStorage/tensorStorage.h"
@@ -10,5 +12,8 @@ int main() {
   b[0] = 3.0;
 
   Tensor c = a * b;
-  Tensor d = c.exponent(2);
+  Tensor inputGradient({1});
+  inputGradient[0] = 1.0;
+  c.backward(inputGradient);
+  std::cout << a.getGradient();
 }

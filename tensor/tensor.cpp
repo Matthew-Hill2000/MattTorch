@@ -13,14 +13,18 @@
 
 // Constructors
 ///////////////////////////////////////////////////////////////////////////////
-Tensor::Tensor(const TensorView& data, bool requiresGrad,
+Tensor::Tensor(const TensorView& data, bool requiresGrad, bool isLeaf,
                GradFunction* gradFunction)
-    : data{data}, requiresGrad{requiresGrad}, gradFunction{gradFunction} {}
+    : data{data},
+      requiresGrad{requiresGrad},
+      isLeaf{isLeaf},
+      gradFunction{gradFunction} {}
 
-Tensor::Tensor(const std::vector<int>& dims, bool requiresGrad)
+Tensor::Tensor(const std::vector<int>& dims, bool requiresGrad, bool isLeaf)
     : requiresGrad{requiresGrad} {
   this->data = TensorView(dims);
   this->gradFunction = new GradAccumulator(this);
+  this->isLeaf = true;
 }
 
 Tensor::Tensor(const Tensor& other)
@@ -73,7 +77,11 @@ void Tensor::backward(Tensor& inputGradient) {
 }
 
 void Tensor::addGradient(Tensor& inputGradient) {
-  this->gradient += inputGradient.getData();
+  if (this->hasGrad) {
+    this->gradient = inputGradient.getData();
+  } else {
+    this->gradient += inputGradient.getData();
+  }
 }
 
 // Operator Overloads for Tensor-Tensor maths
