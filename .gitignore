@@ -1,0 +1,21 @@
+# Build directories
+build/
+debugBuild/
+releaseBuild/
+cmake-build-*/
+examples/archive/
+*.csv
+# Generated files
+compile_commands.json
+
+# Editor/IDE
+.cache/
+.clangd/
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
