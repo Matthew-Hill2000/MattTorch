@@ -11,6 +11,7 @@ compile_commands.json
 # Editor/IDE
 .cache/
 .clangd/
+.clangd
 *.swp
 *.swo
 .vscode/
