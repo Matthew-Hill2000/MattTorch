@@ -1,0 +1,27 @@
+\doxysection{grad\+Log.\+h}
+\hypertarget{gradLog_8h_source}{}\label{gradLog_8h_source}\index{include/mattTorch/function/log/gradLog.h@{include/mattTorch/function/log/gradLog.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}mattTorch/tensor/tensorView/tensorView.h"{}}}
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <mattTorch/function/gradFunction.h>}}
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00007}00007\ \textcolor{keyword}{namespace\ }mattTorch::function\ \{}
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00036}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradLog}{00036}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradLog_a9f9a7a756aa1a17b35d0bb02b45999cd}{GradLog}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{GradFunction}}\ \{}
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00037}00037\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00040}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradLog_a8989d3ebc2d350a279318a312ce58633}{00040}}\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradLog_a8989d3ebc2d350a279318a312ce58633}{savedTensor}};}
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00044}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradLog_a0906bcf83cbfe553868e7c0db91d8349}{00044}}\ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradLog_a0906bcf83cbfe553868e7c0db91d8349}{nextFunctions}};}
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00046}00046\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00059}00059\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradLog_a9f9a7a756aa1a17b35d0bb02b45999cd}{GradLog}}(\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradLog_a8989d3ebc2d350a279318a312ce58633}{savedTensor}},}
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<GradFunction>>\ nextFunction);}
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00082}00082\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradLog_a81898a9d4e0d319b5c15abe8574e7f48}{backward}}(\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\ \&inputGradient,\ \textcolor{keywordtype}{bool}\ higherDerivative)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00083}00083\ \};}
+\DoxyCodeLine{\Hypertarget{gradLog_8h_source_l00084}00084\ \}}
+
+\end{DoxyCode}

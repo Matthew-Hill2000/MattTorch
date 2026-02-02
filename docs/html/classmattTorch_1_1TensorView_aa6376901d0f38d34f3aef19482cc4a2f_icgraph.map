@@ -1,0 +1,5 @@
+<map id="mattTorch::TensorView::getGradFunction" name="mattTorch::TensorView::getGradFunction">
+<area shape="rect" id="Node000001" title=" " alt="" coords="248,5,403,48"/>
+<area shape="rect" id="Node000002" href="$classmattTorch_1_1function_1_1GradAccumulator.html#aed14a7f0998d5eb3fc085d6ce65dd8b3" title="Accumulates the incoming gradient into the leaf tensor&#39;s gradient storage." alt="" coords="5,5,200,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,27,200,29,200,24,235,26"/>
+</map>

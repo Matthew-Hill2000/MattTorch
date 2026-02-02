@@ -7,14 +7,25 @@
 
 namespace mattTorch {
 
-FullyConnectedLayer::FullyConnectedLayer(int inputs, int outputs) {
+FullyConnectedLayer::FullyConnectedLayer(int inputs, int outputs,
+                                         std::string initialisation) {
   this->weight = TensorView({inputs, outputs});
   this->bias = TensorView({outputs});
 
   unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
   std::default_random_engine generator(seed);
-  std::normal_distribution<double> normalDistribution(0.0,
-                                                      6.0 / std::sqrt(inputs));
+
+  std::normal_distribution<double> normalDistribution;
+  if (initialisation == "xavier") {
+    normalDistribution = std::normal_distribution<double>(
+        0.0, std::sqrt(2.0 / (inputs + outputs)));
+  } else if (initialisation == "he") {
+    normalDistribution =
+        std::normal_distribution<double>(0.0, std::sqrt(2.0 / inputs));
+  } else {
+    throw(std::invalid_argument(
+        "initialisation for fully connected layer should be 'xavier' or 'he'"));
+  }
 
   double* weightData = weight.getData();
   for (int i{0}; i < weight.getNValues(); i++) {
@@ -29,7 +40,8 @@ FullyConnectedLayer::FullyConnectedLayer(int inputs, int outputs) {
 
 TensorView FullyConnectedLayer::forward(TensorView& inputTensor) {
   TensorView outputTensorWeighted = inputTensor.matrixMultiply(weight);
-  TensorView broadcastedBias = bias.broadcast(0, inputTensor.getDimensions()[0]);
+  TensorView broadcastedBias =
+      bias.broadcast(0, inputTensor.getDimensions()[0]);
   TensorView outputTensorBiased = outputTensorWeighted + broadcastedBias;
   return outputTensorBiased;
 }

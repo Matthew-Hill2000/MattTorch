@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classmattTorch_1_1function_1_1GradLog" kind="class" language="C++" prot="public">
+    <compoundname>mattTorch::function::GradLog</compoundname>
+    <basecompoundref refid="classmattTorch_1_1GradFunction" prot="public" virt="non-virtual">mattTorch::GradFunction</basecompoundref>
+    <includes refid="gradLog_8h" local="no">gradLog.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmattTorch_1_1function_1_1GradLog_1a8989d3ebc2d350a279318a312ce58633" prot="private" static="no" mutable="no">
+        <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref></type>
+        <definition>TensorView mattTorch::function::GradLog::savedTensor</definition>
+        <argsstring></argsstring>
+        <name>savedTensor</name>
+        <qualifiedname>mattTorch::function::GradLog::savedTensor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The input tensor from the forward pass, required for computing the gradient as 1/A </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/log/gradLog.h" line="40" column="14" bodyfile="include/mattTorch/function/log/gradLog.h" bodystart="40" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1function_1_1GradLog_1a81898a9d4e0d319b5c15abe8574e7f48" compoundref="gradLog_8cpp" startline="11" endline="16">backward</referencedby>
+        <referencedby refid="classmattTorch_1_1function_1_1GradLog_1a9f9a7a756aa1a17b35d0bb02b45999cd" compoundref="gradLog_8cpp" startline="6" endline="9">GradLog</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmattTorch_1_1function_1_1GradLog_1a0906bcf83cbfe553868e7c0db91d8349" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;GradFunction&gt; &gt; mattTorch::function::GradLog::nextFunctions</definition>
+        <argsstring></argsstring>
+        <name>nextFunctions</name>
+        <qualifiedname>mattTorch::function::GradLog::nextFunctions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pointer to the <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> object of the parent tensor in the computational graph </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/log/gradLog.h" line="44" column="15" bodyfile="include/mattTorch/function/log/gradLog.h" bodystart="44" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1function_1_1GradLog_1a81898a9d4e0d319b5c15abe8574e7f48" compoundref="gradLog_8cpp" startline="11" endline="16">backward</referencedby>
+        <referencedby refid="classmattTorch_1_1function_1_1GradLog_1a9f9a7a756aa1a17b35d0bb02b45999cd" compoundref="gradLog_8cpp" startline="6" endline="9">GradLog</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmattTorch_1_1function_1_1GradLog_1a9f9a7a756aa1a17b35d0bb02b45999cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mattTorch::function::GradLog::GradLog</definition>
+        <argsstring>(TensorView savedTensor, std::vector&lt; std::shared_ptr&lt; GradFunction &gt; &gt; nextFunction)</argsstring>
+        <name>GradLog</name>
+        <qualifiedname>mattTorch::function::GradLog::GradLog</qualifiedname>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref></type>
+          <declname>savedTensor</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> &gt; &gt;</type>
+          <declname>nextFunction</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="classmattTorch_1_1function_1_1GradLog" kindref="compound">GradLog</ref> gradient function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a <ref refid="classmattTorch_1_1function_1_1GradLog" kindref="compound">GradLog</ref> object that stores the input tensor from the forward pass and a pointer to the parent tensor&apos;s <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> for gradient propagation during backpropagation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classmattTorch_1_1function_1_1GradLog_1a8989d3ebc2d350a279318a312ce58633" kindref="member">savedTensor</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input tensor from the forward pass, required for computing the gradient as 1/A </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nextFunction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector containing a shared pointer to the <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> object of the parent tensor for gradient propagation </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/log/gradLog.h" line="59" column="3" bodyfile="src/function/log/gradLog.cpp" bodystart="6" bodyend="9"/>
+        <references refid="classmattTorch_1_1function_1_1GradLog_1a0906bcf83cbfe553868e7c0db91d8349" compoundref="gradLog_8h" startline="44">nextFunctions</references>
+        <references refid="classmattTorch_1_1function_1_1GradLog_1a8989d3ebc2d350a279318a312ce58633" compoundref="gradLog_8h" startline="40">savedTensor</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1function_1_1GradLog_1a81898a9d4e0d319b5c15abe8574e7f48" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mattTorch::function::GradLog::backward</definition>
+        <argsstring>(TensorView &amp;inputGradient, bool higherDerivative) override</argsstring>
+        <name>backward</name>
+        <qualifiedname>mattTorch::function::GradLog::backward</qualifiedname>
+        <reimplements refid="classmattTorch_1_1GradFunction_1abc6c3ffb22d631af9dca31dcd5c09d3d">backward</reimplements>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &amp;</type>
+          <declname>inputGradient</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>higherDerivative</declname>
+        </param>
+        <briefdescription>
+<para>Computes and propagates gradients for the logarithm operation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Implements the backward pass for the natural logarithm by computing the reciprocal of the saved input tensor and multiplying it elementwise with the incoming gradient. Since the derivative of ln(x) is 1/x, the gradient is computed by dividing the incoming gradient by the input tensor. The method calls <ref refid="classmattTorch_1_1function_1_1GradLog_1a81898a9d4e0d319b5c15abe8574e7f48" kindref="member">backward()</ref> on the parent tensor&apos;s <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> to continue the backpropagation process.</para>
+<para>When higherDerivative is false, gradient tracking is disabled on the saved tensor to prevent construction of a new computational graph during backpropagation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>inputGradient</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The gradient of the loss with respect to the output of the logarithm operation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>higherDerivative</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, enables construction of a computational graph during the backward pass for higher-order derivatives; if false, disables gradient tracking on saved tensors </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/log/gradLog.h" line="82" column="8" bodyfile="src/function/log/gradLog.cpp" bodystart="11" bodyend="16"/>
+        <references refid="classmattTorch_1_1function_1_1GradLog_1a0906bcf83cbfe553868e7c0db91d8349" compoundref="gradLog_8h" startline="44">nextFunctions</references>
+        <references refid="classmattTorch_1_1function_1_1GradLog_1a8989d3ebc2d350a279318a312ce58633" compoundref="gradLog_8h" startline="40">savedTensor</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Gradient function for the natural logarithm. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classmattTorch_1_1function_1_1GradLog" kindref="compound">GradLog</ref> class represents the natural logarithm function in the computational graph, computing gradients for the elementwise logarithm operation. For the operation <formula id="43">$C = \ln(A)$</formula> where <formula id="12">$A$</formula> is a tensor, the gradient computation follows from the derivative of the logarithm:   <formula id="44">\[    \frac{\partial C}{\partial A} = \frac{1}{A}
+\]</formula></para>
+<para>During backpropagation, the incoming gradient  <formula id="8">$\frac{\partial L}{\partial
+C}$</formula> is multiplied elementwise with the reciprocal of the input according to the chain rule:    <formula id="45">\[    \frac{\partial L}{\partial A} = \frac{\partial L}{\partial C} \odot
+\frac{\partial C}{\partial A} = \frac{\partial L}{\partial C} \oslash A
+\]</formula></para>
+<para>This <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> saves the input tensor from the forward pass as it is required to compute the gradient using the formula <formula id="46">$1/A$</formula> during the backward pass.</para>
+<para><simplesect kind="see"><para><ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> for the base class from which this class derives. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classmattTorch_1_1function_1_1GradExponential" kindref="compound">GradExponential</ref> for the gradient function for the natural exponential function. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>mattTorch::GradFunction</label>
+        <link refid="classmattTorch_1_1GradFunction"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::function::GradLog</label>
+        <link refid="classmattTorch_1_1function_1_1GradLog"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>mattTorch::GradFunction</label>
+        <link refid="classmattTorch_1_1GradFunction"/>
+      </node>
+      <node id="3">
+        <label>mattTorch::TensorView</label>
+        <link refid="classmattTorch_1_1TensorView"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::function::GradLog</label>
+        <link refid="classmattTorch_1_1function_1_1GradLog"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>savedTensor</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/mattTorch/function/log/gradLog.h" line="36" column="1" bodyfile="include/mattTorch/function/log/gradLog.h" bodystart="36" bodyend="83"/>
+    <listofallmembers>
+      <member refid="classmattTorch_1_1function_1_1GradLog_1a81898a9d4e0d319b5c15abe8574e7f48" prot="public" virt="virtual"><scope>mattTorch::function::GradLog</scope><name>backward</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradLog_1a9f9a7a756aa1a17b35d0bb02b45999cd" prot="public" virt="non-virtual"><scope>mattTorch::function::GradLog</scope><name>GradLog</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradLog_1a0906bcf83cbfe553868e7c0db91d8349" prot="private" virt="non-virtual"><scope>mattTorch::function::GradLog</scope><name>nextFunctions</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradLog_1a8989d3ebc2d350a279318a312ce58633" prot="private" virt="non-virtual"><scope>mattTorch::function::GradLog</scope><name>savedTensor</name></member>
+      <member refid="classmattTorch_1_1GradFunction_1ae57c9bf3f619ae1206416877caa15090" prot="public" virt="virtual"><scope>mattTorch::function::GradLog</scope><name>~GradFunction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

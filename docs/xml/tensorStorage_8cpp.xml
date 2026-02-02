@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="tensorStorage_8cpp" kind="file" language="C++">
+    <compoundname>tensorStorage.cpp</compoundname>
+    <includes refid="tensorStorage_8h" local="no">mattTorch/tensor/tensorStorage/tensorStorage.h</includes>
+    <includes local="no">mm_malloc.h</includes>
+    <includes local="no">cstring</includes>
+    <includes local="no">stdexcept</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>mattTorch/tensor/tensorStorage/tensorStorage.h</label>
+        <link refid="tensorStorage_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/tensor/tensorStorage/tensorStorage.cpp</label>
+        <link refid="tensorStorage_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cstddef</label>
+      </node>
+      <node id="5">
+        <label>cstring</label>
+      </node>
+      <node id="4">
+        <label>mm_malloc.h</label>
+      </node>
+      <node id="6">
+        <label>stdexcept</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacemattTorch">mattTorch</innernamespace>
+    <innernamespace refid="namespacemattTorch_1_1tensor">mattTorch::tensor</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;mattTorch/tensor/tensorStorage/tensorStorage.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mm_malloc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mattTorch::tensor<sp/>{</highlight></codeline>
+<codeline lineno="8" refid="classmattTorch_1_1tensor_1_1TensorStorage_1a5501054e35b85b6f238b03199d953f8b" refkind="member"><highlight class="normal"><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a5501054e35b85b6f238b03199d953f8b" kindref="member">TensorStorage::TensorStorage</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" kindref="member">size</ref>)<sp/>:<sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" kindref="member">size</ref>(<ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" kindref="member">size</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/>posix_memalign(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">**</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;<ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" kindref="member">mData</ref>),<sp/>32,<sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" kindref="member">size</ref><sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/>memset(<ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" kindref="member">mData</ref>,<sp/>0,<sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" kindref="member">size</ref><sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classmattTorch_1_1tensor_1_1TensorStorage_1a36b5ebdf95bc85e6f09e136c1bc1724e" refkind="member"><highlight class="normal"><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a36b5ebdf95bc85e6f09e136c1bc1724e" kindref="member">TensorStorage::~TensorStorage</ref>()<sp/>{<sp/>free(this-&gt;<ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" kindref="member">mData</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classmattTorch_1_1tensor_1_1TensorStorage_1ae9d3e515dac1601c82acdc265a9d04e9" refkind="member"><highlight class="normal"><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a5501054e35b85b6f238b03199d953f8b" kindref="member">TensorStorage::TensorStorage</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>rValues)<sp/>:<sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" kindref="member">mData</ref>(std::move(rValues))<sp/>{}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classmattTorch_1_1tensor_1_1TensorStorage_1a4afb320bea0690d41a866f0b633ce3cd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a4afb320bea0690d41a866f0b633ce3cd" kindref="member">TensorStorage::at</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index<sp/>&lt;<sp/>0<sp/>||<sp/>index<sp/>&gt;=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" kindref="member">size</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::out_of_range(</highlight><highlight class="stringliteral">&quot;Storage<sp/>index<sp/>out<sp/>of<sp/>bounds&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" kindref="member">mData</ref>[index];</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classmattTorch_1_1tensor_1_1TensorStorage_1a461d28cb4fa065e7d6894c14e2ee03e6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a4afb320bea0690d41a866f0b633ce3cd" kindref="member">TensorStorage::at</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index<sp/>&lt;<sp/>0<sp/>||<sp/>index<sp/>&gt;=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" kindref="member">size</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::out_of_range(</highlight><highlight class="stringliteral">&quot;Storage<sp/>index<sp/>out<sp/>of<sp/>bounds&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" kindref="member">mData</ref>[index];</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classmattTorch_1_1tensor_1_1TensorStorage_1a3a423898780f9a05fd67513a7a0e5f6f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a3a423898780f9a05fd67513a7a0e5f6f" kindref="member">TensorStorage::getSize</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" kindref="member">size</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classmattTorch_1_1tensor_1_1TensorStorage_1a415d8f615977349507981d9b2529de44" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a415d8f615977349507981d9b2529de44" kindref="member">TensorStorage::getData</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" kindref="member">mData</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="34" refid="classmattTorch_1_1tensor_1_1TensorStorage_1a7cda495dee4b76c8f72708a36c17fbb1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a415d8f615977349507981d9b2529de44" kindref="member">TensorStorage::getData</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" kindref="member">mData</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classmattTorch_1_1tensor_1_1TensorStorage_1abac8f13bca6b87bdc0408d879ada633f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1abac8f13bca6b87bdc0408d879ada633f" kindref="member">TensorStorage::setAllValues</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>std::fill(<ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" kindref="member">mData</ref>,<sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" kindref="member">mData</ref><sp/>+<sp/><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" kindref="member">size</ref>,<sp/>value);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mattTorch::tensor</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/tensor/tensorStorage/tensorStorage.cpp"/>
+  </compounddef>
+</doxygen>

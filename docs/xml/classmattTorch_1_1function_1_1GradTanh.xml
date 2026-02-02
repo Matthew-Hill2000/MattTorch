@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classmattTorch_1_1function_1_1GradTanh" kind="class" language="C++" prot="public">
+    <compoundname>mattTorch::function::GradTanh</compoundname>
+    <basecompoundref refid="classmattTorch_1_1GradFunction" prot="public" virt="non-virtual">mattTorch::GradFunction</basecompoundref>
+    <includes refid="gradTanh_8h" local="no">gradTanh.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmattTorch_1_1function_1_1GradTanh_1a5296e17ea1cca46f47743b38f8fb3171" prot="private" static="no" mutable="no">
+        <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref></type>
+        <definition>TensorView mattTorch::function::GradTanh::savedTensor</definition>
+        <argsstring></argsstring>
+        <name>savedTensor</name>
+        <qualifiedname>mattTorch::function::GradTanh::savedTensor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The input tensor from the forward pass, saved for recomputing tanh during gradient calculation </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/tanh/gradTanh.h" line="42" column="14" bodyfile="include/mattTorch/function/tanh/gradTanh.h" bodystart="42" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1function_1_1GradTanh_1a504199b6313ea75109a2dce4bbc36daa" compoundref="gradTanh_8cpp" startline="11" endline="21">backward</referencedby>
+        <referencedby refid="classmattTorch_1_1function_1_1GradTanh_1a0485475528741f1b995ba9d425070e62" compoundref="gradTanh_8cpp" startline="6" endline="9">GradTanh</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmattTorch_1_1function_1_1GradTanh_1a05a8ffd761c832b1f9f27aeb6bca0f0e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;GradFunction&gt; &gt; mattTorch::function::GradTanh::nextFunctions</definition>
+        <argsstring></argsstring>
+        <name>nextFunctions</name>
+        <qualifiedname>mattTorch::function::GradTanh::nextFunctions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pointer to the <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> object of the parent tensor in the computational graph </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/tanh/gradTanh.h" line="46" column="15" bodyfile="include/mattTorch/function/tanh/gradTanh.h" bodystart="46" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1function_1_1GradTanh_1a504199b6313ea75109a2dce4bbc36daa" compoundref="gradTanh_8cpp" startline="11" endline="21">backward</referencedby>
+        <referencedby refid="classmattTorch_1_1function_1_1GradTanh_1a0485475528741f1b995ba9d425070e62" compoundref="gradTanh_8cpp" startline="6" endline="9">GradTanh</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmattTorch_1_1function_1_1GradTanh_1a0485475528741f1b995ba9d425070e62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mattTorch::function::GradTanh::GradTanh</definition>
+        <argsstring>(TensorView tanhOutput, std::vector&lt; std::shared_ptr&lt; GradFunction &gt; &gt; nextFunctions)</argsstring>
+        <name>GradTanh</name>
+        <qualifiedname>mattTorch::function::GradTanh::GradTanh</qualifiedname>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref></type>
+          <declname>tanhOutput</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> &gt; &gt;</type>
+          <declname>nextFunctions</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="classmattTorch_1_1function_1_1GradTanh" kindref="compound">GradTanh</ref> gradient function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a <ref refid="classmattTorch_1_1function_1_1GradTanh" kindref="compound">GradTanh</ref> object that stores the input tensor from the forward pass and a pointer to the parent tensor&apos;s <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> for gradient propagation during backpropagation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tanhOutput</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input tensor from the forward pass, which will be used to recompute tanh during gradient calculation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="classmattTorch_1_1function_1_1GradTanh_1a05a8ffd761c832b1f9f27aeb6bca0f0e" kindref="member">nextFunctions</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector containing a shared pointer to the <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> object of the parent tensor for gradient propagation </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/tanh/gradTanh.h" line="61" column="3" bodyfile="src/function/tanh/gradTanh.cpp" bodystart="6" bodyend="9"/>
+        <references refid="classmattTorch_1_1function_1_1GradTanh_1a05a8ffd761c832b1f9f27aeb6bca0f0e" compoundref="gradTanh_8h" startline="46">nextFunctions</references>
+        <references refid="classmattTorch_1_1function_1_1GradTanh_1a5296e17ea1cca46f47743b38f8fb3171" compoundref="gradTanh_8h" startline="42">savedTensor</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1function_1_1GradTanh_1a504199b6313ea75109a2dce4bbc36daa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mattTorch::function::GradTanh::backward</definition>
+        <argsstring>(TensorView &amp;inputGradient, bool higherDerivative) override</argsstring>
+        <name>backward</name>
+        <qualifiedname>mattTorch::function::GradTanh::backward</qualifiedname>
+        <reimplements refid="classmattTorch_1_1GradFunction_1abc6c3ffb22d631af9dca31dcd5c09d3d">backward</reimplements>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &amp;</type>
+          <declname>inputGradient</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>higherDerivative</declname>
+        </param>
+        <briefdescription>
+<para>Computes and propagates gradients for the tanh activation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Implements the backward pass for the hyperbolic tangent activation by computing the gradient using the formula <formula id="85">$1 - \tanh^2(x)$</formula>. The tanh function is recomputed from the saved input tensor, squared, and subtracted from 1 to obtain the local gradient. This is then multiplied elementwise with the incoming gradient. The method calls <ref refid="classmattTorch_1_1function_1_1GradTanh_1a504199b6313ea75109a2dce4bbc36daa" kindref="member">backward()</ref> on the parent tensor&apos;s <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> to continue the backpropagation process.</para>
+<para>When higherDerivative is false, gradient tracking is disabled on the saved tensor to prevent construction of a new computational graph during backpropagation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>inputGradient</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The gradient of the loss with respect to the output of the tanh activation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>higherDerivative</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, enables construction of a computational graph during the backward pass for higher-order derivatives; if false, disables gradient tracking on saved tensors </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/tanh/gradTanh.h" line="84" column="8" bodyfile="src/function/tanh/gradTanh.cpp" bodystart="11" bodyend="21"/>
+        <references refid="classmattTorch_1_1function_1_1GradTanh_1a05a8ffd761c832b1f9f27aeb6bca0f0e" compoundref="gradTanh_8h" startline="46">nextFunctions</references>
+        <references refid="classmattTorch_1_1function_1_1GradTanh_1a5296e17ea1cca46f47743b38f8fb3171" compoundref="gradTanh_8h" startline="42">savedTensor</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Gradient function for the hyperbolic tangent activation function. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classmattTorch_1_1function_1_1GradTanh" kindref="compound">GradTanh</ref> class represents the hyperbolic tangent activation function in the computational graph, computing gradients for the elementwise tanh operation. For the operation <formula id="81">$C = \tanh(A)$</formula>, the gradient computation follows from the derivative:   <formula id="82">\[    \frac{\partial C}{\partial A} = 1 - \tanh^2(A) = 1 - C^2
+\]</formula></para>
+<para>During backpropagation, the incoming gradient  <formula id="8">$\frac{\partial L}{\partial
+C}$</formula> is multiplied elementwise with <formula id="83">$1 - C^2$</formula> according to the chain rule:     <formula id="84">\[    \frac{\partial L}{\partial A} = \frac{\partial L}{\partial C} \odot
+\frac{\partial C}{\partial A} = \frac{\partial L}{\partial C} \odot (1 -
+C^2)
+\]</formula></para>
+<para>This <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> saves the input tensor from the forward pass rather than the output. The tanh function is recomputed during the backward pass to calculate the gradient. This design choice may have been made to maintain consistency across gradient function implementations or to enable specific higher-order derivative computations.</para>
+<para><simplesect kind="see"><para><ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> for the base class from which this class derives. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classmattTorch_1_1function_1_1GradReLU" kindref="compound">GradReLU</ref> for the gradient function for the <ref refid="classmattTorch_1_1ReLU" kindref="compound">ReLU</ref> activation. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>mattTorch::GradFunction</label>
+        <link refid="classmattTorch_1_1GradFunction"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::function::GradTanh</label>
+        <link refid="classmattTorch_1_1function_1_1GradTanh"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>mattTorch::GradFunction</label>
+        <link refid="classmattTorch_1_1GradFunction"/>
+      </node>
+      <node id="3">
+        <label>mattTorch::TensorView</label>
+        <link refid="classmattTorch_1_1TensorView"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::function::GradTanh</label>
+        <link refid="classmattTorch_1_1function_1_1GradTanh"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>savedTensor</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/mattTorch/function/tanh/gradTanh.h" line="38" column="1" bodyfile="include/mattTorch/function/tanh/gradTanh.h" bodystart="38" bodyend="85"/>
+    <listofallmembers>
+      <member refid="classmattTorch_1_1function_1_1GradTanh_1a504199b6313ea75109a2dce4bbc36daa" prot="public" virt="virtual"><scope>mattTorch::function::GradTanh</scope><name>backward</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradTanh_1a0485475528741f1b995ba9d425070e62" prot="public" virt="non-virtual"><scope>mattTorch::function::GradTanh</scope><name>GradTanh</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradTanh_1a05a8ffd761c832b1f9f27aeb6bca0f0e" prot="private" virt="non-virtual"><scope>mattTorch::function::GradTanh</scope><name>nextFunctions</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradTanh_1a5296e17ea1cca46f47743b38f8fb3171" prot="private" virt="non-virtual"><scope>mattTorch::function::GradTanh</scope><name>savedTensor</name></member>
+      <member refid="classmattTorch_1_1GradFunction_1ae57c9bf3f619ae1206416877caa15090" prot="public" virt="virtual"><scope>mattTorch::function::GradTanh</scope><name>~GradFunction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

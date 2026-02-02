@@ -1,0 +1,5 @@
+<map id="mattTorch::TensorView::getNValues" name="mattTorch::TensorView::getNValues">
+<area shape="rect" id="Node000001" title="Returns the total number of values in the tensor." alt="" coords="228,5,383,48"/>
+<area shape="rect" id="Node000002" href="$classmattTorch_1_1criterion_1_1MSELoss.html#a873e441bdd4ea3d6a2c5eb68d313fa4d" title="Computes the Mean Squared Error loss between the input predictions and the target values." alt="" coords="5,5,180,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,27,180,29,180,24,215,26"/>
+</map>

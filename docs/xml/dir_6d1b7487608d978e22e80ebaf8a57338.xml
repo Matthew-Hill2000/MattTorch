@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_6d1b7487608d978e22e80ebaf8a57338" kind="dir">
+    <compoundname>include/mattTorch/optimiser/sgd</compoundname>
+    <innerfile refid="sgd_8h">sgd.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/mattTorch/optimiser/sgd/"/>
+  </compounddef>
+</doxygen>

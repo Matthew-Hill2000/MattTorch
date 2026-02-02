@@ -1,0 +1,28 @@
+\doxysection{softmax.\+h}
+\hypertarget{softmax_8h_source}{}\label{softmax_8h_source}\index{include/mattTorch/layer/softmax/softmax.h@{include/mattTorch/layer/softmax/softmax.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <mattTorch/layer/layer.h>}}
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00003}00003\ \textcolor{keyword}{namespace\ }mattTorch\ \{}
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00024}\doxymbox{\hyperlink{classmattTorch_1_1Softmax}{00024}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classmattTorch_1_1Softmax_ae1d2bd879c2dd7344aff96e29e3bdbb4}{Softmax}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classmattTorch_1_1Layer}{Layer}}\ \{}
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00025}00025\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00027}\doxymbox{\hyperlink{classmattTorch_1_1Softmax_a061380b42c7bfbe4b89d760852a38400}{00027}}\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\ \doxymbox{\hyperlink{classmattTorch_1_1Softmax_a061380b42c7bfbe4b89d760852a38400}{inputTensor}};}
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00030}\doxymbox{\hyperlink{classmattTorch_1_1Softmax_aec157c44b6ec961ce92625ed2da69c31}{00030}}\ \ \ std::vector<int>\ \doxymbox{\hyperlink{classmattTorch_1_1Softmax_aec157c44b6ec961ce92625ed2da69c31}{inputShape}};}
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00034}\doxymbox{\hyperlink{classmattTorch_1_1Softmax_a1a2fa8c209ba81fc16db3839af23d504}{00034}}\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\ \doxymbox{\hyperlink{classmattTorch_1_1Softmax_a1a2fa8c209ba81fc16db3839af23d504}{outputTensor}};}
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00036}00036\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00038}\doxymbox{\hyperlink{classmattTorch_1_1Softmax_ae1d2bd879c2dd7344aff96e29e3bdbb4}{00038}}\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1Softmax_ae1d2bd879c2dd7344aff96e29e3bdbb4}{Softmax}}();}
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00053}00053\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\ \doxymbox{\hyperlink{classmattTorch_1_1Softmax_afe1512a2337ada86e360f6c65407d5dd}{forward}}(\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\&\ \doxymbox{\hyperlink{classmattTorch_1_1Softmax_a061380b42c7bfbe4b89d760852a38400}{inputTensor}})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00060}00060\ \ \ std::vector<std::shared\_ptr<TensorView>>\ \doxymbox{\hyperlink{classmattTorch_1_1Softmax_a4766bb9924e4d7fb590ee991d571f197}{getParameters}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00067}00067\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classmattTorch_1_1Softmax_a99ffe1c0a73ce6721f1902d4439c8d2a}{getNumParameters}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00068}00068\ \};}
+\DoxyCodeLine{\Hypertarget{softmax_8h_source_l00069}00069\ \}\ \ \textcolor{comment}{//\ namespace\ mattTorch}}
+
+\end{DoxyCode}

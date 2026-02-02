@@ -1,0 +1,79 @@
+\doxysection{matt\+Torch::\+Criterion Class Reference}
+\hypertarget{classmattTorch_1_1Criterion}{}\label{classmattTorch_1_1Criterion}\index{mattTorch::Criterion@{mattTorch::Criterion}}
+
+
+Abstract base class for all loss functions.  
+
+
+
+
+{\ttfamily \+\#include $<$criterion.\+h$>$}
+
+
+
+Inheritance diagram for matt\+Torch::\+Criterion:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{classmattTorch_1_1Criterion__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \doxymbox{\hyperlink{classmattTorch_1_1Criterion_af89e3b01ee1819f1a99e35cab9da9a4e}{calculate\+Loss}} (\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&input, \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&target)=0
+\begin{DoxyCompactList}\small\item\em Computes the loss between the input predictions and the target values. \end{DoxyCompactList}\item 
+\Hypertarget{classmattTorch_1_1Criterion_a1c5c589d128e186f5a66be445c92839f}\label{classmattTorch_1_1Criterion_a1c5c589d128e186f5a66be445c92839f} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Criterion} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for safe polymorphic destruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for all loss functions. 
+
+The \doxylink{classmattTorch_1_1Criterion}{Criterion} class defines the interface for computing loss values during neural network training. Specific loss functions such as cross-\/entropy or mean squared error are intended to derive from this class and implement the calculate\+Loss method with the appropriate loss computation. The resulting loss tensor participates in the computational graph, allowing gradients to be propagated back through the loss function during backpropagation.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classmattTorch_1_1TensorView}{Tensor\+View} for the tensor class used to represent inputs, targets and loss values. 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{criterion_8h_source_l00018}{18}} of file \doxymbox{\hyperlink{criterion_8h_source}{criterion.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classmattTorch_1_1Criterion_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmattTorch_1_1Criterion_af89e3b01ee1819f1a99e35cab9da9a4e}\index{mattTorch::Criterion@{mattTorch::Criterion}!calculateLoss@{calculateLoss}}
+\index{calculateLoss@{calculateLoss}!mattTorch::Criterion@{mattTorch::Criterion}}
+\doxysubsubsection{\texorpdfstring{calculateLoss()}{calculateLoss()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Criterion_af89e3b01ee1819f1a99e35cab9da9a4e} 
+virtual \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} matt\+Torch::\+\+Criterion::\+calculate\+Loss (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&}]{input}{, }\item[{\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Computes the loss between the input predictions and the target values. 
+
+Pure virtual method to be implemented by derived classes with the specific loss computation. The returned tensor participates in the computational graph such that calling backward() on it will propagate gradients back through the network.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The predicted values produced by the network \\
+\hline
+{\em target} & The ground truth target values \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} containing the computed loss value 
+\end{DoxyReturn}
+
+
+Implemented in \doxymbox{\hyperlink{classmattTorch_1_1criterion_1_1CrossEntropyLoss_a3e477b089170fe65dec1c7f16aa4be6f}{matt\+Torch::\+criterion::\+\+Cross\+Entropy\+Loss}}, and \doxymbox{\hyperlink{classmattTorch_1_1criterion_1_1MSELoss_a873e441bdd4ea3d6a2c5eb68d313fa4d}{matt\+Torch::\+criterion::\+\+MSELoss}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+matt\+Torch/\+criterion/\+criterion.\+h\end{DoxyCompactItemize}

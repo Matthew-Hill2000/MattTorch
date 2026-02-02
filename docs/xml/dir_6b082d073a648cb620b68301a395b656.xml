@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_6b082d073a648cb620b68301a395b656" kind="dir">
+    <compoundname>include/mattTorch/function/multiplication</compoundname>
+    <innerfile refid="gradMultiply_8h">gradMultiply.h</innerfile>
+    <innerfile refid="gradMultiplyMatrix_8h">gradMultiplyMatrix.h</innerfile>
+    <innerfile refid="gradMultiplyScalar_8h">gradMultiplyScalar.h</innerfile>
+    <innerfile refid="gradTransposeMatrix_8h">gradTransposeMatrix.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/mattTorch/function/multiplication/"/>
+  </compounddef>
+</doxygen>

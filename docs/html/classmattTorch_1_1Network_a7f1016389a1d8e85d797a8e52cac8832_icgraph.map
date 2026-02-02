@@ -1,0 +1,5 @@
+<map id="mattTorch::Network::addLayer" name="mattTorch::Network::addLayer">
+<area shape="rect" id="Node000001" title="Adds a single layer to the end of the network." alt="" coords="230,5,366,48"/>
+<area shape="rect" id="Node000002" href="$classmattTorch_1_1NetworkBuilder.html#a0bc68c7c0163c952c203696a4c6640bd" title="Builds and returns the configured Network." alt="" coords="5,5,182,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,27,182,29,182,24,217,26"/>
+</map>

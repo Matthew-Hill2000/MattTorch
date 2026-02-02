@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classmattTorch_1_1function_1_1GradSubtract" kind="class" language="C++" prot="public">
+    <compoundname>mattTorch::function::GradSubtract</compoundname>
+    <basecompoundref refid="classmattTorch_1_1GradFunction" prot="public" virt="non-virtual">mattTorch::GradFunction</basecompoundref>
+    <includes refid="gradSubtract_8h" local="no">gradSubtract.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmattTorch_1_1function_1_1GradSubtract_1aefc9aa13adb7eb3dd4188399daa16d07" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &gt;</type>
+        <definition>std::vector&lt;TensorView&gt; mattTorch::function::GradSubtract::savedTensors</definition>
+        <argsstring></argsstring>
+        <name>savedTensors</name>
+        <qualifiedname>mattTorch::function::GradSubtract::savedTensors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The input tensors from the forward pass, saved for potential use in higher-order derivative computation </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/subtraction/gradSubtract.h" line="45" column="15" bodyfile="include/mattTorch/function/subtraction/gradSubtract.h" bodystart="45" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1function_1_1GradSubtract_1aab8b84c9e27b2b6db0647b56f4d78abf" compoundref="gradSubtract_8cpp" startline="5" endline="9">GradSubtract</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmattTorch_1_1function_1_1GradSubtract_1a4d7f3f9bfcbf2d58d846b4e5e7a98cc8" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;GradFunction&gt; &gt; mattTorch::function::GradSubtract::nextFunctions</definition>
+        <argsstring></argsstring>
+        <name>nextFunctions</name>
+        <qualifiedname>mattTorch::function::GradSubtract::nextFunctions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pointers to the <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> objects of the parent tensors in the computational graph </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/subtraction/gradSubtract.h" line="49" column="15" bodyfile="include/mattTorch/function/subtraction/gradSubtract.h" bodystart="49" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1function_1_1GradSubtract_1a953a956db45065056e217527c5ac9ec2" compoundref="gradSubtract_8cpp" startline="11" endline="21">backward</referencedby>
+        <referencedby refid="classmattTorch_1_1function_1_1GradSubtract_1aab8b84c9e27b2b6db0647b56f4d78abf" compoundref="gradSubtract_8cpp" startline="5" endline="9">GradSubtract</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmattTorch_1_1function_1_1GradSubtract_1aab8b84c9e27b2b6db0647b56f4d78abf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mattTorch::function::GradSubtract::GradSubtract</definition>
+        <argsstring>(std::vector&lt; TensorView &gt; savedTensors, std::vector&lt; std::shared_ptr&lt; GradFunction &gt; &gt; nextFunctions)</argsstring>
+        <name>GradSubtract</name>
+        <qualifiedname>mattTorch::function::GradSubtract::GradSubtract</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &gt;</type>
+          <declname>savedTensors</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> &gt; &gt;</type>
+          <declname>nextFunctions</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="classmattTorch_1_1function_1_1GradSubtract" kindref="compound">GradSubtract</ref> gradient function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a <ref refid="classmattTorch_1_1function_1_1GradSubtract" kindref="compound">GradSubtract</ref> object that stores the input tensors from the forward pass and pointers to the parent <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> objects for gradient propagation during backpropagation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classmattTorch_1_1function_1_1GradSubtract_1aefc9aa13adb7eb3dd4188399daa16d07" kindref="member">savedTensors</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector containing the two input tensors that participated in the subtraction during the forward pass </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="classmattTorch_1_1function_1_1GradSubtract_1a4d7f3f9bfcbf2d58d846b4e5e7a98cc8" kindref="member">nextFunctions</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector containing shared pointers to the <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> objects of the parent tensors for gradient propagation </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/subtraction/gradSubtract.h" line="64" column="3" bodyfile="src/function/subtraction/gradSubtract.cpp" bodystart="5" bodyend="9"/>
+        <references refid="classmattTorch_1_1function_1_1GradSubtract_1a4d7f3f9bfcbf2d58d846b4e5e7a98cc8" compoundref="gradSubtract_8h" startline="49">nextFunctions</references>
+        <references refid="classmattTorch_1_1function_1_1GradSubtract_1aefc9aa13adb7eb3dd4188399daa16d07" compoundref="gradSubtract_8h" startline="45">savedTensors</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1function_1_1GradSubtract_1a953a956db45065056e217527c5ac9ec2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mattTorch::function::GradSubtract::backward</definition>
+        <argsstring>(TensorView &amp;inputGradient, bool higherDerivative) override</argsstring>
+        <name>backward</name>
+        <qualifiedname>mattTorch::function::GradSubtract::backward</qualifiedname>
+        <reimplements refid="classmattTorch_1_1GradFunction_1abc6c3ffb22d631af9dca31dcd5c09d3d">backward</reimplements>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &amp;</type>
+          <declname>inputGradient</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>higherDerivative</declname>
+        </param>
+        <briefdescription>
+<para>Computes and propagates gradients for the subtraction operation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Implements the backward pass for elementwise subtraction by passing the incoming gradient unchanged to the first parent tensor and negating it for the second parent tensor. Since the derivative of subtraction with respect to the first input is +1 and with respect to the second input is -1, the gradient is propagated accordingly. The method calls <ref refid="classmattTorch_1_1function_1_1GradSubtract_1a953a956db45065056e217527c5ac9ec2" kindref="member">backward()</ref> on each parent&apos;s <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> to continue the backpropagation process.</para>
+<para>When higherDerivative is false, gradient tracking is disabled on the saved tensors to prevent construction of a new computational graph during backpropagation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>inputGradient</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The gradient of the loss with respect to the output of the subtraction operation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>higherDerivative</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, enables construction of a computational graph during the backward pass for higher-order derivatives; if false, disables gradient tracking on saved tensors </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/subtraction/gradSubtract.h" line="87" column="8" bodyfile="src/function/subtraction/gradSubtract.cpp" bodystart="11" bodyend="21"/>
+        <references refid="classmattTorch_1_1function_1_1GradSubtract_1a4d7f3f9bfcbf2d58d846b4e5e7a98cc8" compoundref="gradSubtract_8h" startline="49">nextFunctions</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Gradient function for elementwise tensor subtraction. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classmattTorch_1_1function_1_1GradSubtract" kindref="compound">GradSubtract</ref> class represents the subtraction operation in the computational graph, computing gradients for the elementwise difference of two tensors. For the operation <formula id="77">$C = A - B$</formula>, the gradient computation follows from the derivatives:    <formula id="78">\[    \frac{\partial C}{\partial A} = 1, \quad \frac{\partial C}{\partial B}
+= -1
+\]</formula></para>
+<para>During backpropagation, the incoming gradient  <formula id="8">$\frac{\partial L}{\partial
+C}$</formula> is passed to both parent tensors according to the chain rule, with the gradient being negated for the second operand:    <formula id="9">\[    \frac{\partial L}{\partial A} = \frac{\partial L}{\partial C} \cdot
+\frac{\partial C}{\partial A} = \frac{\partial L}{\partial C}
+\]</formula>    <formula id="79">\[    \frac{\partial L}{\partial B} = \frac{\partial L}{\partial C} \cdot
+\frac{\partial C}{\partial B} = -\frac{\partial L}{\partial C}
+\]</formula></para>
+<para>This <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> saves copies of both input tensors, though they are not strictly required for the gradient computation of subtraction. The saved tensors may be used for higher-order derivative computations or for consistency with the gradient function interface.</para>
+<para><simplesect kind="see"><para><ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> for the base class from which this class derives. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classmattTorch_1_1function_1_1GradSubtractScalar" kindref="compound">GradSubtractScalar</ref> for the gradient function for tensor-scalar subtraction. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>mattTorch::GradFunction</label>
+        <link refid="classmattTorch_1_1GradFunction"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::function::GradSubtract</label>
+        <link refid="classmattTorch_1_1function_1_1GradSubtract"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>mattTorch::GradFunction</label>
+        <link refid="classmattTorch_1_1GradFunction"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::function::GradSubtract</label>
+        <link refid="classmattTorch_1_1function_1_1GradSubtract"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/mattTorch/function/subtraction/gradSubtract.h" line="41" column="1" bodyfile="include/mattTorch/function/subtraction/gradSubtract.h" bodystart="41" bodyend="88"/>
+    <listofallmembers>
+      <member refid="classmattTorch_1_1function_1_1GradSubtract_1a953a956db45065056e217527c5ac9ec2" prot="public" virt="virtual"><scope>mattTorch::function::GradSubtract</scope><name>backward</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradSubtract_1aab8b84c9e27b2b6db0647b56f4d78abf" prot="public" virt="non-virtual"><scope>mattTorch::function::GradSubtract</scope><name>GradSubtract</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradSubtract_1a4d7f3f9bfcbf2d58d846b4e5e7a98cc8" prot="private" virt="non-virtual"><scope>mattTorch::function::GradSubtract</scope><name>nextFunctions</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradSubtract_1aefc9aa13adb7eb3dd4188399daa16d07" prot="private" virt="non-virtual"><scope>mattTorch::function::GradSubtract</scope><name>savedTensors</name></member>
+      <member refid="classmattTorch_1_1GradFunction_1ae57c9bf3f619ae1206416877caa15090" prot="public" virt="virtual"><scope>mattTorch::function::GradSubtract</scope><name>~GradFunction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

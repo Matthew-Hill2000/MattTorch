@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
+    <compoundname>src</compoundname>
+    <innerdir refid="dir_784d68ff681e36d73a94b2bdcafab465">src/criterion</innerdir>
+    <innerdir refid="dir_7abd1dea21c7c194bff775c6e6f63d65">src/dataset</innerdir>
+    <innerdir refid="dir_b1fa8cbc30c0b64f371c2335c4ca5bb3">src/function</innerdir>
+    <innerdir refid="dir_8b1b1d3ff28e273b117e2ca277e8d05f">src/layer</innerdir>
+    <innerdir refid="dir_fc4c7f03e1a69a98c370fae55a743828">src/network</innerdir>
+    <innerdir refid="dir_40231be437d6337eb52636a6ca48d15f">src/optimiser</innerdir>
+    <innerdir refid="dir_50fbfd2bce1cad617ae47d619146c10d">src/tensor</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/"/>
+  </compounddef>
+</doxygen>

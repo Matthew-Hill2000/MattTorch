@@ -7,25 +7,15 @@
 
 namespace mattTorch {
 
-// Creates a new TensorView object indexed via the first dimension that shares
-// the storage with the original tensor. Values of this tensor are
-// differentiatied from the storage via the calculation of an offset that
-// defines were the values associated with this subtensor begin in memory
 TensorView TensorView::operator[](int index) {
   if (index < 0 || index >= dimensions[0]) {
     throw std::out_of_range("Index out of bounds for first dimension");
   }
 
-  // If the rank=1 then we create a new tensor with the single indexed value,
-  // also with rank 1
   if (rank == 1) {
     return TensorView(storage, {1}, {1}, offset + index * strides[0], 1, 1,
                       gradient, gradFunction, isLeaf, requiresGrad, hasGrad);
   } else {
-    // The dimensions and strides of the new tensor are the same as the old but
-    // with the first elements of each of these parameters removed. The new
-    // offset into the TensorStorage and the new NValues and Rank have to be
-    // calculated with the first dimension removed
     std::vector<int> newDims(dimensions.begin() + 1, dimensions.end());
     std::vector<int> newStrides(strides.begin() + 1, strides.end());
     int newOffset(offset + index * strides[0]);
@@ -38,25 +28,15 @@ TensorView TensorView::operator[](int index) {
   }
 }
 
-// Creates a new TensorView object indexed via the first dimension that shares
-// the storage with the original tensor. Values of this tensor are
-// differentiatied from the storage via the calculation of an offset that
-// defines were the values associated with this subtensor begin in memory
 const TensorView TensorView::operator[](int index) const {
   if (index < 0 || index >= dimensions[0]) {
     throw std::out_of_range("Index out of bounds for first dimension");
   }
 
-  // If the rank=1 then we create a new tensor with the single indexed value,
-  // also with rank 1
   if (rank == 1) {
     return TensorView(storage, {1}, {1}, offset + index * strides[0], 1, 1,
                       gradient, gradFunction, isLeaf, requiresGrad, hasGrad);
   } else {
-    // The dimensions and strides of the new tensor are the same as the old but
-    // with the first elements of each of these parameters removed. The new
-    // offset into the TensorStorage and the new NValues and Rank have to be
-    // calculated with the first dimension removed
     std::vector<int> newDims(dimensions.begin() + 1, dimensions.end());
     std::vector<int> newStrides(strides.begin() + 1, strides.end());
     int newOffset{offset + index * strides[0]};
@@ -69,26 +49,16 @@ const TensorView TensorView::operator[](int index) const {
   }
 }
 
-// Returns the value of a specific element within the tensor at the specified
-// indices
 double& TensorView::operator[](const std::vector<int>& indices) {
-  // calculate the linear index and return the value in TensorStorage at said
-  // linear index
   int index = calculateIndex(indices);
   return storage->at(index);
 }
 
-// Returns the value of a specific element within the tensor at the specified
-// indices
 const double& TensorView::operator[](const std::vector<int>& indices) const {
-  // calculate the linear index and return the value in TensorStorage at said
-  // linear index
   int index = calculateIndex(indices);
   return storage->at(index);
 }
 
-// Converts a vector of indices into the corresponding index of the
-// appropriate element within the linear storage
 int TensorView::calculateIndex(const std::vector<int>& indices) const {
   if (static_cast<int>(indices.size()) != rank) {
     throw std::invalid_argument("Number of indices doesn't match tensor rank");
@@ -109,20 +79,16 @@ int TensorView::calculateIndex(const std::vector<int>& indices) const {
   return index;
 }
 
-// Set the value of an element of this tensor at the specified indices
 void TensorView::setValue(const std::vector<int>& indices, double value) {
   int index = calculateIndex(indices);
   storage->at(index) = value;
 }
 
-// Get the value of an element of this tensor at the specified indices
 double TensorView::getValue(const std::vector<int>& indices) const {
   int index = calculateIndex(indices);
   return storage->at(index);
 }
 
-// Directly set the value of an element in this tensor by specifying the
-// linear index value directly
 void TensorView::setValueDirect(int linearIndex, double value) {
   if (linearIndex < 0 || linearIndex >= nValues) {
     throw std::out_of_range("Linear index out of bounds");
@@ -130,8 +96,6 @@ void TensorView::setValueDirect(int linearIndex, double value) {
   storage->at(offset + linearIndex) = value;
 }
 
-// Directly get the value of an element in this tensor by specifying the
-// linear index value directly
 double TensorView::getValueDirect(int linearIndex) const {
   if (linearIndex < 0 || linearIndex >= nValues) {
     throw std::out_of_range("Linear index out of bounds");
@@ -139,8 +103,6 @@ double TensorView::getValueDirect(int linearIndex) const {
   return storage->at(offset + linearIndex);
 }
 
-// Directly set the value of an element of this tensors gradient by specifying
-// the linear index value directly
 void TensorView::setGradientDirect(int linearIndex, double value) {
   if (linearIndex < 0 || linearIndex >= nValues) {
     throw std::out_of_range("Linear index out of bounds");
@@ -148,8 +110,6 @@ void TensorView::setGradientDirect(int linearIndex, double value) {
   gradient->setValueDirect(offset + linearIndex, value);
 }
 
-// Directly get the value of an element of this tensors gradient by specifying
-// the linear index value directly
 double TensorView::getGradientDirect(int linearIndex) const {
   if (linearIndex < 0 || linearIndex >= nValues) {
     throw std::out_of_range("Linear index out of bounds");
@@ -157,9 +117,8 @@ double TensorView::getGradientDirect(int linearIndex) const {
   return gradient->getValueDirect(offset + linearIndex);
 }
 
-// Getters and setters for the class attributes
-
 double* TensorView::getData() const { return this->storage->getData(); }
+
 double* TensorView::getGradientData() const {
   return this->gradient->getData();
 }

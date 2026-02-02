@@ -6,11 +6,14 @@ namespace mattTorch::function {
 GradMultiplyMatrix::GradMultiplyMatrix(
     std::vector<TensorView> savedTensors,
     std::vector<std::shared_ptr<GradFunction>> nextFunctions)
-    : savedTensors{savedTensors}, nextFunctions{nextFunctions} {
-}
+    : savedTensors{savedTensors}, nextFunctions{nextFunctions} {}
 
 void GradMultiplyMatrix::backward(TensorView& inputGradient,
                                   bool higherDerivative) {
+  if (!higherDerivative) {
+    savedTensors[0].setRequiresGrad(false);
+    savedTensors[1].setRequiresGrad(false);
+  }
   TensorView outputGradLHS =
       inputGradient.transposeMultiply(savedTensors[1], false);
   TensorView outputGradRHS =

@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="optimiserInclude_8h" kind="file" language="C++">
+    <compoundname>optimiserInclude.h</compoundname>
+    <includes refid="optimiser_8h" local="no">mattTorch/optimiser/optimiser.h</includes>
+    <includes refid="sgd_8h" local="no">mattTorch/optimiser/sgd/sgd.h</includes>
+    <incdepgraph>
+      <node id="17">
+        <label>mattTorch/function/addition/gradAddScalar.h</label>
+        <link refid="gradAddScalar_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>mattTorch/function/division/gradDivideScalar.h</label>
+        <link refid="gradDivideScalar_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>mattTorch/function/gradFunction.h</label>
+        <link refid="gradFunction_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>mattTorch/function/multiplication/gradMultiplyScalar.h</label>
+        <link refid="gradMultiplyScalar_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>mattTorch/function/subtraction/gradSubtractScalar.h</label>
+        <link refid="gradSubtractScalar_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>mattTorch/layer/layer.h</label>
+        <link refid="layer_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>mattTorch/network/network.h</label>
+        <link refid="network_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>mattTorch/optimiser/optimiser.h</label>
+        <link refid="optimiser_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/mattTorch/optimiser/optimiserInclude.h</label>
+        <link refid="optimiserInclude_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>mattTorch/optimiser/sgd/sgd.h</label>
+        <link refid="sgd_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>mattTorch/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.h</label>
+        <link refid="tensorScalarElementwise_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>mattTorch/tensor/kernels/cpu/tensor-tensor/elementwise.h</label>
+        <link refid="elementwise_8h_source"/>
+      </node>
+      <node id="13">
+        <label>mattTorch/tensor/kernels/cpu/tensor-tensor/matrix.h</label>
+        <link refid="matrix_8h_source"/>
+      </node>
+      <node id="16">
+        <label>mattTorch/tensor/kernels/cpu/tensor/tensorElementwise.h</label>
+        <link refid="tensorElementwise_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>mattTorch/tensor/kernels/kernels.h</label>
+        <link refid="kernels_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>mattTorch/tensor/tensorView/tensorView.h</label>
+        <link refid="tensorView_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>immintrin.h</label>
+      </node>
+      <node id="8">
+        <label>memory</label>
+      </node>
+      <node id="9">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;mattTorch/optimiser/optimiser.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mattTorch/optimiser/sgd/sgd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/mattTorch/optimiser/optimiserInclude.h"/>
+  </compounddef>
+</doxygen>

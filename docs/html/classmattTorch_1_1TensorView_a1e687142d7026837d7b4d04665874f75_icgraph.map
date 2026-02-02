@@ -1,0 +1,5 @@
+<map id="mattTorch::TensorView::tanh" name="mattTorch::TensorView::tanh">
+<area shape="rect" id="Node000001" title="Elemtwise hyperbolic tangent of a Tensor." alt="" coords="220,5,375,48"/>
+<area shape="rect" id="Node000002" href="$classmattTorch_1_1Tanh.html#a76b966278d093c136341d06fc2081451" title="Performs the forward pass of this Tanh activation layer." alt="" coords="5,13,172,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,27,172,29,172,24,207,26"/>
+</map>

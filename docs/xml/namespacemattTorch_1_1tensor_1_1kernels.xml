@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="namespacemattTorch_1_1tensor_1_1kernels" kind="namespace" language="C++">
+    <compoundname>mattTorch::tensor::kernels</compoundname>
+    <innernamespace refid="namespacemattTorch_1_1tensor_1_1kernels_1_1cpu">mattTorch::tensor::kernels::cpu</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" line="4" column="1"/>
+  </compounddef>
+</doxygen>

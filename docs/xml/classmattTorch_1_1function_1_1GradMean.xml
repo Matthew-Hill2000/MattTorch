@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classmattTorch_1_1function_1_1GradMean" kind="class" language="C++" prot="public">
+    <compoundname>mattTorch::function::GradMean</compoundname>
+    <basecompoundref refid="classmattTorch_1_1GradFunction" prot="public" virt="non-virtual">mattTorch::GradFunction</basecompoundref>
+    <includes refid="gradMean_8h" local="no">gradMean.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmattTorch_1_1function_1_1GradMean_1abb780e1c7c375cb23028a0df961b2f56" prot="private" static="no" mutable="no">
+        <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref></type>
+        <definition>TensorView mattTorch::function::GradMean::savedTensor</definition>
+        <argsstring></argsstring>
+        <name>savedTensor</name>
+        <qualifiedname>mattTorch::function::GradMean::savedTensor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The input tensor from the forward pass, saved to determine the number of elements and shape for gradient broadcasting </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/mean/gradMean.h" line="45" column="14" bodyfile="include/mattTorch/function/mean/gradMean.h" bodystart="45" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1function_1_1GradMean_1a498842b9eca2a4c71e2b840feff4f5aa" compoundref="gradMean_8cpp" startline="14" endline="21">backward</referencedby>
+        <referencedby refid="classmattTorch_1_1function_1_1GradMean_1a2f7b236da219362099383bde892b80af" compoundref="gradMean_8cpp" startline="9" endline="12">GradMean</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmattTorch_1_1function_1_1GradMean_1aed47300f39f569d32b8a437146928950" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;GradFunction&gt; &gt; mattTorch::function::GradMean::nextFunctions</definition>
+        <argsstring></argsstring>
+        <name>nextFunctions</name>
+        <qualifiedname>mattTorch::function::GradMean::nextFunctions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pointer to the <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> object of the parent tensor in the computational graph </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/mean/gradMean.h" line="49" column="15" bodyfile="include/mattTorch/function/mean/gradMean.h" bodystart="49" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1function_1_1GradMean_1a498842b9eca2a4c71e2b840feff4f5aa" compoundref="gradMean_8cpp" startline="14" endline="21">backward</referencedby>
+        <referencedby refid="classmattTorch_1_1function_1_1GradMean_1a2f7b236da219362099383bde892b80af" compoundref="gradMean_8cpp" startline="9" endline="12">GradMean</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmattTorch_1_1function_1_1GradMean_1a2f7b236da219362099383bde892b80af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mattTorch::function::GradMean::GradMean</definition>
+        <argsstring>(TensorView savedTensor, std::vector&lt; std::shared_ptr&lt; GradFunction &gt; &gt; nextFunctions)</argsstring>
+        <name>GradMean</name>
+        <qualifiedname>mattTorch::function::GradMean::GradMean</qualifiedname>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref></type>
+          <declname>savedTensor</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> &gt; &gt;</type>
+          <declname>nextFunctions</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="classmattTorch_1_1function_1_1GradMean" kindref="compound">GradMean</ref> gradient function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a <ref refid="classmattTorch_1_1function_1_1GradMean" kindref="compound">GradMean</ref> object that stores the input tensor from the forward pass and a pointer to the parent tensor&apos;s <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> for gradient propagation during backpropagation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classmattTorch_1_1function_1_1GradMean_1abb780e1c7c375cb23028a0df961b2f56" kindref="member">savedTensor</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input tensor from the forward pass, required for determining the number of elements and shape for gradient broadcasting </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="classmattTorch_1_1function_1_1GradMean_1aed47300f39f569d32b8a437146928950" kindref="member">nextFunctions</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector containing a shared pointer to the <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> object of the parent tensor for gradient propagation </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/mean/gradMean.h" line="64" column="3" bodyfile="src/function/mean/gradMean.cpp" bodystart="9" bodyend="12"/>
+        <references refid="classmattTorch_1_1function_1_1GradMean_1aed47300f39f569d32b8a437146928950" compoundref="gradMean_8h" startline="49">nextFunctions</references>
+        <references refid="classmattTorch_1_1function_1_1GradMean_1abb780e1c7c375cb23028a0df961b2f56" compoundref="gradMean_8h" startline="45">savedTensor</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1function_1_1GradMean_1a498842b9eca2a4c71e2b840feff4f5aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mattTorch::function::GradMean::backward</definition>
+        <argsstring>(TensorView &amp;inputGradient, bool higherDerivative) override</argsstring>
+        <name>backward</name>
+        <qualifiedname>mattTorch::function::GradMean::backward</qualifiedname>
+        <reimplements refid="classmattTorch_1_1GradFunction_1abc6c3ffb22d631af9dca31dcd5c09d3d">backward</reimplements>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &amp;</type>
+          <declname>inputGradient</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>higherDerivative</declname>
+        </param>
+        <briefdescription>
+<para>Computes and propagates gradients for the mean operation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Implements the backward pass for the mean reduction by dividing the incoming scalar gradient by the total number of elements in the input tensor and broadcasting it to match the input tensor&apos;s shape. This distributes the gradient equally to all elements of the input tensor, reflecting that each element contributes equally to the mean. The method calls <ref refid="classmattTorch_1_1function_1_1GradMean_1a498842b9eca2a4c71e2b840feff4f5aa" kindref="member">backward()</ref> on the parent tensor&apos;s <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> to continue the backpropagation process.</para>
+<para>When higherDerivative is false, gradient tracking is disabled on the saved tensor to prevent construction of a new computational graph during backpropagation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>inputGradient</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The gradient of the loss with respect to the output scalar mean value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>higherDerivative</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, enables construction of a computational graph during the backward pass for higher-order derivatives; if false, disables gradient tracking on saved tensors </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/mean/gradMean.h" line="88" column="8" bodyfile="src/function/mean/gradMean.cpp" bodystart="14" bodyend="21"/>
+        <references refid="classmattTorch_1_1TensorView_1a86a90cc1d974b9595e0f6c77f6a6263b" compoundref="tensorViewAccesssors_8cpp" startline="120" endline="120">mattTorch::TensorView::getData</references>
+        <references refid="classmattTorch_1_1function_1_1GradMean_1aed47300f39f569d32b8a437146928950" compoundref="gradMean_8h" startline="49">nextFunctions</references>
+        <references refid="classmattTorch_1_1function_1_1GradMean_1abb780e1c7c375cb23028a0df961b2f56" compoundref="gradMean_8h" startline="45">savedTensor</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Gradient function for computing the mean of all elements in a tensor. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classmattTorch_1_1function_1_1GradMean" kindref="compound">GradMean</ref> class represents the mean reduction operation in the computational graph, computing gradients for averaging all elements of a tensor into a single scalar value. For the operation  <formula id="47">$c = \text{mean}(A) =
+\frac{1}{N}\sum_{i} A_i$</formula> where <formula id="12">$A$</formula> is a tensor and <formula id="5">$N$</formula> is the total number of elements, the gradient computation follows from:   <formula id="48">\[    \frac{\partial c}{\partial A_i} = \frac{1}{N} \quad \text{for all } i
+\]</formula></para>
+<para>During backpropagation, the incoming gradient  <formula id="49">$\frac{\partial L}{\partial
+c}$</formula> (a scalar) must be distributed equally to all elements of the input tensor according to the chain rule:     <formula id="50">\[    \frac{\partial L}{\partial A_i} = \frac{\partial L}{\partial c} \cdot
+\frac{\partial c}{\partial A_i} = \frac{1}{N} \cdot \frac{\partial
+L}{\partial c}
+\]</formula></para>
+<para>The backward pass broadcasts the incoming gradient (divided by the number of elements) to match the shape of the input tensor, effectively distributing the gradient equally across all input elements.</para>
+<para>This <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> saves the input tensor from the forward pass to determine the number of elements and the shape for broadcasting the gradient during the backward pass.</para>
+<para><simplesect kind="see"><para><ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> for the base class from which this class derives. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classmattTorch_1_1function_1_1GradReductionSum" kindref="compound">GradReductionSum</ref> for the gradient function for sum reduction along a dimension. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>mattTorch::GradFunction</label>
+        <link refid="classmattTorch_1_1GradFunction"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::function::GradMean</label>
+        <link refid="classmattTorch_1_1function_1_1GradMean"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>mattTorch::GradFunction</label>
+        <link refid="classmattTorch_1_1GradFunction"/>
+      </node>
+      <node id="3">
+        <label>mattTorch::TensorView</label>
+        <link refid="classmattTorch_1_1TensorView"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::function::GradMean</label>
+        <link refid="classmattTorch_1_1function_1_1GradMean"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>savedTensor</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/mattTorch/function/mean/gradMean.h" line="41" column="1" bodyfile="include/mattTorch/function/mean/gradMean.h" bodystart="41" bodyend="89"/>
+    <listofallmembers>
+      <member refid="classmattTorch_1_1function_1_1GradMean_1a498842b9eca2a4c71e2b840feff4f5aa" prot="public" virt="virtual"><scope>mattTorch::function::GradMean</scope><name>backward</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradMean_1a2f7b236da219362099383bde892b80af" prot="public" virt="non-virtual"><scope>mattTorch::function::GradMean</scope><name>GradMean</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradMean_1aed47300f39f569d32b8a437146928950" prot="private" virt="non-virtual"><scope>mattTorch::function::GradMean</scope><name>nextFunctions</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradMean_1abb780e1c7c375cb23028a0df961b2f56" prot="private" virt="non-virtual"><scope>mattTorch::function::GradMean</scope><name>savedTensor</name></member>
+      <member refid="classmattTorch_1_1GradFunction_1ae57c9bf3f619ae1206416877caa15090" prot="public" virt="virtual"><scope>mattTorch::function::GradMean</scope><name>~GradFunction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

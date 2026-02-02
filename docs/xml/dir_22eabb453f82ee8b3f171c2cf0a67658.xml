@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_22eabb453f82ee8b3f171c2cf0a67658" kind="dir">
+    <compoundname>include/mattTorch/network</compoundname>
+    <innerfile refid="network_8h">network.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/mattTorch/network/"/>
+  </compounddef>
+</doxygen>

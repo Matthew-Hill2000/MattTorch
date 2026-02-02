@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="gradTransposeMatrix_8h" kind="file" language="C++">
+    <compoundname>gradTransposeMatrix.h</compoundname>
+    <includes refid="gradFunction_8h" local="no">mattTorch/function/gradFunction.h</includes>
+    <includedby refid="functionInclude_8h" local="no">include/mattTorch/function/functionInclude.h</includedby>
+    <includedby refid="gradTransposeMatrix_8cpp" local="no">src/function/multiplication/gradTransposeMatrix.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>mattTorch/function/gradFunction.h</label>
+        <link refid="gradFunction_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/mattTorch/function/multiplication/gradTransposeMatrix.h</label>
+        <link refid="gradTransposeMatrix_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>memory</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>include/mattTorch/function/ReLU/gradReLU.h</label>
+        <link refid="gradReLU_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/mattTorch/function/broadcast/gradBroadcast.h</label>
+        <link refid="gradBroadcast_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/mattTorch/function/functionInclude.h</label>
+        <link refid="functionInclude_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/mattTorch/function/multiplication/gradTransposeMatrix.h</label>
+        <link refid="gradTransposeMatrix_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/mattTorch/mattTorch.h</label>
+        <link refid="mattTorch_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/function/ReLU/gradReLU.cpp</label>
+        <link refid="gradReLU_8cpp_source"/>
+      </node>
+      <node id="7">
+        <label>src/function/broadcast/gradBroadcast.cpp</label>
+        <link refid="gradBroadcast_8cpp_source"/>
+      </node>
+      <node id="9">
+        <label>src/function/multiplication/gradTransposeMatrix.cpp</label>
+        <link refid="gradTransposeMatrix_8cpp_source"/>
+      </node>
+      <node id="8">
+        <label>src/tensor/tensorView/tensorViewOverloads.cpp</label>
+        <link refid="tensorViewOverloads_8cpp_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classmattTorch_1_1function_1_1GradTransposeMatrix" prot="public">mattTorch::function::GradTransposeMatrix</innerclass>
+    <innernamespace refid="namespacemattTorch">mattTorch</innernamespace>
+    <innernamespace refid="namespacemattTorch_1_1function">mattTorch::function</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mattTorch/function/gradFunction.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mattTorch::function<sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classmattTorch_1_1function_1_1GradTransposeMatrix" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmattTorch_1_1function_1_1GradTransposeMatrix_1a49b04060eb6fb3c635a5992e3b0c9d92" kindref="member">GradTransposeMatrix</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="52" refid="classmattTorch_1_1function_1_1GradTransposeMatrix_1a8f73264cf8589f1cce9fb5192106c328" refkind="member"><highlight class="normal"><sp/><sp/>std::vector&lt;TensorView&gt;<sp/><ref refid="classmattTorch_1_1function_1_1GradTransposeMatrix_1a8f73264cf8589f1cce9fb5192106c328" kindref="member">savedTensors</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classmattTorch_1_1function_1_1GradTransposeMatrix_1af5d13affdc3bfb804e7ba9ccc118c3d1" refkind="member"><highlight class="normal"><sp/><sp/>std::vector&lt;std::shared_ptr&lt;GradFunction&gt;&gt;<sp/><ref refid="classmattTorch_1_1function_1_1GradTransposeMatrix_1af5d13affdc3bfb804e7ba9ccc118c3d1" kindref="member">nextFunctions</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classmattTorch_1_1function_1_1GradTransposeMatrix_1a0f7c61f46fcfc2fa9ced40a148544283" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1function_1_1GradTransposeMatrix_1a0f7c61f46fcfc2fa9ced40a148544283" kindref="member">transposeFirst</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="classmattTorch_1_1function_1_1GradTransposeMatrix_1a49b04060eb6fb3c635a5992e3b0c9d92" kindref="member">GradTransposeMatrix</ref>(std::vector&lt;TensorView&gt;<sp/><ref refid="classmattTorch_1_1function_1_1GradTransposeMatrix_1a8f73264cf8589f1cce9fb5192106c328" kindref="member">savedTensors</ref>,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::shared_ptr&lt;GradFunction&gt;&gt;<sp/><ref refid="classmattTorch_1_1function_1_1GradTransposeMatrix_1af5d13affdc3bfb804e7ba9ccc118c3d1" kindref="member">nextFunctions</ref>,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1function_1_1GradTransposeMatrix_1a0f7c61f46fcfc2fa9ced40a148544283" kindref="member">transposeFirst</ref>);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1function_1_1GradTransposeMatrix_1a2a672419dc53eee8e4371114edd806d1" kindref="member">backward</ref>(<ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref>&amp;<sp/>inputGradient,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>higherDerivative)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mattTorch::function</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/mattTorch/function/multiplication/gradTransposeMatrix.h"/>
+  </compounddef>
+</doxygen>

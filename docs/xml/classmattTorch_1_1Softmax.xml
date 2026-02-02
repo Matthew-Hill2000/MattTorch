@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classmattTorch_1_1Softmax" kind="class" language="C++" prot="public">
+    <compoundname>mattTorch::Softmax</compoundname>
+    <basecompoundref refid="classmattTorch_1_1Layer" prot="public" virt="non-virtual">mattTorch::Layer</basecompoundref>
+    <includes refid="softmax_8h" local="no">softmax.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmattTorch_1_1Softmax_1a061380b42c7bfbe4b89d760852a38400" prot="private" static="no" mutable="no">
+        <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref></type>
+        <definition>TensorView mattTorch::Softmax::inputTensor</definition>
+        <argsstring></argsstring>
+        <name>inputTensor</name>
+        <qualifiedname>mattTorch::Softmax::inputTensor</qualifiedname>
+        <briefdescription>
+<para>The input tensor passed to this layer during the most recent forward pass. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/layer/softmax/softmax.h" line="27" column="14" bodyfile="include/mattTorch/layer/softmax/softmax.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1Softmax_1afe1512a2337ada86e360f6c65407d5dd" compoundref="softmax_8cpp" startline="8" endline="22">forward</referencedby>
+        <referencedby refid="classmattTorch_1_1Softmax_1ae1d2bd879c2dd7344aff96e29e3bdbb4">Softmax</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmattTorch_1_1Softmax_1aec157c44b6ec961ce92625ed2da69c31" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; mattTorch::Softmax::inputShape</definition>
+        <argsstring></argsstring>
+        <name>inputShape</name>
+        <qualifiedname>mattTorch::Softmax::inputShape</qualifiedname>
+        <briefdescription>
+<para>The shape of the input tensor from the most recent forward pass. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/layer/softmax/softmax.h" line="30" column="15" bodyfile="include/mattTorch/layer/softmax/softmax.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1Softmax_1afe1512a2337ada86e360f6c65407d5dd" compoundref="softmax_8cpp" startline="8" endline="22">forward</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmattTorch_1_1Softmax_1a1a2fa8c209ba81fc16db3839af23d504" prot="private" static="no" mutable="no">
+        <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref></type>
+        <definition>TensorView mattTorch::Softmax::outputTensor</definition>
+        <argsstring></argsstring>
+        <name>outputTensor</name>
+        <qualifiedname>mattTorch::Softmax::outputTensor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The output tensor produced by this layer during the most recent forward pass </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/layer/softmax/softmax.h" line="34" column="14" bodyfile="include/mattTorch/layer/softmax/softmax.h" bodystart="34" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1Softmax_1afe1512a2337ada86e360f6c65407d5dd" compoundref="softmax_8cpp" startline="8" endline="22">forward</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmattTorch_1_1Softmax_1ae1d2bd879c2dd7344aff96e29e3bdbb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mattTorch::Softmax::Softmax</definition>
+        <argsstring>()</argsstring>
+        <name>Softmax</name>
+        <qualifiedname>mattTorch::Softmax::Softmax</qualifiedname>
+        <briefdescription>
+<para>Default constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/layer/softmax/softmax.h" line="38" column="3"/>
+        <references refid="classmattTorch_1_1Softmax_1a061380b42c7bfbe4b89d760852a38400" compoundref="softmax_8h" startline="27">inputTensor</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1Softmax_1afe1512a2337ada86e360f6c65407d5dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref></type>
+        <definition>TensorView mattTorch::Softmax::forward</definition>
+        <argsstring>(TensorView &amp;inputTensor) override</argsstring>
+        <name>forward</name>
+        <qualifiedname>mattTorch::Softmax::forward</qualifiedname>
+        <reimplements refid="classmattTorch_1_1Layer_1adad39b8980133bb181dfc52932065e2e">forward</reimplements>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &amp;</type>
+          <declname>inputTensor</declname>
+        </param>
+        <briefdescription>
+<para>Performs the forward pass of this <ref refid="classmattTorch_1_1Softmax" kindref="compound">Softmax</ref> activation layer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the softmax probabilities by first applying the exponential function elementwise to the input tensor, summing the resulting exponentials along dimension 1, broadcasting the sums back to the original shape, and dividing the exponentials by the broadcast sums in place. The input tensor and its shape are stored internally before the operation is applied.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classmattTorch_1_1Softmax_1a061380b42c7bfbe4b89d760852a38400" kindref="member">inputTensor</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input tensor to apply <ref refid="classmattTorch_1_1Softmax" kindref="compound">Softmax</ref> activation to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> containing the normalised probability output </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/layer/softmax/softmax.h" line="53" column="14" bodyfile="src/layer/softmax/softmax.cpp" bodystart="8" bodyend="22"/>
+        <references refid="classmattTorch_1_1TensorView_1a62de4f6ff044d2a1d218a7388a9a11f0" compoundref="tensorViewOverloads_8cpp" startline="436" endline="469">mattTorch::TensorView::broadcast</references>
+        <references refid="classmattTorch_1_1Softmax_1aec157c44b6ec961ce92625ed2da69c31" compoundref="softmax_8h" startline="30">inputShape</references>
+        <references refid="classmattTorch_1_1Softmax_1a061380b42c7bfbe4b89d760852a38400" compoundref="softmax_8h" startline="27">inputTensor</references>
+        <references refid="classmattTorch_1_1Softmax_1a1a2fa8c209ba81fc16db3839af23d504" compoundref="softmax_8h" startline="34">outputTensor</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1Softmax_1a4766bb9924e4d7fb590ee991d571f197" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; TensorView &gt; &gt; mattTorch::Softmax::getParameters</definition>
+        <argsstring>() override</argsstring>
+        <name>getParameters</name>
+        <qualifiedname>mattTorch::Softmax::getParameters</qualifiedname>
+        <reimplements refid="classmattTorch_1_1Layer_1ae2081002ad607f80ec045c8dedd23bbf">getParameters</reimplements>
+        <briefdescription>
+<para>Returns an empty vector as this layer has no learnable parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>An empty vector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/layer/softmax/softmax.h" line="60" column="15" bodyfile="src/layer/softmax/softmax.cpp" bodystart="26" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1Softmax_1a99ffe1c0a73ce6721f1902d4439c8d2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int mattTorch::Softmax::getNumParameters</definition>
+        <argsstring>() override</argsstring>
+        <name>getNumParameters</name>
+        <qualifiedname>mattTorch::Softmax::getNumParameters</qualifiedname>
+        <reimplements refid="classmattTorch_1_1Layer_1a99c9c62d5d0348985f95d905d8ee6f51">getNumParameters</reimplements>
+        <briefdescription>
+<para>Returns zero as this layer has no learnable parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>0 </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/layer/softmax/softmax.h" line="67" column="7" bodyfile="src/layer/softmax/softmax.cpp" bodystart="24" bodyend="24"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A <ref refid="classmattTorch_1_1Softmax" kindref="compound">Softmax</ref> activation layer. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classmattTorch_1_1Softmax" kindref="compound">Softmax</ref> class implements the softmax activation function as a network layer, computing normalised probabilities across dimension 1 of the input tensor. The softmax function is defined as:   <formula id="93">\[    \text{softmax}(x_i) = \frac{e^{x_i}}{\sum_j e^{x_j}}
+\]</formula> The forward pass first applies the exponential function elementwise to the input tensor, then computes the sum of the exponentials along dimension 1, broadcasts the summed values back to the original shape, and divides the exponentials by the broadcast sums to produce the normalised probabilities. Each of these operations participates in the computational graph, allowing gradients to be propagated back through this layer during backpropagation. This layer contains no learnable parameters.</para>
+<para><simplesect kind="see"><para><ref refid="classmattTorch_1_1Layer" kindref="compound">Layer</ref> for the base class from which this class derives. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>mattTorch::Layer</label>
+        <link refid="classmattTorch_1_1Layer"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::Softmax</label>
+        <link refid="classmattTorch_1_1Softmax"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>mattTorch::Layer</label>
+        <link refid="classmattTorch_1_1Layer"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::Softmax</label>
+        <link refid="classmattTorch_1_1Softmax"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>inputTensor</edgelabel>
+          <edgelabel>outputTensor</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>mattTorch::TensorView</label>
+        <link refid="classmattTorch_1_1TensorView"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/mattTorch/layer/softmax/softmax.h" line="24" column="1" bodyfile="include/mattTorch/layer/softmax/softmax.h" bodystart="24" bodyend="68"/>
+    <listofallmembers>
+      <member refid="classmattTorch_1_1Softmax_1afe1512a2337ada86e360f6c65407d5dd" prot="public" virt="virtual"><scope>mattTorch::Softmax</scope><name>forward</name></member>
+      <member refid="classmattTorch_1_1Softmax_1a99ffe1c0a73ce6721f1902d4439c8d2a" prot="public" virt="virtual"><scope>mattTorch::Softmax</scope><name>getNumParameters</name></member>
+      <member refid="classmattTorch_1_1Softmax_1a4766bb9924e4d7fb590ee991d571f197" prot="public" virt="virtual"><scope>mattTorch::Softmax</scope><name>getParameters</name></member>
+      <member refid="classmattTorch_1_1Softmax_1aec157c44b6ec961ce92625ed2da69c31" prot="private" virt="non-virtual"><scope>mattTorch::Softmax</scope><name>inputShape</name></member>
+      <member refid="classmattTorch_1_1Softmax_1a061380b42c7bfbe4b89d760852a38400" prot="private" virt="non-virtual"><scope>mattTorch::Softmax</scope><name>inputTensor</name></member>
+      <member refid="classmattTorch_1_1Softmax_1a1a2fa8c209ba81fc16db3839af23d504" prot="private" virt="non-virtual"><scope>mattTorch::Softmax</scope><name>outputTensor</name></member>
+      <member refid="classmattTorch_1_1Softmax_1ae1d2bd879c2dd7344aff96e29e3bdbb4" prot="public" virt="non-virtual"><scope>mattTorch::Softmax</scope><name>Softmax</name></member>
+      <member refid="classmattTorch_1_1Layer_1ab78060ae5ca0254d8a214a965e87d651" prot="public" virt="virtual"><scope>mattTorch::Softmax</scope><name>~Layer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,7 @@
+<map id="mattTorch::function::GradBroadcast" name="mattTorch::function::GradBroadcast">
+<area shape="rect" id="Node000001" title="Gradient function for broadcasting a tensor along a new dimension." alt="" coords="113,104,247,147"/>
+<area shape="rect" id="Node000002" href="$classmattTorch_1_1GradFunction.html" title="Abstract base class for gradient computation nodes in the computational graph." alt="" coords="5,5,171,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,41,164,103,159,104,108,46"/>
+<area shape="rect" id="Node000003" href="$classmattTorch_1_1TensorView.html" title="An arbitrary&#45;dimension tensor with automatic differentiation support." alt="" coords="194,5,350,32"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="254,43,200,106,197,101,249,45"/>
+</map>

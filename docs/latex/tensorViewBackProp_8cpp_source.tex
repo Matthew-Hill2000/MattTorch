@@ -1,0 +1,41 @@
+\doxysection{tensor\+View\+Back\+Prop.\+cpp}
+\hypertarget{tensorViewBackProp_8cpp_source}{}\label{tensorViewBackProp_8cpp_source}\index{src/tensor/tensorView/tensorViewBackProp.cpp@{src/tensor/tensorView/tensorViewBackProp.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <immintrin.h>}}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <mattTorch/tensor/tensorView/tensorView.h>}}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <omp.h>}}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}mattTorch/function/accumulator/gradAccumulator.h"{}}}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00008}00008\ \textcolor{keyword}{namespace\ }mattTorch\ \{}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00010}\doxymbox{\hyperlink{classmattTorch_1_1TensorView_a4d6119de12d305114e62f14bde343205}{00010}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1TensorView_a76785be20654a1d07c9ed66a494dca86}{TensorView::backward}}(\textcolor{keywordtype}{bool}\ higherDerivative)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00011}00011\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1TensorView_ae335ce0265d9a831f17cba989017d6ab}{TensorView}}\ inputGradient(this-\/>\doxymbox{\hyperlink{classmattTorch_1_1TensorView_a54a549238766588710507bae28bee8c9}{dimensions}});}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00012}00012\ \ \ inputGradient\ =\ 1.0;}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00013}00013\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1TensorView_a76785be20654a1d07c9ed66a494dca86}{backward}}(inputGradient,\ higherDerivative);}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00014}00014\ \}}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00016}\doxymbox{\hyperlink{classmattTorch_1_1TensorView_a76785be20654a1d07c9ed66a494dca86}{00016}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1TensorView_a76785be20654a1d07c9ed66a494dca86}{TensorView::backward}}(\doxymbox{\hyperlink{classmattTorch_1_1TensorView_ae335ce0265d9a831f17cba989017d6ab}{TensorView}}\&\ inputGradient,\ \textcolor{keywordtype}{bool}\ higherDerivative)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00017}00017\ \ \ inputGradient.\doxymbox{\hyperlink{classmattTorch_1_1TensorView_a9054b67c6d0df3b951db8bbb5a66a950}{setRequiresGrad}}(higherDerivative);}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00018}00018\ \ \ this-\/>gradFunction-\/>backward(inputGradient,\ higherDerivative);}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00019}00019\ \}}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00021}\doxymbox{\hyperlink{classmattTorch_1_1TensorView_a286fe05294ef0e0a1f8374562c0f402f}{00021}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1TensorView_a286fe05294ef0e0a1f8374562c0f402f}{TensorView::addGradient}}(\doxymbox{\hyperlink{classmattTorch_1_1TensorView_ae335ce0265d9a831f17cba989017d6ab}{TensorView}}\&\ inputGradient)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00022}00022\ \ \ \textcolor{keywordflow}{if}\ (!\doxymbox{\hyperlink{classmattTorch_1_1TensorView_a15310f179551419efb2ad6d906d6a303}{gradient}})\ \{}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00023}00023\ \ \ \ \ \doxymbox{\hyperlink{classmattTorch_1_1TensorView_a15310f179551419efb2ad6d906d6a303}{gradient}}\ =\ std::make\_shared<TensorView>(inputGradient.\doxymbox{\hyperlink{classmattTorch_1_1TensorView_a74044ea322e3b03e5bbfc709243797ec}{deepCopy}}());}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00024}00024\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00025}00025\ \ \ \ \ *\doxymbox{\hyperlink{classmattTorch_1_1TensorView_a15310f179551419efb2ad6d906d6a303}{gradient}}\ +=\ inputGradient;}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00026}00026\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00029}\doxymbox{\hyperlink{classmattTorch_1_1TensorView_abd3f8ee80d511d974e0555b1cd8b6a92}{00029}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1TensorView_abd3f8ee80d511d974e0555b1cd8b6a92}{TensorView::resetGradient}}()\ \{}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00030}00030\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1TensorView_a15310f179551419efb2ad6d906d6a303}{gradient}}\ =\ std::make\_shared<TensorView>(\doxymbox{\hyperlink{classmattTorch_1_1TensorView_a54a549238766588710507bae28bee8c9}{dimensions}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00031}00031\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1TensorView_a15310f179551419efb2ad6d906d6a303}{gradient}}-\/>setRequiresGrad(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00032}00032\ \ \ std::static\_pointer\_cast<function::GradAccumulator>(gradFunction)}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00033}00033\ \ \ \ \ \ \ -\/>setGradient(\doxymbox{\hyperlink{classmattTorch_1_1TensorView_a15310f179551419efb2ad6d906d6a303}{gradient}});}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00034}00034\ \}}
+\DoxyCodeLine{\Hypertarget{tensorViewBackProp_8cpp_source_l00035}00035\ \}\ \ \textcolor{comment}{//\ namespace\ mattTorch}}
+
+\end{DoxyCode}

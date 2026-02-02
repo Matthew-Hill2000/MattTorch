@@ -1,0 +1,107 @@
+\doxysection{matt\+Torch::\+criterion::\+MSELoss Class Reference}
+\hypertarget{classmattTorch_1_1criterion_1_1MSELoss}{}\label{classmattTorch_1_1criterion_1_1MSELoss}\index{mattTorch::criterion::MSELoss@{mattTorch::criterion::MSELoss}}
+
+
+Mean Squared Error loss function for regression tasks.  
+
+
+
+
+{\ttfamily \+\#include $<$mse\+Loss.\+h$>$}
+
+
+
+Inheritance diagram for matt\+Torch::\+criterion::\+MSELoss:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classmattTorch_1_1criterion_1_1MSELoss__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for matt\+Torch::\+criterion::\+MSELoss:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classmattTorch_1_1criterion_1_1MSELoss__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \doxymbox{\hyperlink{classmattTorch_1_1criterion_1_1MSELoss_a873e441bdd4ea3d6a2c5eb68d313fa4d}{calculate\+Loss}} (\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&input, \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&target)
+\begin{DoxyCompactList}\small\item\em Computes the Mean Squared Error loss between the input predictions and the target values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classmattTorch_1_1Criterion}{matt\+Torch::\+\+Criterion}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Criterion} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for safe polymorphic destruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Mean Squared Error loss function for regression tasks. 
+
+The \doxylink{classmattTorch_1_1criterion_1_1MSELoss}{MSELoss} class computes the Mean Squared Error between the predicted values and the target values. The loss is calculated as:\+   \[    L = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2
+\] where $y_i$ is the target value, $\hat{y}_i$ is the predicted value, and $N$ is the total number of elements. The computation is performed by first computing the elementwise difference between the input and target tensors, squaring the difference elementwise, summing along dimension 1, and dividing by the total number of elements. Each of these operations participates in the computational graph, allowing gradients to be propagated back through the loss function during backpropagation.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classmattTorch_1_1Criterion}{Criterion} for the base class from which this class derives. 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{mseLoss_8h_source_l00024}{24}} of file \doxymbox{\hyperlink{mseLoss_8h_source}{mse\+Loss.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classmattTorch_1_1criterion_1_1MSELoss_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmattTorch_1_1criterion_1_1MSELoss_a873e441bdd4ea3d6a2c5eb68d313fa4d}\index{mattTorch::criterion::MSELoss@{mattTorch::criterion::MSELoss}!calculateLoss@{calculateLoss}}
+\index{calculateLoss@{calculateLoss}!mattTorch::criterion::MSELoss@{mattTorch::criterion::MSELoss}}
+\doxysubsubsection{\texorpdfstring{calculateLoss()}{calculateLoss()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1criterion_1_1MSELoss_a873e441bdd4ea3d6a2c5eb68d313fa4d} 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} matt\+Torch::\+criterion::\+\+MSELoss::\+calculate\+Loss (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&}]{input}{, }\item[{\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Computes the Mean Squared Error loss between the input predictions and the target values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The predicted values produced by the network \\
+\hline
+{\em target} & The ground truth target values \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} containing the computed MSE loss value 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classmattTorch_1_1Criterion_af89e3b01ee1819f1a99e35cab9da9a4e}{matt\+Torch::\+\+Criterion}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{mseLoss_8cpp_source_l00006}{6}} of file \doxymbox{\hyperlink{mseLoss_8cpp_source}{mse\+Loss.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{tensorViewAccesssors_8cpp_source_l00134}{matt\+Torch::\+\+Tensor\+View::\+get\+NValues()}}, and \doxymbox{\hyperlink{tensorViewOverloads_8cpp_source_l00255}{matt\+Torch::\+\+Tensor\+View::\+reduction\+Sum()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmattTorch_1_1criterion_1_1MSELoss_a873e441bdd4ea3d6a2c5eb68d313fa4d_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+matt\+Torch/\+criterion/\+mse\+Loss/\+mse\+Loss.\+h\item 
+src/\+criterion/\+mse\+Loss/\+mse\+Loss.\+cpp\end{DoxyCompactItemize}

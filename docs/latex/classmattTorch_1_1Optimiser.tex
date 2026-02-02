@@ -1,0 +1,113 @@
+\doxysection{matt\+Torch::\+Optimiser Class Reference}
+\hypertarget{classmattTorch_1_1Optimiser}{}\label{classmattTorch_1_1Optimiser}\index{mattTorch::Optimiser@{mattTorch::Optimiser}}
+
+
+Base class for all parameter optimisation algorithms.  
+
+
+
+
+{\ttfamily \+\#include $<$optimiser.\+h$>$}
+
+
+
+Inheritance diagram for matt\+Torch::\+Optimiser:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{classmattTorch_1_1Optimiser__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{classmattTorch_1_1Optimiser_a8809889267d375f4e42bc82eabb438c6}{update\+Parameters}} ()
+\begin{DoxyCompactList}\small\item\em Updates all parameters using their computed gradients. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classmattTorch_1_1Optimiser_afe51bf4576febc0c1df2c3826697c66e}{zero\+Grad}} ()
+\begin{DoxyCompactList}\small\item\em Resets the gradients of all parameters to zero. \end{DoxyCompactList}\item 
+\Hypertarget{classmattTorch_1_1Optimiser_a35b6b96dc670cbbb876c9af9f88df175}\label{classmattTorch_1_1Optimiser_a35b6b96dc670cbbb876c9af9f88df175} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Optimiser} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for safe polymorphic destruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ $>$ \doxymbox{\hyperlink{classmattTorch_1_1Optimiser_a3811144a0447412f68e9362153c0d48c}{parameters}}
+\item 
+double \doxymbox{\hyperlink{classmattTorch_1_1Optimiser_aba32c34148fa5b9648be7f12697ce394}{learning\+Rate}}
+\begin{DoxyCompactList}\small\item\em The learning rate controlling the step size of parameter updates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for all parameter optimisation algorithms. 
+
+The \doxylink{classmattTorch_1_1Optimiser}{Optimiser} class provides the interface and common functionality for optimising the parameters of a neural network during training. It holds shared pointers to the \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} objects representing the learnable parameters of a network, along with a learning rate that controls the step size of parameter updates. Specific optimisation algorithms such as \doxylink{classmattTorch_1_1SGD}{SGD} or Adam are intended to derive from this class and override the parameter update logic as needed.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classmattTorch_1_1Network}{Network} for the class whose \doxylink{classmattTorch_1_1Optimiser_a3811144a0447412f68e9362153c0d48c}{parameters} are optimised by this class. 
+
+\doxylink{classmattTorch_1_1TensorView}{Tensor\+View} for the tensor class representing learnable \doxylink{classmattTorch_1_1Optimiser_a3811144a0447412f68e9362153c0d48c}{parameters}. 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{optimiser_8h_source_l00023}{23}} of file \doxymbox{\hyperlink{optimiser_8h_source}{optimiser.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classmattTorch_1_1Optimiser_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmattTorch_1_1Optimiser_a8809889267d375f4e42bc82eabb438c6}\index{mattTorch::Optimiser@{mattTorch::Optimiser}!updateParameters@{updateParameters}}
+\index{updateParameters@{updateParameters}!mattTorch::Optimiser@{mattTorch::Optimiser}}
+\doxysubsubsection{\texorpdfstring{updateParameters()}{updateParameters()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Optimiser_a8809889267d375f4e42bc82eabb438c6} 
+void matt\+Torch::\+\+Optimiser::\+update\+Parameters (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Updates all parameters using their computed gradients. 
+
+Iterates over all parameter tensors and applies the optimisation step, adjusting each parameter in the direction indicated by its gradient scaled by the learning rate. \Hypertarget{classmattTorch_1_1Optimiser_afe51bf4576febc0c1df2c3826697c66e}\index{mattTorch::Optimiser@{mattTorch::Optimiser}!zeroGrad@{zeroGrad}}
+\index{zeroGrad@{zeroGrad}!mattTorch::Optimiser@{mattTorch::Optimiser}}
+\doxysubsubsection{\texorpdfstring{zeroGrad()}{zeroGrad()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Optimiser_afe51bf4576febc0c1df2c3826697c66e} 
+void matt\+Torch::\+\+Optimiser::\+zero\+Grad (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Resets the gradients of all parameters to zero. 
+
+Iterates over all parameter tensors and sets their gradients to zero. This should be called before each training iteration to prevent gradient accumulation across batches. 
+
+\label{doc-variable-members}
+\Hypertarget{classmattTorch_1_1Optimiser_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmattTorch_1_1Optimiser_aba32c34148fa5b9648be7f12697ce394}\index{mattTorch::Optimiser@{mattTorch::Optimiser}!learningRate@{learningRate}}
+\index{learningRate@{learningRate}!mattTorch::Optimiser@{mattTorch::Optimiser}}
+\doxysubsubsection{\texorpdfstring{learningRate}{learningRate}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Optimiser_aba32c34148fa5b9648be7f12697ce394} 
+double matt\+Torch::\+\+Optimiser::\+learning\+Rate\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The learning rate controlling the step size of parameter updates. 
+
+
+
+Definition at line \doxymbox{\hyperlink{optimiser_8h_source_l00030}{30}} of file \doxymbox{\hyperlink{optimiser_8h_source}{optimiser.\+h}}.
+
+\Hypertarget{classmattTorch_1_1Optimiser_a3811144a0447412f68e9362153c0d48c}\index{mattTorch::Optimiser@{mattTorch::Optimiser}!parameters@{parameters}}
+\index{parameters@{parameters}!mattTorch::Optimiser@{mattTorch::Optimiser}}
+\doxysubsubsection{\texorpdfstring{parameters}{parameters}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Optimiser_a3811144a0447412f68e9362153c0d48c} 
+std::\+vector$<$std::\+shared\+\_\+ptr$<$\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}}$>$ $>$ matt\+Torch::\+\+Optimiser::\+parameters\hspace{0.3cm}{\ttfamily [private]}}
+
+Shared pointers to the \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} objects representing the learnable parameters of the network to be optimised 
+
+Definition at line \doxymbox{\hyperlink{optimiser_8h_source_l00027}{27}} of file \doxymbox{\hyperlink{optimiser_8h_source}{optimiser.\+h}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+matt\+Torch/\+optimiser/\+optimiser.\+h\end{DoxyCompactItemize}

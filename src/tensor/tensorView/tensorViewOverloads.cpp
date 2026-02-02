@@ -12,8 +12,6 @@
 #include "mattTorch/function/tanh/gradTanh.h"
 
 namespace mattTorch {
-// Shallow copy of the other tensor, i.e creates a tensor that shares the same
-// storage, gradStorage and gradFunction objects
 TensorView& TensorView::operator=(const TensorView& other) {
   if (this != &other) {
     storage = other.storage;
@@ -26,12 +24,11 @@ TensorView& TensorView::operator=(const TensorView& other) {
     isLeaf = other.isLeaf;
     hasGrad = other.hasGrad;
     requiresGrad = other.requiresGrad;
-    // gradient= other.gradient;
+    gradient = other.gradient;
   }
   return *this;
 }
 
-// Sets all of the values in the tensor to the same double value
 TensorView& TensorView::operator=(double val) {
   this->storage->setAllValues(val);
   return *this;
@@ -47,10 +44,6 @@ TensorView TensorView::operator+(const TensorView& other) {
   tensor::kernels::cpu::elementwiseAdd(this->getData(), other.getData(),
                                        result.getData(), this->nValues);
 
-  // If neither parent tensors require gradient then neither does the child,
-  // otherwise create the GradFunction object for this mathematical operation
-  // with pointers to the tensors needed for the gradient calculation as well as
-  // pointers to the GradFunction objects of the parent Tensors
   if (!this->requiresGrad && !other.requiresGrad) {
     result.setRequiresGrad(false);
   } else {
@@ -77,10 +70,6 @@ TensorView TensorView::operator-(const TensorView& other) {
   tensor::kernels::cpu::elementwiseSubtract(this->getData(), other.getData(),
                                             result.getData(), this->nValues);
 
-  // If neither parent tensors require gradient then neither does the child,
-  // otherwise create the GradFunction object for this mathematical operation
-  // with pointers to the tensors needed for the gradient calculation as well as
-  // pointers to the GradFunction objects of the parent Tensors
   if (!this->requiresGrad && !other.requiresGrad) {
     result.setRequiresGrad(false);
   } else {
@@ -108,10 +97,6 @@ TensorView TensorView::operator*(const TensorView& other) {
   tensor::kernels::cpu::elementwiseMultiplication(
       this->getData(), other.getData(), result.getData(), this->nValues);
 
-  // If neither parent tensors require gradient then neither does the child,
-  // otherwise create the GradFunction object for this mathematical operation
-  // with pointers to the tensors needed for the gradient calculation as well as
-  // pointers to the GradFunction objects of the parent Tensors
   if (!this->requiresGrad && !other.requiresGrad) {
     result.setRequiresGrad(false);
   } else {
@@ -145,10 +130,6 @@ TensorView TensorView::operator/(const TensorView& other) {
   tensor::kernels::cpu::elementwiseDivision(this->getData(), other.getData(),
                                             result.getData(), this->nValues);
 
-  // If neither parent tensors require gradient then neither does the child,
-  // otherwise create the GradFunction object for this mathematical operation
-  // with pointers to the tensors needed for the gradient calculation as well as
-  // pointers to the GradFunction objects of the parent Tensors
   if (!this->requiresGrad && !other.requiresGrad) {
     result.setRequiresGrad(false);
   } else {
@@ -171,10 +152,6 @@ TensorView TensorView::operator+(double scalar) {
   tensor::kernels::cpu::tensorScalarAdd(this->getData(), scalar,
                                         result.getData(), this->nValues);
 
-  // If neither parent tensors require gradient then neither does the child,
-  // otherwise create the GradFunction object for this mathematical operation
-  // with pointers to the tensors needed for the gradient calculation as well as
-  // pointers to the GradFunction objects of the parent Tensors
   if (!this->requiresGrad) {
     result.setRequiresGrad(false);
   } else {
@@ -192,15 +169,9 @@ TensorView TensorView::operator+(double scalar) {
 TensorView TensorView::operator-(double scalar) {
   TensorView result(dimensions, false);
 
-  // Calculate the result of the mathematical operation and set the value in the
-  // resulting tensor.
   tensor::kernels::cpu::tensorScalarSubtract(this->getData(), scalar,
                                              result.getData(), this->nValues);
 
-  // If neither parent tensors require gradient then neither does the child,
-  // otherwise create the GradFunction object for this mathematical operation
-  // with pointers to the tensors needed for the gradient calculation as well as
-  // pointers to the GradFunction objects of the parent Tensors
   if (!this->requiresGrad) {
     result.setRequiresGrad(false);
   } else {
@@ -217,15 +188,9 @@ TensorView TensorView::operator-(double scalar) {
 TensorView TensorView::operator*(double scalar) {
   TensorView result(dimensions, false);
 
-  // Calculate the result of the mathematical operation and set the value in the
-  // resulting tensor.
   tensor::kernels::cpu::tensorScalarMultiplication(
       this->getData(), scalar, result.getData(), this->nValues);
 
-  // If neither parent tensors require gradient then neither does the child,
-  // otherwise create the GradFunction object for this mathematical operation
-  // with pointers to the tensors needed for the gradient calculation as well as
-  // pointers to the GradFunction objects of the parent Tensors
   if (!this->requiresGrad) {
     result.setRequiresGrad(false);
   } else {
@@ -246,15 +211,9 @@ TensorView TensorView::operator/(double scalar) {
 
   TensorView result(dimensions, false);
 
-  // Calculate the result of the mathematical operation and set the value in the
-  // resulting tensor
   tensor::kernels::cpu::tensorScalarDivision(this->getData(), scalar,
                                              result.getData(), this->nValues);
 
-  // If neither parent tensors require gradient then neither does the child,
-  // otherwise create the GradFunction object for this mathematical operation
-  // with pointers to the tensors needed for the gradient calculation as well as
-  // pointers to the GradFunction objects of the parent Tensors
   if (!this->requiresGrad) {
     result.setRequiresGrad(false);
   } else {
@@ -278,10 +237,6 @@ TensorView TensorView::elementwiseExponent(int scalar) {
   tensor::kernels::cpu::elementwiseExponent(this->getData(), scalar,
                                             result.getData(), nValues);
 
-  // If neither parent tensors require gradient then neither does the child,
-  // otherwise create the GradFunction object for this mathematical operation
-  // with pointers to the tensors needed for the gradient calculation as well as
-  // pointers to the GradFunction objects of the parent Tensors
   if (!this->requiresGrad) {
     result.setRequiresGrad(false);
   } else {
@@ -310,7 +265,7 @@ TensorView TensorView::reductionSum(int dim) {
     }
   }
   if (newDimensions.empty()) {
-    newDimensions.push_back(1);  
+    newDimensions.push_back(1);
   }
 
   TensorView result(newDimensions, false);
@@ -348,10 +303,6 @@ TensorView TensorView::mean() {
 
   tensor::kernels::cpu::mean(this->getData(), result.getData(), nValues);
 
-  // If neither parent tensors require gradient then neither does the child,
-  // otherwise create the GradFunction object for this mathematical operation
-  // with pointers to the tensors needed for the gradient calculation as well as
-  // pointers to the GradFunction objects of the parent Tensors
   if (!this->requiresGrad) {
     result.setRequiresGrad(false);
   } else {
@@ -370,10 +321,6 @@ TensorView TensorView::log() {
 
   tensor::kernels::cpu::log(this->getData(), result.getData(), nValues);
 
-  // If neither parent tensors require gradient then neither does the child,
-  // otherwise create the GradFunction object for this mathematical operation
-  // with pointers to the tensors needed for the gradient calculation as well as
-  // pointers to the GradFunction objects of the parent Tensors
   if (!this->requiresGrad) {
     result.setRequiresGrad(false);
   } else {
@@ -402,10 +349,6 @@ TensorView TensorView::matrixMultiply(const TensorView& other) {
       this->getData(), other.getData(), result.getData(), this->dimensions[0],
       this->dimensions[1], other.dimensions[1]);
 
-  // If neither parent tensors require gradient then neither does the child,
-  // otherwise create the GradFunction object for this mathematical operation
-  // with pointers to the tensors needed for the gradient calculation as well as
-  // pointers to the GradFunction objects of the parent Tensors
   if (!this->requiresGrad && !other.requiresGrad) {
     result.setRequiresGrad(false);
   } else {
@@ -448,10 +391,6 @@ TensorView TensorView::transposeMultiply(const TensorView& other,
         this->dimensions[1], other.dimensions[0]);
   }
 
-  // If neither parent tensors require gradient then neither does the child,
-  // otherwise create the GradFunction object for this mathematical operation
-  // with pointers to the tensors needed for the gradient calculation as well as
-  // pointers to the GradFunction objects of the parent Tensors
   if (!this->requiresGrad && !other.requiresGrad) {
     result.setRequiresGrad(false);
   } else {
@@ -495,6 +434,9 @@ TensorView TensorView::ReLU() {
 }
 
 TensorView TensorView::broadcast(int pos, int dim) {
+  if (pos < 0 || pos > static_cast<int>(dimensions.size())) {
+    throw std::invalid_argument("broadcast pos out of range");
+  }
   std::vector<int> newDims = dimensions;
   newDims.insert(newDims.begin() + pos, dim);
 
@@ -650,7 +592,7 @@ TensorView& TensorView::operator*=(const TensorView& other) {
         std::make_shared<function::GradMultiply>(savedTensors, nextFunctions));
   }
 
-  return *this;  
+  return *this;
 }
 
 TensorView& TensorView::operator+=(double scalar) {

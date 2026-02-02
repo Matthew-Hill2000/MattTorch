@@ -1,0 +1,28 @@
+\doxysection{grad\+Add.\+h}
+\hypertarget{gradAdd_8h_source}{}\label{gradAdd_8h_source}\index{include/mattTorch/function/addition/gradAdd.h@{include/mattTorch/function/addition/gradAdd.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <mattTorch/function/gradFunction.h>}}
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00008}00008\ \textcolor{keyword}{namespace\ }mattTorch::function\ \{}
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00042}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAdd}{00042}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAdd_a5b609f2415e66c6b4e9488dc724042f3}{GradAdd}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{GradFunction}}\ \{}
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00043}00043\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00046}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAdd_a61e45df062891c76ff5b7954b8ac64d9}{00046}}\ \ \ std::vector<TensorView>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAdd_a61e45df062891c76ff5b7954b8ac64d9}{savedTensors}};}
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00050}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAdd_a8e63ee81d72683d7abb59997d17724da}{00050}}\ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAdd_a8e63ee81d72683d7abb59997d17724da}{nextFunctions}};}
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00052}00052\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00065}00065\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAdd_a5b609f2415e66c6b4e9488dc724042f3}{GradAdd}}(std::vector<TensorView>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAdd_a61e45df062891c76ff5b7954b8ac64d9}{savedTensors}},}
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAdd_a8e63ee81d72683d7abb59997d17724da}{nextFunctions}});}
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00087}00087\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAdd_a76c8bf1698dddd5eb815bb77a612f674}{backward}}(\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\&\ inputGradient,\ \textcolor{keywordtype}{bool}\ higherDerivative)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00088}00088\ \};}
+\DoxyCodeLine{\Hypertarget{gradAdd_8h_source_l00089}00089\ \}}
+
+\end{DoxyCode}

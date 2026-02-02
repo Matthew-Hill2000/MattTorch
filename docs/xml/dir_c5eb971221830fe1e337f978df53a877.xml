@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_c5eb971221830fe1e337f978df53a877" kind="dir">
+    <compoundname>include/mattTorch/optimiser</compoundname>
+    <innerdir refid="dir_6d1b7487608d978e22e80ebaf8a57338">include/mattTorch/optimiser/sgd</innerdir>
+    <innerfile refid="optimiser_8h">optimiser.h</innerfile>
+    <innerfile refid="optimiserInclude_8h">optimiserInclude.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/mattTorch/optimiser/"/>
+  </compounddef>
+</doxygen>

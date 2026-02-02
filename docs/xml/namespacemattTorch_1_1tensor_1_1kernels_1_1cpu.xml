@@ -1,0 +1,1869 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="namespacemattTorch_1_1tensor_1_1kernels_1_1cpu" kind="namespace" language="C++">
+    <compoundname>mattTorch::tensor::kernels::cpu</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="tensorScalarElementwise_8cpp_1a53407461c7d4d9379f86412d3e4cf877" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::tensorScalarAdd</definition>
+        <argsstring>(const double *__restrict tensor, const double scalar, double *__restrict result, const int nValues)</argsstring>
+        <name>tensorScalarAdd</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::tensorScalarAdd</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Adds a scalar to all elements of a tensor using AVX2 SIMD intrinsics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes (tensor[i] + scalar) for each element of the input tensor and stores the result in the result array. The scalar value is broadcast into an AVX2 register and the main loop processes 4 doubles at a time using AVX2 addition intrinsics, with a scalar fallback loop to handle any remaining elements that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scalar value to add to each element </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" line="5" column="6" bodyfile="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" bodystart="5" bodyend="17" declfile="include/mattTorch/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.h" declline="19" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="tensorScalarElementwise_8cpp_1a861ca766fc71965fab41b233bcc3dfeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::tensorScalarSubtract</definition>
+        <argsstring>(const double *__restrict tensor, const double scalar, double *__restrict result, const int nValues)</argsstring>
+        <name>tensorScalarSubtract</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::tensorScalarSubtract</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Subtracts a scalar from all elements of a tensor using AVX2 SIMD intrinsics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes (tensor[i] - scalar) for each element of the input tensor and stores the result in the result array. The scalar value is broadcast into an AVX2 register and the main loop processes 4 doubles at a time using AVX2 subtraction intrinsics, with a scalar fallback loop to handle any remaining elements that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scalar value to subtract from each element </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" line="19" column="6" bodyfile="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" bodystart="19" bodyend="31" declfile="include/mattTorch/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.h" declline="37" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="tensorScalarElementwise_8cpp_1a3bd64ead5c422fc82e7ed68dfe52b84c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::scalarTensorSubtract</definition>
+        <argsstring>(const double *__restrict tensor, const double scalar, double *__restrict result, const int nValues)</argsstring>
+        <name>scalarTensorSubtract</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::scalarTensorSubtract</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Subtracts all elements of a tensor from a scalar using AVX2 SIMD intrinsics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes (scalar - tensor[i]) for each element of the input tensor and stores the result in the result array. The scalar value is broadcast into an AVX2 register and the main loop processes 4 doubles at a time using AVX2 subtraction intrinsics, with a scalar fallback loop to handle any remaining elements that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scalar value to subtract each element from </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" line="33" column="6" bodyfile="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" bodystart="33" bodyend="45" declfile="include/mattTorch/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.h" declline="92" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="tensorScalarElementwise_8cpp_1ad89a842ff5613137ec0c9a4a4ddafed1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::tensorScalarMultiplication</definition>
+        <argsstring>(const double *__restrict tensor, const double scalar, double *__restrict result, const int nValues)</argsstring>
+        <name>tensorScalarMultiplication</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::tensorScalarMultiplication</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Multiplies all elements of a tensor by a scalar using AVX2 SIMD intrinsics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes (tensor[i] * scalar) for each element of the input tensor and stores the result in the result array. The scalar value is broadcast into an AVX2 register and the main loop processes 4 doubles at a time using AVX2 multiplication intrinsics, with a scalar fallback loop to handle any remaining elements that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scalar value to multiply each element by </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" line="46" column="6" bodyfile="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" bodystart="46" bodyend="59" declfile="include/mattTorch/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.h" declline="55" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="tensorScalarElementwise_8cpp_1a9511ef7c2951f9aaa6b38163ba570f93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::tensorScalarDivision</definition>
+        <argsstring>(const double *__restrict tensor, const double scalar, double *__restrict result, const int nValues)</argsstring>
+        <name>tensorScalarDivision</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::tensorScalarDivision</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Divides all elements of a tensor by a scalar using AVX2 SIMD intrinsics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes (tensor[i] / scalar) for each element of the input tensor and stores the result in the result array. The scalar value is broadcast into an AVX2 register and the main loop processes 4 doubles at a time using AVX2 division intrinsics, with a scalar fallback loop to handle any remaining elements that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scalar value to divide each element by </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" line="61" column="6" bodyfile="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" bodystart="61" bodyend="73" declfile="include/mattTorch/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.h" declline="74" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="tensorScalarElementwise_8cpp_1ac34c8956ff321ff7ba013387cd74f767" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::scalarTensorDivision</definition>
+        <argsstring>(const double *__restrict tensor, const double scalar, double *__restrict result, const int nValues)</argsstring>
+        <name>scalarTensorDivision</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::scalarTensorDivision</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Divides a scalar by all elements of a tensor using AVX2 SIMD intrinsics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes (scalar / tensor[i]) for each element of the input tensor and stores the result in the result array. The scalar value is broadcast into an AVX2 register and the main loop processes 4 doubles at a time using AVX2 division intrinsics, with a scalar fallback loop to handle any remaining elements that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scalar value to be divided by each element </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" line="74" column="6" bodyfile="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" bodystart="74" bodyend="86" declfile="include/mattTorch/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.h" declline="110" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="tensorScalarElementwise_8cpp_1a6b70033f417b3efd631e2b5058a94e9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::elementwiseExponent</definition>
+        <argsstring>(const double *__restrict tensor, const int scalar, double *__restrict result, const int nValues)</argsstring>
+        <name>elementwiseExponent</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::elementwiseExponent</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Raises all elements of a tensor to an integer power using AVX2 SIMD intrinsics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes (tensor[i] ^ scalar) for each element of the input tensor and stores the result in the result array. The exponentiation is performed via repeated multiplication. The main loop processes 4 doubles at a time, loading each element into an AVX2 register and repeatedly multiplying it with itself using AVX2 multiplication intrinsics for (scalar - 1) iterations. A scalar fallback loop handles any remaining elements that do not fill a complete SIMD register, performing the same repeated multiplication on individual doubles.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The integer exponent to raise each element to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" line="88" column="6" bodyfile="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" bodystart="88" bodyend="107" declfile="include/mattTorch/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.h" declline="131" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="elementwise_8cpp_1a1c2ca8200736efc18a3b261b0c898f9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::elementwiseAdd</definition>
+        <argsstring>(const double *__restrict lhs, const double *__restrict rhs, double *__restrict result, const int nValues)</argsstring>
+        <name>elementwiseAdd</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::elementwiseAdd</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Elementwise addition of two tensors using AVX2 SIMD intrinsics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes (lhs[i] + rhs[i]) for each pair of elements from the two input tensors and stores the result in the result array. The main loop processes 4 doubles at a time using AVX2 addition intrinsics, with a scalar fallback loop to handle any remaining elements that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the left-hand side input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the right-hand side input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-tensor/elementwise.cpp" line="5" column="6" bodyfile="src/tensor/kernels/cpu/tensor-tensor/elementwise.cpp" bodystart="5" bodyend="17" declfile="include/mattTorch/tensor/kernels/cpu/tensor-tensor/elementwise.h" declline="19" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="elementwise_8cpp_1ac7d5eb580ee917982233f088b79e656a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::elementwiseSubtract</definition>
+        <argsstring>(const double *__restrict lhs, const double *__restrict rhs, double *__restrict result, const int nValues)</argsstring>
+        <name>elementwiseSubtract</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::elementwiseSubtract</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Elementwise subtraction of two tensors using AVX2 SIMD intrinsics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes (lhs[i] - rhs[i]) for each pair of elements from the two input tensors and stores the result in the result array. The main loop processes 4 doubles at a time using AVX2 subtraction intrinsics, with a scalar fallback loop to handle any remaining elements that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the left-hand side input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the right-hand side input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-tensor/elementwise.cpp" line="19" column="6" bodyfile="src/tensor/kernels/cpu/tensor-tensor/elementwise.cpp" bodystart="19" bodyend="32" declfile="include/mattTorch/tensor/kernels/cpu/tensor-tensor/elementwise.h" declline="36" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="elementwise_8cpp_1a5de52714218530cec2f8e011a24057f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::elementwiseMultiplication</definition>
+        <argsstring>(const double *__restrict lhs, const double *__restrict rhs, double *__restrict result, const int nValues)</argsstring>
+        <name>elementwiseMultiplication</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::elementwiseMultiplication</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Elementwise multiplication of two tensors using AVX2 SIMD intrinsics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes (lhs[i] * rhs[i]) for each pair of elements from the two input tensors and stores the result in the result array. The main loop processes 4 doubles at a time using AVX2 multiplication intrinsics, with a scalar fallback loop to handle any remaining elements that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the left-hand side input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the right-hand side input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-tensor/elementwise.cpp" line="34" column="6" bodyfile="src/tensor/kernels/cpu/tensor-tensor/elementwise.cpp" bodystart="34" bodyend="47" declfile="include/mattTorch/tensor/kernels/cpu/tensor-tensor/elementwise.h" declline="54" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="elementwise_8cpp_1abff848addc772bd77b6f270b33c9e377" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::elementwiseDivision</definition>
+        <argsstring>(const double *__restrict lhs, const double *__restrict rhs, double *__restrict result, const int nValues)</argsstring>
+        <name>elementwiseDivision</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::elementwiseDivision</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Elementwise division of two tensors using AVX2 SIMD intrinsics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes (lhs[i] / rhs[i]) for each pair of elements from the two input tensors and stores the result in the result array. The main loop processes 4 doubles at a time using AVX2 division intrinsics, with a scalar fallback loop to handle any remaining elements that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the left-hand side input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the right-hand side input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-tensor/elementwise.cpp" line="49" column="6" bodyfile="src/tensor/kernels/cpu/tensor-tensor/elementwise.cpp" bodystart="49" bodyend="62" declfile="include/mattTorch/tensor/kernels/cpu/tensor-tensor/elementwise.h" declline="72" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="elementwise_8cpp_1abc4a2e762988cbdf2b550232f1c50882" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::reductionSum</definition>
+        <argsstring>(const double *__restrict input, double *__restrict result, int outerSize, int reduceSize, int innerSize)</argsstring>
+        <name>reductionSum</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::reductionSum</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>outerSize</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>reduceSize</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>innerSize</declname>
+        </param>
+        <briefdescription>
+<para>Computes the sum of elements along a specified dimension via a three-loop reduction. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Reduces the input tensor along a single dimension by summing all elements along that dimension. The reduction is expressed in terms of three sizes derived from the dimension being reduced: outerSize is the product of all dimensions before the reduction dimension, reduceSize is the size of the dimension being reduced, and innerSize is the product of all dimensions after the reduction dimension. For each combination of outer and inner index, the function accumulates the sum across the reduceSize elements along the reduction dimension and stores the result in the output array.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the reduced result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>outerSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The product of all dimension sizes before the reduction dimension </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reduceSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the dimension being reduced </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>innerSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The product of all dimension sizes after the reduction dimension </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-tensor/elementwise.cpp" line="63" column="6" bodyfile="src/tensor/kernels/cpu/tensor-tensor/elementwise.cpp" bodystart="63" bodyend="75" declfile="include/mattTorch/tensor/kernels/cpu/tensor-tensor/elementwise.h" declline="97" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="elementwise_8cpp_1adc0045535ca434716fbca593ed2e219b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::inplaceElementwiseAdd</definition>
+        <argsstring>(double *__restrict lhs, const double *__restrict rhs, int nValues)</argsstring>
+        <name>inplaceElementwiseAdd</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::inplaceElementwiseAdd</qualifiedname>
+        <param>
+          <type>double *__restrict</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>In-place elementwise addition of two tensors using AVX2 SIMD intrinsics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes (lhs[i] + rhs[i]) for each pair of elements from the two input tensors and stores the result directly back into the lhs array, modifying it in place. The main loop processes 4 doubles at a time using AVX2 addition intrinsics with unaligned load and store operations, with a scalar fallback loop to handle any remaining elements that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the left-hand side data, modified in place with the result </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the right-hand side input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-tensor/elementwise.cpp" line="76" column="6" bodyfile="src/tensor/kernels/cpu/tensor-tensor/elementwise.cpp" bodystart="76" bodyend="88" declfile="include/mattTorch/tensor/kernels/cpu/tensor-tensor/elementwise.h" declline="116" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="matrix_8cpp_1a964b7f4cc452bd354c4576391dfc2ae3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::matrixMultiplication</definition>
+        <argsstring>(const double *__restrict lhs, const double *__restrict rhs, double *__restrict result, int lhsRows, int lhsCols, int rhsCols)</argsstring>
+        <name>matrixMultiplication</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::matrixMultiplication</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lhsRows</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lhsCols</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>rhsCols</declname>
+        </param>
+        <briefdescription>
+<para>Performs matrix multiplication of two matrices using a naive triple-loop implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the matrix product C = A * B where A is of dimension (lhsRows x lhsCols) and B is of dimension (lhsCols x rhsCols), storing the result in the result array of dimension (lhsRows x rhsCols). The multiplication is performed using a straightforward triple-loop that iterates over the rows of lhs, the columns of rhs, and the shared inner dimension, accumulating the dot product for each element of the result.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the left-hand side matrix data in row-major order </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the right-hand side matrix data in row-major order </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output matrix data in row-major order, must be zero-initialised before calling </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lhsRows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of rows in the left-hand side matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lhsCols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns in the left-hand side matrix and the number of rows in the right-hand side matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhsCols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns in the right-hand side matrix </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-tensor/matrix.cpp" line="10" column="6" bodyfile="src/tensor/kernels/cpu/tensor-tensor/matrix.cpp" bodystart="10" bodyend="21" declfile="include/mattTorch/tensor/kernels/cpu/tensor-tensor/matrix.h" declline="25" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="matrix_8cpp_1a00fd4b728a1ffbc9004ff522e6170bbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::matrixMultiplicationInverse</definition>
+        <argsstring>(const double *__restrict lhs, const double *__restrict rhs, double *__restrict result, int lhsRows, int lhsCols, int rhsCols)</argsstring>
+        <name>matrixMultiplicationInverse</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::matrixMultiplicationInverse</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lhsRows</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lhsCols</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>rhsCols</declname>
+        </param>
+        <briefdescription>
+<para>Performs matrix multiplication of two matrices with an explicit full transpose of the right-hand side matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the matrix product C = A * B where A is of dimension (lhsRows x lhsCols) and B is of dimension (lhsCols x rhsCols), storing the result in the result array of dimension (lhsRows x rhsCols). Before performing the multiplication, the entire rhs matrix is transposed into a separate aligned buffer so that the innermost loop traverses both the lhs row and the transposed rhs row contiguously in memory, improving cache performance over the naive implementation. The multiplication itself is performed using a triple-loop that accumulates the dot product for each element of the result.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the left-hand side matrix data in row-major order </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the right-hand side matrix data in row-major order </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output matrix data in row-major order, must be zero-initialised before calling </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lhsRows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of rows in the left-hand side matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lhsCols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns in the left-hand side matrix and the number of rows in the right-hand side matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhsCols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns in the right-hand side matrix </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-tensor/matrix.cpp" line="23" column="6" bodyfile="src/tensor/kernels/cpu/tensor-tensor/matrix.cpp" bodystart="23" bodyend="45" declfile="include/mattTorch/tensor/kernels/cpu/tensor-tensor/matrix.h" declline="53" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="matrix_8cpp_1a2acd0cfe5f66145570d5f29e4c829171" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::matrixMultiplicationInverseVector</definition>
+        <argsstring>(const double *__restrict lhs, const double *__restrict rhs, double *__restrict result, int lhsRows, int lhsCols, int rhsCols)</argsstring>
+        <name>matrixMultiplicationInverseVector</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::matrixMultiplicationInverseVector</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lhsRows</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lhsCols</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>rhsCols</declname>
+        </param>
+        <briefdescription>
+<para>Performs matrix multiplication of two matrices with an explicit full transpose of the right-hand side matrix and AVX2 SIMD intrinsics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the matrix product C = A * B where A is of dimension (lhsRows x lhsCols) and B is of dimension (lhsCols x rhsCols), storing the result in the result array of dimension (lhsRows x rhsCols). Before performing the multiplication, the entire rhs matrix is transposed into a separate aligned buffer so that the innermost loop traverses both the lhs row and the transposed rhs row contiguously in memory. For each element of the result, the dot product along the shared inner dimension is computed using an AVX2 accumulator that processes 4 doubles at a time via fused multiply-add (FMA) intrinsics. The accumulated partial sums within the SIMD register are then reduced to a single scalar via horizontal addition. A scalar fallback loop handles any remaining elements along the inner dimension that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the left-hand side matrix data in row-major order </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the right-hand side matrix data in row-major order </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output matrix data in row-major order </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lhsRows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of rows in the left-hand side matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lhsCols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns in the left-hand side matrix and the number of rows in the right-hand side matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhsCols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns in the right-hand side matrix </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-tensor/matrix.cpp" line="47" column="6" bodyfile="src/tensor/kernels/cpu/tensor-tensor/matrix.cpp" bodystart="47" bodyend="88" declfile="include/mattTorch/tensor/kernels/cpu/tensor-tensor/matrix.h" declline="84" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="matrix_8cpp_1a7640989fe844527c1849c28718d7f378" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::matrixMultiplicationBlock</definition>
+        <argsstring>(const double *__restrict lhs, const double *__restrict rhs, double *__restrict result, int lhsRows, int lhsCols, int rhsCols)</argsstring>
+        <name>matrixMultiplicationBlock</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::matrixMultiplicationBlock</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lhsRows</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lhsCols</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>rhsCols</declname>
+        </param>
+        <briefdescription>
+<para>Performs matrix multiplication of two matrices using cache blocking with a block-local transpose of the right-hand side. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the matrix product C = A * B where A is of dimension (lhsRows x lhsCols) and B is of dimension (lhsCols x rhsCols), storing the result in the result array of dimension (lhsRows x rhsCols). The multiplication is performed using a blocked algorithm with a block size of 32, in which the matrices are decomposed into square blocks and the multiplication is carried out block by block to maximise cache locality.</para>
+<para>For each block of the rhs matrix, a transposed copy of the block is constructed into an aligned buffer so that the inner products can be computed by traversing both the lhs and the transposed rhs contiguously in memory. The innermost kernel is a scalar triple-loop that computes the dot product for each element of the result block. After processing all complete blocks, the function handles the remainder elements that do not fit into complete blocks along each dimension using scalar multiplication.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the left-hand side matrix data in row-major order </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the right-hand side matrix data in row-major order </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output matrix data in row-major order, must be zero-initialised before calling </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lhsRows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of rows in the left-hand side matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lhsCols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns in the left-hand side matrix and the number of rows in the right-hand side matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhsCols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns in the right-hand side matrix </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-tensor/matrix.cpp" line="90" column="6" bodyfile="src/tensor/kernels/cpu/tensor-tensor/matrix.cpp" bodystart="90" bodyend="231" declfile="include/mattTorch/tensor/kernels/cpu/tensor-tensor/matrix.h" declline="118" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="matrixVector_8cpp_1aa9e6a84057e3b2988de5925dc8678adf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::matrixMultiplicationBlockVector</definition>
+        <argsstring>(const double *__restrict lhs, const double *__restrict rhs, double *__restrict result, int lhsRows, int lhsCols, int rhsCols)</argsstring>
+        <name>matrixMultiplicationBlockVector</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::matrixMultiplicationBlockVector</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lhsRows</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lhsCols</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>rhsCols</declname>
+        </param>
+        <briefdescription>
+<para>Performs matrix multiplication of two matrices using AVX2 SIMD intrinsics with cache blocking and OpenMP parallelisation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the matrix product C = A * B where A is of dimension (lhsRows x lhsCols) and B is of dimension (lhsCols x rhsCols), storing the result in the result array of dimension (lhsRows x rhsCols). The multiplication is performed using a blocked algorithm with a block size of 64, in which the matrices are decomposed into square blocks and the multiplication is carried out block by block to maximise cache locality.</para>
+<para>For each block of the rhs matrix, a thread-local transposed copy of the block is constructed so that the inner products can be computed by traversing both the lhs and the transposed rhs contiguously in memory. The inner kernel processes a 2x4 microkernel, computing two rows of the lhs against four columns of the rhs simultaneously. For each microkernel, eight AVX2 accumulators are maintained and updated via fused multiply-add (FMA) intrinsics, processing 4 doubles at a time along the shared inner dimension. The accumulated partial sums within each SIMD register are then reduced to scalar dot products via horizontal addition and added to the existing values in the result matrix.</para>
+<para>After processing all complete blocks, the function handles the remainder elements that do not fit into complete blocks along each dimension. The remainder along the lhs rows is handled by a single-row microkernel that processes 4 rhs columns at a time. The remainder along the shared inner dimension (lhsCols) is handled by scalar multiplication. The remainder along the rhs columns is handled by a separate OpenMP parallel loop that processes one column at a time using scalar operations.</para>
+<para>The outermost loop over rhs column blocks is parallelised using OpenMP with dynamic scheduling, and each thread allocates its own aligned transpose buffer to avoid shared memory conflicts between threads.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the left-hand side matrix data in row-major order </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the right-hand side matrix data in row-major order </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output matrix data in row-major order, must be zero-initialised before calling </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lhsRows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of rows in the left-hand side matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lhsCols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns in the left-hand side matrix and the number of rows in the right-hand side matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhsCols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns in the right-hand side matrix </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-tensor/matrixVector.cpp" line="10" column="6" bodyfile="src/tensor/kernels/cpu/tensor-tensor/matrixVector.cpp" bodystart="10" bodyend="300" declfile="include/mattTorch/tensor/kernels/cpu/tensor-tensor/matrix.h" declline="165" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="transposeMultLHS_8cpp_1a79affedb8d16f16f7b5cba5714be1555" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::transposeMultiplicationBlockVectorLHS</definition>
+        <argsstring>(const double *__restrict lhs, const double *__restrict rhs, double *__restrict result, int lhsRows, int lhsCols, int rhsCols)</argsstring>
+        <name>transposeMultiplicationBlockVectorLHS</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::transposeMultiplicationBlockVectorLHS</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lhsRows</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lhsCols</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>rhsCols</declname>
+        </param>
+        <briefdescription>
+<para>Performs matrix multiplication of the transpose of the left-hand side matrix with the right-hand side matrix using AVX2 SIMD intrinsics with cache blocking. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the matrix product C = A^T * B where A is of dimension (lhsRows x lhsCols) and B is of dimension (lhsRows x rhsCols), storing the result in the result array of dimension (lhsCols x rhsCols). The multiplication is performed using a blocked algorithm with a block size of 64, in which the matrices are decomposed into square blocks and the multiplication is carried out block by block to maximise cache locality.</para>
+<para>For each pair of blocks along the shared inner dimension (the rows of both lhs and rhs), aligned transposed copies of both the lhs block and the rhs block are constructed so that the inner products can be computed by traversing the transposed lhs (giving rows of A^T) and the transposed rhs contiguously in memory. The inner kernel processes a 2x4 microkernel, computing two rows of the transposed lhs against four columns of the rhs simultaneously. For each microkernel, eight AVX2 accumulators are maintained and updated via fused multiply-add (FMA) intrinsics, processing 4 doubles at a time along the shared inner dimension. The accumulated partial sums within each SIMD register are then reduced to scalar dot products via horizontal addition and added to the existing values in the result matrix.</para>
+<para>After processing all complete blocks, the function handles the remainder elements that do not fit into complete blocks along each dimension. The remainder along the lhs columns (rows of the result) is handled by a single-row microkernel that gathers elements from the lhs column into an AVX2 register and processes 4 rhs columns at a time. The remainder along the shared inner dimension (lhsRows) and the remainder along the rhs columns are both handled by scalar multiplication.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the left-hand side matrix data in row-major order, which is implicitly transposed during the computation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the right-hand side matrix data in row-major order </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output matrix data in row-major order, must be zero-initialised before calling </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lhsRows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of rows in the left-hand side matrix and the number of rows in the right-hand side matrix (the shared inner dimension) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lhsCols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns in the left-hand side matrix and the number of rows in the result matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhsCols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns in the right-hand side matrix and the number of columns in the result matrix </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-tensor/transposeMultLHS.cpp" line="11" column="6" bodyfile="src/tensor/kernels/cpu/tensor-tensor/transposeMultLHS.cpp" bodystart="11" bodyend="230" declfile="include/mattTorch/tensor/kernels/cpu/tensor-tensor/matrix.h" declline="215" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="transposeMultRHS_8cpp_1ad3a933e735bae5db1eb1211d6afc28f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::transposeMultiplicationBlockVectorRHS</definition>
+        <argsstring>(const double *__restrict lhs, const double *__restrict rhs, double *__restrict result, int lhsRows, int lhsCols, int rhsRows)</argsstring>
+        <name>transposeMultiplicationBlockVectorRHS</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::transposeMultiplicationBlockVectorRHS</qualifiedname>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type>const double *__restrict</type>
+          <declname>rhs</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lhsRows</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lhsCols</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>rhsRows</declname>
+        </param>
+        <briefdescription>
+<para>Performs matrix multiplication of the left-hand side matrix with the transpose of the right-hand side matrix using AVX2 SIMD intrinsics with cache blocking. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the matrix product C = A * B^T where A is of dimension (lhsRows x lhsCols) and B is of dimension (rhsRows x lhsCols), storing the result in the result array of dimension (lhsRows x rhsRows). The multiplication is performed using a blocked algorithm with a block size of 64, in which the matrices are decomposed into square blocks and the multiplication is carried out block by block to maximise cache locality.</para>
+<para>For each block of the rhs matrix along the row dimension, the block is copied contiguously into an aligned buffer using std::memcpy so that the rows of rhs (which become columns of B^T) can be traversed contiguously in memory during the inner product computation. The lhs rows are already contiguous in row-major order and so do not require transposition. The inner kernel processes a 2x4 microkernel, computing two rows of the lhs against four rows of the rhs (four columns of B^T) simultaneously. For each microkernel, eight AVX2 accumulators are maintained and updated via fused multiply-add (FMA) intrinsics, processing 4 doubles at a time along the shared inner dimension. The accumulated partial sums within each SIMD register are then reduced to scalar dot products via horizontal addition and added to the existing values in the result matrix.</para>
+<para>After processing all complete blocks, the function handles the remainder elements that do not fit into complete blocks along each dimension. The remainder along the lhs rows (rows of the result) is handled by a single-row microkernel that processes 4 rhs rows at a time. The remainder along the shared inner dimension (lhsCols) and the remainder along the rhs rows (columns of the result) are both handled by scalar multiplication.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the left-hand side matrix data in row-major order </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the right-hand side matrix data in row-major order, which is implicitly transposed during the computation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output matrix data in row-major order, must be zero-initialised before calling </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lhsRows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of rows in the left-hand side matrix and the number of rows in the result matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lhsCols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns in the left-hand side matrix and the number of columns in the right-hand side matrix (the shared inner dimension) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rhsRows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of rows in the right-hand side matrix and the number of columns in the result matrix </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor-tensor/transposeMultRHS.cpp" line="11" column="6" bodyfile="src/tensor/kernels/cpu/tensor-tensor/transposeMultRHS.cpp" bodystart="11" bodyend="207" declfile="include/mattTorch/tensor/kernels/cpu/tensor-tensor/matrix.h" declline="267" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="tensorElementwise_8cpp_1accbb7e628109dcf7aa7a102da8fc655d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::ReLU</definition>
+        <argsstring>(double *__restrict tensor, double *__restrict result, double *__restrict backwardMask, int nValues)</argsstring>
+        <name>ReLU</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::ReLU</qualifiedname>
+        <param>
+          <type>double *__restrict</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>backwardMask</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Applies the Rectified Linear Unit function elementwise using AVX2 SIMD intrinsics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the <ref refid="classmattTorch_1_1ReLU" kindref="compound">ReLU</ref> function (max(0, x)) for each element of the input tensor and stores the result in the result array. Simultaneously constructs a backwards mask tensor that records which elements were positive (1.0) and which were zeroed out (0.0), for use during the backward pass in gradient computation. The main loop processes 4 doubles at a time using AVX2 intrinsics, with a scalar fallback loop to handle any remaining elements that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the <ref refid="classmattTorch_1_1ReLU" kindref="compound">ReLU</ref> result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>backwardMask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the backwards mask is stored, with 1.0 for positive elements and 0.0 for zeroed elements </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor/tensorElementwise.cpp" line="10" column="6" bodyfile="src/tensor/kernels/cpu/tensor/tensorElementwise.cpp" bodystart="10" bodyend="35" declfile="include/mattTorch/tensor/kernels/cpu/tensor/tensorElementwise.h" declline="23" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="tensorElementwise_8cpp_1ae63acf1dc6f0a0fc4d92610a338487bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::broadcast</definition>
+        <argsstring>(double *__restrict tensor, double *__restrict result, int blockSize, int numBlocks, int repeatCount)</argsstring>
+        <name>broadcast</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::broadcast</qualifiedname>
+        <param>
+          <type>double *__restrict</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>blockSize</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>numBlocks</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>repeatCount</declname>
+        </param>
+        <briefdescription>
+<para>Broadcasts data by repeating blocks along a new dimension. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Copies each block of data from the input tensor into the result array, repeating each block the specified number of times. The input tensor is treated as a series of contiguous blocks of size blockSize, and each block is copied repeatCount times into the result array using std::memcpy.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the broadcast result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>blockSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements in each block to be repeated </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>numBlocks</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of blocks in the input tensor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>repeatCount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of times each block is repeated in the output </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor/tensorElementwise.cpp" line="37" column="6" bodyfile="src/tensor/kernels/cpu/tensor/tensorElementwise.cpp" bodystart="37" bodyend="45" declfile="include/mattTorch/tensor/kernels/cpu/tensor/tensorElementwise.h" declline="40" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="tensorElementwise_8cpp_1a401c444712068e0135d11dfffdd22f41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::tanh</definition>
+        <argsstring>(double *__restrict tensor, double *__restrict result, int nValues)</argsstring>
+        <name>tanh</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::tanh</qualifiedname>
+        <param>
+          <type>double *__restrict</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Applies the hyperbolic tangent function elementwise using AVX2 SIMD intrinsics via the SLEEF library. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the hyperbolic tangent for each element of the input tensor and stores the result in the result array. The main loop processes 4 doubles at a time using the SLEEF Sleef_tanhd4_u35avx2 function, with a scalar fallback loop using std::tanh to handle any remaining elements that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the tanh result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor/tensorElementwise.cpp" line="46" column="6" bodyfile="src/tensor/kernels/cpu/tensor/tensorElementwise.cpp" bodystart="46" bodyend="58" declfile="include/mattTorch/tensor/kernels/cpu/tensor/tensorElementwise.h" declline="57" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="tensorElementwise_8cpp_1a516807561f6be7c486b74dc0467aa94b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::exponential</definition>
+        <argsstring>(double *__restrict tensor, double *__restrict result, int nValues)</argsstring>
+        <name>exponential</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::exponential</qualifiedname>
+        <param>
+          <type>double *__restrict</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Applies the exponential function elementwise using AVX2 SIMD intrinsics via the SLEEF library. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the exponential function for each element of the input tensor and stores the result in the result array. The main loop processes 4 doubles at a time using the SLEEF Sleef_expd4_u10avx2 function, with a scalar fallback loop using std::exp to handle any remaining elements that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the exponential result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor/tensorElementwise.cpp" line="59" column="6" bodyfile="src/tensor/kernels/cpu/tensor/tensorElementwise.cpp" bodystart="59" bodyend="71" declfile="include/mattTorch/tensor/kernels/cpu/tensor/tensorElementwise.h" declline="74" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="tensorElementwise_8cpp_1a8454b6dd2261ea6095b83f49e9c78bc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::log</definition>
+        <argsstring>(double *__restrict tensor, double *__restrict result, int nValues)</argsstring>
+        <name>log</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::log</qualifiedname>
+        <param>
+          <type>double *__restrict</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Applies the natural logarithm function elementwise using AVX2 SIMD intrinsics via the SLEEF library. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the natural logarithm for each element of the input tensor and stores the result in the result array. The main loop processes 4 doubles at a time using the SLEEF Sleef_logd4_u35avx2 function, with a scalar fallback loop using std::log to handle any remaining elements that do not fill a complete SIMD register.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output data where the natural logarithm result is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor/tensorElementwise.cpp" line="73" column="6" bodyfile="src/tensor/kernels/cpu/tensor/tensorElementwise.cpp" bodystart="73" bodyend="84" declfile="include/mattTorch/tensor/kernels/cpu/tensor/tensorElementwise.h" declline="92" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="tensorElementwise_8cpp_1a752782537b917a929ada62a89f0c770e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::kernels::cpu::mean</definition>
+        <argsstring>(double *__restrict tensor, double *__restrict result, int nValues)</argsstring>
+        <name>mean</name>
+        <qualifiedname>mattTorch::tensor::kernels::cpu::mean</qualifiedname>
+        <param>
+          <type>double *__restrict</type>
+          <declname>tensor</declname>
+        </param>
+        <param>
+          <type>double *__restrict</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nValues</declname>
+        </param>
+        <briefdescription>
+<para>Computes the arithmetic mean of all elements using AVX2 SIMD intrinsics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the arithmetic mean of all elements in the input tensor and stores the scalar result in the result pointer. The main loop accumulates the sum by processing 4 doubles at a time using AVX2 intrinsics, after which the four partial sums within the SIMD register are reduced to a single scalar sum via horizontal addition. A scalar fallback loop accumulates any remaining elements that do not fill a complete SIMD register, before the total sum is divided by nValues to produce the mean.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tensor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the input data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the output scalar where the mean is stored </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to process </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor/kernels/cpu/tensor/tensorElementwise.cpp" line="86" column="6" bodyfile="src/tensor/kernels/cpu/tensor/tensorElementwise.cpp" bodystart="86" bodyend="104" declfile="include/mattTorch/tensor/kernels/cpu/tensor/tensorElementwise.h" declline="110" declcolumn="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.cpp" line="4" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,35 @@
+\doxysection{grad\+Multiply\+Matrix.\+cpp}
+\hypertarget{gradMultiplyMatrix_8cpp_source}{}\label{gradMultiplyMatrix_8cpp_source}\index{src/function/multiplication/gradMultiplyMatrix.cpp@{src/function/multiplication/gradMultiplyMatrix.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <mattTorch/function/multiplication/gradMultiplyMatrix.h>}}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <mattTorch/tensor/tensorView/tensorView.h>}}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00004}00004\ \textcolor{keyword}{namespace\ }mattTorch::function\ \{}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00006}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_ad5c1f4f8cabff0bf23638abac509691a}{00006}}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_ad5c1f4f8cabff0bf23638abac509691a}{GradMultiplyMatrix::GradMultiplyMatrix}}(}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00007}00007\ \ \ \ \ std::vector<TensorView>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a3cb65167fed0eaf3cc1d18e2175194de}{savedTensors}},}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00008}00008\ \ \ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a50662cf3747d1957689fd6cab2bd8762}{nextFunctions}})}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00009}00009\ \ \ \ \ :\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a3cb65167fed0eaf3cc1d18e2175194de}{savedTensors}}\{\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a3cb65167fed0eaf3cc1d18e2175194de}{savedTensors}}\},\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a50662cf3747d1957689fd6cab2bd8762}{nextFunctions}}\{\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a50662cf3747d1957689fd6cab2bd8762}{nextFunctions}}\}\ \{\}}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00011}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_afdb545df24351a809cae24e2d06586bc}{00011}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_afdb545df24351a809cae24e2d06586bc}{GradMultiplyMatrix::backward}}(\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\&\ inputGradient,}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ higherDerivative)\ \{}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00013}00013\ \ \ \textcolor{keywordflow}{if}\ (!higherDerivative)\ \{}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00014}00014\ \ \ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a3cb65167fed0eaf3cc1d18e2175194de}{savedTensors}}[0].setRequiresGrad(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00015}00015\ \ \ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a3cb65167fed0eaf3cc1d18e2175194de}{savedTensors}}[1].setRequiresGrad(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00016}00016\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00017}00017\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\ outputGradLHS\ =}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00018}00018\ \ \ \ \ \ \ inputGradient.\doxymbox{\hyperlink{classmattTorch_1_1TensorView_a83b0799ed6a8c48be0c8e1e63a4010d3}{transposeMultiply}}(\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a3cb65167fed0eaf3cc1d18e2175194de}{savedTensors}}[1],\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00019}00019\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\ outputGradRHS\ =}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00020}00020\ \ \ \ \ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a3cb65167fed0eaf3cc1d18e2175194de}{savedTensors}}[0].transposeMultiply(inputGradient,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00022}00022\ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a50662cf3747d1957689fd6cab2bd8762}{nextFunctions}}[0]\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00023}00023\ \ \ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a50662cf3747d1957689fd6cab2bd8762}{nextFunctions}}[0]-\/>backward(outputGradLHS,\ higherDerivative);}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00024}00024\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00025}00025\ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a50662cf3747d1957689fd6cab2bd8762}{nextFunctions}}[1]\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00026}00026\ \ \ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a50662cf3747d1957689fd6cab2bd8762}{nextFunctions}}[1]-\/>backward(outputGradRHS,\ higherDerivative);}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00027}00027\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8cpp_source_l00029}00029\ \}\ \ \textcolor{comment}{//\ namespace\ mattTorch::function}}
+
+\end{DoxyCode}

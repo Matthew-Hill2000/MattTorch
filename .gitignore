@@ -5,6 +5,7 @@ releaseBuild/
 cmake-build-*/
 examples/archive/
 *.csv
+Doxyfile
 # Generated files
 compile_commands.json
 

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_8b1b1d3ff28e273b117e2ca277e8d05f" kind="dir">
+    <compoundname>src/layer</compoundname>
+    <innerdir refid="dir_bc4672daf566ca72c14179311e0b6759">src/layer/fullyConnectedLayer</innerdir>
+    <innerdir refid="dir_4d0c2ccf1513849612aef1c9f7d525aa">src/layer/ReLU</innerdir>
+    <innerdir refid="dir_cf95be846b0a395b8f730fe9772d8317">src/layer/softmax</innerdir>
+    <innerdir refid="dir_0232a82b24e27157fc58cbcfee800aae">src/layer/tanh</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/layer/"/>
+  </compounddef>
+</doxygen>

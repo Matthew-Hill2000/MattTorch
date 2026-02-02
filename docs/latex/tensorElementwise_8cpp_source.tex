@@ -1,0 +1,111 @@
+\doxysection{tensor\+Elementwise.\+cpp}
+\hypertarget{tensorElementwise_8cpp_source}{}\label{tensorElementwise_8cpp_source}\index{src/tensor/kernels/cpu/tensor/tensorElementwise.cpp@{src/tensor/kernels/cpu/tensor/tensorElementwise.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <immintrin.h>}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <mattTorch/tensor/kernels/cpu/tensor/tensorElementwise.h>}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <sleef.h>}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00008}00008\ \textcolor{keyword}{namespace\ }mattTorch::tensor::kernels::cpu\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00010}00010\ \textcolor{keywordtype}{void}\ ReLU(\textcolor{keywordtype}{double}*\ \_\_restrict\ tensor,\ \textcolor{keywordtype}{double}*\ \_\_restrict\ result,}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}*\ \_\_restrict\ backwardMask,\ \textcolor{keywordtype}{int}\ nValues)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00012}00012\ \ \ \textcolor{keywordtype}{int}\ i\{0\};}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00013}00013\ \ \ \textcolor{keyword}{const}\ \_\_m256d\ zero\ =\ \_mm256\_setzero\_pd();}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00014}00014\ \ \ \textcolor{keyword}{const}\ \_\_m256d\ ones\ =\ \_mm256\_set1\_pd(1.0);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00015}00015\ \ \ \textcolor{keywordflow}{for}\ (;\ i\ +\ 3\ <\ nValues;\ i\ +=\ 4)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00016}00016\ \ \ \ \ \_\_m256d\ a\ =\ \_mm256\_load\_pd(tensor\ +\ i);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00017}00017\ \ \ \ \ \_\_m256d\ relu\ =\ \_mm256\_max\_pd(a,\ zero);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00019}00019\ \ \ \ \ \_\_m256d\ gt0\ =\ \_mm256\_cmp\_pd(a,\ zero,\ \_CMP\_GT\_OQ);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00020}00020\ \ \ \ \ \_\_m256d\ mask\ =\ \_mm256\_and\_pd(gt0,\ ones);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00022}00022\ \ \ \ \ \_mm256\_store\_pd(backwardMask\ +\ i,\ mask);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00023}00023\ \ \ \ \ \_mm256\_store\_pd(result\ +\ i,\ relu);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00024}00024\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00026}00026\ \ \ \textcolor{keywordflow}{for}\ (;\ i\ <\ nValues;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (tensor[i]\ >\ 0.0)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00028}00028\ \ \ \ \ \ \ result[i]\ =\ tensor[i];}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00029}00029\ \ \ \ \ \ \ backwardMask[i]\ =\ 1.0;}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00030}00030\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00031}00031\ \ \ \ \ \ \ result[i]\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00032}00032\ \ \ \ \ \ \ backwardMask[i]\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00034}00034\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00037}00037\ \textcolor{keywordtype}{void}\ broadcast(\textcolor{keywordtype}{double}*\ \_\_restrict\ tensor,\ \textcolor{keywordtype}{double}*\ \_\_restrict\ result,}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ blockSize,\ \textcolor{keywordtype}{int}\ numBlocks,\ \textcolor{keywordtype}{int}\ repeatCount)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00039}00039\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ block\ =\ 0;\ block\ <\ numBlocks;\ block++)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ rep\ =\ 0;\ rep\ <\ repeatCount;\ rep++)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00041}00041\ \ \ \ \ \ \ std::memcpy(result\ +\ (block\ *\ repeatCount\ +\ rep)\ *\ blockSize,}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tensor\ +\ block\ *\ blockSize,\ blockSize\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00044}00044\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00046}00046\ \textcolor{keywordtype}{void}\ tanh(\textcolor{keywordtype}{double}*\ \_\_restrict\ tensor,\ \textcolor{keywordtype}{double}*\ \_\_restrict\ result,\ \textcolor{keywordtype}{int}\ nValues)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00047}00047\ \ \ \textcolor{keywordtype}{int}\ i\{0\};}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00048}00048\ \ \ \textcolor{keywordflow}{for}\ (;\ i\ +\ 3\ <\ nValues;\ i\ +=\ 4)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00049}00049\ \ \ \ \ \_\_m256d\ a\ =\ \_mm256\_load\_pd(tensor\ +\ i);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00050}00050\ \ \ \ \ \_\_m256d\ b\ =\ Sleef\_tanhd4\_u35avx2(a);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00052}00052\ \ \ \ \ \_mm256\_store\_pd(result\ +\ i,\ b);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00053}00053\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00055}00055\ \ \ \textcolor{keywordflow}{for}\ (;\ i\ <\ nValues;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00056}00056\ \ \ \ \ result[i]\ =\ std::tanh(tensor[i]);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00057}00057\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00058}00058\ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00059}00059\ \textcolor{keywordtype}{void}\ exponential(\textcolor{keywordtype}{double}*\ \_\_restrict\ tensor,\ \textcolor{keywordtype}{double}*\ \_\_restrict\ result,\ \textcolor{keywordtype}{int}\ nValues)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00060}00060\ \ \ \textcolor{keywordtype}{int}\ i\{0\};}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00061}00061\ \ \ \textcolor{keywordflow}{for}\ (;\ i\ +\ 3\ <\ nValues;\ i\ +=\ 4)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00062}00062\ \ \ \ \ \_\_m256d\ a\ =\ \_mm256\_load\_pd(tensor\ +\ i);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00063}00063\ \ \ \ \ \_\_m256d\ b\ =\ Sleef\_expd4\_u10avx2(a);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00065}00065\ \ \ \ \ \_mm256\_store\_pd(result\ +\ i,\ b);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00066}00066\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00068}00068\ \ \ \textcolor{keywordflow}{for}\ (;\ i\ <\ nValues;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00069}00069\ \ \ \ \ result[i]\ =\ std::exp(tensor[i]);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00070}00070\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00073}00073\ \textcolor{keywordtype}{void}\ log(\textcolor{keywordtype}{double}*\ \_\_restrict\ tensor,\ \textcolor{keywordtype}{double}*\ \_\_restrict\ result,\ \textcolor{keywordtype}{int}\ nValues)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00074}00074\ \ \ \textcolor{keywordtype}{int}\ i\{0\};}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00075}00075\ \ \ \textcolor{keywordflow}{for}\ (;\ i\ +\ 3\ <\ nValues;\ i\ +=\ 4)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00076}00076\ \ \ \ \ \_\_m256d\ a\ =\ \_mm256\_load\_pd(tensor\ +\ i);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00077}00077\ \ \ \ \ \_\_m256d\ b\ =\ Sleef\_logd4\_u35avx2(a);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00078}00078\ \ \ \ \ \_mm256\_store\_pd(result\ +\ i,\ b);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00079}00079\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00081}00081\ \ \ \textcolor{keywordflow}{for}\ (;\ i\ <\ nValues;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00082}00082\ \ \ \ \ result[i]\ =\ std::log(tensor[i]);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00083}00083\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00086}00086\ \textcolor{keywordtype}{void}\ mean(\textcolor{keywordtype}{double}*\ \_\_restrict\ tensor,\ \textcolor{keywordtype}{double}*\ \_\_restrict\ result,\ \textcolor{keywordtype}{int}\ nValues)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00087}00087\ \ \ \_\_m256d\ mean\ =\ \_mm256\_setzero\_pd();}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00088}00088\ \ \ \textcolor{keywordtype}{int}\ i\{0\};}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00089}00089\ \ \ \textcolor{keywordflow}{for}\ (;\ i\ +\ 3\ <\ nValues;\ i\ +=\ 4)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00090}00090\ \ \ \ \ mean\ =\ \_mm256\_add\_pd(mean,\ \_mm256\_load\_pd(tensor\ +\ i));}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00091}00091\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00093}00093\ \ \ \_\_m128d\ lower\ =\ \_mm256\_castpd256\_pd128(mean);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00094}00094\ \ \ \_\_m128d\ higher\ =\ \_mm256\_extractf128\_pd(mean,\ 1);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00096}00096\ \ \ \_\_m128d\ sum\ =\ \_mm\_add\_pd(lower,\ higher);}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00097}00097\ \ \ *result\ =\ \_mm\_cvtsd\_f64(\_mm\_hadd\_pd(sum,\ sum));}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00099}00099\ \ \ \textcolor{keywordflow}{for}\ (;\ i\ <\ nValues;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00100}00100\ \ \ \ \ *result\ +=\ tensor[i];}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00101}00101\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00103}00103\ \ \ *result\ /=\ nValues;}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00104}00104\ \}}
+\DoxyCodeLine{\Hypertarget{tensorElementwise_8cpp_source_l00105}00105\ \}\ \ \textcolor{comment}{//\ namespace\ mattTorch::tensor::kernels::cpu}}
+
+\end{DoxyCode}

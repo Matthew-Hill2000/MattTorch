@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classmattTorch_1_1function_1_1GradAdd" kind="class" language="C++" prot="public">
+    <compoundname>mattTorch::function::GradAdd</compoundname>
+    <basecompoundref refid="classmattTorch_1_1GradFunction" prot="public" virt="non-virtual">mattTorch::GradFunction</basecompoundref>
+    <includes refid="gradAdd_8h" local="no">gradAdd.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmattTorch_1_1function_1_1GradAdd_1a61e45df062891c76ff5b7954b8ac64d9" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &gt;</type>
+        <definition>std::vector&lt;TensorView&gt; mattTorch::function::GradAdd::savedTensors</definition>
+        <argsstring></argsstring>
+        <name>savedTensors</name>
+        <qualifiedname>mattTorch::function::GradAdd::savedTensors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The input tensors from the forward pass, saved for potential use in higher-order derivative computation </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/addition/gradAdd.h" line="46" column="15" bodyfile="include/mattTorch/function/addition/gradAdd.h" bodystart="46" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1function_1_1GradAdd_1a5b609f2415e66c6b4e9488dc724042f3" compoundref="gradAdd_8cpp" startline="7" endline="9">GradAdd</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmattTorch_1_1function_1_1GradAdd_1a8e63ee81d72683d7abb59997d17724da" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;GradFunction&gt; &gt; mattTorch::function::GradAdd::nextFunctions</definition>
+        <argsstring></argsstring>
+        <name>nextFunctions</name>
+        <qualifiedname>mattTorch::function::GradAdd::nextFunctions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pointers to the <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> objects of the parent tensors in the computational graph </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/addition/gradAdd.h" line="50" column="15" bodyfile="include/mattTorch/function/addition/gradAdd.h" bodystart="50" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1function_1_1GradAdd_1a76c8bf1698dddd5eb815bb77a612f674" compoundref="gradAdd_8cpp" startline="11" endline="20">backward</referencedby>
+        <referencedby refid="classmattTorch_1_1function_1_1GradAdd_1a5b609f2415e66c6b4e9488dc724042f3" compoundref="gradAdd_8cpp" startline="7" endline="9">GradAdd</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmattTorch_1_1function_1_1GradAdd_1a5b609f2415e66c6b4e9488dc724042f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mattTorch::function::GradAdd::GradAdd</definition>
+        <argsstring>(std::vector&lt; TensorView &gt; savedTensors, std::vector&lt; std::shared_ptr&lt; GradFunction &gt; &gt; nextFunctions)</argsstring>
+        <name>GradAdd</name>
+        <qualifiedname>mattTorch::function::GradAdd::GradAdd</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &gt;</type>
+          <declname>savedTensors</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> &gt; &gt;</type>
+          <declname>nextFunctions</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="classmattTorch_1_1function_1_1GradAdd" kindref="compound">GradAdd</ref> gradient function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a <ref refid="classmattTorch_1_1function_1_1GradAdd" kindref="compound">GradAdd</ref> object that stores the input tensors from the forward pass and pointers to the parent <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> objects for gradient propagation during backpropagation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classmattTorch_1_1function_1_1GradAdd_1a61e45df062891c76ff5b7954b8ac64d9" kindref="member">savedTensors</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector containing the two input tensors that were added during the forward pass </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="classmattTorch_1_1function_1_1GradAdd_1a8e63ee81d72683d7abb59997d17724da" kindref="member">nextFunctions</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector containing shared pointers to the <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> objects of the parent tensors for gradient propagation </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/addition/gradAdd.h" line="65" column="3" bodyfile="src/function/addition/gradAdd.cpp" bodystart="7" bodyend="9"/>
+        <references refid="classmattTorch_1_1function_1_1GradAdd_1a8e63ee81d72683d7abb59997d17724da" compoundref="gradAdd_8h" startline="50">nextFunctions</references>
+        <references refid="classmattTorch_1_1function_1_1GradAdd_1a61e45df062891c76ff5b7954b8ac64d9" compoundref="gradAdd_8h" startline="46">savedTensors</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1function_1_1GradAdd_1a76c8bf1698dddd5eb815bb77a612f674" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mattTorch::function::GradAdd::backward</definition>
+        <argsstring>(TensorView &amp;inputGradient, bool higherDerivative) override</argsstring>
+        <name>backward</name>
+        <qualifiedname>mattTorch::function::GradAdd::backward</qualifiedname>
+        <reimplements refid="classmattTorch_1_1GradFunction_1abc6c3ffb22d631af9dca31dcd5c09d3d">backward</reimplements>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &amp;</type>
+          <declname>inputGradient</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>higherDerivative</declname>
+        </param>
+        <briefdescription>
+<para>Computes and propagates gradients for the addition operation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Implements the backward pass for elementwise addition by passing the incoming gradient unchanged to both parent tensors. Since the derivative of addition with respect to each input is unity, the gradient is propagated without modification. The method calls <ref refid="classmattTorch_1_1function_1_1GradAdd_1a76c8bf1698dddd5eb815bb77a612f674" kindref="member">backward()</ref> on each parent&apos;s <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> to continue the backpropagation process.</para>
+<para>When higherDerivative is false, gradient tracking is disabled on the saved tensors to prevent construction of a new computational graph during backpropagation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>inputGradient</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The gradient of the loss with respect to the output of the addition operation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>higherDerivative</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, enables construction of a computational graph during the backward pass for higher-order derivatives; if false, disables gradient tracking on saved tensors </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/addition/gradAdd.h" line="87" column="8" bodyfile="src/function/addition/gradAdd.cpp" bodystart="11" bodyend="20"/>
+        <references refid="classmattTorch_1_1function_1_1GradAdd_1a8e63ee81d72683d7abb59997d17724da" compoundref="gradAdd_8h" startline="50">nextFunctions</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Gradient function for elementwise tensor addition. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classmattTorch_1_1function_1_1GradAdd" kindref="compound">GradAdd</ref> class represents the addition operation in the computational graph, computing gradients for the elementwise sum of two tensors. For the operation <formula id="6">$C = A + B$</formula>, the gradient computation follows from the identity:    <formula id="7">\[    \frac{\partial C}{\partial A} = 1, \quad \frac{\partial C}{\partial B}
+= 1
+\]</formula></para>
+<para>During backpropagation, the incoming gradient  <formula id="8">$\frac{\partial L}{\partial
+C}$</formula> is passed unchanged to both parent tensors according to the chain rule:    <formula id="9">\[    \frac{\partial L}{\partial A} = \frac{\partial L}{\partial C} \cdot
+\frac{\partial C}{\partial A} = \frac{\partial L}{\partial C}
+\]</formula>    <formula id="10">\[    \frac{\partial L}{\partial B} = \frac{\partial L}{\partial C} \cdot
+\frac{\partial C}{\partial B} = \frac{\partial L}{\partial C}
+\]</formula></para>
+<para>This <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> saves copies of both input tensors, though they are not strictly required for the gradient computation of addition. The saved tensors may be used for higher-order derivative computations or for consistency with the gradient function interface.</para>
+<para><simplesect kind="see"><para><ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> for the base class from which this class derives. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classmattTorch_1_1function_1_1GradAddScalar" kindref="compound">GradAddScalar</ref> for the gradient function for tensor-scalar addition. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>mattTorch::GradFunction</label>
+        <link refid="classmattTorch_1_1GradFunction"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::function::GradAdd</label>
+        <link refid="classmattTorch_1_1function_1_1GradAdd"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>mattTorch::GradFunction</label>
+        <link refid="classmattTorch_1_1GradFunction"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::function::GradAdd</label>
+        <link refid="classmattTorch_1_1function_1_1GradAdd"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/mattTorch/function/addition/gradAdd.h" line="42" column="1" bodyfile="include/mattTorch/function/addition/gradAdd.h" bodystart="42" bodyend="88"/>
+    <listofallmembers>
+      <member refid="classmattTorch_1_1function_1_1GradAdd_1a76c8bf1698dddd5eb815bb77a612f674" prot="public" virt="virtual"><scope>mattTorch::function::GradAdd</scope><name>backward</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradAdd_1a5b609f2415e66c6b4e9488dc724042f3" prot="public" virt="non-virtual"><scope>mattTorch::function::GradAdd</scope><name>GradAdd</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradAdd_1a8e63ee81d72683d7abb59997d17724da" prot="private" virt="non-virtual"><scope>mattTorch::function::GradAdd</scope><name>nextFunctions</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradAdd_1a61e45df062891c76ff5b7954b8ac64d9" prot="private" virt="non-virtual"><scope>mattTorch::function::GradAdd</scope><name>savedTensors</name></member>
+      <member refid="classmattTorch_1_1GradFunction_1ae57c9bf3f619ae1206416877caa15090" prot="public" virt="virtual"><scope>mattTorch::function::GradAdd</scope><name>~GradFunction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

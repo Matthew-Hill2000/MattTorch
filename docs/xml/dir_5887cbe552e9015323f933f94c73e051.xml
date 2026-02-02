@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_5887cbe552e9015323f933f94c73e051" kind="dir">
+    <compoundname>src/function/addition</compoundname>
+    <innerfile refid="gradAdd_8cpp">gradAdd.cpp</innerfile>
+    <innerfile refid="gradAddScalar_8cpp">gradAddScalar.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/function/addition/"/>
+  </compounddef>
+</doxygen>

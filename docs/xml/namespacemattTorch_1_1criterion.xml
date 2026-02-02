@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="namespacemattTorch_1_1criterion" kind="namespace" language="C++">
+    <compoundname>mattTorch::criterion</compoundname>
+    <innerclass refid="classmattTorch_1_1criterion_1_1CrossEntropyLoss" prot="public">mattTorch::criterion::CrossEntropyLoss</innerclass>
+    <innerclass refid="classmattTorch_1_1criterion_1_1MSELoss" prot="public">mattTorch::criterion::MSELoss</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/criterion/crossEntropyLoss/crossEntropyLoss.cpp" line="4" column="1"/>
+  </compounddef>
+</doxygen>

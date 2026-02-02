@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_45e9a7900d98d56e375e9549bd5959c4" kind="dir">
+    <compoundname>include/mattTorch/tensor/kernels</compoundname>
+    <innerdir refid="dir_12a5b4eaa90c04bb50c7a9d8eb7c3ac9">include/mattTorch/tensor/kernels/cpu</innerdir>
+    <innerfile refid="kernels_8h">kernels.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/mattTorch/tensor/kernels/"/>
+  </compounddef>
+</doxygen>

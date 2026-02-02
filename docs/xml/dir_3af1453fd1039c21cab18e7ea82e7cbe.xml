@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_3af1453fd1039c21cab18e7ea82e7cbe" kind="dir">
+    <compoundname>include/mattTorch</compoundname>
+    <innerdir refid="dir_bf493a54074ed621dae0ffb9b8c6c487">include/mattTorch/criterion</innerdir>
+    <innerdir refid="dir_e94cd05580a9b3fc47fda258f1b7a096">include/mattTorch/dataset</innerdir>
+    <innerdir refid="dir_8175d424fa4dcf5b0fc619f4095a980e">include/mattTorch/function</innerdir>
+    <innerdir refid="dir_a824274abcb360783144f004657f20cc">include/mattTorch/layer</innerdir>
+    <innerdir refid="dir_22eabb453f82ee8b3f171c2cf0a67658">include/mattTorch/network</innerdir>
+    <innerdir refid="dir_c5eb971221830fe1e337f978df53a877">include/mattTorch/optimiser</innerdir>
+    <innerdir refid="dir_6aed610996411b55110b5037e36bdddd">include/mattTorch/tensor</innerdir>
+    <innerfile refid="mattTorch_8h">mattTorch.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/mattTorch/"/>
+  </compounddef>
+</doxygen>

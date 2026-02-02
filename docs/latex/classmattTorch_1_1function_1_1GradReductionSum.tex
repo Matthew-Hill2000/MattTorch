@@ -1,0 +1,213 @@
+\doxysection{matt\+Torch::\+function::\+Grad\+Reduction\+Sum Class Reference}
+\hypertarget{classmattTorch_1_1function_1_1GradReductionSum}{}\label{classmattTorch_1_1function_1_1GradReductionSum}\index{mattTorch::function::GradReductionSum@{mattTorch::function::GradReductionSum}}
+
+
+Gradient function for sum reduction along a specified dimension.  
+
+
+
+
+{\ttfamily \+\#include $<$grad\+Reduction\+Sum.\+h$>$}
+
+
+
+Inheritance diagram for matt\+Torch::\+function::\+Grad\+Reduction\+Sum:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classmattTorch_1_1function_1_1GradReductionSum__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for matt\+Torch::\+function::\+Grad\+Reduction\+Sum:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classmattTorch_1_1function_1_1GradReductionSum__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_aabf3f0c6bd2fc2e2bf71f98526ac41c9}{Grad\+Reduction\+Sum}} (std::\+vector$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_af078dfab7aedd4bc8e593777f5cf68f6}{saved\+Tensors}}, int \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a68a832d4eecca391a101b1e6bbc9b18b}{reduce\+Dim}}, std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}} $>$ $>$ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a6f0ef445ff0f374efbd3cd1f4e20668b}{next\+Functions}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classmattTorch_1_1function_1_1GradReductionSum}{Grad\+Reduction\+Sum} gradient function. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_ad53e1dd809a31c06fa0925d6a35ad715}{backward}} (\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&input\+Gradient, bool higher\+Derivative) override
+\begin{DoxyCompactList}\small\item\em Computes and propagates gradients for the sum reduction operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{matt\+Torch::\+\+Grad\+Function}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Grad\+Function} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for safe polymorphic destruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_af078dfab7aedd4bc8e593777f5cf68f6}{saved\+Tensors}}
+\item 
+int \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a68a832d4eecca391a101b1e6bbc9b18b}{reduce\+Dim}}
+\item 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}} $>$ $>$ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a6f0ef445ff0f374efbd3cd1f4e20668b}{next\+Functions}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gradient function for sum reduction along a specified dimension. 
+
+The \doxylink{classmattTorch_1_1function_1_1GradReductionSum}{Grad\+Reduction\+Sum} class represents the sum reduction operation in the computational graph, computing gradients for summing a tensor along a specific dimension. For the operation $C = \sum_{i} A_i$ where the sum is taken along dimension $d$ of tensor $A$, the gradient computation follows from:\+   \[    \frac{\partial C_j}{\partial A_{j,i}} = 1 \quad \text{for all } i
+\]
+
+During backpropagation, the incoming gradient  $\frac{\partial
+L}{\partial C}$ (which has one fewer dimension than the input) must be broadcast along the reduced dimension to match the shape of the input tensor according to the chain rule:\+    \[    \frac{\partial L}{\partial A_{j,i}} = \frac{\partial L}{\partial C_j}
+\quad \text{for all } i
+\]
+
+The backward pass broadcasts the incoming gradient along the reduced dimension to restore the original tensor shape, effectively distributing the gradient to all elements that contributed to each sum. This operation is the inverse of the forward sum reduction.
+
+This \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} saves the input tensor from the forward pass to determine the shape for broadcasting the gradient, and stores the dimension along which the reduction was performed.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} for the base class from which this class derives. 
+
+\doxylink{classmattTorch_1_1function_1_1GradMean}{Grad\+Mean} for the gradient function for mean reduction. 
+
+\doxylink{classmattTorch_1_1function_1_1GradBroadcast}{Grad\+Broadcast} for the gradient function for broadcasting operations. 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{gradReductionSum_8h_source_l00041}{41}} of file \doxymbox{\hyperlink{gradReductionSum_8h_source}{grad\+Reduction\+Sum.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classmattTorch_1_1function_1_1GradReductionSum_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmattTorch_1_1function_1_1GradReductionSum_aabf3f0c6bd2fc2e2bf71f98526ac41c9}\index{mattTorch::function::GradReductionSum@{mattTorch::function::GradReductionSum}!GradReductionSum@{GradReductionSum}}
+\index{GradReductionSum@{GradReductionSum}!mattTorch::function::GradReductionSum@{mattTorch::function::GradReductionSum}}
+\doxysubsubsection{\texorpdfstring{GradReductionSum()}{GradReductionSum()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradReductionSum_aabf3f0c6bd2fc2e2bf71f98526ac41c9} 
+matt\+Torch::\+function::\+\+Grad\+Reduction\+Sum::\+\+Grad\+Reduction\+Sum (\begin{DoxyParamCaption}\item[{std::\+vector$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$}]{saved\+Tensors}{, }\item[{int}]{reduce\+Dim}{, }\item[{std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}} $>$ $>$}]{next\+Functions}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{classmattTorch_1_1function_1_1GradReductionSum}{Grad\+Reduction\+Sum} gradient function. 
+
+Creates a \doxylink{classmattTorch_1_1function_1_1GradReductionSum}{Grad\+Reduction\+Sum} object that stores the input tensor from the forward pass, the dimension along which reduction was performed, and a pointer to the parent tensor\textquotesingle{}s \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} for gradient propagation during backpropagation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classmattTorch_1_1function_1_1GradReductionSum_af078dfab7aedd4bc8e593777f5cf68f6}{saved\+Tensors}} & A vector containing the input tensor from the forward pass, required for determining the shape for gradient broadcasting \\
+\hline
+{\em \doxylink{classmattTorch_1_1function_1_1GradReductionSum_a68a832d4eecca391a101b1e6bbc9b18b}{reduce\+Dim}} & The dimension along which the sum reduction was performed in the forward pass \\
+\hline
+{\em \doxylink{classmattTorch_1_1function_1_1GradReductionSum_a6f0ef445ff0f374efbd3cd1f4e20668b}{next\+Functions}} & A vector containing a shared pointer to the \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} object of the parent tensor for gradient propagation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{gradReductionSum_8cpp_source_l00007}{7}} of file \doxymbox{\hyperlink{gradReductionSum_8cpp_source}{grad\+Reduction\+Sum.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{gradReductionSum_8h_source_l00053}{next\+Functions}}, \doxymbox{\hyperlink{gradReductionSum_8h_source_l00049}{reduce\+Dim}}, and \doxymbox{\hyperlink{gradReductionSum_8h_source_l00045}{saved\+Tensors}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classmattTorch_1_1function_1_1GradReductionSum_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmattTorch_1_1function_1_1GradReductionSum_ad53e1dd809a31c06fa0925d6a35ad715}\index{mattTorch::function::GradReductionSum@{mattTorch::function::GradReductionSum}!backward@{backward}}
+\index{backward@{backward}!mattTorch::function::GradReductionSum@{mattTorch::function::GradReductionSum}}
+\doxysubsubsection{\texorpdfstring{backward()}{backward()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradReductionSum_ad53e1dd809a31c06fa0925d6a35ad715} 
+void matt\+Torch::\+function::\+\+Grad\+Reduction\+Sum::\+backward (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&}]{input\+Gradient}{, }\item[{bool}]{higher\+Derivative}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Computes and propagates gradients for the sum reduction operation. 
+
+Implements the backward pass for sum reduction by broadcasting the incoming gradient along the reduced dimension to match the shape of the input tensor. This distributes the gradient to all elements that contributed to each sum, reflecting that each element contributes equally (with a derivative of 1) to the sum. The method calls \doxylink{classmattTorch_1_1function_1_1GradReductionSum_ad53e1dd809a31c06fa0925d6a35ad715}{backward()} on the parent tensor\textquotesingle{}s \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} to continue the backpropagation process.
+
+When higher\+Derivative is false, gradient tracking is disabled on the saved tensors to prevent construction of a new computational graph during backpropagation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Gradient} & The gradient of the loss with respect to the output of the sum reduction operation \\
+\hline
+{\em higher\+Derivative} & If true, enables construction of a computational graph during the backward pass for higher-\/order derivatives; if false, disables gradient tracking on saved tensors \\
+\hline
+\end{DoxyParams}
+
+
+Implements \doxymbox{\hyperlink{classmattTorch_1_1GradFunction_abc6c3ffb22d631af9dca31dcd5c09d3d}{matt\+Torch::\+\+Grad\+Function}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{gradReductionSum_8cpp_source_l00015}{15}} of file \doxymbox{\hyperlink{gradReductionSum_8cpp_source}{grad\+Reduction\+Sum.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{tensorViewOverloads_8cpp_source_l00436}{matt\+Torch::\+\+Tensor\+View::\+broadcast()}}, \doxymbox{\hyperlink{gradReductionSum_8h_source_l00053}{next\+Functions}}, \doxymbox{\hyperlink{gradReductionSum_8h_source_l00049}{reduce\+Dim}}, \doxymbox{\hyperlink{gradReductionSum_8h_source_l00045}{saved\+Tensors}}, and \doxymbox{\hyperlink{tensorViewAccesssors_8cpp_source_l00142}{matt\+Torch::\+\+Tensor\+View::\+set\+Requires\+Grad()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmattTorch_1_1function_1_1GradReductionSum_ad53e1dd809a31c06fa0925d6a35ad715_cgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{classmattTorch_1_1function_1_1GradReductionSum_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmattTorch_1_1function_1_1GradReductionSum_a6f0ef445ff0f374efbd3cd1f4e20668b}\index{mattTorch::function::GradReductionSum@{mattTorch::function::GradReductionSum}!nextFunctions@{nextFunctions}}
+\index{nextFunctions@{nextFunctions}!mattTorch::function::GradReductionSum@{mattTorch::function::GradReductionSum}}
+\doxysubsubsection{\texorpdfstring{nextFunctions}{nextFunctions}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradReductionSum_a6f0ef445ff0f374efbd3cd1f4e20668b} 
+std::\+vector$<$std::\+shared\+\_\+ptr$<$\doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}}$>$ $>$ matt\+Torch::\+function::\+\+Grad\+Reduction\+Sum::\+next\+Functions\hspace{0.3cm}{\ttfamily [private]}}
+
+Pointer to the \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} object of the parent tensor in the computational graph 
+
+Definition at line \doxymbox{\hyperlink{gradReductionSum_8h_source_l00053}{53}} of file \doxymbox{\hyperlink{gradReductionSum_8h_source}{grad\+Reduction\+Sum.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{gradReductionSum_8cpp_source_l00015}{backward()}}, and \doxymbox{\hyperlink{gradReductionSum_8cpp_source_l00007}{Grad\+Reduction\+Sum()}}.
+
+\Hypertarget{classmattTorch_1_1function_1_1GradReductionSum_a68a832d4eecca391a101b1e6bbc9b18b}\index{mattTorch::function::GradReductionSum@{mattTorch::function::GradReductionSum}!reduceDim@{reduceDim}}
+\index{reduceDim@{reduceDim}!mattTorch::function::GradReductionSum@{mattTorch::function::GradReductionSum}}
+\doxysubsubsection{\texorpdfstring{reduceDim}{reduceDim}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradReductionSum_a68a832d4eecca391a101b1e6bbc9b18b} 
+int matt\+Torch::\+function::\+\+Grad\+Reduction\+Sum::\+reduce\+Dim\hspace{0.3cm}{\ttfamily [private]}}
+
+The dimension along which the sum reduction was performed in the forward pass 
+
+Definition at line \doxymbox{\hyperlink{gradReductionSum_8h_source_l00049}{49}} of file \doxymbox{\hyperlink{gradReductionSum_8h_source}{grad\+Reduction\+Sum.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{gradReductionSum_8cpp_source_l00015}{backward()}}, and \doxymbox{\hyperlink{gradReductionSum_8cpp_source_l00007}{Grad\+Reduction\+Sum()}}.
+
+\Hypertarget{classmattTorch_1_1function_1_1GradReductionSum_af078dfab7aedd4bc8e593777f5cf68f6}\index{mattTorch::function::GradReductionSum@{mattTorch::function::GradReductionSum}!savedTensors@{savedTensors}}
+\index{savedTensors@{savedTensors}!mattTorch::function::GradReductionSum@{mattTorch::function::GradReductionSum}}
+\doxysubsubsection{\texorpdfstring{savedTensors}{savedTensors}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradReductionSum_af078dfab7aedd4bc8e593777f5cf68f6} 
+std::\+vector$<$\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}}$>$ matt\+Torch::\+function::\+\+Grad\+Reduction\+Sum::\+saved\+Tensors\hspace{0.3cm}{\ttfamily [private]}}
+
+The input tensor from the forward pass, saved to determine the shape for gradient broadcasting 
+
+Definition at line \doxymbox{\hyperlink{gradReductionSum_8h_source_l00045}{45}} of file \doxymbox{\hyperlink{gradReductionSum_8h_source}{grad\+Reduction\+Sum.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{gradReductionSum_8cpp_source_l00015}{backward()}}, and \doxymbox{\hyperlink{gradReductionSum_8cpp_source_l00007}{Grad\+Reduction\+Sum()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+matt\+Torch/\+function/\+reduction\+Sum/\+grad\+Reduction\+Sum.\+h\item 
+src/\+function/\+reduction\+Sum/\+grad\+Reduction\+Sum.\+cpp\end{DoxyCompactItemize}

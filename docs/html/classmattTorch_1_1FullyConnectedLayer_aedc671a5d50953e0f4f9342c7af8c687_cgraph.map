@@ -1,0 +1,11 @@
+<map id="mattTorch::FullyConnectedLayer::forward" name="mattTorch::FullyConnectedLayer::forward">
+<area shape="rect" id="Node000001" title="Performs the forward pass of this fully connected layer." alt="" coords="5,39,184,81"/>
+<area shape="rect" id="Node000002" href="$classmattTorch_1_1TensorView.html#a403feeac17deb34c5222df0ea61a14e1" title="Returns the dimensions vector specifying the size of each dimension." alt="" coords="232,5,387,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="183,44,219,40,214,42,185,49"/>
+<area shape="rect" id="Node000003" href="$classmattTorch_1_1TensorView.html#a81e07d2a05214bf19b6058f64b03dbcd" title="Matrix multiplication of two Tensors." alt="" coords="232,72,387,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,71,219,78,214,79,184,77"/>
+<area shape="rect" id="Node000004" href="$classmattTorch_1_1TensorView.html#a86a90cc1d974b9595e0f6c77f6a6263b" title="Returns a raw pointer to the underlying contiguous data storage." alt="" coords="435,39,590,81"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="387,78,422,75,417,76,388,83"/>
+<area shape="rect" id="Node000005" href="$classmattTorch_1_1TensorView.html#ae335ce0265d9a831f17cba989017d6ab" title="Default constructor creating an empty TensorView." alt="" coords="435,105,590,148"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="387,103,422,111,417,111,387,109"/>
+</map>

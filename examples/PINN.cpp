@@ -37,9 +37,7 @@ int main() {
   for (int epoch = 0; epoch < NUMEPOCHS; epoch++) {
     mattTorch::TensorView zeroBoundaryOut = net.forward(zeroBoundary);
 
-    mattTorch::TensorView ones1(zeroBoundaryOut.getDimensions());
-    ones1 = 1.0;
-    zeroBoundaryOut.backward(ones1);
+    zeroBoundaryOut.backward();
     mattTorch::TensorView zeroBoundaryOutGrad = zeroBoundary.detachGradient();
 
     mattTorch::TensorView zeroLossOne =
@@ -49,9 +47,7 @@ int main() {
 
     mattTorch::TensorView infinityBoundaryOut = net.forward(infinityBoundary);
 
-    mattTorch::TensorView ones2(infinityBoundaryOut.getDimensions());
-    ones2 = 1.0;
-    infinityBoundaryOut.backward(ones2);
+    infinityBoundaryOut.backward();
     mattTorch::TensorView infinityBoundaryOutGrad =
         infinityBoundary.detachGradient();
 
@@ -60,19 +56,13 @@ int main() {
 
     mattTorch::TensorView domainOut = net.forward(domain);
 
-    mattTorch::TensorView ones3(domainOut.getDimensions());
-    ones3 = 1.0;
-    domainOut.backward(ones3, true);
+    domainOut.backward(true);
     mattTorch::TensorView domainOutGrad1 = domain.detachGradient();
 
-    mattTorch::TensorView ones4(domainOut.getDimensions());
-    ones4 = 1.0;
-    domainOutGrad1.backward(ones4, true);
+    domainOutGrad1.backward(true);
     mattTorch::TensorView domainOutGrad2 = domain.detachGradient();
 
-    mattTorch::TensorView ones5(domainOut.getDimensions());
-    ones5 = 1.0;
-    domainOutGrad2.backward(ones5, true);
+    domainOutGrad2.backward(true);
     mattTorch::TensorView domainOutGrad3 = domain.detachGradient();
 
     mattTorch::TensorView domainLoss =
@@ -83,10 +73,8 @@ int main() {
     mattTorch::TensorView totalLoss =
         domainLoss + infinityLoss + zeroLossOne + zeroLossTwo;
 
-    mattTorch::TensorView one({1});
-    one = 1.0;
     sgd.zeroGrad();
-    totalLoss.backward(one);
+    totalLoss.backward();
     sgd.updateParameters();
 
     if (epoch % 1 == 0) {

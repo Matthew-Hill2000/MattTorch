@@ -1,0 +1,9 @@
+<map id="mattTorch::TensorView::reductionSum" name="mattTorch::TensorView::reductionSum">
+<area shape="rect" id="Node000001" title="Reduction sum of a Tensor along a specified dimension." alt="" coords="279,72,434,115"/>
+<area shape="rect" id="Node000002" href="$classmattTorch_1_1function_1_1GradBroadcast.html#a82be11553bb34eb93c86ba4a36ca32ff" title="Computes and propagates gradients for the broadcasting operation." alt="" coords="28,5,208,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="262,68,197,51,197,46,267,67"/>
+<area shape="rect" id="Node000003" href="$classmattTorch_1_1criterion_1_1CrossEntropyLoss.html#a3e477b089170fe65dec1c7f16aa4be6f" title="Computes the Cross&#45;Entropy loss between the input predictions and the target values." alt="" coords="5,72,231,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="261,94,231,96,231,91,266,93"/>
+<area shape="rect" id="Node000004" href="$classmattTorch_1_1criterion_1_1MSELoss.html#a873e441bdd4ea3d6a2c5eb68d313fa4d" title="Computes the Mean Squared Error loss between the input predictions and the target values." alt="" coords="31,139,205,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="267,118,198,141,196,135,262,120"/>
+</map>

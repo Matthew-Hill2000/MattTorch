@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_784d68ff681e36d73a94b2bdcafab465" kind="dir">
+    <compoundname>src/criterion</compoundname>
+    <innerdir refid="dir_60c5695802d407ec801fa0730c3a41e5">src/criterion/crossEntropyLoss</innerdir>
+    <innerdir refid="dir_5bc86a033d4dada057013163a2bee61f">src/criterion/mseLoss</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/criterion/"/>
+  </compounddef>
+</doxygen>

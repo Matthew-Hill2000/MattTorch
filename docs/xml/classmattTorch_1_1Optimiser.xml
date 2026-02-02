@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classmattTorch_1_1Optimiser" kind="class" language="C++" prot="public">
+    <compoundname>mattTorch::Optimiser</compoundname>
+    <derivedcompoundref refid="classmattTorch_1_1SGD" prot="public" virt="non-virtual">mattTorch::SGD</derivedcompoundref>
+    <includes refid="optimiser_8h" local="no">optimiser.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmattTorch_1_1Optimiser_1a3811144a0447412f68e9362153c0d48c" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;TensorView&gt; &gt; mattTorch::Optimiser::parameters</definition>
+        <argsstring></argsstring>
+        <name>parameters</name>
+        <qualifiedname>mattTorch::Optimiser::parameters</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Shared pointers to the <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> objects representing the learnable parameters of the network to be optimised </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/optimiser/optimiser.h" line="27" column="15" bodyfile="include/mattTorch/optimiser/optimiser.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmattTorch_1_1Optimiser_1aba32c34148fa5b9648be7f12697ce394" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double mattTorch::Optimiser::learningRate</definition>
+        <argsstring></argsstring>
+        <name>learningRate</name>
+        <qualifiedname>mattTorch::Optimiser::learningRate</qualifiedname>
+        <briefdescription>
+<para>The learning rate controlling the step size of parameter updates. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/optimiser/optimiser.h" line="30" column="10" bodyfile="include/mattTorch/optimiser/optimiser.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmattTorch_1_1Optimiser_1a8809889267d375f4e42bc82eabb438c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::Optimiser::updateParameters</definition>
+        <argsstring>()</argsstring>
+        <name>updateParameters</name>
+        <qualifiedname>mattTorch::Optimiser::updateParameters</qualifiedname>
+        <briefdescription>
+<para>Updates all parameters using their computed gradients. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Iterates over all parameter tensors and applies the optimisation step, adjusting each parameter in the direction indicated by its gradient scaled by the learning rate. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/optimiser/optimiser.h" line="40" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1Optimiser_1afe51bf4576febc0c1df2c3826697c66e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::Optimiser::zeroGrad</definition>
+        <argsstring>()</argsstring>
+        <name>zeroGrad</name>
+        <qualifiedname>mattTorch::Optimiser::zeroGrad</qualifiedname>
+        <briefdescription>
+<para>Resets the gradients of all parameters to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Iterates over all parameter tensors and sets their gradients to zero. This should be called before each training iteration to prevent gradient accumulation across batches. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/optimiser/optimiser.h" line="49" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1Optimiser_1a35b6b96dc670cbbb876c9af9f88df175" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual mattTorch::Optimiser::~Optimiser</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Optimiser</name>
+        <qualifiedname>mattTorch::Optimiser::~Optimiser</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor for safe polymorphic destruction. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/optimiser/optimiser.h" line="54" column="11"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Base class for all parameter optimisation algorithms. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classmattTorch_1_1Optimiser" kindref="compound">Optimiser</ref> class provides the interface and common functionality for optimising the parameters of a neural network during training. It holds shared pointers to the <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> objects representing the learnable parameters of a network, along with a learning rate that controls the step size of parameter updates. Specific optimisation algorithms such as <ref refid="classmattTorch_1_1SGD" kindref="compound">SGD</ref> or Adam are intended to derive from this class and override the parameter update logic as needed.</para>
+<para><simplesect kind="see"><para><ref refid="classmattTorch_1_1Network" kindref="compound">Network</ref> for the class whose <ref refid="classmattTorch_1_1Optimiser_1a3811144a0447412f68e9362153c0d48c" kindref="member">parameters</ref> are optimised by this class. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> for the tensor class representing learnable <ref refid="classmattTorch_1_1Optimiser_1a3811144a0447412f68e9362153c0d48c" kindref="member">parameters</ref>. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>mattTorch::Optimiser</label>
+        <link refid="classmattTorch_1_1Optimiser"/>
+      </node>
+      <node id="2">
+        <label>mattTorch::SGD</label>
+        <link refid="classmattTorch_1_1SGD"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="include/mattTorch/optimiser/optimiser.h" line="23" column="1" bodyfile="include/mattTorch/optimiser/optimiser.h" bodystart="23" bodyend="55"/>
+    <listofallmembers>
+      <member refid="classmattTorch_1_1Optimiser_1aba32c34148fa5b9648be7f12697ce394" prot="private" virt="non-virtual"><scope>mattTorch::Optimiser</scope><name>learningRate</name></member>
+      <member refid="classmattTorch_1_1Optimiser_1a3811144a0447412f68e9362153c0d48c" prot="private" virt="non-virtual"><scope>mattTorch::Optimiser</scope><name>parameters</name></member>
+      <member refid="classmattTorch_1_1Optimiser_1a8809889267d375f4e42bc82eabb438c6" prot="public" virt="non-virtual"><scope>mattTorch::Optimiser</scope><name>updateParameters</name></member>
+      <member refid="classmattTorch_1_1Optimiser_1afe51bf4576febc0c1df2c3826697c66e" prot="public" virt="non-virtual"><scope>mattTorch::Optimiser</scope><name>zeroGrad</name></member>
+      <member refid="classmattTorch_1_1Optimiser_1a35b6b96dc670cbbb876c9af9f88df175" prot="public" virt="virtual"><scope>mattTorch::Optimiser</scope><name>~Optimiser</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

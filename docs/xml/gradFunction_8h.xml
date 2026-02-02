@@ -1,0 +1,655 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="gradFunction_8h" kind="file" language="C++">
+    <compoundname>gradFunction.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="gradReLU_8h" local="no">include/mattTorch/function/ReLU/gradReLU.h</includedby>
+    <includedby refid="gradAccumulator_8h" local="no">include/mattTorch/function/accumulator/gradAccumulator.h</includedby>
+    <includedby refid="gradAdd_8h" local="no">include/mattTorch/function/addition/gradAdd.h</includedby>
+    <includedby refid="gradAddScalar_8h" local="no">include/mattTorch/function/addition/gradAddScalar.h</includedby>
+    <includedby refid="gradBroadcast_8h" local="no">include/mattTorch/function/broadcast/gradBroadcast.h</includedby>
+    <includedby refid="gradDivide_8h" local="no">include/mattTorch/function/division/gradDivide.h</includedby>
+    <includedby refid="gradDivideScalar_8h" local="no">include/mattTorch/function/division/gradDivideScalar.h</includedby>
+    <includedby refid="gradExponent_8h" local="no">include/mattTorch/function/exponent/gradExponent.h</includedby>
+    <includedby refid="gradExponential_8h" local="no">include/mattTorch/function/exponential/gradExponential.h</includedby>
+    <includedby refid="functionInclude_8h" local="no">include/mattTorch/function/functionInclude.h</includedby>
+    <includedby refid="gradLog_8h" local="no">include/mattTorch/function/log/gradLog.h</includedby>
+    <includedby refid="gradMean_8h" local="no">include/mattTorch/function/mean/gradMean.h</includedby>
+    <includedby refid="gradMultiply_8h" local="no">include/mattTorch/function/multiplication/gradMultiply.h</includedby>
+    <includedby refid="gradMultiplyMatrix_8h" local="no">include/mattTorch/function/multiplication/gradMultiplyMatrix.h</includedby>
+    <includedby refid="gradMultiplyScalar_8h" local="no">include/mattTorch/function/multiplication/gradMultiplyScalar.h</includedby>
+    <includedby refid="gradTransposeMatrix_8h" local="no">include/mattTorch/function/multiplication/gradTransposeMatrix.h</includedby>
+    <includedby refid="gradReductionSum_8h" local="no">include/mattTorch/function/reductionSum/gradReductionSum.h</includedby>
+    <includedby refid="gradSubtract_8h" local="no">include/mattTorch/function/subtraction/gradSubtract.h</includedby>
+    <includedby refid="gradSubtractScalar_8h" local="no">include/mattTorch/function/subtraction/gradSubtractScalar.h</includedby>
+    <includedby refid="gradTanh_8h" local="no">include/mattTorch/function/tanh/gradTanh.h</includedby>
+    <includedby refid="tensorView_8h" local="no">include/mattTorch/tensor/tensorView/tensorView.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/mattTorch/function/gradFunction.h</label>
+        <link refid="gradFunction_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>memory</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="18">
+        <label>include/mattTorch/criterion/criterion.h</label>
+        <link refid="criterion_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>include/mattTorch/criterion/criterionInclude.h</label>
+        <link refid="criterionInclude_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>include/mattTorch/criterion/crossEntropyLoss/crossEntropyLoss.h</label>
+        <link refid="crossEntropyLoss_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>include/mattTorch/criterion/mseLoss/mseLoss.h</label>
+        <link refid="mseLoss_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>include/mattTorch/dataset/dataset.h</label>
+        <link refid="dataset_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/mattTorch/function/ReLU/gradReLU.h</label>
+        <link refid="gradReLU_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/mattTorch/function/accumulator/gradAccumulator.h</label>
+        <link refid="gradAccumulator_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>include/mattTorch/function/addition/gradAdd.h</label>
+        <link refid="gradAdd_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>include/mattTorch/function/addition/gradAddScalar.h</label>
+        <link refid="gradAddScalar_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/mattTorch/function/broadcast/gradBroadcast.h</label>
+        <link refid="gradBroadcast_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>include/mattTorch/function/division/gradDivide.h</label>
+        <link refid="gradDivide_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>include/mattTorch/function/division/gradDivideScalar.h</label>
+        <link refid="gradDivideScalar_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>include/mattTorch/function/exponent/gradExponent.h</label>
+        <link refid="gradExponent_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>include/mattTorch/function/exponential/gradExponential.h</label>
+        <link refid="gradExponential_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/mattTorch/function/functionInclude.h</label>
+        <link refid="functionInclude_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/mattTorch/function/gradFunction.h</label>
+        <link refid="gradFunction_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>include/mattTorch/function/log/gradLog.h</label>
+        <link refid="gradLog_8h_source"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>include/mattTorch/function/mean/gradMean.h</label>
+        <link refid="gradMean_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>include/mattTorch/function/multiplication/gradMultiply.h</label>
+        <link refid="gradMultiply_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>include/mattTorch/function/multiplication/gradMultiplyMatrix.h</label>
+        <link refid="gradMultiplyMatrix_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>include/mattTorch/function/multiplication/gradMultiplyScalar.h</label>
+        <link refid="gradMultiplyScalar_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="68">
+        <label>include/mattTorch/function/multiplication/gradTransposeMatrix.h</label>
+        <link refid="gradTransposeMatrix_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>include/mattTorch/function/reductionSum/gradReductionSum.h</label>
+        <link refid="gradReductionSum_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>include/mattTorch/function/subtraction/gradSubtract.h</label>
+        <link refid="gradSubtract_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="70">
+        <label>include/mattTorch/function/subtraction/gradSubtractScalar.h</label>
+        <link refid="gradSubtractScalar_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>include/mattTorch/function/tanh/gradTanh.h</label>
+        <link refid="gradTanh_8h_source"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>include/mattTorch/layer/ReLU/ReLU.h</label>
+        <link refid="ReLU_8h_source"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>include/mattTorch/layer/fullyConnectedLayer/fullyConnectedLayer.h</label>
+        <link refid="fullyConnectedLayer_8h_source"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>include/mattTorch/layer/layer.h</label>
+        <link refid="layer_8h_source"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>include/mattTorch/layer/layerInclude.h</label>
+        <link refid="layerInclude_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>include/mattTorch/layer/softmax/softmax.h</label>
+        <link refid="softmax_8h_source"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>include/mattTorch/layer/tanh/tanh.h</label>
+        <link refid="tanh_8h_source"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/mattTorch/mattTorch.h</label>
+        <link refid="mattTorch_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>include/mattTorch/network/network.h</label>
+        <link refid="network_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>include/mattTorch/optimiser/optimiser.h</label>
+        <link refid="optimiser_8h_source"/>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>include/mattTorch/optimiser/optimiserInclude.h</label>
+        <link refid="optimiserInclude_8h_source"/>
+      </node>
+      <node id="50">
+        <label>include/mattTorch/optimiser/sgd/sgd.h</label>
+        <link refid="sgd_8h_source"/>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>include/mattTorch/tensor/tensorView/tensorView.h</label>
+        <link refid="tensorView_8h_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>src/criterion/crossEntropyLoss/crossEntropyLoss.cpp</label>
+        <link refid="crossEntropyLoss_8cpp_source"/>
+      </node>
+      <node id="23">
+        <label>src/criterion/mseLoss/mseLoss.cpp</label>
+        <link refid="mseLoss_8cpp_source"/>
+      </node>
+      <node id="25">
+        <label>src/dataset/dataset.cpp</label>
+        <link refid="dataset_8cpp_source"/>
+      </node>
+      <node id="8">
+        <label>src/function/ReLU/gradReLU.cpp</label>
+        <link refid="gradReLU_8cpp_source"/>
+      </node>
+      <node id="10">
+        <label>src/function/accumulator/gradAccumulator.cpp</label>
+        <link refid="gradAccumulator_8cpp_source"/>
+      </node>
+      <node id="15">
+        <label>src/function/addition/gradAdd.cpp</label>
+        <link refid="gradAdd_8cpp_source"/>
+      </node>
+      <node id="52">
+        <label>src/function/addition/gradAddScalar.cpp</label>
+        <link refid="gradAddScalar_8cpp_source"/>
+      </node>
+      <node id="6">
+        <label>src/function/broadcast/gradBroadcast.cpp</label>
+        <link refid="gradBroadcast_8cpp_source"/>
+      </node>
+      <node id="53">
+        <label>src/function/division/gradDivide.cpp</label>
+        <link refid="gradDivide_8cpp_source"/>
+      </node>
+      <node id="54">
+        <label>src/function/division/gradDivideScalar.cpp</label>
+        <link refid="gradDivideScalar_8cpp_source"/>
+      </node>
+      <node id="55">
+        <label>src/function/exponent/gradExponent.cpp</label>
+        <link refid="gradExponent_8cpp_source"/>
+      </node>
+      <node id="27">
+        <label>src/function/exponential/gradExponential.cpp</label>
+        <link refid="gradExponential_8cpp_source"/>
+      </node>
+      <node id="29">
+        <label>src/function/log/gradLog.cpp</label>
+        <link refid="gradLog_8cpp_source"/>
+      </node>
+      <node id="31">
+        <label>src/function/mean/gradMean.cpp</label>
+        <link refid="gradMean_8cpp_source"/>
+      </node>
+      <node id="56">
+        <label>src/function/multiplication/gradMultiply.cpp</label>
+        <link refid="gradMultiply_8cpp_source"/>
+      </node>
+      <node id="57">
+        <label>src/function/multiplication/gradMultiplyMatrix.cpp</label>
+        <link refid="gradMultiplyMatrix_8cpp_source"/>
+      </node>
+      <node id="58">
+        <label>src/function/multiplication/gradMultiplyScalar.cpp</label>
+        <link refid="gradMultiplyScalar_8cpp_source"/>
+      </node>
+      <node id="59">
+        <label>src/function/multiplication/gradTransposeMatrix.cpp</label>
+        <link refid="gradTransposeMatrix_8cpp_source"/>
+      </node>
+      <node id="60">
+        <label>src/function/reductionSum/gradReductionSum.cpp</label>
+        <link refid="gradReductionSum_8cpp_source"/>
+      </node>
+      <node id="33">
+        <label>src/function/subtraction/gradSubtract.cpp</label>
+        <link refid="gradSubtract_8cpp_source"/>
+      </node>
+      <node id="61">
+        <label>src/function/subtraction/gradSubtractScalar.cpp</label>
+        <link refid="gradSubtractScalar_8cpp_source"/>
+      </node>
+      <node id="35">
+        <label>src/function/tanh/gradTanh.cpp</label>
+        <link refid="gradTanh_8cpp_source"/>
+      </node>
+      <node id="39">
+        <label>src/layer/ReLU/ReLU.cpp</label>
+        <link refid="ReLU_8cpp_source"/>
+      </node>
+      <node id="42">
+        <label>src/layer/fullyConnectedLayer/fullyConnectedLayer.cpp</label>
+        <link refid="fullyConnectedLayer_8cpp_source"/>
+      </node>
+      <node id="44">
+        <label>src/layer/softmax/softmax.cpp</label>
+        <link refid="softmax_8cpp_source"/>
+      </node>
+      <node id="46">
+        <label>src/layer/tanh/tanh.cpp</label>
+        <link refid="tanh_8cpp_source"/>
+      </node>
+      <node id="40">
+        <label>src/network/network.cpp</label>
+        <link refid="network_8cpp_source"/>
+      </node>
+      <node id="51">
+        <label>src/optimiser/sgd/sgd.cpp</label>
+        <link refid="sgd_8cpp_source"/>
+      </node>
+      <node id="11">
+        <label>src/tensor/tensorView/tensorView.cpp</label>
+        <link refid="tensorView_8cpp_source"/>
+      </node>
+      <node id="12">
+        <label>src/tensor/tensorView/tensorViewAccesssors.cpp</label>
+        <link refid="tensorViewAccesssors_8cpp_source"/>
+      </node>
+      <node id="13">
+        <label>src/tensor/tensorView/tensorViewBackProp.cpp</label>
+        <link refid="tensorViewBackProp_8cpp_source"/>
+      </node>
+      <node id="7">
+        <label>src/tensor/tensorView/tensorViewOverloads.cpp</label>
+        <link refid="tensorViewOverloads_8cpp_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classmattTorch_1_1GradFunction" prot="public">mattTorch::GradFunction</innerclass>
+    <innernamespace refid="namespacemattTorch">mattTorch</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mattTorch<sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classmattTorch_1_1GradFunction" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="44" refid="classmattTorch_1_1GradFunction_1a5c4d2cf9af3c8deb752d7daf4905ad0b" refkind="member"><highlight class="normal"><sp/><sp/>std::vector&lt;std::shared_ptr&lt;GradFunction&gt;&gt;<sp/><ref refid="classmattTorch_1_1GradFunction_1a5c4d2cf9af3c8deb752d7daf4905ad0b" kindref="member">nextFunctions</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="72" refid="classmattTorch_1_1GradFunction_1abc6c3ffb22d631af9dca31dcd5c09d3d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1GradFunction_1abc6c3ffb22d631af9dca31dcd5c09d3d" kindref="member">backward</ref>(<ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref>&amp;<sp/>inputGradient,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>higherDerivative)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classmattTorch_1_1GradFunction_1ae57c9bf3f619ae1206416877caa15090" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1GradFunction_1ae57c9bf3f619ae1206416877caa15090" kindref="member">~GradFunction</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mattTorch</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/mattTorch/function/gradFunction.h"/>
+  </compounddef>
+</doxygen>

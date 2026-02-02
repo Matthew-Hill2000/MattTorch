@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_e31699cc0ac886e75966094f6e81b03c" kind="dir">
+    <compoundname>src/tensor/kernels/cpu/tensor-tensor</compoundname>
+    <innerfile refid="elementwise_8cpp">elementwise.cpp</innerfile>
+    <innerfile refid="matrix_8cpp">matrix.cpp</innerfile>
+    <innerfile refid="matrixVector_8cpp">matrixVector.cpp</innerfile>
+    <innerfile refid="transposeMultLHS_8cpp">transposeMultLHS.cpp</innerfile>
+    <innerfile refid="transposeMultRHS_8cpp">transposeMultRHS.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/tensor/kernels/cpu/tensor-tensor/"/>
+  </compounddef>
+</doxygen>

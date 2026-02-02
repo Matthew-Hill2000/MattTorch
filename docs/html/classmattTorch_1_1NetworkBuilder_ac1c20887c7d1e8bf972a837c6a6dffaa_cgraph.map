@@ -1,0 +1,8 @@
+<map id="mattTorch::NetworkBuilder::addFullyConnectedLayer" name="mattTorch::NetworkBuilder::addFullyConnectedLayer">
+<area shape="rect" id="Node000001" title="Adds a fully connected (dense) layer to the network." alt="" coords="5,51,182,93"/>
+<area shape="rect" id="Node000002" href="$classmattTorch_1_1FullyConnectedLayer.html#ada6cca4bb51ca269d781739b8511c456" title="Returns shared pointers to the weight and bias parameter tensors." alt="" coords="230,5,408,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,52,217,47,212,49,183,57"/>
+<area shape="rect" id="Node000003" href="$classmattTorch_1_1NetworkBuilder.html#aae593fdd009e261e86aed4c3da28d54e" title="Default constructor creating an empty NetworkBuilder." alt="" coords="231,96,407,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="182,87,218,96,212,97,182,92"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="276,94,274,86,281,77,296,71,319,69,343,72,359,81,354,80,342,77,319,75,298,77,285,81,279,87,281,97"/>
+</map>

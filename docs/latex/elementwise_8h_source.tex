@@ -1,0 +1,32 @@
+\doxysection{elementwise.\+h}
+\hypertarget{elementwise_8h_source}{}\label{elementwise_8h_source}\index{include/mattTorch/tensor/kernels/cpu/tensor-\/tensor/elementwise.h@{include/mattTorch/tensor/kernels/cpu/tensor-\/tensor/elementwise.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00003}00003\ \textcolor{keyword}{namespace\ }mattTorch::tensor::kernels::cpu\ \{}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00019}00019\ \textcolor{keywordtype}{void}\ elementwiseAdd(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \_\_restrict\ lhs,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \_\_restrict\ rhs,}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}*\ \_\_restrict\ result,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nValues);}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00036}00036\ \textcolor{keywordtype}{void}\ elementwiseSubtract(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \_\_restrict\ lhs,}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \_\_restrict\ rhs,}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}*\ \_\_restrict\ result,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nValues);}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00054}00054\ \textcolor{keywordtype}{void}\ elementwiseMultiplication(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \_\_restrict\ lhs,}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \_\_restrict\ rhs,}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}*\ \_\_restrict\ result,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nValues);}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00072}00072\ \textcolor{keywordtype}{void}\ elementwiseDivision(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \_\_restrict\ lhs,}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \_\_restrict\ rhs,}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}*\ \_\_restrict\ result,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nValues);}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00097}00097\ \textcolor{keywordtype}{void}\ reductionSum(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \_\_restrict\ input,\ \textcolor{keywordtype}{double}*\ \_\_restrict\ result,}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ outerSize,\ \textcolor{keywordtype}{int}\ reduceSize,\ \textcolor{keywordtype}{int}\ innerSize);}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00116}00116\ \textcolor{keywordtype}{void}\ inplaceElementwiseAdd(\textcolor{keywordtype}{double}*\ \_\_restrict\ lhs,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ \_\_restrict\ rhs,}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nValues);}
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{elementwise_8h_source_l00119}00119\ \}\ \ \textcolor{comment}{//\ namespace\ mattTorch::tensor::kernels::cpu}}
+
+\end{DoxyCode}

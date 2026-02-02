@@ -1,0 +1,36 @@
+\doxysection{dataset.\+h}
+\hypertarget{dataset_8h_source}{}\label{dataset_8h_source}\index{include/mattTorch/dataset/dataset.h@{include/mattTorch/dataset/dataset.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <mattTorch/tensor/tensorView/tensorView.h>}}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00003}00003\ \textcolor{keyword}{namespace\ }mattTorch\ \{}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00021}\doxymbox{\hyperlink{classmattTorch_1_1dataset}{00021}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classmattTorch_1_1dataset_a500ed06e403da9820520f6f25fa13d1d}{dataset}}\ \{}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00022}00022\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00024}\doxymbox{\hyperlink{classmattTorch_1_1dataset_a82522d47c9b5f317fa3b117174de474e}{00024}}\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\ \doxymbox{\hyperlink{classmattTorch_1_1dataset_a82522d47c9b5f317fa3b117174de474e}{examples}};}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00027}\doxymbox{\hyperlink{classmattTorch_1_1dataset_ab276a2ac8e48f061e4a0f0d61963a234}{00027}}\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\ \doxymbox{\hyperlink{classmattTorch_1_1dataset_ab276a2ac8e48f061e4a0f0d61963a234}{labels}};}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00030}\doxymbox{\hyperlink{classmattTorch_1_1dataset_a364a5f9457f8e04cfd63c4a13addbd73}{00030}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classmattTorch_1_1dataset_a364a5f9457f8e04cfd63c4a13addbd73}{numExamples}};}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00034}\doxymbox{\hyperlink{classmattTorch_1_1dataset_ae8dd518932b15062071c31381b4cda33}{00034}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classmattTorch_1_1dataset_ae8dd518932b15062071c31381b4cda33}{exampleSize}};}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00038}\doxymbox{\hyperlink{classmattTorch_1_1dataset_a502c7592f2cdc60fb6b53f6e54f4e7b3}{00038}}\ \ \ std::vector<int>\ \doxymbox{\hyperlink{classmattTorch_1_1dataset_a502c7592f2cdc60fb6b53f6e54f4e7b3}{indices}};}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00041}\doxymbox{\hyperlink{classmattTorch_1_1dataset_a4eefc80cb32668b4ae5648aab43ee664}{00041}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classmattTorch_1_1dataset_a4eefc80cb32668b4ae5648aab43ee664}{batchSize}};}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00043}00043\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00049}00049\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1dataset_a500ed06e403da9820520f6f25fa13d1d}{dataset}}(\textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classmattTorch_1_1dataset_a4eefc80cb32668b4ae5648aab43ee664}{batchSize}});}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00064}00064\ \ \ std::vector<TensorView>\ \doxymbox{\hyperlink{classmattTorch_1_1dataset_a6a5530b62775cd07ad621a20f0d05f5b}{getBatch}}(\textcolor{keywordtype}{int}\ batchIndex);}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00072}00072\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1dataset_a317a16959ff00218b87a8e685698c310}{shuffle}}();}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00089}00089\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1dataset_a106f7cb27416e0be0f746048ece8f9ac}{loadData}}(\textcolor{keyword}{const}\ std::string\&\ csvPath);}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00100}00100\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1dataset_a72eeb83f06390b849a2087aa19244df9}{printNumber}}();}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00101}00101\ \};}
+\DoxyCodeLine{\Hypertarget{dataset_8h_source_l00102}00102\ \}\ \ \textcolor{comment}{//\ namespace\ mattTorch}}
+
+\end{DoxyCode}

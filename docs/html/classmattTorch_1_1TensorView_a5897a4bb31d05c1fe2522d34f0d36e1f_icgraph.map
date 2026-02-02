@@ -1,0 +1,5 @@
+<map id="mattTorch::TensorView::log" name="mattTorch::TensorView::log">
+<area shape="rect" id="Node000001" title="Elemtwise natural logarithm of a Tensor." alt="" coords="279,13,459,40"/>
+<area shape="rect" id="Node000002" href="$classmattTorch_1_1criterion_1_1CrossEntropyLoss.html#a3e477b089170fe65dec1c7f16aa4be6f" title="Computes the Cross&#45;Entropy loss between the input predictions and the target values." alt="" coords="5,5,231,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="260,27,231,29,231,24,266,27"/>
+</map>

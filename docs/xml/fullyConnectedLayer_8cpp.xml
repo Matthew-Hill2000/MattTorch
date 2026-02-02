@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="fullyConnectedLayer_8cpp" kind="file" language="C++">
+    <compoundname>fullyConnectedLayer.cpp</compoundname>
+    <includes local="no">immintrin.h</includes>
+    <includes refid="fullyConnectedLayer_8h" local="no">mattTorch/layer/fullyConnectedLayer/fullyConnectedLayer.h</includes>
+    <includes local="no">chrono</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">random</includes>
+    <incdepgraph>
+      <node id="16">
+        <label>mattTorch/function/addition/gradAddScalar.h</label>
+        <link refid="gradAddScalar_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>mattTorch/function/division/gradDivideScalar.h</label>
+        <link refid="gradDivideScalar_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>mattTorch/function/gradFunction.h</label>
+        <link refid="gradFunction_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>mattTorch/function/multiplication/gradMultiplyScalar.h</label>
+        <link refid="gradMultiplyScalar_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>mattTorch/function/subtraction/gradSubtractScalar.h</label>
+        <link refid="gradSubtractScalar_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>mattTorch/layer/fullyConnectedLayer/fullyConnectedLayer.h</label>
+        <link refid="fullyConnectedLayer_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>mattTorch/layer/layer.h</label>
+        <link refid="layer_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>mattTorch/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.h</label>
+        <link refid="tensorScalarElementwise_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>mattTorch/tensor/kernels/cpu/tensor-tensor/elementwise.h</label>
+        <link refid="elementwise_8h_source"/>
+      </node>
+      <node id="13">
+        <label>mattTorch/tensor/kernels/cpu/tensor-tensor/matrix.h</label>
+        <link refid="matrix_8h_source"/>
+      </node>
+      <node id="15">
+        <label>mattTorch/tensor/kernels/cpu/tensor/tensorElementwise.h</label>
+        <link refid="tensorElementwise_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>mattTorch/tensor/kernels/kernels.h</label>
+        <link refid="kernels_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>mattTorch/tensor/tensorView/tensorView.h</label>
+        <link refid="tensorView_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/layer/fullyConnectedLayer/fullyConnectedLayer.cpp</label>
+        <link refid="fullyConnectedLayer_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>chrono</label>
+      </node>
+      <node id="2">
+        <label>immintrin.h</label>
+      </node>
+      <node id="8">
+        <label>memory</label>
+      </node>
+      <node id="19">
+        <label>random</label>
+      </node>
+      <node id="9">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacemattTorch">mattTorch</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;immintrin.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mattTorch/layer/fullyConnectedLayer/fullyConnectedLayer.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;random&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mattTorch<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="classmattTorch_1_1FullyConnectedLayer_1a808e2eb15128c5ae0a122a988f0b794d" refkind="member"><highlight class="normal"><ref refid="classmattTorch_1_1FullyConnectedLayer_1a808e2eb15128c5ae0a122a988f0b794d" kindref="member">FullyConnectedLayer::FullyConnectedLayer</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>inputs,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>outputs,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>initialisation)<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/>this-&gt;<ref refid="classmattTorch_1_1FullyConnectedLayer_1abebf71615256ea4e13539d0571e35735" kindref="member">weight</ref><sp/>=<sp/><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref>({inputs,<sp/>outputs});</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/>this-&gt;<ref refid="classmattTorch_1_1FullyConnectedLayer_1a087ac8f4bd109e4de473a4bcd1192ff8" kindref="member">bias</ref><sp/>=<sp/><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref>({outputs});</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>seed<sp/>=<sp/>std::chrono::system_clock::now().time_since_epoch().count();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/>std::default_random_engine<sp/>generator(seed);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/>std::normal_distribution&lt;double&gt;<sp/>normalDistribution;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(initialisation<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;xavier&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>normalDistribution<sp/>=<sp/>std::normal_distribution&lt;double&gt;(</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0.0,<sp/>std::sqrt(2.0<sp/>/<sp/>(inputs<sp/>+<sp/>outputs)));</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(initialisation<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;he&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>normalDistribution<sp/>=</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::normal_distribution&lt;double&gt;(0.0,<sp/>std::sqrt(2.0<sp/>/<sp/>inputs));</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">(std::invalid_argument(</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;initialisation<sp/>for<sp/>fully<sp/>connected<sp/>layer<sp/>should<sp/>be<sp/>&apos;xavier&apos;<sp/>or<sp/>&apos;he&apos;&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>weightData<sp/>=<sp/><ref refid="classmattTorch_1_1FullyConnectedLayer_1abebf71615256ea4e13539d0571e35735" kindref="member">weight</ref>.getData();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i{0};<sp/>i<sp/>&lt;<sp/><ref refid="classmattTorch_1_1FullyConnectedLayer_1abebf71615256ea4e13539d0571e35735" kindref="member">weight</ref>.getNValues();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>weightData[i]<sp/>=<sp/>normalDistribution(generator);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>biasData<sp/>=<sp/><ref refid="classmattTorch_1_1FullyConnectedLayer_1a087ac8f4bd109e4de473a4bcd1192ff8" kindref="member">bias</ref>.getData();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i{0};<sp/>i<sp/>&lt;<sp/><ref refid="classmattTorch_1_1FullyConnectedLayer_1a087ac8f4bd109e4de473a4bcd1192ff8" kindref="member">bias</ref>.getNValues();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>biasData[i]<sp/>=<sp/>normalDistribution(generator);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classmattTorch_1_1FullyConnectedLayer_1aedc671a5d50953e0f4f9342c7af8c687" refkind="member"><highlight class="normal"><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref><sp/><ref refid="classmattTorch_1_1FullyConnectedLayer_1aedc671a5d50953e0f4f9342c7af8c687" kindref="member">FullyConnectedLayer::forward</ref>(<ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref>&amp;<sp/>inputTensor)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref><sp/>outputTensorWeighted<sp/>=<sp/>inputTensor.<ref refid="classmattTorch_1_1TensorView_1a81e07d2a05214bf19b6058f64b03dbcd" kindref="member">matrixMultiply</ref>(<ref refid="classmattTorch_1_1FullyConnectedLayer_1abebf71615256ea4e13539d0571e35735" kindref="member">weight</ref>);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref><sp/>broadcastedBias<sp/>=</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classmattTorch_1_1FullyConnectedLayer_1a087ac8f4bd109e4de473a4bcd1192ff8" kindref="member">bias</ref>.broadcast(0,<sp/>inputTensor.<ref refid="classmattTorch_1_1TensorView_1a403feeac17deb34c5222df0ea61a14e1" kindref="member">getDimensions</ref>()[0]);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref><sp/>outputTensorBiased<sp/>=<sp/>outputTensorWeighted<sp/>+<sp/>broadcastedBias;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>outputTensorBiased;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classmattTorch_1_1FullyConnectedLayer_1ada6cca4bb51ca269d781739b8511c456" refkind="member"><highlight class="normal">std::vector&lt;std::shared_ptr&lt;TensorView&gt;&gt;<sp/><ref refid="classmattTorch_1_1FullyConnectedLayer_1ada6cca4bb51ca269d781739b8511c456" kindref="member">FullyConnectedLayer::getParameters</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>std::vector&lt;std::shared_ptr&lt;TensorView&gt;&gt;<sp/>parameters{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::make_shared&lt;TensorView&gt;(<ref refid="classmattTorch_1_1FullyConnectedLayer_1abebf71615256ea4e13539d0571e35735" kindref="member">weight</ref>),<sp/>std::make_shared&lt;TensorView&gt;(<ref refid="classmattTorch_1_1FullyConnectedLayer_1a087ac8f4bd109e4de473a4bcd1192ff8" kindref="member">bias</ref>)};</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>parameters;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classmattTorch_1_1FullyConnectedLayer_1a8594a8792ae8735004e4da9e38d61068" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1FullyConnectedLayer_1a8594a8792ae8735004e4da9e38d61068" kindref="member">FullyConnectedLayer::getNumParameters</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="classmattTorch_1_1FullyConnectedLayer_1abebf71615256ea4e13539d0571e35735" kindref="member">weight</ref>.getNValues()<sp/>+<sp/><ref refid="classmattTorch_1_1FullyConnectedLayer_1a087ac8f4bd109e4de473a4bcd1192ff8" kindref="member">bias</ref>.getNValues());</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mattTorch</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/layer/fullyConnectedLayer/fullyConnectedLayer.cpp"/>
+  </compounddef>
+</doxygen>

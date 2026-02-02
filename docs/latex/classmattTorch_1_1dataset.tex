@@ -1,0 +1,317 @@
+\doxysection{matt\+Torch::\+dataset Class Reference}
+\hypertarget{classmattTorch_1_1dataset}{}\label{classmattTorch_1_1dataset}\index{mattTorch::dataset@{mattTorch::dataset}}
+
+
+A dataset class for loading, storing and batching training data from CSV files.  
+
+
+
+
+{\ttfamily \+\#include $<$dataset.\+h$>$}
+
+
+
+Collaboration diagram for matt\+Torch::\+dataset:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{classmattTorch_1_1dataset__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classmattTorch_1_1dataset_a500ed06e403da9820520f6f25fa13d1d}{dataset}} (int \doxymbox{\hyperlink{classmattTorch_1_1dataset_a4eefc80cb32668b4ae5648aab43ee664}{batch\+Size}})
+\begin{DoxyCompactList}\small\item\em Constructs a dataset with the specified batch size. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ \doxymbox{\hyperlink{classmattTorch_1_1dataset_a6a5530b62775cd07ad621a20f0d05f5b}{get\+Batch}} (int batch\+Index)
+\begin{DoxyCompactList}\small\item\em Returns a batch of examples and labels at the specified batch index. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classmattTorch_1_1dataset_a317a16959ff00218b87a8e685698c310}{shuffle}} ()
+\begin{DoxyCompactList}\small\item\em Shuffles the ordering of examples using a Fisher-\/\+Yates shuffle. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classmattTorch_1_1dataset_a106f7cb27416e0be0f746048ece8f9ac}{load\+Data}} (const std::\+string \&csv\+Path)
+\begin{DoxyCompactList}\small\item\em Loads labelled training data from a CSV file. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classmattTorch_1_1dataset_a72eeb83f06390b849a2087aa19244df9}{print\+Number}} ()
+\begin{DoxyCompactList}\small\item\em Prints a visual representation of the first example as a 28x28 grid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \doxymbox{\hyperlink{classmattTorch_1_1dataset_a82522d47c9b5f317fa3b117174de474e}{examples}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} of shape (num\+Examples x example\+Size) holding all feature data. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \doxymbox{\hyperlink{classmattTorch_1_1dataset_ab276a2ac8e48f061e4a0f0d61963a234}{labels}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} of shape (num\+Examples x 1) holding all label data. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{classmattTorch_1_1dataset_a364a5f9457f8e04cfd63c4a13addbd73}{num\+Examples}}
+\begin{DoxyCompactList}\small\item\em The total number of examples loaded from the CSV file. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{classmattTorch_1_1dataset_ae8dd518932b15062071c31381b4cda33}{example\+Size}}
+\item 
+std::\+vector$<$ int $>$ \doxymbox{\hyperlink{classmattTorch_1_1dataset_a502c7592f2cdc60fb6b53f6e54f4e7b3}{indices}}
+\item 
+int \doxymbox{\hyperlink{classmattTorch_1_1dataset_a4eefc80cb32668b4ae5648aab43ee664}{batch\+Size}}
+\begin{DoxyCompactList}\small\item\em The number of examples per batch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A dataset class for loading, storing and batching training data from CSV files. 
+
+The dataset class handles the loading of labelled training data from CSV files, where the first column of each row is treated as the label and the remaining columns are treated as the feature values of the example. The loaded data is stored internally as two \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} objects, one for the examples and one for the labels. The dataset supports shuffling of the example ordering via a Fisher-\/\+Yates shuffle on an internal index array, and provides batched access to the data via the get\+Batch method which returns a batch of examples and labels as new \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} objects copied from the shuffled indices.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classmattTorch_1_1TensorView}{Tensor\+View} for the tensor class used to store the \doxylink{classmattTorch_1_1dataset_a82522d47c9b5f317fa3b117174de474e}{examples} and \doxylink{classmattTorch_1_1dataset_ab276a2ac8e48f061e4a0f0d61963a234}{labels}. 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{dataset_8h_source_l00021}{21}} of file \doxymbox{\hyperlink{dataset_8h_source}{dataset.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classmattTorch_1_1dataset_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmattTorch_1_1dataset_a500ed06e403da9820520f6f25fa13d1d}\index{mattTorch::dataset@{mattTorch::dataset}!dataset@{dataset}}
+\index{dataset@{dataset}!mattTorch::dataset@{mattTorch::dataset}}
+\doxysubsubsection{\texorpdfstring{dataset()}{dataset()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1dataset_a500ed06e403da9820520f6f25fa13d1d} 
+matt\+Torch::\+dataset::\+dataset (\begin{DoxyParamCaption}\item[{int}]{batch\+Size}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a dataset with the specified batch size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classmattTorch_1_1dataset_a4eefc80cb32668b4ae5648aab43ee664}{batch\+Size}} & The number of examples per batch \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{dataset_8cpp_source_l00018}{18}} of file \doxymbox{\hyperlink{dataset_8cpp_source}{dataset.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{dataset_8h_source_l00041}{batch\+Size}}, \doxymbox{\hyperlink{dataset_8h_source_l00034}{example\+Size}}, and \doxymbox{\hyperlink{dataset_8h_source_l00030}{num\+Examples}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classmattTorch_1_1dataset_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmattTorch_1_1dataset_a6a5530b62775cd07ad621a20f0d05f5b}\index{mattTorch::dataset@{mattTorch::dataset}!getBatch@{getBatch}}
+\index{getBatch@{getBatch}!mattTorch::dataset@{mattTorch::dataset}}
+\doxysubsubsection{\texorpdfstring{getBatch()}{getBatch()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1dataset_a6a5530b62775cd07ad621a20f0d05f5b} 
+std::\+vector$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ matt\+Torch::\+dataset::\+get\+Batch (\begin{DoxyParamCaption}\item[{int}]{batch\+Index}{}\end{DoxyParamCaption})}
+
+
+
+Returns a batch of examples and labels at the specified batch index. 
+
+Constructs new \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} objects for the batch examples and batch labels by copying data from the internal storage according to the current shuffled index ordering. The batch starting position is calculated as (batch\+Index \texorpdfstring{$\ast$}{*} batch\+Size).
+
+
+\begin{DoxyParams}{Parameters}
+{\em batch\+Index} & The zero-\/indexed batch number to retrieve \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing two \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} objects:\+ the batch examples of shape (batch\+Size x example\+Size) and the batch labels of shape (batch\+Size x 1) 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{dataset_8cpp_source_l00101}{101}} of file \doxymbox{\hyperlink{dataset_8cpp_source}{dataset.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{dataset_8h_source_l00041}{batch\+Size}}, \doxymbox{\hyperlink{dataset_8h_source_l00024}{examples}}, \doxymbox{\hyperlink{dataset_8h_source_l00034}{example\+Size}}, \doxymbox{\hyperlink{tensorViewAccesssors_8cpp_source_l00120}{matt\+Torch::\+\+Tensor\+View::\+get\+Data()}}, \doxymbox{\hyperlink{dataset_8h_source_l00038}{indices}}, \doxymbox{\hyperlink{dataset_8h_source_l00027}{labels}}, and \doxymbox{\hyperlink{dataset_8h_source_l00030}{num\+Examples}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{classmattTorch_1_1dataset_a6a5530b62775cd07ad621a20f0d05f5b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmattTorch_1_1dataset_a106f7cb27416e0be0f746048ece8f9ac}\index{mattTorch::dataset@{mattTorch::dataset}!loadData@{loadData}}
+\index{loadData@{loadData}!mattTorch::dataset@{mattTorch::dataset}}
+\doxysubsubsection{\texorpdfstring{loadData()}{loadData()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1dataset_a106f7cb27416e0be0f746048ece8f9ac} 
+void matt\+Torch::\+dataset::\+load\+Data (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{csv\+Path}{}\end{DoxyParamCaption})}
+
+
+
+Loads labelled training data from a CSV file. 
+
+Reads the specified CSV file, skipping the first row as a header. Each subsequent row is parsed as a comma-\/separated list of double values where the first column is treated as the label and the remaining columns are treated as the feature values of the example. The parsed data is stored internally as two \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} objects of shape (num\+Examples x example\+Size) for the examples and (num\+Examples x 1) for the labels, and the internal index array is initialised to sequential ordering.
+
+
+\begin{DoxyParams}{Parameters}
+{\em csv\+Path} & The file path to the CSV file to load\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+runtime\+\_\+error} & If the file cannot be opened for reading \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \doxymbox{\hyperlink{dataset_8cpp_source_l00021}{21}} of file \doxymbox{\hyperlink{dataset_8cpp_source}{dataset.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{dataset_8h_source_l00024}{examples}}, \doxymbox{\hyperlink{dataset_8h_source_l00034}{example\+Size}}, \doxymbox{\hyperlink{dataset_8h_source_l00038}{indices}}, \doxymbox{\hyperlink{dataset_8h_source_l00027}{labels}}, and \doxymbox{\hyperlink{dataset_8h_source_l00030}{num\+Examples}}.
+
+\Hypertarget{classmattTorch_1_1dataset_a72eeb83f06390b849a2087aa19244df9}\index{mattTorch::dataset@{mattTorch::dataset}!printNumber@{printNumber}}
+\index{printNumber@{printNumber}!mattTorch::dataset@{mattTorch::dataset}}
+\doxysubsubsection{\texorpdfstring{printNumber()}{printNumber()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1dataset_a72eeb83f06390b849a2087aa19244df9} 
+void matt\+Torch::\+dataset::\+print\+Number (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Prints a visual representation of the first example as a 28x28 grid. 
+
+Intended as a debugging utility for image datasets such as MNIST. Creates a 28x28 \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} and thresholds the pixel values of the first example at a value of 50, printing 1.\+11 for pixels above the threshold and 0.\+0 for pixels below. 
+
+Definition at line \doxymbox{\hyperlink{dataset_8cpp_source_l00134}{134}} of file \doxymbox{\hyperlink{dataset_8cpp_source}{dataset.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{dataset_8h_source_l00024}{examples}}, and \doxymbox{\hyperlink{tensorViewAccesssors_8cpp_source_l00120}{matt\+Torch::\+\+Tensor\+View::\+get\+Data()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{classmattTorch_1_1dataset_a72eeb83f06390b849a2087aa19244df9_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmattTorch_1_1dataset_a317a16959ff00218b87a8e685698c310}\index{mattTorch::dataset@{mattTorch::dataset}!shuffle@{shuffle}}
+\index{shuffle@{shuffle}!mattTorch::dataset@{mattTorch::dataset}}
+\doxysubsubsection{\texorpdfstring{shuffle()}{shuffle()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1dataset_a317a16959ff00218b87a8e685698c310} 
+void matt\+Torch::\+dataset::\+shuffle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Shuffles the ordering of examples using a Fisher-\/\+Yates shuffle. 
+
+Randomly permutes the internal index array so that subsequent calls to get\+Batch will return examples in a different randomised order. 
+
+Definition at line \doxymbox{\hyperlink{dataset_8cpp_source_l00088}{88}} of file \doxymbox{\hyperlink{dataset_8cpp_source}{dataset.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{dataset_8h_source_l00038}{indices}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classmattTorch_1_1dataset_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmattTorch_1_1dataset_a4eefc80cb32668b4ae5648aab43ee664}\index{mattTorch::dataset@{mattTorch::dataset}!batchSize@{batchSize}}
+\index{batchSize@{batchSize}!mattTorch::dataset@{mattTorch::dataset}}
+\doxysubsubsection{\texorpdfstring{batchSize}{batchSize}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1dataset_a4eefc80cb32668b4ae5648aab43ee664} 
+int matt\+Torch::\+dataset::\+batch\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The number of examples per batch. 
+
+
+
+Definition at line \doxymbox{\hyperlink{dataset_8h_source_l00041}{41}} of file \doxymbox{\hyperlink{dataset_8h_source}{dataset.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{dataset_8cpp_source_l00018}{dataset()}}, and \doxymbox{\hyperlink{dataset_8cpp_source_l00101}{get\+Batch()}}.
+
+\Hypertarget{classmattTorch_1_1dataset_a82522d47c9b5f317fa3b117174de474e}\index{mattTorch::dataset@{mattTorch::dataset}!examples@{examples}}
+\index{examples@{examples}!mattTorch::dataset@{mattTorch::dataset}}
+\doxysubsubsection{\texorpdfstring{examples}{examples}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1dataset_a82522d47c9b5f317fa3b117174de474e} 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} matt\+Torch::\+dataset::\+examples\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{classmattTorch_1_1TensorView}{Tensor\+View} of shape (num\+Examples x example\+Size) holding all feature data. 
+
+
+
+Definition at line \doxymbox{\hyperlink{dataset_8h_source_l00024}{24}} of file \doxymbox{\hyperlink{dataset_8h_source}{dataset.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{dataset_8cpp_source_l00101}{get\+Batch()}}, \doxymbox{\hyperlink{dataset_8cpp_source_l00021}{load\+Data()}}, and \doxymbox{\hyperlink{dataset_8cpp_source_l00134}{print\+Number()}}.
+
+\Hypertarget{classmattTorch_1_1dataset_ae8dd518932b15062071c31381b4cda33}\index{mattTorch::dataset@{mattTorch::dataset}!exampleSize@{exampleSize}}
+\index{exampleSize@{exampleSize}!mattTorch::dataset@{mattTorch::dataset}}
+\doxysubsubsection{\texorpdfstring{exampleSize}{exampleSize}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1dataset_ae8dd518932b15062071c31381b4cda33} 
+int matt\+Torch::\+dataset::\+example\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+The number of features per example (number of CSV columns minus one for the label column) 
+
+Definition at line \doxymbox{\hyperlink{dataset_8h_source_l00034}{34}} of file \doxymbox{\hyperlink{dataset_8h_source}{dataset.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{dataset_8cpp_source_l00018}{dataset()}}, \doxymbox{\hyperlink{dataset_8cpp_source_l00101}{get\+Batch()}}, and \doxymbox{\hyperlink{dataset_8cpp_source_l00021}{load\+Data()}}.
+
+\Hypertarget{classmattTorch_1_1dataset_a502c7592f2cdc60fb6b53f6e54f4e7b3}\index{mattTorch::dataset@{mattTorch::dataset}!indices@{indices}}
+\index{indices@{indices}!mattTorch::dataset@{mattTorch::dataset}}
+\doxysubsubsection{\texorpdfstring{indices}{indices}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1dataset_a502c7592f2cdc60fb6b53f6e54f4e7b3} 
+std::\+vector$<$int$>$ matt\+Torch::\+dataset::\+indices\hspace{0.3cm}{\ttfamily [private]}}
+
+Index array used to define the ordering of examples, shuffled to randomise the order in which batches are drawn 
+
+Definition at line \doxymbox{\hyperlink{dataset_8h_source_l00038}{38}} of file \doxymbox{\hyperlink{dataset_8h_source}{dataset.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{dataset_8cpp_source_l00101}{get\+Batch()}}, \doxymbox{\hyperlink{dataset_8cpp_source_l00021}{load\+Data()}}, and \doxymbox{\hyperlink{dataset_8cpp_source_l00088}{shuffle()}}.
+
+\Hypertarget{classmattTorch_1_1dataset_ab276a2ac8e48f061e4a0f0d61963a234}\index{mattTorch::dataset@{mattTorch::dataset}!labels@{labels}}
+\index{labels@{labels}!mattTorch::dataset@{mattTorch::dataset}}
+\doxysubsubsection{\texorpdfstring{labels}{labels}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1dataset_ab276a2ac8e48f061e4a0f0d61963a234} 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} matt\+Torch::\+dataset::\+labels\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{classmattTorch_1_1TensorView}{Tensor\+View} of shape (num\+Examples x 1) holding all label data. 
+
+
+
+Definition at line \doxymbox{\hyperlink{dataset_8h_source_l00027}{27}} of file \doxymbox{\hyperlink{dataset_8h_source}{dataset.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{dataset_8cpp_source_l00101}{get\+Batch()}}, and \doxymbox{\hyperlink{dataset_8cpp_source_l00021}{load\+Data()}}.
+
+\Hypertarget{classmattTorch_1_1dataset_a364a5f9457f8e04cfd63c4a13addbd73}\index{mattTorch::dataset@{mattTorch::dataset}!numExamples@{numExamples}}
+\index{numExamples@{numExamples}!mattTorch::dataset@{mattTorch::dataset}}
+\doxysubsubsection{\texorpdfstring{numExamples}{numExamples}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1dataset_a364a5f9457f8e04cfd63c4a13addbd73} 
+int matt\+Torch::\+dataset::\+num\+Examples\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The total number of examples loaded from the CSV file. 
+
+
+
+Definition at line \doxymbox{\hyperlink{dataset_8h_source_l00030}{30}} of file \doxymbox{\hyperlink{dataset_8h_source}{dataset.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{dataset_8cpp_source_l00018}{dataset()}}, \doxymbox{\hyperlink{dataset_8cpp_source_l00101}{get\+Batch()}}, and \doxymbox{\hyperlink{dataset_8cpp_source_l00021}{load\+Data()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+matt\+Torch/\+dataset/\+dataset.\+h\item 
+src/\+dataset/\+dataset.\+cpp\end{DoxyCompactItemize}

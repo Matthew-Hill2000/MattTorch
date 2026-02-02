@@ -1,0 +1,26 @@
+\doxysection{grad\+Mean.\+h}
+\hypertarget{gradMean_8h_source}{}\label{gradMean_8h_source}\index{include/mattTorch/function/mean/gradMean.h@{include/mattTorch/function/mean/gradMean.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <mattTorch/function/gradFunction.h>}}
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <mattTorch/tensor/tensorView/tensorView.h>}}
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00006}00006\ \textcolor{keyword}{namespace\ }mattTorch::function\ \{}
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00041}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMean}{00041}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMean_a2f7b236da219362099383bde892b80af}{GradMean}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{GradFunction}}\ \{}
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00042}00042\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00045}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMean_abb780e1c7c375cb23028a0df961b2f56}{00045}}\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMean_abb780e1c7c375cb23028a0df961b2f56}{savedTensor}};}
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00049}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMean_aed47300f39f569d32b8a437146928950}{00049}}\ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMean_aed47300f39f569d32b8a437146928950}{nextFunctions}};}
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00051}00051\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00064}00064\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMean_a2f7b236da219362099383bde892b80af}{GradMean}}(\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMean_abb780e1c7c375cb23028a0df961b2f56}{savedTensor}},}
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMean_aed47300f39f569d32b8a437146928950}{nextFunctions}});}
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00088}00088\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMean_a498842b9eca2a4c71e2b840feff4f5aa}{backward}}(\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\&\ inputGradient,\ \textcolor{keywordtype}{bool}\ higherDerivative)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00089}00089\ \};}
+\DoxyCodeLine{\Hypertarget{gradMean_8h_source_l00090}00090\ \}\ \ \textcolor{comment}{//\ namespace\ mattTorch::function}}
+
+\end{DoxyCode}

@@ -1,0 +1,268 @@
+\doxysection{matt\+Torch::\+Fully\+Connected\+Layer Class Reference}
+\hypertarget{classmattTorch_1_1FullyConnectedLayer}{}\label{classmattTorch_1_1FullyConnectedLayer}\index{mattTorch::FullyConnectedLayer@{mattTorch::FullyConnectedLayer}}
+
+
+A fully connected (dense) neural network layer.  
+
+
+
+
+{\ttfamily \+\#include $<$fully\+Connected\+Layer.\+h$>$}
+
+
+
+Inheritance diagram for matt\+Torch::\+Fully\+Connected\+Layer:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{classmattTorch_1_1FullyConnectedLayer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for matt\+Torch::\+Fully\+Connected\+Layer:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{classmattTorch_1_1FullyConnectedLayer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classmattTorch_1_1FullyConnectedLayer_a808e2eb15128c5ae0a122a988f0b794d}{Fully\+Connected\+Layer}} (int inputs, int outputs, std::\+string initialisation="{}xavier"{})
+\begin{DoxyCompactList}\small\item\em Constructs a fully connected layer with the specified input and output sizes. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \doxymbox{\hyperlink{classmattTorch_1_1FullyConnectedLayer_aedc671a5d50953e0f4f9342c7af8c687}{forward}} (\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&input\+Tensor)
+\begin{DoxyCompactList}\small\item\em Performs the forward pass of this fully connected layer. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{classmattTorch_1_1FullyConnectedLayer_a8594a8792ae8735004e4da9e38d61068}{get\+Num\+Parameters}} ()
+\begin{DoxyCompactList}\small\item\em Returns the total number of learnable parameters in this layer. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ $>$ \doxymbox{\hyperlink{classmattTorch_1_1FullyConnectedLayer_ada6cca4bb51ca269d781739b8511c456}{get\+Parameters}} ()
+\begin{DoxyCompactList}\small\item\em Returns shared pointers to the weight and bias parameter tensors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classmattTorch_1_1Layer}{matt\+Torch::\+\+Layer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \doxymbox{\hyperlink{classmattTorch_1_1Layer_ab78060ae5ca0254d8a214a965e87d651}{\texorpdfstring{$\sim$}{\string~}\+Layer}} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for safe polymorphic destruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \doxymbox{\hyperlink{classmattTorch_1_1FullyConnectedLayer_abebf71615256ea4e13539d0571e35735}{weight}}
+\begin{DoxyCompactList}\small\item\em The weight matrix of shape (inputs x outputs). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \doxymbox{\hyperlink{classmattTorch_1_1FullyConnectedLayer_a087ac8f4bd109e4de473a4bcd1192ff8}{bias}}
+\begin{DoxyCompactList}\small\item\em The bias vector of shape (outputs). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A fully connected (dense) neural network layer. 
+
+The \doxylink{classmattTorch_1_1FullyConnectedLayer}{Fully\+Connected\+Layer} class implements a standard dense layer that computes the affine transformation:\+   \[    Y = XW + b
+\] where $X$ is the input tensor, $W$ is the weight matrix, and $b$ is the bias vector. The weight matrix is of shape (inputs x outputs) and the bias vector is of shape (outputs). During the forward pass, the bias vector is broadcast along a new first dimension to match the batch size of the input tensor before being added elementwise to the weighted output.
+
+The weight and bias parameters are initialised at construction time using either Xavier or He initialisation, both of which sample from a normal distribution with a variance scaled according to the number of input and output features. Xavier initialisation uses a standard deviation of $\sqrt{2 / (n_{in} + n_{out})}$ and He initialisation uses a standard deviation of $\sqrt{2 / n_{in}}$.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classmattTorch_1_1Layer}{Layer} for the base class from which this class derives. 
+
+\doxylink{classmattTorch_1_1TensorView}{Tensor\+View} for the tensor class used to represent the weights, biases, inputs and outputs. 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{fullyConnectedLayer_8h_source_l00031}{31}} of file \doxymbox{\hyperlink{fullyConnectedLayer_8h_source}{fully\+Connected\+Layer.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classmattTorch_1_1FullyConnectedLayer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmattTorch_1_1FullyConnectedLayer_a808e2eb15128c5ae0a122a988f0b794d}\index{mattTorch::FullyConnectedLayer@{mattTorch::FullyConnectedLayer}!FullyConnectedLayer@{FullyConnectedLayer}}
+\index{FullyConnectedLayer@{FullyConnectedLayer}!mattTorch::FullyConnectedLayer@{mattTorch::FullyConnectedLayer}}
+\doxysubsubsection{\texorpdfstring{FullyConnectedLayer()}{FullyConnectedLayer()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1FullyConnectedLayer_a808e2eb15128c5ae0a122a988f0b794d} 
+matt\+Torch::\+\+Fully\+Connected\+Layer::\+\+Fully\+Connected\+Layer (\begin{DoxyParamCaption}\item[{int}]{inputs}{, }\item[{int}]{outputs}{, }\item[{std::\+string}]{initialisation}{ = {\ttfamily "{}xavier"{}}}\end{DoxyParamCaption})}
+
+
+
+Constructs a fully connected layer with the specified input and output sizes. 
+
+Allocates the weight matrix of shape (inputs x outputs) and the bias vector of shape (outputs), and initialises both using the specified initialisation strategy by sampling from a normal distribution with appropriately scaled variance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em inputs} & The number of input features to the layer \\
+\hline
+{\em outputs} & The number of output features from the layer \\
+\hline
+{\em initialisation} & The weight initialisation strategy, either "{}xavier"{} or "{}he"{}, defaults to "{}xavier"{}\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+invalid\+\_\+argument} & If the initialisation string is not "{}xavier"{} or "{}he"{} \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source_l00010}{10}} of file \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source}{fully\+Connected\+Layer.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{fullyConnectedLayer_8h_source_l00037}{bias}}, and \doxymbox{\hyperlink{fullyConnectedLayer_8h_source_l00034}{weight}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classmattTorch_1_1FullyConnectedLayer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmattTorch_1_1FullyConnectedLayer_aedc671a5d50953e0f4f9342c7af8c687}\index{mattTorch::FullyConnectedLayer@{mattTorch::FullyConnectedLayer}!forward@{forward}}
+\index{forward@{forward}!mattTorch::FullyConnectedLayer@{mattTorch::FullyConnectedLayer}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1FullyConnectedLayer_aedc671a5d50953e0f4f9342c7af8c687} 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} matt\+Torch::\+\+Fully\+Connected\+Layer::\+forward (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&}]{input\+Tensor}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Performs the forward pass of this fully connected layer. 
+
+Computes the affine transformation Y = XW + b by first performing matrix multiplication of the input tensor with the weight matrix, then broadcasting the bias vector along a new first dimension to match the batch size of the input, and finally adding the broadcast bias to the weighted output elementwise. Each of these operations participates in the computational graph, allowing gradients to be propagated back through this layer during backpropagation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Tensor} & The input tensor of shape (batch\+Size x inputs) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} containing the output of shape (batch\+Size x outputs) 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classmattTorch_1_1Layer_adad39b8980133bb181dfc52932065e2e}{matt\+Torch::\+\+Layer}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source_l00041}{41}} of file \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source}{fully\+Connected\+Layer.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{fullyConnectedLayer_8h_source_l00037}{bias}}, \doxymbox{\hyperlink{tensorViewAccesssors_8cpp_source_l00138}{matt\+Torch::\+\+Tensor\+View::\+get\+Dimensions()}}, \doxymbox{\hyperlink{tensorViewOverloads_8cpp_source_l00337}{matt\+Torch::\+\+Tensor\+View::\+matrix\+Multiply()}}, and \doxymbox{\hyperlink{fullyConnectedLayer_8h_source_l00034}{weight}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmattTorch_1_1FullyConnectedLayer_aedc671a5d50953e0f4f9342c7af8c687_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmattTorch_1_1FullyConnectedLayer_a8594a8792ae8735004e4da9e38d61068}\index{mattTorch::FullyConnectedLayer@{mattTorch::FullyConnectedLayer}!getNumParameters@{getNumParameters}}
+\index{getNumParameters@{getNumParameters}!mattTorch::FullyConnectedLayer@{mattTorch::FullyConnectedLayer}}
+\doxysubsubsection{\texorpdfstring{getNumParameters()}{getNumParameters()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1FullyConnectedLayer_a8594a8792ae8735004e4da9e38d61068} 
+int matt\+Torch::\+\+Fully\+Connected\+Layer::\+get\+Num\+Parameters (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the total number of learnable parameters in this layer. 
+
+The total number of parameters is the sum of the number of elements in the weight matrix and the number of elements in the bias vector.
+
+\begin{DoxyReturn}{Returns}
+The total number of learnable parameters 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classmattTorch_1_1Layer_a99c9c62d5d0348985f95d905d8ee6f51}{matt\+Torch::\+\+Layer}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source_l00055}{55}} of file \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source}{fully\+Connected\+Layer.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{fullyConnectedLayer_8h_source_l00037}{bias}}, and \doxymbox{\hyperlink{fullyConnectedLayer_8h_source_l00034}{weight}}.
+
+\Hypertarget{classmattTorch_1_1FullyConnectedLayer_ada6cca4bb51ca269d781739b8511c456}\index{mattTorch::FullyConnectedLayer@{mattTorch::FullyConnectedLayer}!getParameters@{getParameters}}
+\index{getParameters@{getParameters}!mattTorch::FullyConnectedLayer@{mattTorch::FullyConnectedLayer}}
+\doxysubsubsection{\texorpdfstring{getParameters()}{getParameters()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1FullyConnectedLayer_ada6cca4bb51ca269d781739b8511c456} 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ $>$ matt\+Torch::\+\+Fully\+Connected\+Layer::\+get\+Parameters (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns shared pointers to the weight and bias parameter tensors. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing shared pointers to the weight \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} and the bias \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classmattTorch_1_1Layer_ae2081002ad607f80ec045c8dedd23bbf}{matt\+Torch::\+\+Layer}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source_l00049}{49}} of file \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source}{fully\+Connected\+Layer.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{fullyConnectedLayer_8h_source_l00037}{bias}}, and \doxymbox{\hyperlink{fullyConnectedLayer_8h_source_l00034}{weight}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{network_8cpp_source_l00069}{matt\+Torch::\+\+Network\+Builder::\+add\+Fully\+Connected\+Layer()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmattTorch_1_1FullyConnectedLayer_ada6cca4bb51ca269d781739b8511c456_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{classmattTorch_1_1FullyConnectedLayer_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmattTorch_1_1FullyConnectedLayer_a087ac8f4bd109e4de473a4bcd1192ff8}\index{mattTorch::FullyConnectedLayer@{mattTorch::FullyConnectedLayer}!bias@{bias}}
+\index{bias@{bias}!mattTorch::FullyConnectedLayer@{mattTorch::FullyConnectedLayer}}
+\doxysubsubsection{\texorpdfstring{bias}{bias}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1FullyConnectedLayer_a087ac8f4bd109e4de473a4bcd1192ff8} 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} matt\+Torch::\+\+Fully\+Connected\+Layer::\+bias\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The bias vector of shape (outputs). 
+
+
+
+Definition at line \doxymbox{\hyperlink{fullyConnectedLayer_8h_source_l00037}{37}} of file \doxymbox{\hyperlink{fullyConnectedLayer_8h_source}{fully\+Connected\+Layer.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source_l00041}{forward()}}, \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source_l00010}{Fully\+Connected\+Layer()}}, \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source_l00055}{get\+Num\+Parameters()}}, and \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source_l00049}{get\+Parameters()}}.
+
+\Hypertarget{classmattTorch_1_1FullyConnectedLayer_abebf71615256ea4e13539d0571e35735}\index{mattTorch::FullyConnectedLayer@{mattTorch::FullyConnectedLayer}!weight@{weight}}
+\index{weight@{weight}!mattTorch::FullyConnectedLayer@{mattTorch::FullyConnectedLayer}}
+\doxysubsubsection{\texorpdfstring{weight}{weight}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1FullyConnectedLayer_abebf71615256ea4e13539d0571e35735} 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} matt\+Torch::\+\+Fully\+Connected\+Layer::\+weight\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The weight matrix of shape (inputs x outputs). 
+
+
+
+Definition at line \doxymbox{\hyperlink{fullyConnectedLayer_8h_source_l00034}{34}} of file \doxymbox{\hyperlink{fullyConnectedLayer_8h_source}{fully\+Connected\+Layer.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source_l00041}{forward()}}, \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source_l00010}{Fully\+Connected\+Layer()}}, \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source_l00055}{get\+Num\+Parameters()}}, and \doxymbox{\hyperlink{fullyConnectedLayer_8cpp_source_l00049}{get\+Parameters()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+matt\+Torch/\+layer/\+fully\+Connected\+Layer/\+fully\+Connected\+Layer.\+h\item 
+src/\+layer/\+fully\+Connected\+Layer/\+fully\+Connected\+Layer.\+cpp\end{DoxyCompactItemize}

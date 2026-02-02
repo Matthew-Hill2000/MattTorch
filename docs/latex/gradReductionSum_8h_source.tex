@@ -1,0 +1,27 @@
+\doxysection{grad\+Reduction\+Sum.\+h}
+\hypertarget{gradReductionSum_8h_source}{}\label{gradReductionSum_8h_source}\index{include/mattTorch/function/reductionSum/gradReductionSum.h@{include/mattTorch/function/reductionSum/gradReductionSum.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <mattTorch/function/gradFunction.h>}}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00005}00005\ \textcolor{keyword}{namespace\ }mattTorch::function\ \{}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00041}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum}{00041}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_aabf3f0c6bd2fc2e2bf71f98526ac41c9}{GradReductionSum}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{GradFunction}}\ \{}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00042}00042\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00045}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_af078dfab7aedd4bc8e593777f5cf68f6}{00045}}\ \ \ std::vector<TensorView>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_af078dfab7aedd4bc8e593777f5cf68f6}{savedTensors}};}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00049}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a68a832d4eecca391a101b1e6bbc9b18b}{00049}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a68a832d4eecca391a101b1e6bbc9b18b}{reduceDim}};}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00053}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a6f0ef445ff0f374efbd3cd1f4e20668b}{00053}}\ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a6f0ef445ff0f374efbd3cd1f4e20668b}{nextFunctions}};}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00055}00055\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00071}00071\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_aabf3f0c6bd2fc2e2bf71f98526ac41c9}{GradReductionSum}}(std::vector<TensorView>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_af078dfab7aedd4bc8e593777f5cf68f6}{savedTensors}},\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a68a832d4eecca391a101b1e6bbc9b18b}{reduceDim}},}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a6f0ef445ff0f374efbd3cd1f4e20668b}{nextFunctions}});}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00094}00094\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_ad53e1dd809a31c06fa0925d6a35ad715}{backward}}(\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\&\ inputGradient,\ \textcolor{keywordtype}{bool}\ higherDerivative)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00095}00095\ \};}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8h_source_l00096}00096\ \}\ \ \textcolor{comment}{//\ namespace\ mattTorch::function}}
+
+\end{DoxyCode}

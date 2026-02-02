@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_a3855f71f5ad771f63fab2f775c3d8a5" kind="dir">
+    <compoundname>include/mattTorch/function/mean</compoundname>
+    <innerfile refid="gradMean_8h">gradMean.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/mattTorch/function/mean/"/>
+  </compounddef>
+</doxygen>

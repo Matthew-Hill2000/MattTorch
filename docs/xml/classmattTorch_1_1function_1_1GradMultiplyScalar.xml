@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classmattTorch_1_1function_1_1GradMultiplyScalar" kind="class" language="C++" prot="public">
+    <compoundname>mattTorch::function::GradMultiplyScalar</compoundname>
+    <basecompoundref refid="classmattTorch_1_1GradFunction" prot="public" virt="non-virtual">mattTorch::GradFunction</basecompoundref>
+    <includes refid="gradMultiplyScalar_8h" local="no">gradMultiplyScalar.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmattTorch_1_1function_1_1GradMultiplyScalar_1ae3453ea4a5b98ba5a48f11288e54cc6a" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double mattTorch::function::GradMultiplyScalar::savedScalar</definition>
+        <argsstring></argsstring>
+        <name>savedScalar</name>
+        <qualifiedname>mattTorch::function::GradMultiplyScalar::savedScalar</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The scalar value from the forward pass, required for computing the gradient during backpropagation </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/multiplication/gradMultiplyScalar.h" line="40" column="10" bodyfile="include/mattTorch/function/multiplication/gradMultiplyScalar.h" bodystart="40" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1function_1_1GradMultiplyScalar_1abed4bd892a770903e6b31273838aca54" compoundref="gradMultiplyScalar_8cpp" startline="11" endline="18">backward</referencedby>
+        <referencedby refid="classmattTorch_1_1function_1_1GradMultiplyScalar_1a977a7a27a8862bbec5f96834858339d5" compoundref="gradMultiplyScalar_8cpp" startline="6" endline="9">GradMultiplyScalar</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmattTorch_1_1function_1_1GradMultiplyScalar_1a3c9c381cc8c9f1f72f4e4c42cc3fb13b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;GradFunction&gt; &gt; mattTorch::function::GradMultiplyScalar::nextFunctions</definition>
+        <argsstring></argsstring>
+        <name>nextFunctions</name>
+        <qualifiedname>mattTorch::function::GradMultiplyScalar::nextFunctions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pointer to the <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> object of the parent tensor in the computational graph </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/multiplication/gradMultiplyScalar.h" line="44" column="15" bodyfile="include/mattTorch/function/multiplication/gradMultiplyScalar.h" bodystart="44" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1function_1_1GradMultiplyScalar_1abed4bd892a770903e6b31273838aca54" compoundref="gradMultiplyScalar_8cpp" startline="11" endline="18">backward</referencedby>
+        <referencedby refid="classmattTorch_1_1function_1_1GradMultiplyScalar_1a977a7a27a8862bbec5f96834858339d5" compoundref="gradMultiplyScalar_8cpp" startline="6" endline="9">GradMultiplyScalar</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmattTorch_1_1function_1_1GradMultiplyScalar_1a977a7a27a8862bbec5f96834858339d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mattTorch::function::GradMultiplyScalar::GradMultiplyScalar</definition>
+        <argsstring>(double savedScalar, std::vector&lt; std::shared_ptr&lt; GradFunction &gt; &gt; nextFunctions)</argsstring>
+        <name>GradMultiplyScalar</name>
+        <qualifiedname>mattTorch::function::GradMultiplyScalar::GradMultiplyScalar</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>savedScalar</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> &gt; &gt;</type>
+          <declname>nextFunctions</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="classmattTorch_1_1function_1_1GradMultiplyScalar" kindref="compound">GradMultiplyScalar</ref> gradient function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a <ref refid="classmattTorch_1_1function_1_1GradMultiplyScalar" kindref="compound">GradMultiplyScalar</ref> object that stores the scalar value from the forward pass and a pointer to the parent tensor&apos;s <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> for gradient propagation during backpropagation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classmattTorch_1_1function_1_1GradMultiplyScalar_1ae3453ea4a5b98ba5a48f11288e54cc6a" kindref="member">savedScalar</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scalar value that was multiplied with the tensor during the forward pass </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="classmattTorch_1_1function_1_1GradMultiplyScalar_1a3c9c381cc8c9f1f72f4e4c42cc3fb13b" kindref="member">nextFunctions</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector containing a shared pointer to the <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> object of the parent tensor for gradient propagation </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/multiplication/gradMultiplyScalar.h" line="59" column="3" bodyfile="src/function/multiplication/gradMultiplyScalar.cpp" bodystart="6" bodyend="9"/>
+        <references refid="classmattTorch_1_1function_1_1GradMultiplyScalar_1a3c9c381cc8c9f1f72f4e4c42cc3fb13b" compoundref="gradMultiplyScalar_8h" startline="44">nextFunctions</references>
+        <references refid="classmattTorch_1_1function_1_1GradMultiplyScalar_1ae3453ea4a5b98ba5a48f11288e54cc6a" compoundref="gradMultiplyScalar_8h" startline="40">savedScalar</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1function_1_1GradMultiplyScalar_1abed4bd892a770903e6b31273838aca54" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mattTorch::function::GradMultiplyScalar::backward</definition>
+        <argsstring>(TensorView &amp;inputGradient, bool higherDerivative) override</argsstring>
+        <name>backward</name>
+        <qualifiedname>mattTorch::function::GradMultiplyScalar::backward</qualifiedname>
+        <reimplements refid="classmattTorch_1_1GradFunction_1abc6c3ffb22d631af9dca31dcd5c09d3d">backward</reimplements>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &amp;</type>
+          <declname>inputGradient</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>higherDerivative</declname>
+        </param>
+        <briefdescription>
+<para>Computes and propagates gradients for the tensor-scalar multiplication operation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Implements the backward pass for tensor-scalar multiplication by multiplying the incoming gradient by the saved scalar value. Since the derivative of scalar multiplication with respect to the tensor input is the scalar itself, the gradient is scaled by this value. The method calls <ref refid="classmattTorch_1_1function_1_1GradMultiplyScalar_1abed4bd892a770903e6b31273838aca54" kindref="member">backward()</ref> on the parent tensor&apos;s <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> to continue the backpropagation process.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>inputGradient</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The gradient of the loss with respect to the output of the multiplication operation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>higherDerivative</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, enables construction of a computational graph during the backward pass for higher-order derivatives; if false, disables gradient tracking </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/multiplication/gradMultiplyScalar.h" line="79" column="8" bodyfile="src/function/multiplication/gradMultiplyScalar.cpp" bodystart="11" bodyend="18"/>
+        <references refid="classmattTorch_1_1function_1_1GradMultiplyScalar_1a3c9c381cc8c9f1f72f4e4c42cc3fb13b" compoundref="gradMultiplyScalar_8h" startline="44">nextFunctions</references>
+        <references refid="classmattTorch_1_1function_1_1GradMultiplyScalar_1ae3453ea4a5b98ba5a48f11288e54cc6a" compoundref="gradMultiplyScalar_8h" startline="40">savedScalar</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Gradient function for tensor-scalar multiplication. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classmattTorch_1_1function_1_1GradMultiplyScalar" kindref="compound">GradMultiplyScalar</ref> class represents the multiplication of a tensor by a scalar value in the computational graph, computing gradients for operations of the form <formula id="60">$C = A \cdot s$</formula> where <formula id="12">$A$</formula> is a tensor and <formula id="13">$s$</formula> is a scalar value. The gradient computation follows from the derivative:   <formula id="61">\[    \frac{\partial C}{\partial A} = s
+\]</formula></para>
+<para>The scalar value does not participate in gradient computation as it is a constant, not a learnable parameter or tensor that requires gradients. During backpropagation, the incoming gradient  <formula id="15">$\frac{\partial
+L}{\partial C}$</formula> is multiplied by the scalar value according to the chain rule:    <formula id="62">\[    \frac{\partial L}{\partial A} = \frac{\partial L}{\partial C} \cdot
+\frac{\partial C}{\partial A} = \frac{\partial L}{\partial C} \cdot s
+\]</formula></para>
+<para>This <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> saves the scalar value from the forward pass as it is required to compute the gradient with respect to the tensor input during the backward pass.</para>
+<para><simplesect kind="see"><para><ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> for the base class from which this class derives. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classmattTorch_1_1function_1_1GradMultiply" kindref="compound">GradMultiply</ref> for the gradient function for elementwise tensor multiplication. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>mattTorch::GradFunction</label>
+        <link refid="classmattTorch_1_1GradFunction"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::function::GradMultiplyScalar</label>
+        <link refid="classmattTorch_1_1function_1_1GradMultiplyScalar"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>mattTorch::GradFunction</label>
+        <link refid="classmattTorch_1_1GradFunction"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::function::GradMultiplyScalar</label>
+        <link refid="classmattTorch_1_1function_1_1GradMultiplyScalar"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/mattTorch/function/multiplication/gradMultiplyScalar.h" line="36" column="1" bodyfile="include/mattTorch/function/multiplication/gradMultiplyScalar.h" bodystart="36" bodyend="80"/>
+    <listofallmembers>
+      <member refid="classmattTorch_1_1function_1_1GradMultiplyScalar_1abed4bd892a770903e6b31273838aca54" prot="public" virt="virtual"><scope>mattTorch::function::GradMultiplyScalar</scope><name>backward</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradMultiplyScalar_1a977a7a27a8862bbec5f96834858339d5" prot="public" virt="non-virtual"><scope>mattTorch::function::GradMultiplyScalar</scope><name>GradMultiplyScalar</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradMultiplyScalar_1a3c9c381cc8c9f1f72f4e4c42cc3fb13b" prot="private" virt="non-virtual"><scope>mattTorch::function::GradMultiplyScalar</scope><name>nextFunctions</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradMultiplyScalar_1ae3453ea4a5b98ba5a48f11288e54cc6a" prot="private" virt="non-virtual"><scope>mattTorch::function::GradMultiplyScalar</scope><name>savedScalar</name></member>
+      <member refid="classmattTorch_1_1GradFunction_1ae57c9bf3f619ae1206416877caa15090" prot="public" virt="virtual"><scope>mattTorch::function::GradMultiplyScalar</scope><name>~GradFunction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

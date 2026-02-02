@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="sgd_8cpp" kind="file" language="C++">
+    <compoundname>sgd.cpp</compoundname>
+    <includes refid="sgd_8h" local="no">mattTorch/optimiser/sgd/sgd.h</includes>
+    <includes refid="tensorView_8h" local="no">mattTorch/tensor/tensorView/tensorView.h</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">vector</includes>
+    <incdepgraph>
+      <node id="17">
+        <label>mattTorch/function/addition/gradAddScalar.h</label>
+        <link refid="gradAddScalar_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>mattTorch/function/division/gradDivideScalar.h</label>
+        <link refid="gradDivideScalar_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>mattTorch/function/gradFunction.h</label>
+        <link refid="gradFunction_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>mattTorch/function/multiplication/gradMultiplyScalar.h</label>
+        <link refid="gradMultiplyScalar_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>mattTorch/function/subtraction/gradSubtractScalar.h</label>
+        <link refid="gradSubtractScalar_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>mattTorch/layer/layer.h</label>
+        <link refid="layer_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>mattTorch/network/network.h</label>
+        <link refid="network_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>mattTorch/optimiser/optimiser.h</label>
+        <link refid="optimiser_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>mattTorch/optimiser/sgd/sgd.h</label>
+        <link refid="sgd_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>mattTorch/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.h</label>
+        <link refid="tensorScalarElementwise_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>mattTorch/tensor/kernels/cpu/tensor-tensor/elementwise.h</label>
+        <link refid="elementwise_8h_source"/>
+      </node>
+      <node id="13">
+        <label>mattTorch/tensor/kernels/cpu/tensor-tensor/matrix.h</label>
+        <link refid="matrix_8h_source"/>
+      </node>
+      <node id="16">
+        <label>mattTorch/tensor/kernels/cpu/tensor/tensorElementwise.h</label>
+        <link refid="tensorElementwise_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>mattTorch/tensor/kernels/kernels.h</label>
+        <link refid="kernels_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>mattTorch/tensor/tensorView/tensorView.h</label>
+        <link refid="tensorView_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/optimiser/sgd/sgd.cpp</label>
+        <link refid="sgd_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>immintrin.h</label>
+      </node>
+      <node id="8">
+        <label>memory</label>
+      </node>
+      <node id="9">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacemattTorch">mattTorch</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mattTorch/optimiser/sgd/sgd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mattTorch/tensor/tensorView/tensorView.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mattTorch<sp/>{</highlight></codeline>
+<codeline lineno="9" refid="classmattTorch_1_1SGD_1a7493fdb1b125f0e804aa0f38fd482d43" refkind="member"><highlight class="normal"><ref refid="classmattTorch_1_1SGD_1a7493fdb1b125f0e804aa0f38fd482d43" kindref="member">SGD::SGD</ref>(std::vector&lt;std::shared_ptr&lt;TensorView&gt;&gt;<sp/><ref refid="classmattTorch_1_1SGD_1a39cf7bcbcb1d4e030d926c1764b4b5e9" kindref="member">parameters</ref>,</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1SGD_1ae01faafe964a03204e602ad2f63f7c51" kindref="member">learningRate</ref>)</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classmattTorch_1_1SGD_1a39cf7bcbcb1d4e030d926c1764b4b5e9" kindref="member">parameters</ref>{<ref refid="classmattTorch_1_1SGD_1a39cf7bcbcb1d4e030d926c1764b4b5e9" kindref="member">parameters</ref>},<sp/><ref refid="classmattTorch_1_1SGD_1ae01faafe964a03204e602ad2f63f7c51" kindref="member">learningRate</ref>{<ref refid="classmattTorch_1_1SGD_1ae01faafe964a03204e602ad2f63f7c51" kindref="member">learningRate</ref>}<sp/>{}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classmattTorch_1_1SGD_1a90c76ff546fe29437e322fb9c657dd22" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1SGD_1a90c76ff546fe29437e322fb9c657dd22" kindref="member">SGD::updateParameters</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/>__m256d<sp/>learningRateVec<sp/>=</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>_mm256_set_pd(<ref refid="classmattTorch_1_1SGD_1ae01faafe964a03204e602ad2f63f7c51" kindref="member">learningRate</ref>,<sp/><ref refid="classmattTorch_1_1SGD_1ae01faafe964a03204e602ad2f63f7c51" kindref="member">learningRate</ref>,<sp/><ref refid="classmattTorch_1_1SGD_1ae01faafe964a03204e602ad2f63f7c51" kindref="member">learningRate</ref>,<sp/><ref refid="classmattTorch_1_1SGD_1ae01faafe964a03204e602ad2f63f7c51" kindref="member">learningRate</ref>);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>parameter<sp/>:<sp/><ref refid="classmattTorch_1_1SGD_1a39cf7bcbcb1d4e030d926c1764b4b5e9" kindref="member">parameters</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>paramData<sp/>=<sp/>parameter-&gt;getData();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>paramGradData<sp/>=<sp/>parameter-&gt;getGradientData();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i{0};<sp/>i<sp/>+<sp/>3<sp/>&lt;<sp/>parameter-&gt;getNValues();<sp/>i<sp/>+=<sp/>4)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>__m256d<sp/>p<sp/>=<sp/>_mm256_load_pd(paramData<sp/>+<sp/>i);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>__m256d<sp/>pG<sp/>=<sp/>_mm256_load_pd(paramGradData<sp/>+<sp/>i);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>__m256d<sp/>newP<sp/>=<sp/>_mm256_fnmadd_pd(learningRateVec,<sp/>pG,<sp/>p);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>_mm256_store_pd(paramData<sp/>+<sp/>i,<sp/>newP);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classmattTorch_1_1SGD_1ac44ead48c860ae3ecbfad630c8121879" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1SGD_1ac44ead48c860ae3ecbfad630c8121879" kindref="member">SGD::zeroGrad</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>parameter<sp/>:<sp/><ref refid="classmattTorch_1_1SGD_1a39cf7bcbcb1d4e030d926c1764b4b5e9" kindref="member">parameters</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>paramGradData<sp/>=<sp/>parameter-&gt;getGradientData();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>std::fill(paramGradData,<sp/>paramGradData<sp/>+<sp/>parameter-&gt;getNValues(),<sp/>0);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mattTorch</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/optimiser/sgd/sgd.cpp"/>
+  </compounddef>
+</doxygen>

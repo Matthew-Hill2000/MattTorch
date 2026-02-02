@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classmattTorch_1_1criterion_1_1CrossEntropyLoss" kind="class" language="C++" prot="public">
+    <compoundname>mattTorch::criterion::CrossEntropyLoss</compoundname>
+    <basecompoundref refid="classmattTorch_1_1Criterion" prot="public" virt="non-virtual">mattTorch::Criterion</basecompoundref>
+    <includes refid="crossEntropyLoss_8h" local="no">crossEntropyLoss.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmattTorch_1_1criterion_1_1CrossEntropyLoss_1a3e477b089170fe65dec1c7f16aa4be6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref></type>
+        <definition>TensorView mattTorch::criterion::CrossEntropyLoss::calculateLoss</definition>
+        <argsstring>(TensorView &amp;input, TensorView &amp;target)</argsstring>
+        <name>calculateLoss</name>
+        <qualifiedname>mattTorch::criterion::CrossEntropyLoss::calculateLoss</qualifiedname>
+        <reimplements refid="classmattTorch_1_1Criterion_1af89e3b01ee1819f1a99e35cab9da9a4e">calculateLoss</reimplements>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &amp;</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &amp;</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Computes the Cross-Entropy loss between the input predictions and the target values. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The predicted probability values produced by the network, expected to be the output of a softmax layer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ground truth target values as one-hot encoded vectors </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> containing the computed Cross-Entropy loss value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/criterion/crossEntropyLoss/crossEntropyLoss.h" line="36" column="14" bodyfile="src/criterion/crossEntropyLoss/crossEntropyLoss.cpp" bodystart="6" bodyend="13"/>
+        <references refid="classmattTorch_1_1TensorView_1a5897a4bb31d05c1fe2522d34f0d36e1f" compoundref="tensorViewOverloads_8cpp" startline="319" endline="335">mattTorch::TensorView::log</references>
+        <references refid="classmattTorch_1_1TensorView_1a0b3a056b5751ad4dd7f7c4af0e628f24" compoundref="tensorViewOverloads_8cpp" startline="255" endline="299">mattTorch::TensorView::reductionSum</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Cross-Entropy loss function for classification tasks. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classmattTorch_1_1criterion_1_1CrossEntropyLoss" kindref="compound">CrossEntropyLoss</ref> class computes the Cross-Entropy loss between the predicted values and the target values. The loss is calculated as:   <formula id="0">\[    L = -\sum_{i=1}^{N} t_i \log(\hat{y}_i)
+\]</formula> where <formula id="1">$t_i$</formula> is the target value and <formula id="2">$\hat{y}_i$</formula> is the predicted value. The input is expected to contain probabilities (e.g. the output of a softmax layer) and the target is expected to be a one-hot encoded vector. The computation is performed by first taking the elementwise natural logarithm of the input tensor, multiplying elementwise with the target tensor, negating the result, and summing along dimension 1. Each of these operations participates in the computational graph, allowing gradients to be propagated back through the loss function during backpropagation.</para>
+<para><simplesect kind="see"><para><ref refid="classmattTorch_1_1Criterion" kindref="compound">Criterion</ref> for the base class from which this class derives. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>mattTorch::Criterion</label>
+        <link refid="classmattTorch_1_1Criterion"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::criterion::CrossEntropyLoss</label>
+        <link refid="classmattTorch_1_1criterion_1_1CrossEntropyLoss"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>mattTorch::Criterion</label>
+        <link refid="classmattTorch_1_1Criterion"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::criterion::CrossEntropyLoss</label>
+        <link refid="classmattTorch_1_1criterion_1_1CrossEntropyLoss"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/mattTorch/criterion/crossEntropyLoss/crossEntropyLoss.h" line="25" column="1" bodyfile="include/mattTorch/criterion/crossEntropyLoss/crossEntropyLoss.h" bodystart="25" bodyend="37"/>
+    <listofallmembers>
+      <member refid="classmattTorch_1_1criterion_1_1CrossEntropyLoss_1a3e477b089170fe65dec1c7f16aa4be6f" prot="public" virt="virtual"><scope>mattTorch::criterion::CrossEntropyLoss</scope><name>calculateLoss</name></member>
+      <member refid="classmattTorch_1_1Criterion_1a1c5c589d128e186f5a66be445c92839f" prot="public" virt="virtual"><scope>mattTorch::criterion::CrossEntropyLoss</scope><name>~Criterion</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

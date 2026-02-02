@@ -1,0 +1,104 @@
+\doxysection{matt\+Torch::\+Grad\+Function Class Reference}
+\hypertarget{classmattTorch_1_1GradFunction}{}\label{classmattTorch_1_1GradFunction}\index{mattTorch::GradFunction@{mattTorch::GradFunction}}
+
+
+Abstract base class for gradient computation nodes in the computational graph.  
+
+
+
+
+{\ttfamily \+\#include $<$grad\+Function.\+h$>$}
+
+
+
+Inheritance diagram for matt\+Torch::\+Grad\+Function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classmattTorch_1_1GradFunction__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{classmattTorch_1_1GradFunction_abc6c3ffb22d631af9dca31dcd5c09d3d}{backward}} (\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&input\+Gradient, bool higher\+Derivative)=0
+\begin{DoxyCompactList}\small\item\em Computes gradients with respect to parent tensors and propagates them backwards through the computational graph. \end{DoxyCompactList}\item 
+\Hypertarget{classmattTorch_1_1GradFunction_ae57c9bf3f619ae1206416877caa15090}\label{classmattTorch_1_1GradFunction_ae57c9bf3f619ae1206416877caa15090} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Grad\+Function} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for safe polymorphic destruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}} $>$ $>$ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction_a5c4d2cf9af3c8deb752d7daf4905ad0b}{next\+Functions}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for gradient computation nodes in the computational graph. 
+
+The \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} class forms the foundation of matt\+Torch\textquotesingle{}s automatic differentiation system. Each \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} object represents a node in the computational graph corresponding to a mathematical operation performed on one or more tensors during the forward pass. These nodes store the information necessary to compute gradients during the backward pass and maintain pointers to the \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} objects of parent tensors in the graph, forming a directed acyclic graph structure that encodes the history of operations.
+
+During backpropagation, gradients flow backwards through the computational graph via recursive calls to the \doxylink{classmattTorch_1_1GradFunction_abc6c3ffb22d631af9dca31dcd5c09d3d}{backward()} method. Each \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} receives the gradient of the loss with respect to its output tensor, computes the gradient with respect to each of its input tensors using the chain rule, and propagates these gradients to the parent nodes by calling their \doxylink{classmattTorch_1_1GradFunction_abc6c3ffb22d631af9dca31dcd5c09d3d}{backward()} methods. This process continues recursively until gradients have been computed for all tensors in the graph that require them.
+
+Specific mathematical operations such as addition, multiplication, or activation functions are implemented as derived classes that override the \doxylink{classmattTorch_1_1GradFunction_abc6c3ffb22d631af9dca31dcd5c09d3d}{backward()} method with the appropriate gradient computation for that operation. Each derived class stores any tensors or values from the forward pass that are needed to compute gradients during the backward pass.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classmattTorch_1_1TensorView}{Tensor\+View} for the tensor class that uses \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} objects to enable automatic differentiation. 
+
+Grad\+Accumulator for the \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} subclass used for leaf tensors. 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{gradFunction_8h_source_l00040}{40}} of file \doxymbox{\hyperlink{gradFunction_8h_source}{grad\+Function.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classmattTorch_1_1GradFunction_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmattTorch_1_1GradFunction_abc6c3ffb22d631af9dca31dcd5c09d3d}\index{mattTorch::GradFunction@{mattTorch::GradFunction}!backward@{backward}}
+\index{backward@{backward}!mattTorch::GradFunction@{mattTorch::GradFunction}}
+\doxysubsubsection{\texorpdfstring{backward()}{backward()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1GradFunction_abc6c3ffb22d631af9dca31dcd5c09d3d} 
+virtual void matt\+Torch::\+\+Grad\+Function::\+backward (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&}]{input\+Gradient}{, }\item[{bool}]{higher\+Derivative}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Computes gradients with respect to parent tensors and propagates them backwards through the computational graph. 
+
+Pure virtual method to be implemented by derived classes with the specific gradient computation for their associated mathematical operation. The method receives the gradient of the loss with respect to this operation\textquotesingle{}s output, computes the gradients with respect to each input tensor using the chain rule, and recursively calls \doxylink{classmattTorch_1_1GradFunction_abc6c3ffb22d631af9dca31dcd5c09d3d}{backward()} on each parent\textquotesingle{}s \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} to continue the backpropagation process.
+
+When higher\+Derivative is false, the implementation should disable gradient tracking on saved tensors by setting requires\+Grad to false, preventing the construction of a new computational graph during the backward pass. When higher\+Derivative is true, operations performed during gradient computation participate in a new computational graph, enabling the computation of higher-\/order derivatives.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Gradient} & The gradient of the loss with respect to this operation\textquotesingle{}s output tensor \\
+\hline
+{\em higher\+Derivative} & If true, enables construction of a computational graph during the backward pass to allow computation of higher-\/order derivatives; if false, disables gradient tracking on operations performed during backpropagation \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAccumulator_aed14a7f0998d5eb3fc085d6ce65dd8b3}{matt\+Torch::\+function::\+\+Grad\+Accumulator}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAdd_a76c8bf1698dddd5eb815bb77a612f674}{matt\+Torch::\+function::\+\+Grad\+Add}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAddScalar_a403d670a6583c00b812844a4e3cdb895}{matt\+Torch::\+function::\+\+Grad\+Add\+Scalar}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradBroadcast_a82be11553bb34eb93c86ba4a36ca32ff}{matt\+Torch::\+function::\+\+Grad\+Broadcast}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivide_a43dd21370a00bbbe50661f8b268b74e3}{matt\+Torch::\+function::\+\+Grad\+Divide}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_ac55d530e1596db8e4c966ca03573c076}{matt\+Torch::\+function::\+\+Grad\+Divide\+Scalar}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponent_aac3447f13f16527ca24cebf1fccb0e9b}{matt\+Torch::\+function::\+\+Grad\+Exponent}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponential_a83897376a25d129b885f80f1efbf4e59}{matt\+Torch::\+function::\+\+Grad\+Exponential}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradLog_a81898a9d4e0d319b5c15abe8574e7f48}{matt\+Torch::\+function::\+\+Grad\+Log}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMean_a498842b9eca2a4c71e2b840feff4f5aa}{matt\+Torch::\+function::\+\+Grad\+Mean}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiply_ae6a3f087eca3cbdb7a8bb1fa65aa25c4}{matt\+Torch::\+function::\+\+Grad\+Multiply}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_afdb545df24351a809cae24e2d06586bc}{matt\+Torch::\+function::\+\+Grad\+Multiply\+Matrix}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyScalar_abed4bd892a770903e6b31273838aca54}{matt\+Torch::\+function::\+\+Grad\+Multiply\+Scalar}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_ad53e1dd809a31c06fa0925d6a35ad715}{matt\+Torch::\+function::\+\+Grad\+Reduction\+Sum}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReLU_a1b5e6b312079324bf8d8169f24df6a5d}{matt\+Torch::\+function::\+\+Grad\+Re\+LU}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradSubtract_a953a956db45065056e217527c5ac9ec2}{matt\+Torch::\+function::\+\+Grad\+Subtract}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradSubtractScalar_a12c3c4e9ace4fce572a5af5cc3131252}{matt\+Torch::\+function::\+\+Grad\+Subtract\+Scalar}}, \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradTanh_a504199b6313ea75109a2dce4bbc36daa}{matt\+Torch::\+function::\+\+Grad\+Tanh}}, and \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradTransposeMatrix_a2a672419dc53eee8e4371114edd806d1}{matt\+Torch::\+function::\+\+Grad\+Transpose\+Matrix}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classmattTorch_1_1GradFunction_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmattTorch_1_1GradFunction_a5c4d2cf9af3c8deb752d7daf4905ad0b}\index{mattTorch::GradFunction@{mattTorch::GradFunction}!nextFunctions@{nextFunctions}}
+\index{nextFunctions@{nextFunctions}!mattTorch::GradFunction@{mattTorch::GradFunction}}
+\doxysubsubsection{\texorpdfstring{nextFunctions}{nextFunctions}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1GradFunction_a5c4d2cf9af3c8deb752d7daf4905ad0b} 
+std::\+vector$<$std::\+shared\+\_\+ptr$<$\doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}}$>$ $>$ matt\+Torch::\+\+Grad\+Function::\+next\+Functions\hspace{0.3cm}{\ttfamily [private]}}
+
+Stores pointers to the \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} objects of the parent tensors in the computational graph 
+
+Definition at line \doxymbox{\hyperlink{gradFunction_8h_source_l00044}{44}} of file \doxymbox{\hyperlink{gradFunction_8h_source}{grad\+Function.\+h}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+matt\+Torch/\+function/\+grad\+Function.\+h\end{DoxyCompactItemize}

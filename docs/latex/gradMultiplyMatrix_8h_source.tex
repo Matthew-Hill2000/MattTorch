@@ -1,0 +1,25 @@
+\doxysection{grad\+Multiply\+Matrix.\+h}
+\hypertarget{gradMultiplyMatrix_8h_source}{}\label{gradMultiplyMatrix_8h_source}\index{include/mattTorch/function/multiplication/gradMultiplyMatrix.h@{include/mattTorch/function/multiplication/gradMultiplyMatrix.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <mattTorch/function/gradFunction.h>}}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00005}00005\ \textcolor{keyword}{namespace\ }mattTorch::function\ \{}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00041}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix}{00041}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_ad5c1f4f8cabff0bf23638abac509691a}{GradMultiplyMatrix}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{GradFunction}}\ \{}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00042}00042\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00045}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a3cb65167fed0eaf3cc1d18e2175194de}{00045}}\ \ \ std::vector<TensorView>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a3cb65167fed0eaf3cc1d18e2175194de}{savedTensors}};}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00049}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a50662cf3747d1957689fd6cab2bd8762}{00049}}\ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a50662cf3747d1957689fd6cab2bd8762}{nextFunctions}};}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00051}00051\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00064}00064\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_ad5c1f4f8cabff0bf23638abac509691a}{GradMultiplyMatrix}}(std::vector<TensorView>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a3cb65167fed0eaf3cc1d18e2175194de}{savedTensors}},}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_a50662cf3747d1957689fd6cab2bd8762}{nextFunctions}});}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00090}00090\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyMatrix_afdb545df24351a809cae24e2d06586bc}{backward}}(\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\&\ inputGradient,\ \textcolor{keywordtype}{bool}\ higherDerivative)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00091}00091\ \};}
+\DoxyCodeLine{\Hypertarget{gradMultiplyMatrix_8h_source_l00092}00092\ \}}
+
+\end{DoxyCode}

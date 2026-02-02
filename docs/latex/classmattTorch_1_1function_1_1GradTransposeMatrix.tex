@@ -1,0 +1,214 @@
+\doxysection{matt\+Torch::\+function::\+Grad\+Transpose\+Matrix Class Reference}
+\hypertarget{classmattTorch_1_1function_1_1GradTransposeMatrix}{}\label{classmattTorch_1_1function_1_1GradTransposeMatrix}\index{mattTorch::function::GradTransposeMatrix@{mattTorch::function::GradTransposeMatrix}}
+
+
+Gradient function for matrix multiplication with one transposed operand.  
+
+
+
+
+{\ttfamily \+\#include $<$grad\+Transpose\+Matrix.\+h$>$}
+
+
+
+Inheritance diagram for matt\+Torch::\+function::\+Grad\+Transpose\+Matrix:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classmattTorch_1_1function_1_1GradTransposeMatrix__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for matt\+Torch::\+function::\+Grad\+Transpose\+Matrix:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classmattTorch_1_1function_1_1GradTransposeMatrix__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradTransposeMatrix_a49b04060eb6fb3c635a5992e3b0c9d92}{Grad\+Transpose\+Matrix}} (std::\+vector$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradTransposeMatrix_a8f73264cf8589f1cce9fb5192106c328}{saved\+Tensors}}, std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}} $>$ $>$ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradTransposeMatrix_af5d13affdc3bfb804e7ba9ccc118c3d1}{next\+Functions}}, bool \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradTransposeMatrix_a0f7c61f46fcfc2fa9ced40a148544283}{transpose\+First}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classmattTorch_1_1function_1_1GradTransposeMatrix}{Grad\+Transpose\+Matrix} gradient function. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradTransposeMatrix_a2a672419dc53eee8e4371114edd806d1}{backward}} (\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&input\+Gradient, bool higher\+Derivative) override
+\begin{DoxyCompactList}\small\item\em Computes and propagates gradients for the transposed matrix multiplication operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{matt\+Torch::\+\+Grad\+Function}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Grad\+Function} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for safe polymorphic destruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradTransposeMatrix_a8f73264cf8589f1cce9fb5192106c328}{saved\+Tensors}}
+\item 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}} $>$ $>$ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradTransposeMatrix_af5d13affdc3bfb804e7ba9ccc118c3d1}{next\+Functions}}
+\item 
+bool \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradTransposeMatrix_a0f7c61f46fcfc2fa9ced40a148544283}{transpose\+First}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gradient function for matrix multiplication with one transposed operand. 
+
+The \doxylink{classmattTorch_1_1function_1_1GradTransposeMatrix}{Grad\+Transpose\+Matrix} class represents matrix multiplication operations where one of the input matrices is transposed during the forward pass, computing gradients for operations of the form $C = A^T B$ or  $C = A
+B^T$. The transpose\+First flag determines which operand was transposed.
+
+For the operation $C = A^T B$ (transpose\+First = true), the gradient computation follows from:\+    \[    \frac{\partial L}{\partial A} = B \left(\frac{\partial L}{\partial
+C}\right)^T
+\]   \[    \frac{\partial L}{\partial B} = A \frac{\partial L}{\partial C}
+\]
+
+For the operation $C = A B^T$ (transpose\+First = false), the gradient computation follows from:\+   \[    \frac{\partial L}{\partial A} = \frac{\partial L}{\partial C} B
+\]    \[    \frac{\partial L}{\partial B} = \left(\frac{\partial L}{\partial
+C}\right)^T A
+\]
+
+The implementation uses a combination of matrix\+Multiply and transpose\+Multiply operations to efficiently compute the required gradient transformations without explicitly materializing transposed matrices where possible.
+
+This \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} saves copies of both input tensors and a flag indicating which operand was transposed, as all are required to compute the gradients with respect to each input during the backward pass.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} for the base class from which this class derives. 
+
+\doxylink{classmattTorch_1_1function_1_1GradMultiplyMatrix}{Grad\+Multiply\+Matrix} for the gradient function for standard matrix multiplication. 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{gradTransposeMatrix_8h_source_l00048}{48}} of file \doxymbox{\hyperlink{gradTransposeMatrix_8h_source}{grad\+Transpose\+Matrix.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classmattTorch_1_1function_1_1GradTransposeMatrix_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmattTorch_1_1function_1_1GradTransposeMatrix_a49b04060eb6fb3c635a5992e3b0c9d92}\index{mattTorch::function::GradTransposeMatrix@{mattTorch::function::GradTransposeMatrix}!GradTransposeMatrix@{GradTransposeMatrix}}
+\index{GradTransposeMatrix@{GradTransposeMatrix}!mattTorch::function::GradTransposeMatrix@{mattTorch::function::GradTransposeMatrix}}
+\doxysubsubsection{\texorpdfstring{GradTransposeMatrix()}{GradTransposeMatrix()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradTransposeMatrix_a49b04060eb6fb3c635a5992e3b0c9d92} 
+matt\+Torch::\+function::\+\+Grad\+Transpose\+Matrix::\+\+Grad\+Transpose\+Matrix (\begin{DoxyParamCaption}\item[{std::\+vector$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$}]{saved\+Tensors}{, }\item[{std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}} $>$ $>$}]{next\+Functions}{, }\item[{bool}]{transpose\+First}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{classmattTorch_1_1function_1_1GradTransposeMatrix}{Grad\+Transpose\+Matrix} gradient function. 
+
+Creates a \doxylink{classmattTorch_1_1function_1_1GradTransposeMatrix}{Grad\+Transpose\+Matrix} object that stores the input matrices from the forward pass, pointers to the parent \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} objects, and a flag indicating which operand was transposed during the forward pass.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classmattTorch_1_1function_1_1GradTransposeMatrix_a8f73264cf8589f1cce9fb5192106c328}{saved\+Tensors}} & A vector containing the two input matrices that participated in the transposed multiplication during the forward pass \\
+\hline
+{\em \doxylink{classmattTorch_1_1function_1_1GradTransposeMatrix_af5d13affdc3bfb804e7ba9ccc118c3d1}{next\+Functions}} & A vector containing shared pointers to the \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} objects of the parent tensors for gradient propagation \\
+\hline
+{\em \doxylink{classmattTorch_1_1function_1_1GradTransposeMatrix_a0f7c61f46fcfc2fa9ced40a148544283}{transpose\+First}} & Flag indicating which matrix was transposed:\+ true if the first matrix was transposed, false if the second matrix was transposed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{gradTransposeMatrix_8cpp_source_l00007}{7}} of file \doxymbox{\hyperlink{gradTransposeMatrix_8cpp_source}{grad\+Transpose\+Matrix.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{gradTransposeMatrix_8h_source_l00056}{next\+Functions}}, \doxymbox{\hyperlink{gradTransposeMatrix_8h_source_l00052}{saved\+Tensors}}, and \doxymbox{\hyperlink{gradTransposeMatrix_8h_source_l00061}{transpose\+First}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classmattTorch_1_1function_1_1GradTransposeMatrix_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmattTorch_1_1function_1_1GradTransposeMatrix_a2a672419dc53eee8e4371114edd806d1}\index{mattTorch::function::GradTransposeMatrix@{mattTorch::function::GradTransposeMatrix}!backward@{backward}}
+\index{backward@{backward}!mattTorch::function::GradTransposeMatrix@{mattTorch::function::GradTransposeMatrix}}
+\doxysubsubsection{\texorpdfstring{backward()}{backward()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradTransposeMatrix_a2a672419dc53eee8e4371114edd806d1} 
+void matt\+Torch::\+function::\+\+Grad\+Transpose\+Matrix::\+backward (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&}]{input\+Gradient}{, }\item[{bool}]{higher\+Derivative}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Computes and propagates gradients for the transposed matrix multiplication operation. 
+
+Implements the backward pass for transposed matrix multiplication by computing the appropriate matrix products for each parent based on which operand was transposed. The gradient computation differs depending on whether the first or second operand was transposed during the forward pass, with the transpose\+First flag controlling the branching logic. The method uses a combination of matrix\+Multiply and transpose\+Multiply operations for efficient computation and calls \doxylink{classmattTorch_1_1function_1_1GradTransposeMatrix_a2a672419dc53eee8e4371114edd806d1}{backward()} on each parent\textquotesingle{}s \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} to continue the backpropagation process.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Gradient} & The gradient of the loss with respect to the output of the transposed matrix multiplication operation \\
+\hline
+{\em higher\+Derivative} & If true, enables construction of a computational graph during the backward pass for higher-\/order derivatives; if false, disables gradient tracking \\
+\hline
+\end{DoxyParams}
+
+
+Implements \doxymbox{\hyperlink{classmattTorch_1_1GradFunction_abc6c3ffb22d631af9dca31dcd5c09d3d}{matt\+Torch::\+\+Grad\+Function}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{gradTransposeMatrix_8cpp_source_l00016}{16}} of file \doxymbox{\hyperlink{gradTransposeMatrix_8cpp_source}{grad\+Transpose\+Matrix.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{tensorViewOverloads_8cpp_source_l00337}{matt\+Torch::\+\+Tensor\+View::\+matrix\+Multiply()}}, \doxymbox{\hyperlink{gradTransposeMatrix_8h_source_l00056}{next\+Functions}}, \doxymbox{\hyperlink{gradTransposeMatrix_8h_source_l00052}{saved\+Tensors}}, \doxymbox{\hyperlink{gradTransposeMatrix_8h_source_l00061}{transpose\+First}}, and \doxymbox{\hyperlink{tensorViewOverloads_8cpp_source_l00367}{matt\+Torch::\+\+Tensor\+View::\+transpose\+Multiply()}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmattTorch_1_1function_1_1GradTransposeMatrix_a2a672419dc53eee8e4371114edd806d1_cgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{classmattTorch_1_1function_1_1GradTransposeMatrix_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmattTorch_1_1function_1_1GradTransposeMatrix_af5d13affdc3bfb804e7ba9ccc118c3d1}\index{mattTorch::function::GradTransposeMatrix@{mattTorch::function::GradTransposeMatrix}!nextFunctions@{nextFunctions}}
+\index{nextFunctions@{nextFunctions}!mattTorch::function::GradTransposeMatrix@{mattTorch::function::GradTransposeMatrix}}
+\doxysubsubsection{\texorpdfstring{nextFunctions}{nextFunctions}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradTransposeMatrix_af5d13affdc3bfb804e7ba9ccc118c3d1} 
+std::\+vector$<$std::\+shared\+\_\+ptr$<$\doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}}$>$ $>$ matt\+Torch::\+function::\+\+Grad\+Transpose\+Matrix::\+next\+Functions\hspace{0.3cm}{\ttfamily [private]}}
+
+Pointers to the \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} objects of the parent tensors in the computational graph 
+
+Definition at line \doxymbox{\hyperlink{gradTransposeMatrix_8h_source_l00056}{56}} of file \doxymbox{\hyperlink{gradTransposeMatrix_8h_source}{grad\+Transpose\+Matrix.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{gradTransposeMatrix_8cpp_source_l00016}{backward()}}, and \doxymbox{\hyperlink{gradTransposeMatrix_8cpp_source_l00007}{Grad\+Transpose\+Matrix()}}.
+
+\Hypertarget{classmattTorch_1_1function_1_1GradTransposeMatrix_a8f73264cf8589f1cce9fb5192106c328}\index{mattTorch::function::GradTransposeMatrix@{mattTorch::function::GradTransposeMatrix}!savedTensors@{savedTensors}}
+\index{savedTensors@{savedTensors}!mattTorch::function::GradTransposeMatrix@{mattTorch::function::GradTransposeMatrix}}
+\doxysubsubsection{\texorpdfstring{savedTensors}{savedTensors}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradTransposeMatrix_a8f73264cf8589f1cce9fb5192106c328} 
+std::\+vector$<$\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}}$>$ matt\+Torch::\+function::\+\+Grad\+Transpose\+Matrix::\+saved\+Tensors\hspace{0.3cm}{\ttfamily [private]}}
+
+The input matrices from the forward pass, required for computing gradients during backpropagation 
+
+Definition at line \doxymbox{\hyperlink{gradTransposeMatrix_8h_source_l00052}{52}} of file \doxymbox{\hyperlink{gradTransposeMatrix_8h_source}{grad\+Transpose\+Matrix.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{gradTransposeMatrix_8cpp_source_l00016}{backward()}}, and \doxymbox{\hyperlink{gradTransposeMatrix_8cpp_source_l00007}{Grad\+Transpose\+Matrix()}}.
+
+\Hypertarget{classmattTorch_1_1function_1_1GradTransposeMatrix_a0f7c61f46fcfc2fa9ced40a148544283}\index{mattTorch::function::GradTransposeMatrix@{mattTorch::function::GradTransposeMatrix}!transposeFirst@{transposeFirst}}
+\index{transposeFirst@{transposeFirst}!mattTorch::function::GradTransposeMatrix@{mattTorch::function::GradTransposeMatrix}}
+\doxysubsubsection{\texorpdfstring{transposeFirst}{transposeFirst}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradTransposeMatrix_a0f7c61f46fcfc2fa9ced40a148544283} 
+bool matt\+Torch::\+function::\+\+Grad\+Transpose\+Matrix::\+transpose\+First\hspace{0.3cm}{\ttfamily [private]}}
+
+Flag indicating which operand was transposed:\+ true if the first operand was transposed (A\texorpdfstring{$^\wedge$}{\string^}T \texorpdfstring{$\ast$}{*} B), false if the second operand was transposed (A \texorpdfstring{$\ast$}{*} B\texorpdfstring{$^\wedge$}{\string^}T) 
+
+Definition at line \doxymbox{\hyperlink{gradTransposeMatrix_8h_source_l00061}{61}} of file \doxymbox{\hyperlink{gradTransposeMatrix_8h_source}{grad\+Transpose\+Matrix.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{gradTransposeMatrix_8cpp_source_l00016}{backward()}}, and \doxymbox{\hyperlink{gradTransposeMatrix_8cpp_source_l00007}{Grad\+Transpose\+Matrix()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+matt\+Torch/\+function/\+multiplication/\+grad\+Transpose\+Matrix.\+h\item 
+src/\+function/\+multiplication/\+grad\+Transpose\+Matrix.\+cpp\end{DoxyCompactItemize}

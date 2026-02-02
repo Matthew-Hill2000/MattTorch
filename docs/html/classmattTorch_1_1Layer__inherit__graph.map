@@ -1,0 +1,11 @@
+<map id="mattTorch::Layer" name="mattTorch::Layer">
+<area shape="rect" id="Node000001" title="Abstract base class for all neural network layers." alt="" coords="284,5,404,32"/>
+<area shape="rect" id="Node000002" href="$classmattTorch_1_1FullyConnectedLayer.html" title="A fully connected (dense) neural network layer." alt="" coords="5,80,184,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="293,37,160,82,158,77,288,38"/>
+<area shape="rect" id="Node000003" href="$classmattTorch_1_1ReLU.html" title="A Rectified Linear Unit activation layer." alt="" coords="207,88,328,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="324,42,281,90,278,86,319,44"/>
+<area shape="rect" id="Node000004" href="$classmattTorch_1_1Softmax.html" title="A Softmax activation layer." alt="" coords="353,88,489,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="367,41,412,88,407,87,365,46"/>
+<area shape="rect" id="Node000005" href="$classmattTorch_1_1Tanh.html" title="A hyperbolic tangent activation layer." alt="" coords="513,88,628,115"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="394,35,538,87,532,88,393,40"/>
+</map>

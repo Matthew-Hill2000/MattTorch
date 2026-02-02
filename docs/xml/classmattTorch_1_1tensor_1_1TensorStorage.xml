@@ -1,0 +1,330 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classmattTorch_1_1tensor_1_1TensorStorage" kind="class" language="C++" prot="public">
+    <compoundname>mattTorch::tensor::TensorStorage</compoundname>
+    <includes refid="tensorStorage_8h" local="no">tensorStorage.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" prot="private" static="no" mutable="no">
+        <type>double *</type>
+        <definition>double* mattTorch::tensor::TensorStorage::mData</definition>
+        <argsstring></argsstring>
+        <name>mData</name>
+        <qualifiedname>mattTorch::tensor::TensorStorage::mData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pointer to the contiguous block of memory holding the data associated with a <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> object </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/tensor/tensorStorage/tensorStorage.h" line="24" column="10" bodyfile="include/mattTorch/tensor/tensorStorage/tensorStorage.h" bodystart="24" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1tensor_1_1TensorStorage_1a4afb320bea0690d41a866f0b633ce3cd" compoundref="tensorStorage_8cpp" startline="17" endline="22">at</referencedby>
+        <referencedby refid="classmattTorch_1_1tensor_1_1TensorStorage_1a461d28cb4fa065e7d6894c14e2ee03e6" compoundref="tensorStorage_8cpp" startline="24" endline="29">at</referencedby>
+        <referencedby refid="classmattTorch_1_1tensor_1_1TensorStorage_1a415d8f615977349507981d9b2529de44" compoundref="tensorStorage_8cpp" startline="33" endline="33">getData</referencedby>
+        <referencedby refid="classmattTorch_1_1tensor_1_1TensorStorage_1a7cda495dee4b76c8f72708a36c17fbb1" compoundref="tensorStorage_8cpp" startline="34" endline="34">getData</referencedby>
+        <referencedby refid="classmattTorch_1_1tensor_1_1TensorStorage_1abac8f13bca6b87bdc0408d879ada633f" compoundref="tensorStorage_8cpp" startline="36" endline="38">setAllValues</referencedby>
+        <referencedby refid="classmattTorch_1_1tensor_1_1TensorStorage_1ae9d3e515dac1601c82acdc265a9d04e9" compoundref="tensorStorage_8cpp" startline="15" endline="15">TensorStorage</referencedby>
+        <referencedby refid="classmattTorch_1_1tensor_1_1TensorStorage_1a5501054e35b85b6f238b03199d953f8b" compoundref="tensorStorage_8cpp" startline="8" endline="11">TensorStorage</referencedby>
+        <referencedby refid="classmattTorch_1_1tensor_1_1TensorStorage_1a36b5ebdf95bc85e6f09e136c1bc1724e" compoundref="tensorStorage_8cpp" startline="13" endline="13">~TensorStorage</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t mattTorch::tensor::TensorStorage::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>mattTorch::tensor::TensorStorage::size</qualifiedname>
+        <briefdescription>
+<para>The number of elements stored in the contiguous data block. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/tensor/tensorStorage/tensorStorage.h" line="27" column="10" bodyfile="include/mattTorch/tensor/tensorStorage/tensorStorage.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1tensor_1_1TensorStorage_1a4afb320bea0690d41a866f0b633ce3cd" compoundref="tensorStorage_8cpp" startline="17" endline="22">at</referencedby>
+        <referencedby refid="classmattTorch_1_1tensor_1_1TensorStorage_1a461d28cb4fa065e7d6894c14e2ee03e6" compoundref="tensorStorage_8cpp" startline="24" endline="29">at</referencedby>
+        <referencedby refid="classmattTorch_1_1tensor_1_1TensorStorage_1a3a423898780f9a05fd67513a7a0e5f6f" compoundref="tensorStorage_8cpp" startline="31" endline="31">getSize</referencedby>
+        <referencedby refid="classmattTorch_1_1tensor_1_1TensorStorage_1abac8f13bca6b87bdc0408d879ada633f" compoundref="tensorStorage_8cpp" startline="36" endline="38">setAllValues</referencedby>
+        <referencedby refid="classmattTorch_1_1tensor_1_1TensorStorage_1a5501054e35b85b6f238b03199d953f8b" compoundref="tensorStorage_8cpp" startline="8" endline="11">TensorStorage</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmattTorch_1_1tensor_1_1TensorStorage_1a5501054e35b85b6f238b03199d953f8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mattTorch::tensor::TensorStorage::TensorStorage</definition>
+        <argsstring>(size_t size)</argsstring>
+        <name>TensorStorage</name>
+        <qualifiedname>mattTorch::tensor::TensorStorage::TensorStorage</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Creates a <ref refid="classmattTorch_1_1tensor_1_1TensorStorage" kindref="compound">TensorStorage</ref> object with the capacity for the specified number of elements. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Allocates a contiguous block of memory with the capacity for the specified number of elements.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" kindref="member">size</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of elements to allocate storage for </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/tensor/tensorStorage/tensorStorage.h" line="39" column="3" bodyfile="src/tensor/tensorStorage/tensorStorage.cpp" bodystart="8" bodyend="11"/>
+        <references refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" compoundref="tensorStorage_8h" startline="24">mData</references>
+        <references refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" compoundref="tensorStorage_8h" startline="27">size</references>
+        <referencedby refid="classmattTorch_1_1tensor_1_1TensorStorage_1a34fea81b3add6647600dddec7028cfa5">TensorStorage</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1tensor_1_1TensorStorage_1ae9d3e515dac1601c82acdc265a9d04e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mattTorch::tensor::TensorStorage::TensorStorage</definition>
+        <argsstring>(double *rValues)</argsstring>
+        <name>TensorStorage</name>
+        <qualifiedname>mattTorch::tensor::TensorStorage::TensorStorage</qualifiedname>
+        <param>
+          <type>double *</type>
+          <declname>rValues</declname>
+        </param>
+        <briefdescription>
+<para>Creates a <ref refid="classmattTorch_1_1tensor_1_1TensorStorage" kindref="compound">TensorStorage</ref> object by assuming ownership of a pre-existing data pointer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Uses move semantics to assume ownership of a premade array of double values, avoiding any unnecessary copying of data.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the pre-existing data to assume ownership of </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/tensor/tensorStorage/tensorStorage.h" line="50" column="3" bodyfile="src/tensor/tensorStorage/tensorStorage.cpp" bodystart="15" bodyend="15"/>
+        <references refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" compoundref="tensorStorage_8h" startline="24">mData</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1tensor_1_1TensorStorage_1a34fea81b3add6647600dddec7028cfa5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mattTorch::tensor::TensorStorage::TensorStorage</definition>
+        <argsstring>(const TensorStorage &amp;rOther)=delete</argsstring>
+        <name>TensorStorage</name>
+        <qualifiedname>mattTorch::tensor::TensorStorage::TensorStorage</qualifiedname>
+        <param>
+          <type>const TensorStorage &amp;</type>
+          <declname>rOther</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor is deleted. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The copy constructor is explicitly deleted since the <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> class is the primary interface by which we interact with tensor objects. The entire point of the TensorView-TensorStorage structure is to share data and only have a single <ref refid="classmattTorch_1_1tensor_1_1TensorStorage" kindref="compound">TensorStorage</ref> object shared between multiple <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> objects. Copying <ref refid="classmattTorch_1_1tensor_1_1TensorStorage" kindref="compound">TensorStorage</ref> objects would undermine this design. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/tensor/tensorStorage/tensorStorage.h" line="61" column="3"/>
+        <references refid="classmattTorch_1_1tensor_1_1TensorStorage_1a5501054e35b85b6f238b03199d953f8b" compoundref="tensorStorage_8cpp" startline="8" endline="11">TensorStorage</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1tensor_1_1TensorStorage_1a36b5ebdf95bc85e6f09e136c1bc1724e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mattTorch::tensor::TensorStorage::~TensorStorage</definition>
+        <argsstring>()</argsstring>
+        <name>~TensorStorage</name>
+        <qualifiedname>mattTorch::tensor::TensorStorage::~TensorStorage</qualifiedname>
+        <briefdescription>
+<para>Destructor that deallocates the contiguous data block. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/tensor/tensorStorage/tensorStorage.h" line="66" column="3" bodyfile="src/tensor/tensorStorage/tensorStorage.cpp" bodystart="13" bodyend="13"/>
+        <references refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" compoundref="tensorStorage_8h" startline="24">mData</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1tensor_1_1TensorStorage_1a4afb320bea0690d41a866f0b633ce3cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double &amp;</type>
+        <definition>double &amp; mattTorch::tensor::TensorStorage::at</definition>
+        <argsstring>(int index)</argsstring>
+        <name>at</name>
+        <qualifiedname>mattTorch::tensor::TensorStorage::at</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Returns a reference to the element at the specified index within the contiguous data block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the element to access </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the element at the specified index </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/tensor/tensorStorage/tensorStorage.h" line="75" column="10" bodyfile="src/tensor/tensorStorage/tensorStorage.cpp" bodystart="17" bodyend="22"/>
+        <references refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" compoundref="tensorStorage_8h" startline="24">mData</references>
+        <references refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" compoundref="tensorStorage_8h" startline="27">size</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1tensor_1_1TensorStorage_1a461d28cb4fa065e7d6894c14e2ee03e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const double &amp;</type>
+        <definition>const double &amp; mattTorch::tensor::TensorStorage::at</definition>
+        <argsstring>(int index) const</argsstring>
+        <name>at</name>
+        <qualifiedname>mattTorch::tensor::TensorStorage::at</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Returns a const reference to the element at the specified index within the contiguous data block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the element to access </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A const reference to the element at the specified index </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/tensor/tensorStorage/tensorStorage.h" line="84" column="16" bodyfile="src/tensor/tensorStorage/tensorStorage.cpp" bodystart="24" bodyend="29"/>
+        <references refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" compoundref="tensorStorage_8h" startline="24">mData</references>
+        <references refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" compoundref="tensorStorage_8h" startline="27">size</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1tensor_1_1TensorStorage_1a3a423898780f9a05fd67513a7a0e5f6f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t mattTorch::tensor::TensorStorage::getSize</definition>
+        <argsstring>() const</argsstring>
+        <name>getSize</name>
+        <qualifiedname>mattTorch::tensor::TensorStorage::getSize</qualifiedname>
+        <briefdescription>
+<para>Returns the number of elements stored in the contiguous data block. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/tensor/tensorStorage/tensorStorage.h" line="87" column="10" bodyfile="src/tensor/tensorStorage/tensorStorage.cpp" bodystart="31" bodyend="31"/>
+        <references refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" compoundref="tensorStorage_8h" startline="27">size</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1tensor_1_1TensorStorage_1a415d8f615977349507981d9b2529de44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double *</type>
+        <definition>double * mattTorch::tensor::TensorStorage::getData</definition>
+        <argsstring>()</argsstring>
+        <name>getData</name>
+        <qualifiedname>mattTorch::tensor::TensorStorage::getData</qualifiedname>
+        <briefdescription>
+<para>Returns a pointer to the contiguous data block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A pointer to the underlying data </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/tensor/tensorStorage/tensorStorage.h" line="94" column="10" bodyfile="src/tensor/tensorStorage/tensorStorage.cpp" bodystart="33" bodyend="33"/>
+        <references refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" compoundref="tensorStorage_8h" startline="24">mData</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1tensor_1_1TensorStorage_1a7cda495dee4b76c8f72708a36c17fbb1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const double *</type>
+        <definition>const double * mattTorch::tensor::TensorStorage::getData</definition>
+        <argsstring>() const</argsstring>
+        <name>getData</name>
+        <qualifiedname>mattTorch::tensor::TensorStorage::getData</qualifiedname>
+        <briefdescription>
+<para>Returns a const pointer to the contiguous data block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A const pointer to the underlying data </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/tensor/tensorStorage/tensorStorage.h" line="101" column="16" bodyfile="src/tensor/tensorStorage/tensorStorage.cpp" bodystart="34" bodyend="34"/>
+        <references refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" compoundref="tensorStorage_8h" startline="24">mData</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1tensor_1_1TensorStorage_1abac8f13bca6b87bdc0408d879ada633f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mattTorch::tensor::TensorStorage::setAllValues</definition>
+        <argsstring>(double value)</argsstring>
+        <name>setAllValues</name>
+        <qualifiedname>mattTorch::tensor::TensorStorage::setAllValues</qualifiedname>
+        <param>
+          <type>double</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets all elements in the contiguous data block to the specified value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to set all elements to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/tensor/tensorStorage/tensorStorage.h" line="109" column="8" bodyfile="src/tensor/tensorStorage/tensorStorage.cpp" bodystart="36" bodyend="38"/>
+        <references refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" compoundref="tensorStorage_8h" startline="24">mData</references>
+        <references refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" compoundref="tensorStorage_8h" startline="27">size</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Contiguous data storage for <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> objects. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classmattTorch_1_1tensor_1_1TensorStorage" kindref="compound">TensorStorage</ref> class is responsible for holding the raw data associated with a <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> object in a contiguous block of memory. <ref refid="classmattTorch_1_1tensor_1_1TensorStorage" kindref="compound">TensorStorage</ref> objects are not intended to be interacted with directly, but rather through the <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> class which provides the primary interface for all tensor operations. The TensorView-TensorStorage structure is designed such that multiple <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> objects can share a single <ref refid="classmattTorch_1_1tensor_1_1TensorStorage" kindref="compound">TensorStorage</ref> object, allowing for efficient memory usage when creating sub-tensor views or shallow copies of tensors.</para>
+<para><simplesect kind="see"><para><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> for the primary interface by which tensor objects are interacted with. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="include/mattTorch/tensor/tensorStorage/tensorStorage.h" line="20" column="1" bodyfile="include/mattTorch/tensor/tensorStorage/tensorStorage.h" bodystart="20" bodyend="110"/>
+    <listofallmembers>
+      <member refid="classmattTorch_1_1tensor_1_1TensorStorage_1a4afb320bea0690d41a866f0b633ce3cd" prot="public" virt="non-virtual"><scope>mattTorch::tensor::TensorStorage</scope><name>at</name></member>
+      <member refid="classmattTorch_1_1tensor_1_1TensorStorage_1a461d28cb4fa065e7d6894c14e2ee03e6" prot="public" virt="non-virtual"><scope>mattTorch::tensor::TensorStorage</scope><name>at</name></member>
+      <member refid="classmattTorch_1_1tensor_1_1TensorStorage_1a415d8f615977349507981d9b2529de44" prot="public" virt="non-virtual"><scope>mattTorch::tensor::TensorStorage</scope><name>getData</name></member>
+      <member refid="classmattTorch_1_1tensor_1_1TensorStorage_1a7cda495dee4b76c8f72708a36c17fbb1" prot="public" virt="non-virtual"><scope>mattTorch::tensor::TensorStorage</scope><name>getData</name></member>
+      <member refid="classmattTorch_1_1tensor_1_1TensorStorage_1a3a423898780f9a05fd67513a7a0e5f6f" prot="public" virt="non-virtual"><scope>mattTorch::tensor::TensorStorage</scope><name>getSize</name></member>
+      <member refid="classmattTorch_1_1tensor_1_1TensorStorage_1a8dd870863838d4124890624a3f6792c8" prot="private" virt="non-virtual"><scope>mattTorch::tensor::TensorStorage</scope><name>mData</name></member>
+      <member refid="classmattTorch_1_1tensor_1_1TensorStorage_1abac8f13bca6b87bdc0408d879ada633f" prot="public" virt="non-virtual"><scope>mattTorch::tensor::TensorStorage</scope><name>setAllValues</name></member>
+      <member refid="classmattTorch_1_1tensor_1_1TensorStorage_1a16665c0e7f92f9be78e78b28d6834964" prot="private" virt="non-virtual"><scope>mattTorch::tensor::TensorStorage</scope><name>size</name></member>
+      <member refid="classmattTorch_1_1tensor_1_1TensorStorage_1a5501054e35b85b6f238b03199d953f8b" prot="public" virt="non-virtual"><scope>mattTorch::tensor::TensorStorage</scope><name>TensorStorage</name></member>
+      <member refid="classmattTorch_1_1tensor_1_1TensorStorage_1ae9d3e515dac1601c82acdc265a9d04e9" prot="public" virt="non-virtual"><scope>mattTorch::tensor::TensorStorage</scope><name>TensorStorage</name></member>
+      <member refid="classmattTorch_1_1tensor_1_1TensorStorage_1a34fea81b3add6647600dddec7028cfa5" prot="public" virt="non-virtual"><scope>mattTorch::tensor::TensorStorage</scope><name>TensorStorage</name></member>
+      <member refid="classmattTorch_1_1tensor_1_1TensorStorage_1a36b5ebdf95bc85e6f09e136c1bc1724e" prot="public" virt="non-virtual"><scope>mattTorch::tensor::TensorStorage</scope><name>~TensorStorage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,68 @@
+<map id="mattTorch::TensorView::setGradFunction" name="mattTorch::TensorView::setGradFunction">
+<area shape="rect" id="Node000001" title="Sets the pointer to the GradFunction object for this tensor." alt="" coords="507,801,662,844"/>
+<area shape="rect" id="Node000002" href="$classmattTorch_1_1TensorView.html#a62de4f6ff044d2a1d218a7388a9a11f0" title="Broadcasts a Tensor by inserting and repeating along a new dimension." alt="" coords="291,51,446,93"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="579,785,569,639,548,436,532,333,512,238,487,160,472,130,457,107,447,97,446,91,461,104,477,128,492,159,517,237,537,332,553,435,575,638,584,786"/>
+<area shape="rect" id="Node000005" href="$classmattTorch_1_1TensorView.html#ab312a8cb85e8d9c79fc04f7daabdc0bb" title="Elemtwise exponentiation of a Tensor by an integer scalar." alt="" coords="290,117,448,160"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="578,785,567,651,544,468,528,376,508,291,484,221,471,194,457,174,447,163,445,158,461,170,476,192,489,219,513,290,533,374,549,467,572,650,584,786"/>
+<area shape="rect" id="Node000006" href="$classmattTorch_1_1TensorView.html#a5344e856d6abca7a85b64228b747390f" title="Elemtwise exponential of a Tensor." alt="" coords="291,184,446,227"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="577,785,564,664,540,501,524,419,504,344,482,283,457,240,447,230,445,225,461,237,487,280,509,343,529,418,545,500,569,663,583,786"/>
+<area shape="rect" id="Node000007" href="$classmattTorch_1_1TensorView.html#a5897a4bb31d05c1fe2522d34f0d36e1f" title="Elemtwise natural logarithm of a Tensor." alt="" coords="279,251,459,277"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="577,786,563,673,538,525,522,451,503,383,481,328,457,291,445,281,443,275,461,288,486,326,508,382,527,449,543,524,568,673,582,786"/>
+<area shape="rect" id="Node000009" href="$classmattTorch_1_1TensorView.html#a61430ddd6b29da51e0bbfb5baf34f32b" title="Elemtwise multiplication of two Tensors." alt="" coords="291,301,446,344"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="582,785,578,700,572,645,562,586,546,525,524,465,495,408,457,358,446,347,445,342,461,354,499,406,529,463,551,524,567,585,577,645,583,700,587,786"/>
+<area shape="rect" id="Node000010" href="$classmattTorch_1_1TensorView.html#a943d03abe3528d44648dbd9a17103161" title="Multiplication of a scalar with all elements of this Tensor." alt="" coords="291,368,446,411"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="580,785,572,711,553,615,538,564,517,514,490,467,457,425,446,414,445,409,461,421,495,464,522,511,543,562,559,614,578,711,585,786"/>
+<area shape="rect" id="Node000011" href="$classmattTorch_1_1TensorView.html#a882950bc4742dd14ce3052e2dc2d7bf6" title="In&#45;place elemtwise multiplication of two Tensors." alt="" coords="291,435,446,477"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="577,786,566,723,545,645,529,603,510,563,486,525,457,491,445,481,444,475,461,487,490,522,514,560,534,601,550,643,571,722,582,786"/>
+<area shape="rect" id="Node000012" href="$classmattTorch_1_1TensorView.html#ae1d281e8dabf7e1545c4454aa5d2e35c" title="In&#45;place multiplication of a scalar with all elements of this Tensor." alt="" coords="291,501,446,544"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="573,785,559,736,535,675,502,612,481,584,457,558,444,547,443,542,461,554,485,580,507,609,540,672,564,734,578,786"/>
+<area shape="rect" id="Node000013" href="$classmattTorch_1_1TensorView.html#a58c7ca79e2d2832b2f78626d82b68a71" title="Elemtwise addition of two Tensors." alt="" coords="291,568,446,611"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="567,787,550,750,526,706,495,663,457,625,443,614,441,609,461,621,499,659,530,704,555,748,572,787"/>
+<area shape="rect" id="Node000014" href="$classmattTorch_1_1TensorView.html#a7ab00266b04157f5509bdc8a27f23f30" title="Addition of a scalar to all elements of this Tensor." alt="" coords="291,635,446,677"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="557,789,514,740,487,714,458,692,440,681,438,675,460,687,490,710,518,736,562,789"/>
+<area shape="rect" id="Node000015" href="$classmattTorch_1_1TensorView.html#a074840139343621ac2956f967e8acbd8" title="In&#45;place elemtwise addition of two Tensors." alt="" coords="291,701,446,744"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="530,794,458,758,433,747,431,742,460,754,535,793"/>
+<area shape="rect" id="Node000016" href="$classmattTorch_1_1TensorView.html#a6ba05702b70ace4cfc17e293f0b0151e" title="In&#45;place addition of a scalar to all elements of this Tensor." alt="" coords="291,768,446,811"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="489,810,448,804,446,799,494,807"/>
+<area shape="rect" id="Node000017" href="$classmattTorch_1_1TensorView.html#a2342eb559c676fe6d4c9e3214082f907" title="Elemtwise subtraction of two Tensors." alt="" coords="291,835,446,877"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="490,839,448,846,446,842,494,835"/>
+<area shape="rect" id="Node000018" href="$classmattTorch_1_1TensorView.html#a162aa22a1198d4506b50f258832edcbb" title="Subtraction of a scalar from all elements of this Tensor." alt="" coords="291,901,446,944"/>
+<area shape="poly" id="edge17_Node000001_Node000018" title=" " alt="" coords="531,854,460,892,434,903,430,899,458,887,535,850"/>
+<area shape="rect" id="Node000019" href="$classmattTorch_1_1TensorView.html#a125e858ae17b560b34954fa9bbd5263d" title="In&#45;place elemtwise subtraction of two Tensors." alt="" coords="291,968,446,1011"/>
+<area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="558,859,518,909,490,935,460,958,441,969,437,965,458,954,487,931,514,905,561,854"/>
+<area shape="rect" id="Node000020" href="$classmattTorch_1_1TensorView.html#a015e49251cf4e5ee67945fe21b55e7a9" title="In&#45;place subtraction of a scalar from all elements of this Tensor." alt="" coords="291,1035,446,1077"/>
+<area shape="poly" id="edge19_Node000001_Node000020" title=" " alt="" coords="571,856,555,898,530,942,499,986,461,1025,444,1036,440,1032,457,1021,495,983,526,939,550,895,568,861"/>
+<area shape="rect" id="Node000021" href="$classmattTorch_1_1TensorView.html#a30d1f9cf12e564a0c804fbb53465eb2e" title="Elemtwise division of two Tensors." alt="" coords="291,1101,446,1144"/>
+<area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="577,857,564,911,540,973,507,1036,485,1065,461,1091,445,1103,441,1099,457,1087,481,1062,502,1033,535,971,559,910,574,862"/>
+<area shape="rect" id="Node000022" href="$classmattTorch_1_1TensorView.html#acc36e5f65271abc6bd82e4be71add543" title="Division of all elements of this Tensor by a scalar." alt="" coords="291,1168,446,1211"/>
+<area shape="poly" id="edge21_Node000001_Node000022" title=" " alt="" coords="581,857,571,923,550,1002,534,1044,514,1085,490,1124,461,1158,446,1169,443,1165,457,1154,486,1120,510,1083,529,1042,545,1001,566,922,578,862"/>
+<area shape="rect" id="Node000023" href="$classmattTorch_1_1TensorView.html#a8177b79c107dd6d0e1b4c17bdf9a8d0a" title="In&#45;place elemtwise division of two Tensors." alt="" coords="291,1235,446,1277"/>
+<area shape="poly" id="edge22_Node000001_Node000023" title=" " alt="" coords="583,857,578,935,559,1032,543,1083,522,1134,495,1182,461,1225,447,1236,443,1232,457,1221,490,1179,517,1132,538,1081,553,1030,572,934,581,862"/>
+<area shape="rect" id="Node000024" href="$classmattTorch_1_1TensorView.html#af38d5799463d21c85b31ebb7f4ea7cc3" title="In&#45;place division of all elements of this Tensor by a scalar." alt="" coords="291,1301,446,1344"/>
+<area shape="poly" id="edge23_Node000001_Node000024" title=" " alt="" coords="585,857,583,946,577,1001,567,1060,551,1122,529,1182,499,1240,461,1291,447,1303,444,1299,457,1288,495,1237,524,1180,546,1120,562,1059,572,1000,578,945,583,862"/>
+<area shape="rect" id="Node000025" href="$classmattTorch_1_1TensorView.html#a0b3a056b5751ad4dd7f7c4af0e628f24" title="Reduction sum of a Tensor along a specified dimension." alt="" coords="291,1368,446,1411"/>
+<area shape="poly" id="edge24_Node000001_Node000025" title=" " alt="" coords="580,857,567,972,542,1120,525,1195,507,1263,485,1319,461,1358,448,1369,444,1365,457,1354,480,1316,501,1261,520,1193,537,1119,562,971,578,862"/>
+<area shape="rect" id="Node000028" href="$classmattTorch_1_1TensorView.html#a944f540504a95bbc578d627140307110" title="Elemtwise Rectified Linear Unit activation of a Tensor." alt="" coords="291,1435,446,1477"/>
+<area shape="poly" id="edge28_Node000001_Node000028" title=" " alt="" coords="581,857,570,985,546,1153,530,1238,510,1315,487,1380,461,1424,448,1436,444,1432,457,1421,483,1377,505,1314,525,1237,541,1152,565,984,579,862"/>
+<area shape="rect" id="Node000029" href="$classmattTorch_1_1TensorView.html#a1e687142d7026837d7b4d04665874f75" title="Elemtwise hyperbolic tangent of a Tensor." alt="" coords="291,1501,446,1544"/>
+<area shape="poly" id="edge29_Node000001_Node000029" title=" " alt="" coords="582,857,573,997,550,1185,534,1281,514,1368,490,1440,476,1469,461,1491,448,1503,445,1499,457,1488,471,1466,485,1438,509,1367,529,1280,545,1185,567,997,580,862"/>
+<area shape="rect" id="Node000031" href="$classmattTorch_1_1TensorView.html#a83b0799ed6a8c48be0c8e1e63a4010d3" title="Matrix multiplication between a Tensor and another Tensor having been transposed." alt="" coords="291,1568,446,1611"/>
+<area shape="poly" id="edge31_Node000001_Node000031" title=" " alt="" coords="583,857,575,1010,554,1218,538,1324,518,1421,492,1501,477,1533,461,1558,448,1570,445,1565,457,1554,473,1530,487,1499,512,1420,533,1323,549,1217,570,1009,581,862"/>
+<area shape="rect" id="Node000003" href="$classmattTorch_1_1function_1_1GradReductionSum.html#ad53e1dd809a31c06fa0925d6a35ad715" title="Computes and propagates gradients for the sum reduction operation." alt="" coords="42,5,194,64"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="274,60,196,48,193,44,278,56"/>
+<area shape="rect" id="Node000004" href="$classmattTorch_1_1Softmax.html#afe1512a2337ada86e360f6c65407d5dd" title="Performs the forward pass of this Softmax activation layer." alt="" coords="50,88,186,131"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="274,88,188,101,185,97,277,84"/>
+<area shape="rect" id="Node000008" href="$classmattTorch_1_1criterion_1_1CrossEntropyLoss.html#a3e477b089170fe65dec1c7f16aa4be6f" title="Computes the Cross&#45;Entropy loss between the input predictions and the target values." alt="" coords="5,755,231,797"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="281,288,281,291,234,346,198,409,171,476,151,544,137,610,129,669,122,755,117,754,123,668,132,609,145,543,165,474,193,406,230,343,277,287,284,284"/>
+<area shape="poly" id="edge26_Node000025_Node000008" title=" " alt="" coords="278,1358,277,1358,249,1324,225,1288,186,1210,157,1128,138,1045,125,967,119,897,119,800,119,795,124,896,131,966,143,1044,162,1126,191,1208,230,1285,254,1321,281,1354,283,1358"/>
+<area shape="rect" id="Node000026" href="$classmattTorch_1_1function_1_1GradBroadcast.html#a82be11553bb34eb93c86ba4a36ca32ff" title="Computes and propagates gradients for the broadcasting operation." alt="" coords="28,1335,208,1377"/>
+<area shape="poly" id="edge25_Node000025_Node000026" title=" " alt="" coords="273,1378,210,1371,208,1365,278,1376"/>
+<area shape="rect" id="Node000027" href="$classmattTorch_1_1criterion_1_1MSELoss.html#a873e441bdd4ea3d6a2c5eb68d313fa4d" title="Computes the Mean Squared Error loss between the input predictions and the target values." alt="" coords="31,1401,205,1444"/>
+<area shape="poly" id="edge27_Node000025_Node000027" title=" " alt="" coords="274,1403,207,1413,205,1409,278,1400"/>
+<area shape="rect" id="Node000030" href="$classmattTorch_1_1Tanh.html#a76b966278d093c136341d06fc2081451" title="Performs the forward pass of this Tanh activation layer." alt="" coords="35,1509,201,1536"/>
+<area shape="poly" id="edge30_Node000029_Node000030" title=" " alt="" coords="273,1524,202,1525,201,1520,278,1521"/>
+<area shape="rect" id="Node000032" href="$classmattTorch_1_1function_1_1GradMultiplyMatrix.html#afdb545df24351a809cae24e2d06586bc" title="Computes and propagates gradients for the matrix multiplication operation." alt="" coords="49,1560,187,1619"/>
+<area shape="poly" id="edge32_Node000031_Node000032" title=" " alt="" coords="273,1590,188,1592,187,1587,278,1588"/>
+<area shape="rect" id="Node000033" href="$classmattTorch_1_1function_1_1GradTransposeMatrix.html#a2a672419dc53eee8e4371114edd806d1" title="Computes and propagates gradients for the transposed matrix multiplication operation." alt="" coords="41,1643,195,1701"/>
+<area shape="poly" id="edge33_Node000031_Node000033" title=" " alt="" coords="290,1615,196,1649,195,1644,285,1617"/>
+</map>

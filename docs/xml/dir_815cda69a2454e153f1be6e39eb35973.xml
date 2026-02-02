@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="dir_815cda69a2454e153f1be6e39eb35973" kind="dir">
+    <compoundname>include/mattTorch/layer/tanh</compoundname>
+    <innerfile refid="tanh_8h">tanh.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/mattTorch/layer/tanh/"/>
+  </compounddef>
+</doxygen>

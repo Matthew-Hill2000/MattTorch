@@ -1,0 +1,31 @@
+\doxysection{grad\+Divide\+Scalar.\+h}
+\hypertarget{gradDivideScalar_8h_source}{}\label{gradDivideScalar_8h_source}\index{include/mattTorch/function/division/gradDivideScalar.h@{include/mattTorch/function/division/gradDivideScalar.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <mattTorch/function/gradFunction.h>}}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00006}00006\ \textcolor{keyword}{namespace\ }mattTorch::function\ \{}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00047}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar}{00047}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_ae5a96e059fbbff4e818adfbfe1ed5a06}{GradDivideScalar}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{GradFunction}}\ \{}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00048}00048\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00051}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_acc66261ccd4a8dd3dae6db8fa062f54f}{00051}}\ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_acc66261ccd4a8dd3dae6db8fa062f54f}{savedScalar}};}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00055}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_af2e4410df5f1424648be9dae07631915}{00055}}\ \ \ std::shared\_ptr<TensorView>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_af2e4410df5f1424648be9dae07631915}{savedTensor}};}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00059}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_a374e080829214fc77c707055ec921e7c}{00059}}\ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_a374e080829214fc77c707055ec921e7c}{nextFunctions}};}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00063}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_a0b4dec46b4f36ab55e9fad23f7e740c9}{00063}}\ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_a0b4dec46b4f36ab55e9fad23f7e740c9}{numerator}};}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00065}00065\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00084}00084\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_ae5a96e059fbbff4e818adfbfe1ed5a06}{GradDivideScalar}}(\textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_acc66261ccd4a8dd3dae6db8fa062f54f}{savedScalar}},\ std::shared\_ptr<TensorView>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_af2e4410df5f1424648be9dae07631915}{savedTensor}},}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_a374e080829214fc77c707055ec921e7c}{nextFunctions}},}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_a0b4dec46b4f36ab55e9fad23f7e740c9}{numerator}}\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00105}00105\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradDivideScalar_ac55d530e1596db8e4c966ca03573c076}{backward}}(\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\&\ inputGradient,\ \textcolor{keywordtype}{bool}\ higherDerivative)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00106}00106\ \};}
+\DoxyCodeLine{\Hypertarget{gradDivideScalar_8h_source_l00107}00107\ \}\ \ \textcolor{comment}{//\ namespace\ mattTorch::function}}
+
+\end{DoxyCode}

@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classmattTorch_1_1criterion_1_1MSELoss" kind="class" language="C++" prot="public">
+    <compoundname>mattTorch::criterion::MSELoss</compoundname>
+    <basecompoundref refid="classmattTorch_1_1Criterion" prot="public" virt="non-virtual">mattTorch::Criterion</basecompoundref>
+    <includes refid="mseLoss_8h" local="no">mseLoss.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmattTorch_1_1criterion_1_1MSELoss_1a873e441bdd4ea3d6a2c5eb68d313fa4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref></type>
+        <definition>TensorView mattTorch::criterion::MSELoss::calculateLoss</definition>
+        <argsstring>(TensorView &amp;input, TensorView &amp;target)</argsstring>
+        <name>calculateLoss</name>
+        <qualifiedname>mattTorch::criterion::MSELoss::calculateLoss</qualifiedname>
+        <reimplements refid="classmattTorch_1_1Criterion_1af89e3b01ee1819f1a99e35cab9da9a4e">calculateLoss</reimplements>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &amp;</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &amp;</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Computes the Mean Squared Error loss between the input predictions and the target values. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The predicted values produced by the network </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ground truth target values </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> containing the computed MSE loss value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/criterion/mseLoss/mseLoss.h" line="34" column="14" bodyfile="src/criterion/mseLoss/mseLoss.cpp" bodystart="6" bodyend="17"/>
+        <references refid="classmattTorch_1_1TensorView_1a765d181721709df7fd8421304de72c90" compoundref="tensorViewAccesssors_8cpp" startline="134" endline="134">mattTorch::TensorView::getNValues</references>
+        <references refid="classmattTorch_1_1TensorView_1a0b3a056b5751ad4dd7f7c4af0e628f24" compoundref="tensorViewOverloads_8cpp" startline="255" endline="299">mattTorch::TensorView::reductionSum</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Mean Squared Error loss function for regression tasks. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classmattTorch_1_1criterion_1_1MSELoss" kindref="compound">MSELoss</ref> class computes the Mean Squared Error between the predicted values and the target values. The loss is calculated as:   <formula id="3">\[    L = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2
+\]</formula> where <formula id="4">$y_i$</formula> is the target value, <formula id="2">$\hat{y}_i$</formula> is the predicted value, and <formula id="5">$N$</formula> is the total number of elements. The computation is performed by first computing the elementwise difference between the input and target tensors, squaring the difference elementwise, summing along dimension 1, and dividing by the total number of elements. Each of these operations participates in the computational graph, allowing gradients to be propagated back through the loss function during backpropagation.</para>
+<para><simplesect kind="see"><para><ref refid="classmattTorch_1_1Criterion" kindref="compound">Criterion</ref> for the base class from which this class derives. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>mattTorch::Criterion</label>
+        <link refid="classmattTorch_1_1Criterion"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::criterion::MSELoss</label>
+        <link refid="classmattTorch_1_1criterion_1_1MSELoss"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>mattTorch::Criterion</label>
+        <link refid="classmattTorch_1_1Criterion"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::criterion::MSELoss</label>
+        <link refid="classmattTorch_1_1criterion_1_1MSELoss"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/mattTorch/criterion/mseLoss/mseLoss.h" line="24" column="1" bodyfile="include/mattTorch/criterion/mseLoss/mseLoss.h" bodystart="24" bodyend="35"/>
+    <listofallmembers>
+      <member refid="classmattTorch_1_1criterion_1_1MSELoss_1a873e441bdd4ea3d6a2c5eb68d313fa4d" prot="public" virt="virtual"><scope>mattTorch::criterion::MSELoss</scope><name>calculateLoss</name></member>
+      <member refid="classmattTorch_1_1Criterion_1a1c5c589d128e186f5a66be445c92839f" prot="public" virt="virtual"><scope>mattTorch::criterion::MSELoss</scope><name>~Criterion</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

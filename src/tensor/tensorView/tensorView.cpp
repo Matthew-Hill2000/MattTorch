@@ -12,7 +12,6 @@ namespace mattTorch {
 
 class GradFunction;
 
-// Default Constuctor
 TensorView::TensorView()
     : gradient{nullptr},
       requiresGrad{true},
@@ -27,8 +26,6 @@ TensorView::TensorView()
       std::make_shared<function::GradAccumulator>(gradient, dimensions);
 }
 
-// Constructor to create a tensor of specified dimensionality and whether or
-// not it is a leaf
 TensorView::TensorView(const std::vector<int>& dims, bool isLeaf)
     : gradient{nullptr},
       isLeaf{isLeaf},
@@ -41,8 +38,6 @@ TensorView::TensorView(const std::vector<int>& dims, bool isLeaf)
       rank{static_cast<int>(dims.size())} {
   strides.resize(rank);
 
-  // Calculates the strides across each dimension by multiplying by each
-  // succesive dimension
   if (rank == 0) {
     nValues = 0;
   } else {
@@ -55,18 +50,13 @@ TensorView::TensorView(const std::vector<int>& dims, bool isLeaf)
   }
 
   storage = std::make_shared<tensor::TensorStorage>(nValues);
-  // If the tensor is a Leaf tensor then it needs to be able to store the
-  // calculated gradients and needs a GradAccumulator object to handle the
-  // summation of different gradient terms
   if (isLeaf) {
-    gradient = std::make_shared<TensorView>();
+    gradient = std::make_shared<TensorView>(dimensions, false);
     gradFunction =
         std::make_shared<function::GradAccumulator>(gradient, dimensions);
   }
 }
 
-// Shallow copy of the tensor, i.e creates a tensor that shares the same
-// storage, gradStorage and gradFunction objects
 TensorView::TensorView(const TensorView& other)
     : storage{other.storage},
       gradient{other.gradient},
@@ -99,13 +89,20 @@ TensorView::TensorView(std::shared_ptr<tensor::TensorStorage> storage,
       nValues{nVals},
       rank{rnk} {}
 
-// Deep copy of the tensor in which the storage, gradStorage and gradFunction
-// are used to make complete copies for the new tensor
 TensorView TensorView::deepCopy() const {
   TensorView result(this->dimensions);
 
-  for (int i{0}; i < nValues; i++) {
-    result.setValueDirect(i, this->getValueDirect(i));
+  double* rhs = this->getData();
+  double* lhs = result.getData();
+
+  int i{0};
+  for (; i + 3 < nValues; i += 4) {
+    __m256d a = _mm256_loadu_pd(rhs + i);
+    _mm256_storeu_pd(lhs + i, a);
+  }
+
+  for (; i < nValues; i++) {
+    lhs[i] = rhs[i];
   }
 
   return result;

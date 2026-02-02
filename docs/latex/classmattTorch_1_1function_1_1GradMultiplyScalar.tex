@@ -1,0 +1,181 @@
+\doxysection{matt\+Torch::\+function::\+Grad\+Multiply\+Scalar Class Reference}
+\hypertarget{classmattTorch_1_1function_1_1GradMultiplyScalar}{}\label{classmattTorch_1_1function_1_1GradMultiplyScalar}\index{mattTorch::function::GradMultiplyScalar@{mattTorch::function::GradMultiplyScalar}}
+
+
+Gradient function for tensor-\/scalar multiplication.  
+
+
+
+
+{\ttfamily \+\#include $<$grad\+Multiply\+Scalar.\+h$>$}
+
+
+
+Inheritance diagram for matt\+Torch::\+function::\+Grad\+Multiply\+Scalar:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classmattTorch_1_1function_1_1GradMultiplyScalar__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for matt\+Torch::\+function::\+Grad\+Multiply\+Scalar:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classmattTorch_1_1function_1_1GradMultiplyScalar__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyScalar_a977a7a27a8862bbec5f96834858339d5}{Grad\+Multiply\+Scalar}} (double \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyScalar_ae3453ea4a5b98ba5a48f11288e54cc6a}{saved\+Scalar}}, std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}} $>$ $>$ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyScalar_a3c9c381cc8c9f1f72f4e4c42cc3fb13b}{next\+Functions}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classmattTorch_1_1function_1_1GradMultiplyScalar}{Grad\+Multiply\+Scalar} gradient function. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyScalar_abed4bd892a770903e6b31273838aca54}{backward}} (\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&input\+Gradient, bool higher\+Derivative) override
+\begin{DoxyCompactList}\small\item\em Computes and propagates gradients for the tensor-\/scalar multiplication operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{matt\+Torch::\+\+Grad\+Function}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Grad\+Function} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for safe polymorphic destruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyScalar_ae3453ea4a5b98ba5a48f11288e54cc6a}{saved\+Scalar}}
+\item 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}} $>$ $>$ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradMultiplyScalar_a3c9c381cc8c9f1f72f4e4c42cc3fb13b}{next\+Functions}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gradient function for tensor-\/scalar multiplication. 
+
+The \doxylink{classmattTorch_1_1function_1_1GradMultiplyScalar}{Grad\+Multiply\+Scalar} class represents the multiplication of a tensor by a scalar value in the computational graph, computing gradients for operations of the form $C = A \cdot s$ where $A$ is a tensor and $s$ is a scalar value. The gradient computation follows from the derivative:\+   \[    \frac{\partial C}{\partial A} = s
+\]
+
+The scalar value does not participate in gradient computation as it is a constant, not a learnable parameter or tensor that requires gradients. During backpropagation, the incoming gradient  $\frac{\partial
+L}{\partial C}$ is multiplied by the scalar value according to the chain rule:\+    \[    \frac{\partial L}{\partial A} = \frac{\partial L}{\partial C} \cdot
+\frac{\partial C}{\partial A} = \frac{\partial L}{\partial C} \cdot s
+\]
+
+This \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} saves the scalar value from the forward pass as it is required to compute the gradient with respect to the tensor input during the backward pass.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} for the base class from which this class derives. 
+
+\doxylink{classmattTorch_1_1function_1_1GradMultiply}{Grad\+Multiply} for the gradient function for elementwise tensor multiplication. 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{gradMultiplyScalar_8h_source_l00036}{36}} of file \doxymbox{\hyperlink{gradMultiplyScalar_8h_source}{grad\+Multiply\+Scalar.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classmattTorch_1_1function_1_1GradMultiplyScalar_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmattTorch_1_1function_1_1GradMultiplyScalar_a977a7a27a8862bbec5f96834858339d5}\index{mattTorch::function::GradMultiplyScalar@{mattTorch::function::GradMultiplyScalar}!GradMultiplyScalar@{GradMultiplyScalar}}
+\index{GradMultiplyScalar@{GradMultiplyScalar}!mattTorch::function::GradMultiplyScalar@{mattTorch::function::GradMultiplyScalar}}
+\doxysubsubsection{\texorpdfstring{GradMultiplyScalar()}{GradMultiplyScalar()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradMultiplyScalar_a977a7a27a8862bbec5f96834858339d5} 
+matt\+Torch::\+function::\+\+Grad\+Multiply\+Scalar::\+\+Grad\+Multiply\+Scalar (\begin{DoxyParamCaption}\item[{double}]{saved\+Scalar}{, }\item[{std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}} $>$ $>$}]{next\+Functions}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{classmattTorch_1_1function_1_1GradMultiplyScalar}{Grad\+Multiply\+Scalar} gradient function. 
+
+Creates a \doxylink{classmattTorch_1_1function_1_1GradMultiplyScalar}{Grad\+Multiply\+Scalar} object that stores the scalar value from the forward pass and a pointer to the parent tensor\textquotesingle{}s \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} for gradient propagation during backpropagation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classmattTorch_1_1function_1_1GradMultiplyScalar_ae3453ea4a5b98ba5a48f11288e54cc6a}{saved\+Scalar}} & The scalar value that was multiplied with the tensor during the forward pass \\
+\hline
+{\em \doxylink{classmattTorch_1_1function_1_1GradMultiplyScalar_a3c9c381cc8c9f1f72f4e4c42cc3fb13b}{next\+Functions}} & A vector containing a shared pointer to the \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} object of the parent tensor for gradient propagation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{gradMultiplyScalar_8cpp_source_l00006}{6}} of file \doxymbox{\hyperlink{gradMultiplyScalar_8cpp_source}{grad\+Multiply\+Scalar.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{gradMultiplyScalar_8h_source_l00044}{next\+Functions}}, and \doxymbox{\hyperlink{gradMultiplyScalar_8h_source_l00040}{saved\+Scalar}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classmattTorch_1_1function_1_1GradMultiplyScalar_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmattTorch_1_1function_1_1GradMultiplyScalar_abed4bd892a770903e6b31273838aca54}\index{mattTorch::function::GradMultiplyScalar@{mattTorch::function::GradMultiplyScalar}!backward@{backward}}
+\index{backward@{backward}!mattTorch::function::GradMultiplyScalar@{mattTorch::function::GradMultiplyScalar}}
+\doxysubsubsection{\texorpdfstring{backward()}{backward()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradMultiplyScalar_abed4bd892a770903e6b31273838aca54} 
+void matt\+Torch::\+function::\+\+Grad\+Multiply\+Scalar::\+backward (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&}]{input\+Gradient}{, }\item[{bool}]{higher\+Derivative}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Computes and propagates gradients for the tensor-\/scalar multiplication operation. 
+
+Implements the backward pass for tensor-\/scalar multiplication by multiplying the incoming gradient by the saved scalar value. Since the derivative of scalar multiplication with respect to the tensor input is the scalar itself, the gradient is scaled by this value. The method calls \doxylink{classmattTorch_1_1function_1_1GradMultiplyScalar_abed4bd892a770903e6b31273838aca54}{backward()} on the parent tensor\textquotesingle{}s \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} to continue the backpropagation process.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Gradient} & The gradient of the loss with respect to the output of the multiplication operation \\
+\hline
+{\em higher\+Derivative} & If true, enables construction of a computational graph during the backward pass for higher-\/order derivatives; if false, disables gradient tracking \\
+\hline
+\end{DoxyParams}
+
+
+Implements \doxymbox{\hyperlink{classmattTorch_1_1GradFunction_abc6c3ffb22d631af9dca31dcd5c09d3d}{matt\+Torch::\+\+Grad\+Function}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{gradMultiplyScalar_8cpp_source_l00011}{11}} of file \doxymbox{\hyperlink{gradMultiplyScalar_8cpp_source}{grad\+Multiply\+Scalar.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{gradMultiplyScalar_8h_source_l00044}{next\+Functions}}, and \doxymbox{\hyperlink{gradMultiplyScalar_8h_source_l00040}{saved\+Scalar}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classmattTorch_1_1function_1_1GradMultiplyScalar_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmattTorch_1_1function_1_1GradMultiplyScalar_a3c9c381cc8c9f1f72f4e4c42cc3fb13b}\index{mattTorch::function::GradMultiplyScalar@{mattTorch::function::GradMultiplyScalar}!nextFunctions@{nextFunctions}}
+\index{nextFunctions@{nextFunctions}!mattTorch::function::GradMultiplyScalar@{mattTorch::function::GradMultiplyScalar}}
+\doxysubsubsection{\texorpdfstring{nextFunctions}{nextFunctions}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradMultiplyScalar_a3c9c381cc8c9f1f72f4e4c42cc3fb13b} 
+std::\+vector$<$std::\+shared\+\_\+ptr$<$\doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}}$>$ $>$ matt\+Torch::\+function::\+\+Grad\+Multiply\+Scalar::\+next\+Functions\hspace{0.3cm}{\ttfamily [private]}}
+
+Pointer to the \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} object of the parent tensor in the computational graph 
+
+Definition at line \doxymbox{\hyperlink{gradMultiplyScalar_8h_source_l00044}{44}} of file \doxymbox{\hyperlink{gradMultiplyScalar_8h_source}{grad\+Multiply\+Scalar.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{gradMultiplyScalar_8cpp_source_l00011}{backward()}}, and \doxymbox{\hyperlink{gradMultiplyScalar_8cpp_source_l00006}{Grad\+Multiply\+Scalar()}}.
+
+\Hypertarget{classmattTorch_1_1function_1_1GradMultiplyScalar_ae3453ea4a5b98ba5a48f11288e54cc6a}\index{mattTorch::function::GradMultiplyScalar@{mattTorch::function::GradMultiplyScalar}!savedScalar@{savedScalar}}
+\index{savedScalar@{savedScalar}!mattTorch::function::GradMultiplyScalar@{mattTorch::function::GradMultiplyScalar}}
+\doxysubsubsection{\texorpdfstring{savedScalar}{savedScalar}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradMultiplyScalar_ae3453ea4a5b98ba5a48f11288e54cc6a} 
+double matt\+Torch::\+function::\+\+Grad\+Multiply\+Scalar::\+saved\+Scalar\hspace{0.3cm}{\ttfamily [private]}}
+
+The scalar value from the forward pass, required for computing the gradient during backpropagation 
+
+Definition at line \doxymbox{\hyperlink{gradMultiplyScalar_8h_source_l00040}{40}} of file \doxymbox{\hyperlink{gradMultiplyScalar_8h_source}{grad\+Multiply\+Scalar.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{gradMultiplyScalar_8cpp_source_l00011}{backward()}}, and \doxymbox{\hyperlink{gradMultiplyScalar_8cpp_source_l00006}{Grad\+Multiply\+Scalar()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+matt\+Torch/\+function/\+multiplication/\+grad\+Multiply\+Scalar.\+h\item 
+src/\+function/\+multiplication/\+grad\+Multiply\+Scalar.\+cpp\end{DoxyCompactItemize}

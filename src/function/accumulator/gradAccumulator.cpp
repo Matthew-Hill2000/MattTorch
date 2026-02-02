@@ -1,7 +1,7 @@
 #include <mattTorch/function/accumulator/gradAccumulator.h>
 #include <mattTorch/tensor/tensorView/tensorView.h>
 
-
+#include <cstring>
 
 namespace mattTorch::function {
 GradAccumulator::GradAccumulator(std::shared_ptr<TensorView> gradient,
@@ -11,9 +11,25 @@ GradAccumulator::GradAccumulator(std::shared_ptr<TensorView> gradient,
 void GradAccumulator::backward(TensorView& inputGradient,
                                bool higherDerivative) {
   if (gradient->getHasGrad() == false) {
-    *gradient = inputGradient;
+    std::memcpy(gradient->getData(), inputGradient.getData(),
+                gradient->getNValues() * sizeof(double));
+
+    if (higherDerivative) {
+      gradient->setGradFunction(inputGradient.getGradFunction());
+      gradient->setRequiresGrad(true);
+    }
+    gradient->setHasGrad(true);
   } else {
-    *gradient += inputGradient;
+    if (higherDerivative) {
+      *gradient += inputGradient;
+    } else {
+      double* gradData = gradient->getData();
+      double* inputData = inputGradient.getData();
+      int nVals = gradient->getNValues();
+      for (int i = 0; i < nVals; i++) {
+        gradData[i] += inputData[i];
+      }
+    }
   }
 }
 void GradAccumulator::setGradient(std::shared_ptr<TensorView> newGrad) {

@@ -1,0 +1,32 @@
+\doxysection{grad\+Reduction\+Sum.\+cpp}
+\hypertarget{gradReductionSum_8cpp_source}{}\label{gradReductionSum_8cpp_source}\index{src/function/reductionSum/gradReductionSum.cpp@{src/function/reductionSum/gradReductionSum.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <mattTorch/function/reductionSum/gradReductionSum.h>}}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}mattTorch/tensor/tensorView/tensorView.h"{}}}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00005}00005\ \textcolor{keyword}{namespace\ }mattTorch::function\ \{}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00007}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_aabf3f0c6bd2fc2e2bf71f98526ac41c9}{00007}}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_aabf3f0c6bd2fc2e2bf71f98526ac41c9}{GradReductionSum::GradReductionSum}}(}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00008}00008\ \ \ \ \ std::vector<TensorView>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_af078dfab7aedd4bc8e593777f5cf68f6}{savedTensors}},\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a68a832d4eecca391a101b1e6bbc9b18b}{reduceDim}},}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00009}00009\ \ \ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a6f0ef445ff0f374efbd3cd1f4e20668b}{nextFunctions}})}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00010}00010\ \ \ \ \ :\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_af078dfab7aedd4bc8e593777f5cf68f6}{savedTensors}}\{\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_af078dfab7aedd4bc8e593777f5cf68f6}{savedTensors}}\},}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00011}00011\ \ \ \ \ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a68a832d4eecca391a101b1e6bbc9b18b}{reduceDim}}\{\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a68a832d4eecca391a101b1e6bbc9b18b}{reduceDim}}\},}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00012}00012\ \ \ \ \ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a6f0ef445ff0f374efbd3cd1f4e20668b}{nextFunctions}}\{\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a6f0ef445ff0f374efbd3cd1f4e20668b}{nextFunctions}}\}\ \{}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00013}00013\ \}}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00015}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_ad53e1dd809a31c06fa0925d6a35ad715}{00015}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_ad53e1dd809a31c06fa0925d6a35ad715}{GradReductionSum::backward}}(\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\&\ inputGradient,\ \textcolor{keywordtype}{bool}\ higherDerivative)\ \{}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00016}00016\ \ \ \textcolor{comment}{//\ Broadcast\ back\ along\ the\ reduced\ dimension}}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00017}00017\ \ \ \textcolor{keywordtype}{int}\ broadcastSize\ =\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_af078dfab7aedd4bc8e593777f5cf68f6}{savedTensors}}[0].getDimensions()[\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a68a832d4eecca391a101b1e6bbc9b18b}{reduceDim}}];}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00018}00018\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\ outputGradient\ =\ inputGradient.\doxymbox{\hyperlink{classmattTorch_1_1TensorView_a62de4f6ff044d2a1d218a7388a9a11f0}{broadcast}}(\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a68a832d4eecca391a101b1e6bbc9b18b}{reduceDim}},\ broadcastSize);}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00019}00019\ \ \ outputGradient.\doxymbox{\hyperlink{classmattTorch_1_1TensorView_a9054b67c6d0df3b951db8bbb5a66a950}{setRequiresGrad}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00021}00021\ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a6f0ef445ff0f374efbd3cd1f4e20668b}{nextFunctions}}[0]\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00022}00022\ \ \ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradReductionSum_a6f0ef445ff0f374efbd3cd1f4e20668b}{nextFunctions}}[0]-\/>backward(outputGradient,\ higherDerivative);}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00023}00023\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{gradReductionSum_8cpp_source_l00026}00026\ \}\ \ \textcolor{comment}{//\ namespace\ mattTorch::function}}
+
+\end{DoxyCode}

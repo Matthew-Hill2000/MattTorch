@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="ReLU_8h" kind="file" language="C++">
+    <compoundname>ReLU.h</compoundname>
+    <includes refid="layer_8h" local="no">mattTorch/layer/layer.h</includes>
+    <includedby refid="layerInclude_8h" local="no">include/mattTorch/layer/layerInclude.h</includedby>
+    <includedby refid="ReLU_8cpp" local="no">src/layer/ReLU/ReLU.cpp</includedby>
+    <includedby refid="network_8cpp" local="no">src/network/network.cpp</includedby>
+    <incdepgraph>
+      <node id="15">
+        <label>mattTorch/function/addition/gradAddScalar.h</label>
+        <link refid="gradAddScalar_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>mattTorch/function/division/gradDivideScalar.h</label>
+        <link refid="gradDivideScalar_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>mattTorch/function/gradFunction.h</label>
+        <link refid="gradFunction_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>mattTorch/function/multiplication/gradMultiplyScalar.h</label>
+        <link refid="gradMultiplyScalar_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>mattTorch/function/subtraction/gradSubtractScalar.h</label>
+        <link refid="gradSubtractScalar_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/mattTorch/layer/ReLU/ReLU.h</label>
+        <link refid="ReLU_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>mattTorch/layer/layer.h</label>
+        <link refid="layer_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>mattTorch/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.h</label>
+        <link refid="tensorScalarElementwise_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>mattTorch/tensor/kernels/cpu/tensor-tensor/elementwise.h</label>
+        <link refid="elementwise_8h_source"/>
+      </node>
+      <node id="11">
+        <label>mattTorch/tensor/kernels/cpu/tensor-tensor/matrix.h</label>
+        <link refid="matrix_8h_source"/>
+      </node>
+      <node id="14">
+        <label>mattTorch/tensor/kernels/cpu/tensor/tensorElementwise.h</label>
+        <link refid="tensorElementwise_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>mattTorch/tensor/kernels/kernels.h</label>
+        <link refid="kernels_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>mattTorch/tensor/tensorView/tensorView.h</label>
+        <link refid="tensorView_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>immintrin.h</label>
+      </node>
+      <node id="6">
+        <label>memory</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>include/mattTorch/function/ReLU/gradReLU.h</label>
+        <link refid="gradReLU_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/mattTorch/function/broadcast/gradBroadcast.h</label>
+        <link refid="gradBroadcast_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/mattTorch/function/functionInclude.h</label>
+        <link refid="functionInclude_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/mattTorch/layer/ReLU/ReLU.h</label>
+        <link refid="ReLU_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/mattTorch/layer/layerInclude.h</label>
+        <link refid="layerInclude_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/mattTorch/mattTorch.h</label>
+        <link refid="mattTorch_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/function/ReLU/gradReLU.cpp</label>
+        <link refid="gradReLU_8cpp_source"/>
+      </node>
+      <node id="9">
+        <label>src/function/broadcast/gradBroadcast.cpp</label>
+        <link refid="gradBroadcast_8cpp_source"/>
+      </node>
+      <node id="10">
+        <label>src/layer/ReLU/ReLU.cpp</label>
+        <link refid="ReLU_8cpp_source"/>
+      </node>
+      <node id="11">
+        <label>src/network/network.cpp</label>
+        <link refid="network_8cpp_source"/>
+      </node>
+      <node id="6">
+        <label>src/tensor/tensorView/tensorViewOverloads.cpp</label>
+        <link refid="tensorViewOverloads_8cpp_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classmattTorch_1_1ReLU" prot="public">mattTorch::ReLU</innerclass>
+    <innernamespace refid="namespacemattTorch">mattTorch</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mattTorch/layer/layer.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mattTorch<sp/>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="classmattTorch_1_1ReLU" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmattTorch_1_1ReLU_1a0d37ce735c29c348ea1ea1fa4195748c" kindref="member">ReLU</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1Layer" kindref="compound">Layer</ref><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="25" refid="classmattTorch_1_1ReLU_1a463067b66ad6ac72f97e179d5e1e0e6c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref><sp/><ref refid="classmattTorch_1_1ReLU_1a463067b66ad6ac72f97e179d5e1e0e6c" kindref="member">inputTensor</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classmattTorch_1_1ReLU_1a113958e294a1c651ee23d1239871fda1" refkind="member"><highlight class="normal"><sp/><sp/>std::vector&lt;int&gt;<sp/><ref refid="classmattTorch_1_1ReLU_1a113958e294a1c651ee23d1239871fda1" kindref="member">inputShape</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classmattTorch_1_1ReLU_1ace8cbf5d111d3ed5ade00523c264c63f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref><sp/><ref refid="classmattTorch_1_1ReLU_1ace8cbf5d111d3ed5ade00523c264c63f" kindref="member">outputTensor</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="36" refid="classmattTorch_1_1ReLU_1a0d37ce735c29c348ea1ea1fa4195748c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classmattTorch_1_1ReLU_1a0d37ce735c29c348ea1ea1fa4195748c" kindref="member">ReLU</ref>();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref><sp/><ref refid="classmattTorch_1_1ReLU_1a5c03819cdc3d172e1384f89f32823cdb" kindref="member">forward</ref>(<ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref>&amp;<sp/><ref refid="classmattTorch_1_1ReLU_1a463067b66ad6ac72f97e179d5e1e0e6c" kindref="member">inputTensor</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>std::vector&lt;std::shared_ptr&lt;TensorView&gt;&gt;<sp/><ref refid="classmattTorch_1_1ReLU_1a044c55685def6b30716e3f1f1f9911fc" kindref="member">getParameters</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmattTorch_1_1ReLU_1a563f86dc95216e605d5782f0d866cbb3" kindref="member">getNumParameters</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>mattTorch</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/mattTorch/layer/ReLU/ReLU.h"/>
+  </compounddef>
+</doxygen>

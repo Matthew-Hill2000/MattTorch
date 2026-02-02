@@ -1,0 +1,40 @@
+\doxysection{sgd.\+cpp}
+\hypertarget{sgd_8cpp_source}{}\label{sgd_8cpp_source}\index{src/optimiser/sgd/sgd.cpp@{src/optimiser/sgd/sgd.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <mattTorch/optimiser/sgd/sgd.h>}}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <mattTorch/tensor/tensorView/tensorView.h>}}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00008}00008\ \textcolor{keyword}{namespace\ }mattTorch\ \{}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00009}\doxymbox{\hyperlink{classmattTorch_1_1SGD_a7493fdb1b125f0e804aa0f38fd482d43}{00009}}\ \doxymbox{\hyperlink{classmattTorch_1_1SGD_a7493fdb1b125f0e804aa0f38fd482d43}{SGD::SGD}}(std::vector<std::shared\_ptr<TensorView>>\ \doxymbox{\hyperlink{classmattTorch_1_1SGD_a39cf7bcbcb1d4e030d926c1764b4b5e9}{parameters}},}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00010}00010\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{classmattTorch_1_1SGD_ae01faafe964a03204e602ad2f63f7c51}{learningRate}})}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00011}00011\ \ \ \ \ :\ \doxymbox{\hyperlink{classmattTorch_1_1SGD_a39cf7bcbcb1d4e030d926c1764b4b5e9}{parameters}}\{\doxymbox{\hyperlink{classmattTorch_1_1SGD_a39cf7bcbcb1d4e030d926c1764b4b5e9}{parameters}}\},\ \doxymbox{\hyperlink{classmattTorch_1_1SGD_ae01faafe964a03204e602ad2f63f7c51}{learningRate}}\{\doxymbox{\hyperlink{classmattTorch_1_1SGD_ae01faafe964a03204e602ad2f63f7c51}{learningRate}}\}\ \{\}}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00013}\doxymbox{\hyperlink{classmattTorch_1_1SGD_a90c76ff546fe29437e322fb9c657dd22}{00013}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1SGD_a90c76ff546fe29437e322fb9c657dd22}{SGD::updateParameters}}()\ \{}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00014}00014\ \ \ \_\_m256d\ learningRateVec\ =}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00015}00015\ \ \ \ \ \ \ \_mm256\_set\_pd(\doxymbox{\hyperlink{classmattTorch_1_1SGD_ae01faafe964a03204e602ad2f63f7c51}{learningRate}},\ \doxymbox{\hyperlink{classmattTorch_1_1SGD_ae01faafe964a03204e602ad2f63f7c51}{learningRate}},\ \doxymbox{\hyperlink{classmattTorch_1_1SGD_ae01faafe964a03204e602ad2f63f7c51}{learningRate}},\ \doxymbox{\hyperlink{classmattTorch_1_1SGD_ae01faafe964a03204e602ad2f63f7c51}{learningRate}});}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00016}00016\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ parameter\ :\ \doxymbox{\hyperlink{classmattTorch_1_1SGD_a39cf7bcbcb1d4e030d926c1764b4b5e9}{parameters}})\ \{}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{double}*\ paramData\ =\ parameter-\/>getData();}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{double}*\ paramGradData\ =\ parameter-\/>getGradientData();}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\{0\};\ i\ +\ 3\ <\ parameter-\/>getNValues();\ i\ +=\ 4)\ \{}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00020}00020\ \ \ \ \ \ \ \_\_m256d\ p\ =\ \_mm256\_load\_pd(paramData\ +\ i);}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00021}00021\ \ \ \ \ \ \ \_\_m256d\ pG\ =\ \_mm256\_load\_pd(paramGradData\ +\ i);}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00022}00022\ \ \ \ \ \ \ \_\_m256d\ newP\ =\ \_mm256\_fnmadd\_pd(learningRateVec,\ pG,\ p);}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00023}00023\ \ \ \ \ \ \ \_mm256\_store\_pd(paramData\ +\ i,\ newP);}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00025}00025\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00028}\doxymbox{\hyperlink{classmattTorch_1_1SGD_ac44ead48c860ae3ecbfad630c8121879}{00028}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1SGD_ac44ead48c860ae3ecbfad630c8121879}{SGD::zeroGrad}}()\ \{}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00029}00029\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ parameter\ :\ \doxymbox{\hyperlink{classmattTorch_1_1SGD_a39cf7bcbcb1d4e030d926c1764b4b5e9}{parameters}})\ \{}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordtype}{double}*\ paramGradData\ =\ parameter-\/>getGradientData();}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00031}00031\ \ \ \ \ std::fill(paramGradData,\ paramGradData\ +\ parameter-\/>getNValues(),\ 0);}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00032}00032\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{sgd_8cpp_source_l00034}00034\ \}\ \ \textcolor{comment}{//\ namespace\ mattTorch}}
+
+\end{DoxyCode}

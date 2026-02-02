@@ -1,0 +1,28 @@
+\doxysection{grad\+Exponent.\+h}
+\hypertarget{gradExponent_8h_source}{}\label{gradExponent_8h_source}\index{include/mattTorch/function/exponent/gradExponent.h@{include/mattTorch/function/exponent/gradExponent.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <mattTorch/function/gradFunction.h>}}
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00005}00005\ \textcolor{keyword}{namespace\ }mattTorch::function\ \{}
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00035}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponent}{00035}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponent_a5c9f1dff008e3f82087601a68598d830}{GradExponent}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{GradFunction}}\ \{}
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00036}00036\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00039}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponent_a59a1203b7d3e007d01ea94ac2f653767}{00039}}\ \ \ std::vector<int>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponent_a59a1203b7d3e007d01ea94ac2f653767}{savedScalars}};}
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00043}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponent_a1ae10f777779f92870f07a5bf2129cc3}{00043}}\ \ \ std::vector<TensorView>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponent_a1ae10f777779f92870f07a5bf2129cc3}{savedTensors}};}
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00047}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponent_a1e305f85ef669e48dfbc5091eb05703b}{00047}}\ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponent_a1e305f85ef669e48dfbc5091eb05703b}{nextFunctions}};}
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00049}00049\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00064}00064\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponent_a5c9f1dff008e3f82087601a68598d830}{GradExponent}}(std::vector<int>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponent_a59a1203b7d3e007d01ea94ac2f653767}{savedScalars}},}
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<TensorView>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponent_a1ae10f777779f92870f07a5bf2129cc3}{savedTensors}},}
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponent_a1e305f85ef669e48dfbc5091eb05703b}{nextFunctions}});}
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00087}00087\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponent_aac3447f13f16527ca24cebf1fccb0e9b}{backward}}(\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\&\ inputGradient,\ \textcolor{keywordtype}{bool}\ higherDerivative)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00088}00088\ \};}
+\DoxyCodeLine{\Hypertarget{gradExponent_8h_source_l00089}00089\ \}}
+
+\end{DoxyCode}

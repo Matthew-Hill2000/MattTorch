@@ -1,0 +1,26 @@
+\doxysection{grad\+Add\+Scalar.\+h}
+\hypertarget{gradAddScalar_8h_source}{}\label{gradAddScalar_8h_source}\index{include/mattTorch/function/addition/gradAddScalar.h@{include/mattTorch/function/addition/gradAddScalar.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <mattTorch/function/gradFunction.h>}}
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00006}00006\ \textcolor{keyword}{namespace\ }mattTorch::function\ \{}
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00037}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAddScalar}{00037}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAddScalar_a4e82ca891929c53c6580a7d0fa7d8ce8}{GradAddScalar}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{GradFunction}}\ \{}
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00038}00038\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00041}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAddScalar_a9b48d0908aa318b821aa6abe1008359f}{00041}}\ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAddScalar_a9b48d0908aa318b821aa6abe1008359f}{savedScalar}};}
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00045}\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAddScalar_ae0e3ceeb26ff632e6d031b4ca4a8a86f}{00045}}\ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAddScalar_ae0e3ceeb26ff632e6d031b4ca4a8a86f}{nextFunctions}};}
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00047}00047\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00060}00060\ \ \ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAddScalar_a4e82ca891929c53c6580a7d0fa7d8ce8}{GradAddScalar}}(\textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAddScalar_a9b48d0908aa318b821aa6abe1008359f}{savedScalar}},}
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<GradFunction>>\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAddScalar_ae0e3ceeb26ff632e6d031b4ca4a8a86f}{nextFunctions}});}
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00080}00080\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAddScalar_a403d670a6583c00b812844a4e3cdb895}{backward}}(\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{TensorView}}\&\ inputGradient,\ \textcolor{keywordtype}{bool}\ higherDerivative)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00081}00081\ \};}
+\DoxyCodeLine{\Hypertarget{gradAddScalar_8h_source_l00082}00082\ \}}
+
+\end{DoxyCode}

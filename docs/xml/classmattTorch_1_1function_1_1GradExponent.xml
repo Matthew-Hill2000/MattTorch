@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classmattTorch_1_1function_1_1GradExponent" kind="class" language="C++" prot="public">
+    <compoundname>mattTorch::function::GradExponent</compoundname>
+    <basecompoundref refid="classmattTorch_1_1GradFunction" prot="public" virt="non-virtual">mattTorch::GradFunction</basecompoundref>
+    <includes refid="gradExponent_8h" local="no">gradExponent.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmattTorch_1_1function_1_1GradExponent_1a59a1203b7d3e007d01ea94ac2f653767" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; mattTorch::function::GradExponent::savedScalars</definition>
+        <argsstring></argsstring>
+        <name>savedScalars</name>
+        <qualifiedname>mattTorch::function::GradExponent::savedScalars</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The integer exponent from the forward pass, stored in a vector for consistency with the gradient function interface </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/exponent/gradExponent.h" line="39" column="15" bodyfile="include/mattTorch/function/exponent/gradExponent.h" bodystart="39" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1function_1_1GradExponent_1aac3447f13f16527ca24cebf1fccb0e9b" compoundref="gradExponent_8cpp" startline="13" endline="21">backward</referencedby>
+        <referencedby refid="classmattTorch_1_1function_1_1GradExponent_1a5c9f1dff008e3f82087601a68598d830" compoundref="gradExponent_8cpp" startline="5" endline="11">GradExponent</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmattTorch_1_1function_1_1GradExponent_1a1ae10f777779f92870f07a5bf2129cc3" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &gt;</type>
+        <definition>std::vector&lt;TensorView&gt; mattTorch::function::GradExponent::savedTensors</definition>
+        <argsstring></argsstring>
+        <name>savedTensors</name>
+        <qualifiedname>mattTorch::function::GradExponent::savedTensors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The input tensor from the forward pass, required for computing the gradient using the power rule </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/exponent/gradExponent.h" line="43" column="15" bodyfile="include/mattTorch/function/exponent/gradExponent.h" bodystart="43" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1function_1_1GradExponent_1aac3447f13f16527ca24cebf1fccb0e9b" compoundref="gradExponent_8cpp" startline="13" endline="21">backward</referencedby>
+        <referencedby refid="classmattTorch_1_1function_1_1GradExponent_1a5c9f1dff008e3f82087601a68598d830" compoundref="gradExponent_8cpp" startline="5" endline="11">GradExponent</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmattTorch_1_1function_1_1GradExponent_1a1e305f85ef669e48dfbc5091eb05703b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::shared_ptr&lt;GradFunction&gt; &gt; mattTorch::function::GradExponent::nextFunctions</definition>
+        <argsstring></argsstring>
+        <name>nextFunctions</name>
+        <qualifiedname>mattTorch::function::GradExponent::nextFunctions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pointer to the <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> object of the parent tensor in the computational graph </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/exponent/gradExponent.h" line="47" column="15" bodyfile="include/mattTorch/function/exponent/gradExponent.h" bodystart="47" bodyend="-1"/>
+        <referencedby refid="classmattTorch_1_1function_1_1GradExponent_1aac3447f13f16527ca24cebf1fccb0e9b" compoundref="gradExponent_8cpp" startline="13" endline="21">backward</referencedby>
+        <referencedby refid="classmattTorch_1_1function_1_1GradExponent_1a5c9f1dff008e3f82087601a68598d830" compoundref="gradExponent_8cpp" startline="5" endline="11">GradExponent</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmattTorch_1_1function_1_1GradExponent_1a5c9f1dff008e3f82087601a68598d830" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mattTorch::function::GradExponent::GradExponent</definition>
+        <argsstring>(std::vector&lt; int &gt; savedScalars, std::vector&lt; TensorView &gt; savedTensors, std::vector&lt; std::shared_ptr&lt; GradFunction &gt; &gt; nextFunctions)</argsstring>
+        <name>GradExponent</name>
+        <qualifiedname>mattTorch::function::GradExponent::GradExponent</qualifiedname>
+        <param>
+          <type>std::vector&lt; int &gt;</type>
+          <declname>savedScalars</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &gt;</type>
+          <declname>savedTensors</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> &gt; &gt;</type>
+          <declname>nextFunctions</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="classmattTorch_1_1function_1_1GradExponent" kindref="compound">GradExponent</ref> gradient function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a <ref refid="classmattTorch_1_1function_1_1GradExponent" kindref="compound">GradExponent</ref> object that stores the integer exponent, the input tensor from the forward pass, and a pointer to the parent tensor&apos;s <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> for gradient propagation during backpropagation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classmattTorch_1_1function_1_1GradExponent_1a59a1203b7d3e007d01ea94ac2f653767" kindref="member">savedScalars</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector containing the integer exponent used during the forward pass </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="classmattTorch_1_1function_1_1GradExponent_1a1ae10f777779f92870f07a5bf2129cc3" kindref="member">savedTensors</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector containing the input tensor that was raised to a power during the forward pass </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="classmattTorch_1_1function_1_1GradExponent_1a1e305f85ef669e48dfbc5091eb05703b" kindref="member">nextFunctions</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector containing a shared pointer to the <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> object of the parent tensor for gradient propagation </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/exponent/gradExponent.h" line="64" column="3" bodyfile="src/function/exponent/gradExponent.cpp" bodystart="5" bodyend="11"/>
+        <references refid="classmattTorch_1_1function_1_1GradExponent_1a1e305f85ef669e48dfbc5091eb05703b" compoundref="gradExponent_8h" startline="47">nextFunctions</references>
+        <references refid="classmattTorch_1_1function_1_1GradExponent_1a59a1203b7d3e007d01ea94ac2f653767" compoundref="gradExponent_8h" startline="39">savedScalars</references>
+        <references refid="classmattTorch_1_1function_1_1GradExponent_1a1ae10f777779f92870f07a5bf2129cc3" compoundref="gradExponent_8h" startline="43">savedTensors</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1function_1_1GradExponent_1aac3447f13f16527ca24cebf1fccb0e9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void mattTorch::function::GradExponent::backward</definition>
+        <argsstring>(TensorView &amp;inputGradient, bool higherDerivative) override</argsstring>
+        <name>backward</name>
+        <qualifiedname>mattTorch::function::GradExponent::backward</qualifiedname>
+        <reimplements refid="classmattTorch_1_1GradFunction_1abc6c3ffb22d631af9dca31dcd5c09d3d">backward</reimplements>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &amp;</type>
+          <declname>inputGradient</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>higherDerivative</declname>
+        </param>
+        <briefdescription>
+<para>Computes and propagates gradients for the exponentiation operation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Implements the backward pass for exponentiation using the power rule. The gradient is computed by raising the input tensor to the power (n-1), multiplying by the exponent n, and then multiplying elementwise with the incoming gradient. The method calls <ref refid="classmattTorch_1_1function_1_1GradExponent_1aac3447f13f16527ca24cebf1fccb0e9b" kindref="member">backward()</ref> on the parent tensor&apos;s <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> to continue the backpropagation process.</para>
+<para>When higherDerivative is false, gradient tracking is disabled on the saved tensor to prevent construction of a new computational graph during backpropagation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>inputGradient</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The gradient of the loss with respect to the output of the exponentiation operation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>higherDerivative</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, enables construction of a computational graph during the backward pass for higher-order derivatives; if false, disables gradient tracking on saved tensors </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/function/exponent/gradExponent.h" line="87" column="8" bodyfile="src/function/exponent/gradExponent.cpp" bodystart="13" bodyend="21"/>
+        <references refid="classmattTorch_1_1function_1_1GradExponent_1a1e305f85ef669e48dfbc5091eb05703b" compoundref="gradExponent_8h" startline="47">nextFunctions</references>
+        <references refid="classmattTorch_1_1function_1_1GradExponent_1a59a1203b7d3e007d01ea94ac2f653767" compoundref="gradExponent_8h" startline="39">savedScalars</references>
+        <references refid="classmattTorch_1_1function_1_1GradExponent_1a1ae10f777779f92870f07a5bf2129cc3" compoundref="gradExponent_8h" startline="43">savedTensors</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Gradient function for raising a tensor to an integer power. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classmattTorch_1_1function_1_1GradExponent" kindref="compound">GradExponent</ref> class represents the exponentiation operation in the computational graph, computing gradients for raising a tensor to an integer power. For the operation <formula id="35">$C = A^n$</formula> where <formula id="12">$A$</formula> is a tensor and <formula id="36">$n$</formula> is an integer exponent, the gradient computation follows from the power rule:   <formula id="37">\[    \frac{\partial C}{\partial A} = n \cdot A^{n-1}
+\]</formula></para>
+<para>During backpropagation, the incoming gradient  <formula id="8">$\frac{\partial L}{\partial
+C}$</formula> is multiplied elementwise with the derivative according to the chain rule:     <formula id="38">\[    \frac{\partial L}{\partial A} = \frac{\partial L}{\partial C} \odot
+\frac{\partial C}{\partial A} = \frac{\partial L}{\partial C} \odot (n
+\cdot A^{n-1})
+\]</formula></para>
+<para>This <ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> saves the input tensor and the integer exponent from the forward pass as both are required to compute the gradient during the backward pass using the power rule.</para>
+<para><simplesect kind="see"><para><ref refid="classmattTorch_1_1GradFunction" kindref="compound">GradFunction</ref> for the base class from which this class derives. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classmattTorch_1_1function_1_1GradExponential" kindref="compound">GradExponential</ref> for the gradient function for the natural exponential function. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>mattTorch::GradFunction</label>
+        <link refid="classmattTorch_1_1GradFunction"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::function::GradExponent</label>
+        <link refid="classmattTorch_1_1function_1_1GradExponent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>mattTorch::GradFunction</label>
+        <link refid="classmattTorch_1_1GradFunction"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::function::GradExponent</label>
+        <link refid="classmattTorch_1_1function_1_1GradExponent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/mattTorch/function/exponent/gradExponent.h" line="35" column="1" bodyfile="include/mattTorch/function/exponent/gradExponent.h" bodystart="35" bodyend="88"/>
+    <listofallmembers>
+      <member refid="classmattTorch_1_1function_1_1GradExponent_1aac3447f13f16527ca24cebf1fccb0e9b" prot="public" virt="virtual"><scope>mattTorch::function::GradExponent</scope><name>backward</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradExponent_1a5c9f1dff008e3f82087601a68598d830" prot="public" virt="non-virtual"><scope>mattTorch::function::GradExponent</scope><name>GradExponent</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradExponent_1a1e305f85ef669e48dfbc5091eb05703b" prot="private" virt="non-virtual"><scope>mattTorch::function::GradExponent</scope><name>nextFunctions</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradExponent_1a59a1203b7d3e007d01ea94ac2f653767" prot="private" virt="non-virtual"><scope>mattTorch::function::GradExponent</scope><name>savedScalars</name></member>
+      <member refid="classmattTorch_1_1function_1_1GradExponent_1a1ae10f777779f92870f07a5bf2129cc3" prot="private" virt="non-virtual"><scope>mattTorch::function::GradExponent</scope><name>savedTensors</name></member>
+      <member refid="classmattTorch_1_1GradFunction_1ae57c9bf3f619ae1206416877caa15090" prot="public" virt="virtual"><scope>mattTorch::function::GradExponent</scope><name>~GradFunction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,185 @@
+\doxysection{matt\+Torch::\+function::\+Grad\+Exponential Class Reference}
+\hypertarget{classmattTorch_1_1function_1_1GradExponential}{}\label{classmattTorch_1_1function_1_1GradExponential}\index{mattTorch::function::GradExponential@{mattTorch::function::GradExponential}}
+
+
+Gradient function for the natural exponential function.  
+
+
+
+
+{\ttfamily \+\#include $<$grad\+Exponential.\+h$>$}
+
+
+
+Inheritance diagram for matt\+Torch::\+function::\+Grad\+Exponential:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classmattTorch_1_1function_1_1GradExponential__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for matt\+Torch::\+function::\+Grad\+Exponential:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{classmattTorch_1_1function_1_1GradExponential__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponential_ac4d364fa54da7cc996142ab6fbd52d27}{Grad\+Exponential}} (\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponential_a6c7bad025c03f12bda46e019badc6a50}{saved\+Tensor}}, std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}} $>$ $>$ next\+Function)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classmattTorch_1_1function_1_1GradExponential}{Grad\+Exponential} gradient function. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponential_a83897376a25d129b885f80f1efbf4e59}{backward}} (\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&input\+Gradient, bool higher\+Derivative) override
+\begin{DoxyCompactList}\small\item\em Computes and propagates gradients for the exponential operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{matt\+Torch::\+\+Grad\+Function}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Grad\+Function} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for safe polymorphic destruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponential_a6c7bad025c03f12bda46e019badc6a50}{saved\+Tensor}}
+\item 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}} $>$ $>$ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradExponential_a8c3dd06f6a2e397a222f85c17392437f}{next\+Functions}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gradient function for the natural exponential function. 
+
+The \doxylink{classmattTorch_1_1function_1_1GradExponential}{Grad\+Exponential} class represents the natural exponential function in the computational graph, computing gradients for the elementwise exponential operation. For the operation $C = e^A$ where $A$ is a tensor, the gradient computation follows from the derivative of the exponential function:\+   \[    \frac{\partial C}{\partial A} = e^A
+\]
+
+During backpropagation, the incoming gradient  $\frac{\partial L}{\partial
+C}$ is multiplied elementwise with the exponential of the input according to the chain rule:\+    \[    \frac{\partial L}{\partial A} = \frac{\partial L}{\partial C} \odot
+\frac{\partial C}{\partial A} = \frac{\partial L}{\partial C} \odot e^A
+\]
+
+This \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} saves the output tensor $e^A$ from the forward pass rather than the input tensor $A$, as the output is exactly what is needed for the gradient computation. This avoids recomputing the exponential during the backward pass, improving computational efficiency.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} for the base class from which this class derives. 
+
+\doxylink{classmattTorch_1_1function_1_1GradLog}{Grad\+Log} for the gradient function for the natural logarithm. 
+
+\doxylink{classmattTorch_1_1function_1_1GradExponent}{Grad\+Exponent} for the gradient function for integer power operations. 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{gradExponential_8h_source_l00038}{38}} of file \doxymbox{\hyperlink{gradExponential_8h_source}{grad\+Exponential.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classmattTorch_1_1function_1_1GradExponential_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmattTorch_1_1function_1_1GradExponential_ac4d364fa54da7cc996142ab6fbd52d27}\index{mattTorch::function::GradExponential@{mattTorch::function::GradExponential}!GradExponential@{GradExponential}}
+\index{GradExponential@{GradExponential}!mattTorch::function::GradExponential@{mattTorch::function::GradExponential}}
+\doxysubsubsection{\texorpdfstring{GradExponential()}{GradExponential()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradExponential_ac4d364fa54da7cc996142ab6fbd52d27} 
+matt\+Torch::\+function::\+\+Grad\+Exponential::\+\+Grad\+Exponential (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}}}]{saved\+Tensor}{, }\item[{std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}} $>$ $>$}]{next\+Function}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{classmattTorch_1_1function_1_1GradExponential}{Grad\+Exponential} gradient function. 
+
+Creates a \doxylink{classmattTorch_1_1function_1_1GradExponential}{Grad\+Exponential} object that stores the output tensor from the forward pass and a pointer to the parent tensor\textquotesingle{}s \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} for gradient propagation during backpropagation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classmattTorch_1_1function_1_1GradExponential_a6c7bad025c03f12bda46e019badc6a50}{saved\+Tensor}} & The output tensor (e\texorpdfstring{$^\wedge$}{\string^}A) from the forward pass, saved for use in gradient computation \\
+\hline
+{\em next\+Function} & A vector containing a shared pointer to the \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} object of the parent tensor for gradient propagation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{gradExponential_8cpp_source_l00007}{7}} of file \doxymbox{\hyperlink{gradExponential_8cpp_source}{grad\+Exponential.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{gradExponential_8h_source_l00046}{next\+Functions}}, and \doxymbox{\hyperlink{gradExponential_8h_source_l00042}{saved\+Tensor}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classmattTorch_1_1function_1_1GradExponential_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmattTorch_1_1function_1_1GradExponential_a83897376a25d129b885f80f1efbf4e59}\index{mattTorch::function::GradExponential@{mattTorch::function::GradExponential}!backward@{backward}}
+\index{backward@{backward}!mattTorch::function::GradExponential@{mattTorch::function::GradExponential}}
+\doxysubsubsection{\texorpdfstring{backward()}{backward()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradExponential_a83897376a25d129b885f80f1efbf4e59} 
+void matt\+Torch::\+function::\+\+Grad\+Exponential::\+backward (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&}]{input\+Gradient}{, }\item[{bool}]{higher\+Derivative}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Computes and propagates gradients for the exponential operation. 
+
+Implements the backward pass for the natural exponential function by multiplying the incoming gradient elementwise with the saved output tensor (which contains e\texorpdfstring{$^\wedge$}{\string^}A). Since the derivative of e\texorpdfstring{$^\wedge$}{\string^}x is e\texorpdfstring{$^\wedge$}{\string^}x, and the output was already computed during the forward pass, this computation is efficient. The method calls \doxylink{classmattTorch_1_1function_1_1GradExponential_a83897376a25d129b885f80f1efbf4e59}{backward()} on the parent tensor\textquotesingle{}s \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} to continue the backpropagation process.
+
+When higher\+Derivative is false, gradient tracking is disabled on the saved tensor to prevent construction of a new computational graph during backpropagation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Gradient} & The gradient of the loss with respect to the output of the exponential operation \\
+\hline
+{\em higher\+Derivative} & If true, enables construction of a computational graph during the backward pass for higher-\/order derivatives; if false, disables gradient tracking on saved tensors \\
+\hline
+\end{DoxyParams}
+
+
+Implements \doxymbox{\hyperlink{classmattTorch_1_1GradFunction_abc6c3ffb22d631af9dca31dcd5c09d3d}{matt\+Torch::\+\+Grad\+Function}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{gradExponential_8cpp_source_l00013}{13}} of file \doxymbox{\hyperlink{gradExponential_8cpp_source}{grad\+Exponential.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{gradExponential_8h_source_l00046}{next\+Functions}}, and \doxymbox{\hyperlink{gradExponential_8h_source_l00042}{saved\+Tensor}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classmattTorch_1_1function_1_1GradExponential_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmattTorch_1_1function_1_1GradExponential_a8c3dd06f6a2e397a222f85c17392437f}\index{mattTorch::function::GradExponential@{mattTorch::function::GradExponential}!nextFunctions@{nextFunctions}}
+\index{nextFunctions@{nextFunctions}!mattTorch::function::GradExponential@{mattTorch::function::GradExponential}}
+\doxysubsubsection{\texorpdfstring{nextFunctions}{nextFunctions}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradExponential_a8c3dd06f6a2e397a222f85c17392437f} 
+std::\+vector$<$std::\+shared\+\_\+ptr$<$\doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{Grad\+Function}}$>$ $>$ matt\+Torch::\+function::\+\+Grad\+Exponential::\+next\+Functions\hspace{0.3cm}{\ttfamily [private]}}
+
+Pointer to the \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} object of the parent tensor in the computational graph 
+
+Definition at line \doxymbox{\hyperlink{gradExponential_8h_source_l00046}{46}} of file \doxymbox{\hyperlink{gradExponential_8h_source}{grad\+Exponential.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{gradExponential_8cpp_source_l00013}{backward()}}, and \doxymbox{\hyperlink{gradExponential_8cpp_source_l00007}{Grad\+Exponential()}}.
+
+\Hypertarget{classmattTorch_1_1function_1_1GradExponential_a6c7bad025c03f12bda46e019badc6a50}\index{mattTorch::function::GradExponential@{mattTorch::function::GradExponential}!savedTensor@{savedTensor}}
+\index{savedTensor@{savedTensor}!mattTorch::function::GradExponential@{mattTorch::function::GradExponential}}
+\doxysubsubsection{\texorpdfstring{savedTensor}{savedTensor}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradExponential_a6c7bad025c03f12bda46e019badc6a50} 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} matt\+Torch::\+function::\+\+Grad\+Exponential::\+saved\+Tensor\hspace{0.3cm}{\ttfamily [private]}}
+
+The output tensor from the forward pass (e\texorpdfstring{$^\wedge$}{\string^}A), saved for use in gradient computation to avoid recomputing the exponential 
+
+Definition at line \doxymbox{\hyperlink{gradExponential_8h_source_l00042}{42}} of file \doxymbox{\hyperlink{gradExponential_8h_source}{grad\+Exponential.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{gradExponential_8cpp_source_l00013}{backward()}}, and \doxymbox{\hyperlink{gradExponential_8cpp_source_l00007}{Grad\+Exponential()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+matt\+Torch/\+function/\+exponential/\+grad\+Exponential.\+h\item 
+src/\+function/\+exponential/\+grad\+Exponential.\+cpp\end{DoxyCompactItemize}

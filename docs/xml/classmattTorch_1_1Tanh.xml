@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classmattTorch_1_1Tanh" kind="class" language="C++" prot="public">
+    <compoundname>mattTorch::Tanh</compoundname>
+    <basecompoundref refid="classmattTorch_1_1Layer" prot="public" virt="non-virtual">mattTorch::Layer</basecompoundref>
+    <includes refid="tanh_8h" local="no">tanh.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmattTorch_1_1Tanh_1a75f8749de721ebd424ac630d1e38d1d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mattTorch::Tanh::Tanh</definition>
+        <argsstring>()=default</argsstring>
+        <name>Tanh</name>
+        <qualifiedname>mattTorch::Tanh::Tanh</qualifiedname>
+        <briefdescription>
+<para>Default constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/layer/tanh/tanh.h" line="25" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1Tanh_1a76b966278d093c136341d06fc2081451" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref></type>
+        <definition>TensorView mattTorch::Tanh::forward</definition>
+        <argsstring>(TensorView &amp;input) override</argsstring>
+        <name>forward</name>
+        <qualifiedname>mattTorch::Tanh::forward</qualifiedname>
+        <reimplements refid="classmattTorch_1_1Layer_1adad39b8980133bb181dfc52932065e2e">forward</reimplements>
+        <param>
+          <type><ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+<para>Performs the forward pass of this <ref refid="classmattTorch_1_1Tanh" kindref="compound">Tanh</ref> activation layer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Applies the tanh function elementwise to the input tensor by delegating to <ref refid="classmattTorch_1_1TensorView_1a1e687142d7026837d7b4d04665874f75" kindref="member">TensorView::tanh()</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The input tensor to apply <ref refid="classmattTorch_1_1Tanh" kindref="compound">Tanh</ref> activation to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> containing the output with tanh applied to all elements </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/layer/tanh/tanh.h" line="37" column="14" bodyfile="src/layer/tanh/tanh.cpp" bodystart="5" bodyend="5"/>
+        <references refid="classmattTorch_1_1TensorView_1a1e687142d7026837d7b4d04665874f75" compoundref="tensorViewOverloads_8cpp" startline="471" endline="487">mattTorch::TensorView::tanh</references>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1Tanh_1a4b9857e61864816d1c431e4ea403b356" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classmattTorch_1_1TensorView" kindref="compound">TensorView</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::shared_ptr&lt; TensorView &gt; &gt; mattTorch::Tanh::getParameters</definition>
+        <argsstring>() override</argsstring>
+        <name>getParameters</name>
+        <qualifiedname>mattTorch::Tanh::getParameters</qualifiedname>
+        <reimplements refid="classmattTorch_1_1Layer_1ae2081002ad607f80ec045c8dedd23bbf">getParameters</reimplements>
+        <briefdescription>
+<para>Returns an empty vector as this layer has no learnable parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>An empty vector </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/layer/tanh/tanh.h" line="44" column="15" bodyfile="src/layer/tanh/tanh.cpp" bodystart="7" bodyend="7"/>
+      </memberdef>
+      <memberdef kind="function" id="classmattTorch_1_1Tanh_1ab0521e4fbd79011b81d7368d03da1aa8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int mattTorch::Tanh::getNumParameters</definition>
+        <argsstring>() override</argsstring>
+        <name>getNumParameters</name>
+        <qualifiedname>mattTorch::Tanh::getNumParameters</qualifiedname>
+        <reimplements refid="classmattTorch_1_1Layer_1a99c9c62d5d0348985f95d905d8ee6f51">getNumParameters</reimplements>
+        <briefdescription>
+<para>Returns zero as this layer has no learnable parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>0 </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/mattTorch/layer/tanh/tanh.h" line="51" column="7" bodyfile="src/layer/tanh/tanh.cpp" bodystart="9" bodyend="9"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A hyperbolic tangent activation layer. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classmattTorch_1_1Tanh" kindref="compound">Tanh</ref> class implements the tanh activation function as a network layer, applying the elementwise transformation:   <formula id="94">\[    f(x) = \tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}
+\]</formula> to the input tensor during the forward pass by delegating to <ref refid="classmattTorch_1_1TensorView_1a1e687142d7026837d7b4d04665874f75" kindref="member">TensorView::tanh()</ref>. This layer contains no learnable parameters.</para>
+<para><simplesect kind="see"><para><ref refid="classmattTorch_1_1Layer" kindref="compound">Layer</ref> for the base class from which this class derives. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classmattTorch_1_1TensorView_1a1e687142d7026837d7b4d04665874f75" kindref="member">TensorView::tanh()</ref> for the underlying tensor operation that performs the elementwise tanh computation and constructs the computational graph node. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>mattTorch::Layer</label>
+        <link refid="classmattTorch_1_1Layer"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::Tanh</label>
+        <link refid="classmattTorch_1_1Tanh"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>mattTorch::Layer</label>
+        <link refid="classmattTorch_1_1Layer"/>
+      </node>
+      <node id="1">
+        <label>mattTorch::Tanh</label>
+        <link refid="classmattTorch_1_1Tanh"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/mattTorch/layer/tanh/tanh.h" line="22" column="1" bodyfile="include/mattTorch/layer/tanh/tanh.h" bodystart="22" bodyend="52"/>
+    <listofallmembers>
+      <member refid="classmattTorch_1_1Tanh_1a76b966278d093c136341d06fc2081451" prot="public" virt="virtual"><scope>mattTorch::Tanh</scope><name>forward</name></member>
+      <member refid="classmattTorch_1_1Tanh_1ab0521e4fbd79011b81d7368d03da1aa8" prot="public" virt="virtual"><scope>mattTorch::Tanh</scope><name>getNumParameters</name></member>
+      <member refid="classmattTorch_1_1Tanh_1a4b9857e61864816d1c431e4ea403b356" prot="public" virt="virtual"><scope>mattTorch::Tanh</scope><name>getParameters</name></member>
+      <member refid="classmattTorch_1_1Tanh_1a75f8749de721ebd424ac630d1e38d1d9" prot="public" virt="non-virtual"><scope>mattTorch::Tanh</scope><name>Tanh</name></member>
+      <member refid="classmattTorch_1_1Layer_1ab78060ae5ca0254d8a214a965e87d651" prot="public" virt="virtual"><scope>mattTorch::Tanh</scope><name>~Layer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

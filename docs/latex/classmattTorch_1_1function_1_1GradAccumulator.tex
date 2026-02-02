@@ -1,0 +1,218 @@
+\doxysection{matt\+Torch::\+function::\+Grad\+Accumulator Class Reference}
+\hypertarget{classmattTorch_1_1function_1_1GradAccumulator}{}\label{classmattTorch_1_1function_1_1GradAccumulator}\index{mattTorch::function::GradAccumulator@{mattTorch::function::GradAccumulator}}
+
+
+Gradient function for leaf tensors that accumulates gradients during backpropagation.  
+
+
+
+
+{\ttfamily \+\#include $<$grad\+Accumulator.\+h$>$}
+
+
+
+Inheritance diagram for matt\+Torch::\+function::\+Grad\+Accumulator:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classmattTorch_1_1function_1_1GradAccumulator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for matt\+Torch::\+function::\+Grad\+Accumulator:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classmattTorch_1_1function_1_1GradAccumulator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAccumulator_a8be932a9a6dca2ae928c9036eb81ed11}{Grad\+Accumulator}} (std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAccumulator_ac37cb5df511233d36095f3974daa1bec}{gradient}}, const std::\+vector$<$ int $>$ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAccumulator_a9bf123ced51bbc776a73ee82576b9a1f}{dims}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classmattTorch_1_1function_1_1GradAccumulator}{Grad\+Accumulator} for a leaf tensor. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAccumulator_aed14a7f0998d5eb3fc085d6ce65dd8b3}{backward}} (\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&input\+Gradient, bool higher\+Derivative) override
+\begin{DoxyCompactList}\small\item\em Accumulates the incoming gradient into the leaf tensor\textquotesingle{}s gradient storage. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAccumulator_a3fc9f3e52c771e0db83ad6a99c9c9987}{set\+Gradient}} (std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ new\+Grad)
+\begin{DoxyCompactList}\small\item\em Updates the shared pointer to the gradient storage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classmattTorch_1_1GradFunction}{matt\+Torch::\+\+Grad\+Function}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Grad\+Function} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for safe polymorphic destruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAccumulator_ac37cb5df511233d36095f3974daa1bec}{gradient}}
+\item 
+const std::\+vector$<$ int $>$ \doxymbox{\hyperlink{classmattTorch_1_1function_1_1GradAccumulator_a9bf123ced51bbc776a73ee82576b9a1f}{dims}}
+\begin{DoxyCompactList}\small\item\em The dimensions of the leaf tensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gradient function for leaf tensors that accumulates gradients during backpropagation. 
+
+The \doxylink{classmattTorch_1_1function_1_1GradAccumulator}{Grad\+Accumulator} class is a specialised \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} used exclusively for leaf tensors in the computational graph. Unlike other \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} objects that compute gradients with respect to their inputs and pass them to parent nodes, the \doxylink{classmattTorch_1_1function_1_1GradAccumulator}{Grad\+Accumulator} terminates the backpropagation chain by accumulating the incoming gradient into the leaf tensor\textquotesingle{}s gradient storage. This allows leaf tensors such as learnable parameters in a neural network to collect the total gradient of the loss with respect to themselves.
+
+When \doxylink{classmattTorch_1_1function_1_1GradAccumulator_aed14a7f0998d5eb3fc085d6ce65dd8b3}{backward()} is called for the first time, the incoming gradient is copied directly into the leaf tensor\textquotesingle{}s gradient. On subsequent calls during the same backward pass or across multiple backward passes, the incoming gradient is accumulated (summed) with the existing gradient. This accumulation behaviour is essential for computing gradients when a leaf tensor is used multiple times in the computational graph, as the total gradient is the sum of all partial gradients according to the multivariable chain rule.
+
+When computing higher-\/order derivatives with higher\+Derivative set to true, the \doxylink{classmattTorch_1_1function_1_1GradAccumulator}{Grad\+Accumulator} enables the accumulated gradient itself to participate in a new computational graph by setting the gradient\textquotesingle{}s \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} to match the incoming gradient\textquotesingle{}s \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} and enabling gradient tracking on it. This allows derivatives of derivatives to be computed through subsequent backward passes.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} for the base class from which this class derives. 
+
+\doxylink{classmattTorch_1_1TensorView}{Tensor\+View} for the tensor class that uses \doxylink{classmattTorch_1_1function_1_1GradAccumulator}{Grad\+Accumulator} for leaf tensors. 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{gradAccumulator_8h_source_l00041}{41}} of file \doxymbox{\hyperlink{gradAccumulator_8h_source}{grad\+Accumulator.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classmattTorch_1_1function_1_1GradAccumulator_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmattTorch_1_1function_1_1GradAccumulator_a8be932a9a6dca2ae928c9036eb81ed11}\index{mattTorch::function::GradAccumulator@{mattTorch::function::GradAccumulator}!GradAccumulator@{GradAccumulator}}
+\index{GradAccumulator@{GradAccumulator}!mattTorch::function::GradAccumulator@{mattTorch::function::GradAccumulator}}
+\doxysubsubsection{\texorpdfstring{GradAccumulator()}{GradAccumulator()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradAccumulator_a8be932a9a6dca2ae928c9036eb81ed11} 
+matt\+Torch::\+function::\+\+Grad\+Accumulator::\+\+Grad\+Accumulator (\begin{DoxyParamCaption}\item[{std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$}]{gradient}{, }\item[{const std::\+vector$<$ int $>$}]{dims}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{classmattTorch_1_1function_1_1GradAccumulator}{Grad\+Accumulator} for a leaf tensor. 
+
+Creates a \doxylink{classmattTorch_1_1function_1_1GradAccumulator}{Grad\+Accumulator} that will accumulate gradients into the specified gradient tensor. The dimensions of the leaf tensor are stored for potential use in gradient shape validation or manipulation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classmattTorch_1_1function_1_1GradAccumulator_ac37cb5df511233d36095f3974daa1bec}{gradient}} & A shared pointer to the \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} that will store the accumulated gradient for the leaf tensor \\
+\hline
+{\em \doxylink{classmattTorch_1_1function_1_1GradAccumulator_a9bf123ced51bbc776a73ee82576b9a1f}{dims}} & The dimensions of the leaf tensor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{gradAccumulator_8cpp_source_l00007}{7}} of file \doxymbox{\hyperlink{gradAccumulator_8cpp_source}{grad\+Accumulator.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{gradAccumulator_8h_source_l00048}{dims}}, and \doxymbox{\hyperlink{gradAccumulator_8h_source_l00045}{gradient}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classmattTorch_1_1function_1_1GradAccumulator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmattTorch_1_1function_1_1GradAccumulator_aed14a7f0998d5eb3fc085d6ce65dd8b3}\index{mattTorch::function::GradAccumulator@{mattTorch::function::GradAccumulator}!backward@{backward}}
+\index{backward@{backward}!mattTorch::function::GradAccumulator@{mattTorch::function::GradAccumulator}}
+\doxysubsubsection{\texorpdfstring{backward()}{backward()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradAccumulator_aed14a7f0998d5eb3fc085d6ce65dd8b3} 
+void matt\+Torch::\+function::\+\+Grad\+Accumulator::\+backward (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&}]{input\+Gradient}{, }\item[{bool}]{higher\+Derivative}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Accumulates the incoming gradient into the leaf tensor\textquotesingle{}s gradient storage. 
+
+Implements the gradient accumulation logic for leaf tensors. If this is the first gradient being accumulated (the leaf tensor does not yet have a gradient), the incoming gradient is copied directly into the gradient storage. If the leaf tensor already has a gradient, the incoming gradient is added elementwise to the existing gradient.
+
+When higher\+Derivative is true, the accumulated gradient tensor is configured to participate in a new computational graph by setting its \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} to match the incoming gradient\textquotesingle{}s \doxylink{classmattTorch_1_1GradFunction}{Grad\+Function} and enabling gradient tracking on it. This enables computation of higher-\/order derivatives. When higher\+Derivative is false, the addition operation used for accumulation does not construct a computational graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Gradient} & The gradient to accumulate, representing the gradient of the loss with respect to this leaf tensor \\
+\hline
+{\em higher\+Derivative} & If true, enables the accumulated gradient to participate in a new computational graph for higher-\/order derivative computation; if false, performs accumulation without gradient tracking \\
+\hline
+\end{DoxyParams}
+
+
+Implements \doxymbox{\hyperlink{classmattTorch_1_1GradFunction_abc6c3ffb22d631af9dca31dcd5c09d3d}{matt\+Torch::\+\+Grad\+Function}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{gradAccumulator_8cpp_source_l00011}{11}} of file \doxymbox{\hyperlink{gradAccumulator_8cpp_source}{grad\+Accumulator.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{tensorViewAccesssors_8cpp_source_l00120}{matt\+Torch::\+\+Tensor\+View::\+get\+Data()}}, \doxymbox{\hyperlink{tensorViewAccesssors_8cpp_source_l00167}{matt\+Torch::\+\+Tensor\+View::\+get\+Grad\+Function()}}, and \doxymbox{\hyperlink{gradAccumulator_8h_source_l00045}{gradient}}.
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmattTorch_1_1function_1_1GradAccumulator_aed14a7f0998d5eb3fc085d6ce65dd8b3_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmattTorch_1_1function_1_1GradAccumulator_a3fc9f3e52c771e0db83ad6a99c9c9987}\index{mattTorch::function::GradAccumulator@{mattTorch::function::GradAccumulator}!setGradient@{setGradient}}
+\index{setGradient@{setGradient}!mattTorch::function::GradAccumulator@{mattTorch::function::GradAccumulator}}
+\doxysubsubsection{\texorpdfstring{setGradient()}{setGradient()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradAccumulator_a3fc9f3e52c771e0db83ad6a99c9c9987} 
+void matt\+Torch::\+function::\+\+Grad\+Accumulator::\+set\+Gradient (\begin{DoxyParamCaption}\item[{std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$}]{new\+Grad}{}\end{DoxyParamCaption})}
+
+
+
+Updates the shared pointer to the gradient storage. 
+
+Allows the gradient tensor pointer to be updated, which may be necessary when gradients are zeroed or reset between training iterations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Grad} & A shared pointer to the new gradient \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{gradAccumulator_8cpp_source_l00035}{35}} of file \doxymbox{\hyperlink{gradAccumulator_8cpp_source}{grad\+Accumulator.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{gradAccumulator_8h_source_l00045}{gradient}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classmattTorch_1_1function_1_1GradAccumulator_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmattTorch_1_1function_1_1GradAccumulator_a9bf123ced51bbc776a73ee82576b9a1f}\index{mattTorch::function::GradAccumulator@{mattTorch::function::GradAccumulator}!dims@{dims}}
+\index{dims@{dims}!mattTorch::function::GradAccumulator@{mattTorch::function::GradAccumulator}}
+\doxysubsubsection{\texorpdfstring{dims}{dims}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradAccumulator_a9bf123ced51bbc776a73ee82576b9a1f} 
+const std::\+vector$<$int$>$ matt\+Torch::\+function::\+\+Grad\+Accumulator::\+dims\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The dimensions of the leaf tensor. 
+
+
+
+Definition at line \doxymbox{\hyperlink{gradAccumulator_8h_source_l00048}{48}} of file \doxymbox{\hyperlink{gradAccumulator_8h_source}{grad\+Accumulator.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{gradAccumulator_8cpp_source_l00007}{Grad\+Accumulator()}}.
+
+\Hypertarget{classmattTorch_1_1function_1_1GradAccumulator_ac37cb5df511233d36095f3974daa1bec}\index{mattTorch::function::GradAccumulator@{mattTorch::function::GradAccumulator}!gradient@{gradient}}
+\index{gradient@{gradient}!mattTorch::function::GradAccumulator@{mattTorch::function::GradAccumulator}}
+\doxysubsubsection{\texorpdfstring{gradient}{gradient}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1function_1_1GradAccumulator_ac37cb5df511233d36095f3974daa1bec} 
+std::\+shared\+\_\+ptr$<$\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}}$>$ matt\+Torch::\+function::\+\+Grad\+Accumulator::\+gradient\hspace{0.3cm}{\ttfamily [private]}}
+
+A shared pointer to the gradient \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} belonging to the leaf tensor that owns this \doxylink{classmattTorch_1_1function_1_1GradAccumulator}{Grad\+Accumulator} 
+
+Definition at line \doxymbox{\hyperlink{gradAccumulator_8h_source_l00045}{45}} of file \doxymbox{\hyperlink{gradAccumulator_8h_source}{grad\+Accumulator.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{gradAccumulator_8cpp_source_l00011}{backward()}}, \doxymbox{\hyperlink{gradAccumulator_8cpp_source_l00007}{Grad\+Accumulator()}}, and \doxymbox{\hyperlink{gradAccumulator_8cpp_source_l00035}{set\+Gradient()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+matt\+Torch/\+function/\+accumulator/\+grad\+Accumulator.\+h\item 
+src/\+function/\+accumulator/\+grad\+Accumulator.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,393 @@
+\doxysection{matt\+Torch::\+Network Class Reference}
+\hypertarget{classmattTorch_1_1Network}{}\label{classmattTorch_1_1Network}\index{mattTorch::Network@{mattTorch::Network}}
+
+
+A sequential neural network composed of an ordered collection of layers.  
+
+
+
+
+{\ttfamily \+\#include $<$network.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classmattTorch_1_1Network_a8e97a1e34283c406b4ab3265923c5448}\label{classmattTorch_1_1Network_a8e97a1e34283c406b4ab3265923c5448} 
+{\bfseries Network} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor creating an empty \doxylink{classmattTorch_1_1Network}{Network}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classmattTorch_1_1Network_aa024bdcd92710a40ac2fb7a20da03573}{Network}} (std::\+vector$<$ \doxymbox{\hyperlink{classmattTorch_1_1Layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{classmattTorch_1_1Network_a4691637c25d1e76572e5c813b9bad690}{layers}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classmattTorch_1_1Network}{Network} from a vector of layer pointers. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classmattTorch_1_1Network_a7f1016389a1d8e85d797a8e52cac8832}{add\+Layer}} (\doxymbox{\hyperlink{classmattTorch_1_1Layer}{Layer}} \texorpdfstring{$\ast$}{*}layer)
+\begin{DoxyCompactList}\small\item\em Adds a single layer to the end of the network. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classmattTorch_1_1Network_ae2f1e3bca144800e2b3713cf20dc8a36}{add\+Parameter}} (std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ parameter)
+\begin{DoxyCompactList}\small\item\em Adds a learnable parameter tensor to the network. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ $>$ \doxymbox{\hyperlink{classmattTorch_1_1Network_a2b37bdd90f87f06906533d2a400dbee6}{get\+Parameters}} ()
+\begin{DoxyCompactList}\small\item\em Returns all learnable parameter tensors in the network. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{classmattTorch_1_1Layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{classmattTorch_1_1Network_ad9130299dc78c11eef614fb90e83868a}{get\+Layers}} () const
+\begin{DoxyCompactList}\small\item\em Returns all layers in the network. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \doxymbox{\hyperlink{classmattTorch_1_1Network_addfb148de2b9679cc17d53914032415e}{forward}} (\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&input)
+\begin{DoxyCompactList}\small\item\em Performs forward propagation through all layers sequentially. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{classmattTorch_1_1Network_a2608b37045fee19e31790d2ccbc28bb1}{summary}} () const
+\begin{DoxyCompactList}\small\item\em Generates a text summary of the network architecture. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classmattTorch_1_1Network_a04aaeb012baa7fecb64b58a33b8abfcb}{save\+Parameters}} (const std::\+string \&path)
+\begin{DoxyCompactList}\small\item\em Saves all network parameter values to a CSV file. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classmattTorch_1_1Network_aeeb5d911874da29b147b6d706135fc3f}{load\+Parameters}} (const std::\+string \&path)
+\begin{DoxyCompactList}\small\item\em Loads network parameter values from a CSV file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{classmattTorch_1_1Layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{classmattTorch_1_1Network_a4691637c25d1e76572e5c813b9bad690}{layers}}
+\begin{DoxyCompactList}\small\item\em Raw pointers to the layers of the network in sequential order. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ $>$ \doxymbox{\hyperlink{classmattTorch_1_1Network_a42f469fa5c54970d501e23de76f2298c}{parameters}}
+\begin{DoxyCompactList}\small\item\em Shared pointers to all learnable parameter tensors across the network. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{classmattTorch_1_1Network_ac9aed3c5d4e00b721794de262e987240}{Network\+Builder}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A sequential neural network composed of an ordered collection of layers. 
+
+The \doxylink{classmattTorch_1_1Network}{Network} class represents a feedforward neural network in which an input tensor is passed sequentially through each layer in the order they were added. The \doxylink{classmattTorch_1_1Network}{Network} holds raw pointers to its \doxylink{classmattTorch_1_1Layer}{Layer} objects as well as shared pointers to all learnable parameter tensors across the network. \doxylink{classmattTorch_1_1Network}{Network} objects are intended to be constructed via the \doxylink{classmattTorch_1_1NetworkBuilder}{Network\+Builder} class, which provides a fluent interface for assembling layers and collecting their parameters.
+
+The \doxylink{classmattTorch_1_1Network}{Network} class also provides functionality for saving and loading the learned parameter values to and from CSV files, as well as generating a text summary of the network architecture.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classmattTorch_1_1NetworkBuilder}{Network\+Builder} for the builder class used to construct \doxylink{classmattTorch_1_1Network}{Network} objects. 
+
+\doxylink{classmattTorch_1_1Layer}{Layer} for the base class from which all network \doxylink{classmattTorch_1_1Network_a4691637c25d1e76572e5c813b9bad690}{layers} derive. 
+
+\doxylink{classmattTorch_1_1Optimiser}{Optimiser} for the classes that optimise the \doxylink{classmattTorch_1_1Network_a42f469fa5c54970d501e23de76f2298c}{parameters} of this network. 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{network_8h_source_l00028}{28}} of file \doxymbox{\hyperlink{network_8h_source}{network.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classmattTorch_1_1Network_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmattTorch_1_1Network_aa024bdcd92710a40ac2fb7a20da03573}\index{mattTorch::Network@{mattTorch::Network}!Network@{Network}}
+\index{Network@{Network}!mattTorch::Network@{mattTorch::Network}}
+\doxysubsubsection{\texorpdfstring{Network()}{Network()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Network_aa024bdcd92710a40ac2fb7a20da03573} 
+matt\+Torch::\+\+Network::\+\+Network (\begin{DoxyParamCaption}\item[{std::\+vector$<$ \doxymbox{\hyperlink{classmattTorch_1_1Layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$}]{layers}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{classmattTorch_1_1Network}{Network} from a vector of layer pointers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{classmattTorch_1_1Network_a4691637c25d1e76572e5c813b9bad690}{layers}} & A vector of raw pointers to the layers of the network in sequential order \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{network_8cpp_source_l00017}{17}} of file \doxymbox{\hyperlink{network_8cpp_source}{network.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{network_8h_source_l00031}{layers}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{classmattTorch_1_1Network_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmattTorch_1_1Network_a7f1016389a1d8e85d797a8e52cac8832}\index{mattTorch::Network@{mattTorch::Network}!addLayer@{addLayer}}
+\index{addLayer@{addLayer}!mattTorch::Network@{mattTorch::Network}}
+\doxysubsubsection{\texorpdfstring{addLayer()}{addLayer()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Network_a7f1016389a1d8e85d797a8e52cac8832} 
+void matt\+Torch::\+\+Network::\+add\+Layer (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classmattTorch_1_1Layer}{Layer}} \texorpdfstring{$\ast$}{*}}]{layer}{}\end{DoxyParamCaption})}
+
+
+
+Adds a single layer to the end of the network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em layer} & A raw pointer to the layer to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{network_8cpp_source_l00019}{19}} of file \doxymbox{\hyperlink{network_8cpp_source}{network.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{network_8h_source_l00031}{layers}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{network_8cpp_source_l00088}{matt\+Torch::\+\+Network\+Builder::\+build()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmattTorch_1_1Network_a7f1016389a1d8e85d797a8e52cac8832_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmattTorch_1_1Network_ae2f1e3bca144800e2b3713cf20dc8a36}\index{mattTorch::Network@{mattTorch::Network}!addParameter@{addParameter}}
+\index{addParameter@{addParameter}!mattTorch::Network@{mattTorch::Network}}
+\doxysubsubsection{\texorpdfstring{addParameter()}{addParameter()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Network_ae2f1e3bca144800e2b3713cf20dc8a36} 
+void matt\+Torch::\+\+Network::\+add\+Parameter (\begin{DoxyParamCaption}\item[{std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$}]{parameter}{}\end{DoxyParamCaption})}
+
+
+
+Adds a learnable parameter tensor to the network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameter} & A shared pointer to the \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} representing the learnable parameter to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{network_8cpp_source_l00021}{21}} of file \doxymbox{\hyperlink{network_8cpp_source}{network.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{network_8h_source_l00034}{parameters}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{network_8cpp_source_l00088}{matt\+Torch::\+\+Network\+Builder::\+build()}}.
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmattTorch_1_1Network_ae2f1e3bca144800e2b3713cf20dc8a36_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classmattTorch_1_1Network_addfb148de2b9679cc17d53914032415e}\index{mattTorch::Network@{mattTorch::Network}!forward@{forward}}
+\index{forward@{forward}!mattTorch::Network@{mattTorch::Network}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Network_addfb148de2b9679cc17d53914032415e} 
+\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} matt\+Torch::\+\+Network::\+forward (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} \&}]{input}{}\end{DoxyParamCaption})}
+
+
+
+Performs forward propagation through all layers sequentially. 
+
+Passes the input tensor through each layer of the network in the order they were added, feeding the output of each layer as the input to the next. If the network contains no layers, the input tensor is returned unchanged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The input tensor to pass through the network \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The output tensor produced by the final layer of the network 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{network_8cpp_source_l00031}{31}} of file \doxymbox{\hyperlink{network_8cpp_source}{network.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{network_8h_source_l00031}{layers}}.
+
+\Hypertarget{classmattTorch_1_1Network_ad9130299dc78c11eef614fb90e83868a}\index{mattTorch::Network@{mattTorch::Network}!getLayers@{getLayers}}
+\index{getLayers@{getLayers}!mattTorch::Network@{mattTorch::Network}}
+\doxysubsubsection{\texorpdfstring{getLayers()}{getLayers()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Network_ad9130299dc78c11eef614fb90e83868a} 
+std::\+vector$<$ \doxymbox{\hyperlink{classmattTorch_1_1Layer}{Layer}} \texorpdfstring{$\ast$}{*} $>$ matt\+Torch::\+\+Network::\+get\+Layers (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns all layers in the network. 
+
+\begin{DoxyReturn}{Returns}
+A vector of raw pointers to the layers of the network in sequential order 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{network_8cpp_source_l00029}{29}} of file \doxymbox{\hyperlink{network_8cpp_source}{network.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{network_8h_source_l00031}{layers}}.
+
+\Hypertarget{classmattTorch_1_1Network_a2b37bdd90f87f06906533d2a400dbee6}\index{mattTorch::Network@{mattTorch::Network}!getParameters@{getParameters}}
+\index{getParameters@{getParameters}!mattTorch::Network@{mattTorch::Network}}
+\doxysubsubsection{\texorpdfstring{getParameters()}{getParameters()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Network_a2b37bdd90f87f06906533d2a400dbee6} 
+std::\+vector$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}} $>$ $>$ matt\+Torch::\+\+Network::\+get\+Parameters (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns all learnable parameter tensors in the network. 
+
+\begin{DoxyReturn}{Returns}
+A vector of shared pointers to the \doxylink{classmattTorch_1_1TensorView}{Tensor\+View} objects representing all learnable parameters across the network 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{network_8cpp_source_l00025}{25}} of file \doxymbox{\hyperlink{network_8cpp_source}{network.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{network_8h_source_l00034}{parameters}}.
+
+\Hypertarget{classmattTorch_1_1Network_aeeb5d911874da29b147b6d706135fc3f}\index{mattTorch::Network@{mattTorch::Network}!loadParameters@{loadParameters}}
+\index{loadParameters@{loadParameters}!mattTorch::Network@{mattTorch::Network}}
+\doxysubsubsection{\texorpdfstring{loadParameters()}{loadParameters()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Network_aeeb5d911874da29b147b6d706135fc3f} 
+void matt\+Torch::\+\+Network::\+load\+Parameters (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Loads network parameter values from a CSV file. 
+
+Reads each line of the specified CSV file and populates the corresponding parameter tensor with the comma-\/separated double values. The file is expected to have the same format as produced by save\+Parameters, with each row corresponding to one parameter tensor in the same order.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The file path to load the parameters from\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+runtime\+\_\+error} & If the file cannot be opened for reading \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \doxymbox{\hyperlink{network_8cpp_source_l00148}{148}} of file \doxymbox{\hyperlink{network_8cpp_source}{network.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{network_8h_source_l00034}{parameters}}.
+
+\Hypertarget{classmattTorch_1_1Network_a04aaeb012baa7fecb64b58a33b8abfcb}\index{mattTorch::Network@{mattTorch::Network}!saveParameters@{saveParameters}}
+\index{saveParameters@{saveParameters}!mattTorch::Network@{mattTorch::Network}}
+\doxysubsubsection{\texorpdfstring{saveParameters()}{saveParameters()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Network_a04aaeb012baa7fecb64b58a33b8abfcb} 
+void matt\+Torch::\+\+Network::\+save\+Parameters (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Saves all network parameter values to a CSV file. 
+
+Writes each parameter tensor as a single row of comma-\/separated double values to the specified file path. Each row corresponds to one parameter tensor, with values written in the order of the contiguous data storage.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The file path to save the parameters to\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+runtime\+\_\+error} & If the file cannot be opened for writing \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \doxymbox{\hyperlink{network_8cpp_source_l00129}{129}} of file \doxymbox{\hyperlink{network_8cpp_source}{network.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{network_8h_source_l00034}{parameters}}.
+
+\Hypertarget{classmattTorch_1_1Network_a2608b37045fee19e31790d2ccbc28bb1}\index{mattTorch::Network@{mattTorch::Network}!summary@{summary}}
+\index{summary@{summary}!mattTorch::Network@{mattTorch::Network}}
+\doxysubsubsection{\texorpdfstring{summary()}{summary()}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Network_a2608b37045fee19e31790d2ccbc28bb1} 
+std::\+string matt\+Torch::\+\+Network::\+summary (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Generates a text summary of the network architecture. 
+
+Returns a string describing the total number of layers in the network and the type of each layer, determined via RTTI dynamic casting.
+
+\begin{DoxyReturn}{Returns}
+A string containing the network summary 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{network_8cpp_source_l00104}{104}} of file \doxymbox{\hyperlink{network_8cpp_source}{network.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{network_8h_source_l00031}{layers}}.
+
+
+
+\label{doc-related-members}
+\Hypertarget{classmattTorch_1_1Network_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classmattTorch_1_1Network_ac9aed3c5d4e00b721794de262e987240}\index{mattTorch::Network@{mattTorch::Network}!NetworkBuilder@{NetworkBuilder}}
+\index{NetworkBuilder@{NetworkBuilder}!mattTorch::Network@{mattTorch::Network}}
+\doxysubsubsection{\texorpdfstring{NetworkBuilder}{NetworkBuilder}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Network_ac9aed3c5d4e00b721794de262e987240} 
+friend class Network\+Builder\hspace{0.3cm}{\ttfamily [friend]}}
+
+The \doxylink{classmattTorch_1_1NetworkBuilder}{Network\+Builder} class is declared as a friend so that it can access the private members of \doxylink{classmattTorch_1_1Network}{Network} during construction 
+
+Definition at line \doxymbox{\hyperlink{network_8h_source_l00038}{38}} of file \doxymbox{\hyperlink{network_8h_source}{network.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{network_8h_source_l00038}{Network\+Builder}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{network_8h_source_l00038}{Network\+Builder}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classmattTorch_1_1Network_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmattTorch_1_1Network_a4691637c25d1e76572e5c813b9bad690}\index{mattTorch::Network@{mattTorch::Network}!layers@{layers}}
+\index{layers@{layers}!mattTorch::Network@{mattTorch::Network}}
+\doxysubsubsection{\texorpdfstring{layers}{layers}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Network_a4691637c25d1e76572e5c813b9bad690} 
+std::\+vector$<$\doxymbox{\hyperlink{classmattTorch_1_1Layer}{Layer}}\texorpdfstring{$\ast$}{*}$>$ matt\+Torch::\+\+Network::\+layers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Raw pointers to the layers of the network in sequential order. 
+
+
+
+Definition at line \doxymbox{\hyperlink{network_8h_source_l00031}{31}} of file \doxymbox{\hyperlink{network_8h_source}{network.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{network_8cpp_source_l00019}{add\+Layer()}}, \doxymbox{\hyperlink{network_8cpp_source_l00031}{forward()}}, \doxymbox{\hyperlink{network_8cpp_source_l00029}{get\+Layers()}}, \doxymbox{\hyperlink{classmattTorch_1_1Network_a8e97a1e34283c406b4ab3265923c5448}{Network()}}, \doxymbox{\hyperlink{network_8cpp_source_l00017}{Network()}}, and \doxymbox{\hyperlink{network_8cpp_source_l00104}{summary()}}.
+
+\Hypertarget{classmattTorch_1_1Network_a42f469fa5c54970d501e23de76f2298c}\index{mattTorch::Network@{mattTorch::Network}!parameters@{parameters}}
+\index{parameters@{parameters}!mattTorch::Network@{mattTorch::Network}}
+\doxysubsubsection{\texorpdfstring{parameters}{parameters}}
+{\footnotesize\ttfamily \label{classmattTorch_1_1Network_a42f469fa5c54970d501e23de76f2298c} 
+std::\+vector$<$std::\+shared\+\_\+ptr$<$\doxymbox{\hyperlink{classmattTorch_1_1TensorView}{Tensor\+View}}$>$ $>$ matt\+Torch::\+\+Network::\+parameters\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Shared pointers to all learnable parameter tensors across the network. 
+
+
+
+Definition at line \doxymbox{\hyperlink{network_8h_source_l00034}{34}} of file \doxymbox{\hyperlink{network_8h_source}{network.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{network_8cpp_source_l00021}{add\+Parameter()}}, \doxymbox{\hyperlink{network_8cpp_source_l00025}{get\+Parameters()}}, \doxymbox{\hyperlink{network_8cpp_source_l00148}{load\+Parameters()}}, and \doxymbox{\hyperlink{network_8cpp_source_l00129}{save\+Parameters()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+matt\+Torch/\+network/\+network.\+h\item 
+src/\+network/\+network.\+cpp\end{DoxyCompactItemize}
