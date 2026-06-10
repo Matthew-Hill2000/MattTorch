@@ -1,9 +1,9 @@
 #pragma once
 
-#include <memory>
-
 #include <mattTorch/function/gradFunction.h>
 #include <mattTorch/mattTorch.h>
+
+#include <memory>
 
 namespace mattTorch::function {
 
@@ -46,7 +46,7 @@ class GradReLU : public GradFunction {
  private:
   /// A binary mask tensor created during the forward pass, containing 1 for
   /// elements where the input was positive and 0 for non-positive elements
-  TensorView backwardMask;
+  Tensor backwardMask;
 
   /// Pointer to the GradFunction object of the parent tensor in the
   /// computational graph
@@ -65,8 +65,8 @@ class GradReLU : public GradFunction {
    * @param nextFunctions A vector containing a shared pointer to the
    * GradFunction object of the parent tensor for gradient propagation
    */
-  GradReLU(TensorView backwardMask,
-          std::vector<std::shared_ptr<GradFunction>> nextFunctions);
+  GradReLU(Tensor backwardMask,
+           std::vector<std::shared_ptr<GradFunction>> nextFunctions);
 
   /**
    * @brief Computes and propagates gradients for the ReLU activation
@@ -89,6 +89,6 @@ class GradReLU : public GradFunction {
    * graph during the backward pass for higher-order derivatives; if false,
    * disables gradient tracking on the backward mask
    */
-  void backward(TensorView& inputGradient, bool higherDerivative) override;
+  void backward(Tensor& inputGradient, bool higherDerivative) override;
 };
-}
+}  // namespace mattTorch::function

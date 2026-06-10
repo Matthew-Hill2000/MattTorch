@@ -2,6 +2,9 @@
 
 #include <mattTorch/function/gradFunction.h>
 
+// Accumulator
+#include <mattTorch/function/accumulator/gradAccumulator.h>
+
 // Addition
 #include <mattTorch/function/addition/gradAdd.h>
 #include <mattTorch/function/addition/gradAddScalar.h>
@@ -38,3 +41,8 @@
 // Exponential
 #include <mattTorch/function/exponential/gradExponential.h>
 
+// Log
+#include <mattTorch/function/log/gradLog.h>
+
+// Tanh
+#include <mattTorch/function/tanh/gradTanh.h>

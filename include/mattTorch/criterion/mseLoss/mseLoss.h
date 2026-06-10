@@ -1,6 +1,6 @@
 #pragma once
 #include <mattTorch/criterion/criterion.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
 namespace mattTorch::criterion {
 
 /**
@@ -29,8 +29,8 @@ class MSELoss : public Criterion {
    *
    * @param input The predicted values produced by the network
    * @param target The ground truth target values
-   * @return A TensorView containing the computed MSE loss value
+   * @return A Tensor containing the computed MSE loss value
    */
-  TensorView calculateLoss(TensorView& input, TensorView& target);
+  Tensor calculateLoss(Tensor& input, Tensor& target) override;
 };
 }  // namespace mattTorch::criterion

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <mattTorch/function/gradFunction.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
 
 namespace mattTorch::function {
 
@@ -42,7 +42,7 @@ class GradMean : public GradFunction {
  private:
   /// The input tensor from the forward pass, saved to determine the number of
   /// elements and shape for gradient broadcasting
-  TensorView savedTensor;
+  Tensor savedTensor;
 
   /// Pointer to the GradFunction object of the parent tensor in the
   /// computational graph
@@ -61,8 +61,8 @@ class GradMean : public GradFunction {
    * @param nextFunctions A vector containing a shared pointer to the
    * GradFunction object of the parent tensor for gradient propagation
    */
-  GradMean(TensorView savedTensor,
-                   std::vector<std::shared_ptr<GradFunction>> nextFunctions);
+  GradMean(Tensor savedTensor,
+           std::vector<std::shared_ptr<GradFunction>> nextFunctions);
 
   /**
    * @brief Computes and propagates gradients for the mean operation
@@ -85,6 +85,6 @@ class GradMean : public GradFunction {
    * graph during the backward pass for higher-order derivatives; if false,
    * disables gradient tracking on saved tensors
    */
-  void backward(TensorView& inputGradient, bool higherDerivative) override;
+  void backward(Tensor& inputGradient, bool higherDerivative) override;
 };
 }  // namespace mattTorch::function

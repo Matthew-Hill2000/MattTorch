@@ -1,5 +1,5 @@
 #pragma once
-#include "mattTorch/tensor/tensorView/tensorView.h"
+#include "mattTorch/tensor/tensor/tensor.h"
 
 namespace mattTorch {
 
@@ -16,7 +16,7 @@ namespace mattTorch {
  *
  * @see Network for the class that holds and sequences layers during forward
  * propagation.
- * @see TensorView for the tensor class used to represent inputs, outputs and
+ * @see Tensor for the tensor class used to represent inputs, outputs and
  * learnable parameters.
  */
 class Layer {
@@ -30,9 +30,9 @@ class Layer {
    * layer during backpropagation.
    *
    * @param inputTensor The input tensor to pass through the layer
-   * @return A TensorView containing the output of the forward pass
+   * @return A Tensor containing the output of the forward pass
    */
-  virtual TensorView forward(TensorView& inputTensor) = 0;
+  virtual Tensor forward(Tensor& inputTensor) = 0;
 
   /**
    * @brief Returns the total number of learnable parameters in this layer
@@ -45,14 +45,14 @@ class Layer {
    * @brief Returns shared pointers to all learnable parameter tensors in this
    * layer
    *
-   * @return A vector of shared pointers to the TensorView objects representing
+   * @return A vector of shared pointers to the Tensor objects representing
    * the learnable parameters of this layer
    */
-  virtual std::vector<std::shared_ptr<TensorView>> getParameters() = 0;
+  virtual std::vector<std::shared_ptr<Tensor>> getParameters() = 0;
 
   /**
    * @brief Virtual destructor for safe polymorphic destruction
    */
-  virtual ~Layer() {}
+  virtual ~Layer() = default;
 };
 }  // namespace mattTorch

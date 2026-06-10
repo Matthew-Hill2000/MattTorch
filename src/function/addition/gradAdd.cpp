@@ -1,16 +1,20 @@
 #include <mattTorch/function/addition/gradAdd.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
 
+#include <cassert>
 #include <memory>
+#include <utility>
 #include <vector>
 namespace mattTorch::function {
-GradAdd::GradAdd(std::vector<TensorView> savedTensors,
-                 std::vector<std::shared_ptr<GradFunction>> nextFunctions)
-    : savedTensors{savedTensors}, nextFunctions{nextFunctions} {}
 
-void GradAdd::backward(TensorView& inputGradient, bool higherDerivative) {
-  TensorView outputGradLHS = inputGradient * 1.0;
-  TensorView outputGradRHS = inputGradient * 1.0;
+GradAdd::GradAdd(std::vector<std::shared_ptr<GradFunction>> nextFunctions)
+    : nextFunctions{std::move(nextFunctions)} {}
+
+void GradAdd::backward(Tensor& inputGradient, bool higherDerivative) {
+  assert(nextFunctions.size() == 2);
+
+  Tensor outputGradLHS = inputGradient * 1.0;
+  Tensor outputGradRHS = inputGradient * 1.0;
   if (nextFunctions[0] != nullptr) {
     nextFunctions[0]->backward(outputGradLHS, higherDerivative);
   }
@@ -18,4 +22,5 @@ void GradAdd::backward(TensorView& inputGradient, bool higherDerivative) {
     nextFunctions[1]->backward(outputGradRHS, higherDerivative);
   }
 }
+
 }  // namespace mattTorch::function

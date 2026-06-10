@@ -1,6 +1,6 @@
 #pragma once
 #include <mattTorch/network/network.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
 
 #include <memory>
 #include <vector>
@@ -11,20 +11,20 @@ namespace mattTorch {
  *
  * The Optimiser class provides the interface and common functionality for
  * optimising the parameters of a neural network during training. It holds
- * shared pointers to the TensorView objects representing the learnable
+ * shared pointers to the Tensor objects representing the learnable
  * parameters of a network, along with a learning rate that controls the
  * step size of parameter updates. Specific optimisation algorithms such as
  * SGD or Adam are intended to derive from this class and override the
  * parameter update logic as needed.
  *
  * @see Network for the class whose parameters are optimised by this class.
- * @see TensorView for the tensor class representing learnable parameters.
+ * @see Tensor for the tensor class representing learnable parameters.
  */
 class Optimiser {
  private:
-  /// Shared pointers to the TensorView objects representing the learnable
+  /// Shared pointers to the Tensor objects representing the learnable
   /// parameters of the network to be optimised
-  std::vector<std::shared_ptr<TensorView>> parameters;
+  std::vector<std::shared_ptr<Tensor>> parameters;
 
   /// The learning rate controlling the step size of parameter updates
   double learningRate;

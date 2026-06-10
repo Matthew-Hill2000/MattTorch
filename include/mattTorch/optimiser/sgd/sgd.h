@@ -1,7 +1,7 @@
 #pragma once
 #include <mattTorch/network/network.h>
 #include <mattTorch/optimiser/optimiser.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
 
 #include <memory>
 #include <vector>
@@ -25,13 +25,13 @@ namespace mattTorch {
  * to compute (parameter - learningRate * gradient) in a single operation.
  *
  * @see Optimiser for the base class from which this class derives.
- * @see TensorView for the tensor class representing learnable parameters.
+ * @see Tensor for the tensor class representing learnable parameters.
  */
 class SGD : public Optimiser {
  private:
-  /// Shared pointers to the TensorView objects representing the learnable
+  /// Shared pointers to the Tensor objects representing the learnable
   /// parameters of the network to be optimised
-  std::vector<std::shared_ptr<TensorView>> parameters;
+  std::vector<std::shared_ptr<Tensor>> parameters;
 
   /// The learning rate controlling the step size of parameter updates
   double learningRate;
@@ -41,12 +41,12 @@ class SGD : public Optimiser {
    * @brief Constructs an SGD optimiser for the given parameters and learning
    * rate
    *
-   * @param parameters A vector of shared pointers to the TensorView objects
+   * @param parameters A vector of shared pointers to the Tensor objects
    * representing the learnable parameters of the network to be optimised
    * @param learningRate The learning rate controlling the step size of
    * parameter updates
    */
-  SGD(std::vector<std::shared_ptr<TensorView>> parameters, double learningRate);
+  SGD(std::vector<std::shared_ptr<Tensor>> parameters, double learningRate);
 
   /**
    * @brief Updates all parameters using Stochastic Gradient Descent

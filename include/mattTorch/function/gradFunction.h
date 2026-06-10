@@ -4,7 +4,7 @@
 
 namespace mattTorch {
 
-class TensorView;
+class Tensor;
 
 /**
  * @brief Abstract base class for gradient computation nodes in the
@@ -33,7 +33,7 @@ class TensorView;
  * operation. Each derived class stores any tensors or values from the forward
  * pass that are needed to compute gradients during the backward pass.
  *
- * @see TensorView for the tensor class that uses GradFunction objects to
+ * @see Tensor for the tensor class that uses GradFunction objects to
  * enable automatic differentiation.
  * @see GradAccumulator for the GradFunction subclass used for leaf tensors.
  */
@@ -44,6 +44,8 @@ class GradFunction {
   std::vector<std::shared_ptr<GradFunction>> nextFunctions;
 
  public:
+  GradFunction() = default;
+
   /**
    * @brief Computes gradients with respect to parent tensors and propagates
    * them backwards through the computational graph
@@ -69,12 +71,24 @@ class GradFunction {
    * derivatives; if false, disables gradient tracking on operations performed
    * during backpropagation
    */
-  virtual void backward(TensorView& inputGradient, bool higherDerivative) = 0;
+  virtual void backward(Tensor& inputGradient, bool higherDerivative) = 0;
 
   /**
    * @brief Virtual destructor for safe polymorphic destruction
    */
   virtual ~GradFunction() = default;
+
+  // Copy Constructor
+  GradFunction(GradFunction const& gradfunction) = default;
+
+  // Copy Assignment Operator
+  GradFunction& operator=(const GradFunction& gradFunction) = default;
+
+  // Move Constructor
+  GradFunction(GradFunction&& gradFunction) = default;
+
+  // Move Assigment Operator
+  GradFunction& operator=(GradFunction&& gradFunction) = default;
 };
 
 }  // namespace mattTorch

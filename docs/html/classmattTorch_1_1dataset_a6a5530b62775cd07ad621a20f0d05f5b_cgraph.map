@@ -1,5 +1,0 @@
-<map id="mattTorch::dataset::getBatch" name="mattTorch::dataset::getBatch">
-<area shape="rect" id="Node000001" title="Returns a batch of examples and labels at the specified batch index." alt="" coords="5,5,136,48"/>
-<area shape="rect" id="Node000002" href="$classmattTorch_1_1TensorView.html#a86a90cc1d974b9595e0f6c77f6a6263b" title="Returns a raw pointer to the underlying contiguous data storage." alt="" coords="184,5,339,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,24,171,26,165,27,136,29"/>
-</map>

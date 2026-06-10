@@ -2,7 +2,6 @@
 
 #include <mattTorch/function/gradFunction.h>
 
-
 namespace mattTorch::function {
 
 /**
@@ -52,7 +51,7 @@ class GradDivideScalar : public GradFunction {
 
   /// A shared pointer to the tensor from the forward pass, required for
   /// computing the gradient when the tensor was the denominator
-  std::shared_ptr<TensorView> savedTensor;
+  std::shared_ptr<Tensor> savedTensor;
 
   /// Pointer to the GradFunction object of the parent tensor in the
   /// computational graph
@@ -81,7 +80,7 @@ class GradDivideScalar : public GradFunction {
    * the numerator (A/s), false if the tensor was the denominator (s/A),
    * defaults to true
    */
-  GradDivideScalar(double savedScalar, std::shared_ptr<TensorView> savedTensor,
+  GradDivideScalar(double savedScalar, std::shared_ptr<Tensor> savedTensor,
                    std::vector<std::shared_ptr<GradFunction>> nextFunctions,
                    bool numerator = true);
 
@@ -102,6 +101,6 @@ class GradDivideScalar : public GradFunction {
    * graph during the backward pass for higher-order derivatives; if false,
    * disables gradient tracking
    */
-  void backward(TensorView& inputGradient, bool higherDerivative) override;
+  void backward(Tensor& inputGradient, bool higherDerivative) override;
 };
 }  // namespace mattTorch::function

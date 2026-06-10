@@ -2,22 +2,11 @@
 #include <mattTorch/layer/ReLU/ReLU.h>
 
 namespace mattTorch {
-ReLU::ReLU() = default;
 
-TensorView ReLU::forward(TensorView& inputTensor) {
-  // Store the input using deep_copy to ensure it's preserved for backprop
-  this->inputTensor = inputTensor;
-  this->inputShape = inputTensor.getDimensions();
-
-  this->outputTensor = TensorView(inputShape);
-
-  outputTensor = inputTensor.ReLU();
-
-  return outputTensor;
-}
+Tensor ReLU::forward(Tensor& inputTensor) { return inputTensor.ReLU(); }
 
 int ReLU::getNumParameters() { return 0; }
 
-std::vector<std::shared_ptr<TensorView>> ReLU::getParameters() { return {}; }
+std::vector<std::shared_ptr<Tensor>> ReLU::getParameters() { return {}; }
 
 }  // namespace mattTorch

@@ -2,17 +2,22 @@
 
 #include <mattTorch/function/mean/gradMean.h>
 
-#include "mattTorch/tensor/tensorView/tensorView.h"
+#include <cassert>
+#include <utility>
+
+#include "mattTorch/tensor/tensor/tensor.h"
 
 namespace mattTorch::function {
 
-GradMean::GradMean(TensorView savedTensor,
+GradMean::GradMean(Tensor savedTensor,
                    std::vector<std::shared_ptr<GradFunction>> nextFunctions)
-    : savedTensor{savedTensor}, nextFunctions{nextFunctions} {
-}
+    : savedTensor{std::move(savedTensor)},
+      nextFunctions{std::move(nextFunctions)} {}
 
-void GradMean::backward(TensorView& inputGradient, bool higherDerivative) {
-  TensorView outputGradient({savedTensor.getDimensions()}, false);
+void GradMean::backward(Tensor& inputGradient, bool higherDerivative) {
+  assert(nextFunctions.size() == 1);
+
+  Tensor outputGradient(savedTensor.getDimensions(), false);
   outputGradient = *inputGradient.getData() / savedTensor.getNValues();
 
   if (nextFunctions[0] != nullptr) {

@@ -17,7 +17,7 @@ namespace mattTorch::tensor::kernels::cpu {
  * @param nValues The number of elements to process
  */
 void elementwiseAdd(const double* __restrict lhs, const double* __restrict rhs,
-                    double* __restrict result, const int nValues);
+                    double* __restrict result, int nValues);
 
 /**
  * @brief Elementwise subtraction of two tensors using AVX2 SIMD intrinsics
@@ -35,7 +35,7 @@ void elementwiseAdd(const double* __restrict lhs, const double* __restrict rhs,
  */
 void elementwiseSubtract(const double* __restrict lhs,
                          const double* __restrict rhs,
-                         double* __restrict result, const int nValues);
+                         double* __restrict result, int nValues);
 
 /**
  * @brief Elementwise multiplication of two tensors using AVX2 SIMD intrinsics
@@ -53,7 +53,7 @@ void elementwiseSubtract(const double* __restrict lhs,
  */
 void elementwiseMultiplication(const double* __restrict lhs,
                                const double* __restrict rhs,
-                               double* __restrict result, const int nValues);
+                               double* __restrict result, int nValues);
 
 /**
  * @brief Elementwise division of two tensors using AVX2 SIMD intrinsics
@@ -71,7 +71,7 @@ void elementwiseMultiplication(const double* __restrict lhs,
  */
 void elementwiseDivision(const double* __restrict lhs,
                          const double* __restrict rhs,
-                         double* __restrict result, const int nValues);
+                         double* __restrict result, int nValues);
 
 /**
  * @brief Computes the sum of elements along a specified dimension via a

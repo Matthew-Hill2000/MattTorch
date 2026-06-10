@@ -40,7 +40,7 @@ class GradExponent : public GradFunction {
 
   /// The input tensor from the forward pass, required for computing the
   /// gradient using the power rule
-  std::vector<TensorView> savedTensors;
+  std::vector<Tensor> savedTensors;
 
   /// Pointer to the GradFunction object of the parent tensor in the
   /// computational graph
@@ -61,8 +61,7 @@ class GradExponent : public GradFunction {
    * @param nextFunctions A vector containing a shared pointer to the
    * GradFunction object of the parent tensor for gradient propagation
    */
-  GradExponent(std::vector<int> savedScalars,
-               std::vector<TensorView> savedTensors,
+  GradExponent(std::vector<int> savedScalars, std::vector<Tensor> savedTensors,
                std::vector<std::shared_ptr<GradFunction>> nextFunctions);
 
   /**
@@ -84,6 +83,6 @@ class GradExponent : public GradFunction {
    * graph during the backward pass for higher-order derivatives; if false,
    * disables gradient tracking on saved tensors
    */
-  void backward(TensorView& inputGradient, bool higherDerivative) override;
+  void backward(Tensor& inputGradient, bool higherDerivative) override;
 };
-}
+}  // namespace mattTorch::function

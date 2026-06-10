@@ -1,15 +1,21 @@
 
 #include <mattTorch/function/log/gradLog.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
+
+#include <cassert>
+#include <utility>
 
 namespace mattTorch::function {
-GradLog::GradLog(TensorView savedTensor,
+GradLog::GradLog(Tensor savedTensor,
                  std::vector<std::shared_ptr<GradFunction>> nextFunctions)
-    : savedTensor{savedTensor}, nextFunctions{nextFunctions} {
+    : savedTensor{std::move(savedTensor)},
+      nextFunctions{std::move(nextFunctions)} {
 }
 
-void GradLog::backward(TensorView& inputGradient, bool higherDerivative) {
-  TensorView outputGrad = inputGradient / savedTensor;
+void GradLog::backward(Tensor& inputGradient, bool higherDerivative) {
+  assert(nextFunctions.size() == 1);
+
+  Tensor outputGrad = inputGradient / savedTensor;
   if (nextFunctions[0] != nullptr) {
   nextFunctions[0]->backward(outputGrad, higherDerivative);
   }

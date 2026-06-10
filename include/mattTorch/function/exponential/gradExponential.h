@@ -1,8 +1,8 @@
 #pragma once
 
-#include "mattTorch/tensor/tensorView/tensorView.h"
 #include <mattTorch/function/gradFunction.h>
 
+#include "mattTorch/tensor/tensor/tensor.h"
 
 namespace mattTorch::function {
 
@@ -36,16 +36,16 @@ namespace mattTorch::function {
  * @see GradExponent for the gradient function for integer power operations.
  */
 class GradExponential : public GradFunction {
-private:
+ private:
   /// The output tensor from the forward pass (e^A), saved for use in gradient
   /// computation to avoid recomputing the exponential
-  TensorView savedTensor;
+  Tensor savedTensor;
 
   /// Pointer to the GradFunction object of the parent tensor in the
   /// computational graph
   std::vector<std::shared_ptr<GradFunction>> nextFunctions;
 
-public:
+ public:
   /**
    * @brief Constructs a GradExponential gradient function
    *
@@ -58,8 +58,8 @@ public:
    * @param nextFunction A vector containing a shared pointer to the
    * GradFunction object of the parent tensor for gradient propagation
    */
-  GradExponential(TensorView savedTensor,
-             std::vector<std::shared_ptr<GradFunction>> nextFunction);
+  GradExponential(Tensor savedTensor,
+                  std::vector<std::shared_ptr<GradFunction>> nextFunction);
 
   /**
    * @brief Computes and propagates gradients for the exponential operation
@@ -81,6 +81,6 @@ public:
    * graph during the backward pass for higher-order derivatives; if false,
    * disables gradient tracking on saved tensors
    */
-  void backward(TensorView &inputGradient, bool higherDerivative) override;
+  void backward(Tensor& inputGradient, bool higherDerivative) override;
 };
-}
+}  // namespace mattTorch::function

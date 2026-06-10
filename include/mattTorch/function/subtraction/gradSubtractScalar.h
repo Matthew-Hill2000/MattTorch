@@ -77,6 +77,6 @@ class GradSubtractScalar : public GradFunction {
    * graph during the backward pass for higher-order derivatives; if false,
    * disables gradient tracking
    */
-  void backward(TensorView& inputGradient, bool higherDerivative) override;
+  void backward(Tensor& inputGradient, bool higherDerivative) override;
 };
 }  // namespace mattTorch::function

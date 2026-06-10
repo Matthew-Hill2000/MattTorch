@@ -1,21 +1,28 @@
 #include <mattTorch/function/reductionSum/gradReductionSum.h>
 
-#include "mattTorch/tensor/tensorView/tensorView.h"
+#include <cassert>
+#include <utility>
+
+#include "mattTorch/tensor/tensor/tensor.h"
 
 namespace mattTorch::function {
 
 GradReductionSum::GradReductionSum(
-    std::vector<TensorView> savedTensors, int reduceDim,
+    std::vector<Tensor> savedTensors, int reduceDim,
     std::vector<std::shared_ptr<GradFunction>> nextFunctions)
-    : savedTensors{savedTensors},
+    : savedTensors{std::move(savedTensors)},
       reduceDim{reduceDim},
-      nextFunctions{nextFunctions} {
-}
+      nextFunctions{std::move(nextFunctions)} {}
 
-void GradReductionSum::backward(TensorView& inputGradient, bool higherDerivative) {
-  // Broadcast back along the reduced dimension
+void GradReductionSum::backward(Tensor& inputGradient, bool higherDerivative) {
+  assert(savedTensors.size() == 1);
+  assert(nextFunctions.size() == 1);
+  assert(reduceDim >= 0);
+  assert(static_cast<std::size_t>(reduceDim) <
+         savedTensors[0].getDimensions().size());
+
   int broadcastSize = savedTensors[0].getDimensions()[reduceDim];
-  TensorView outputGradient = inputGradient.broadcast(reduceDim, broadcastSize);
+  Tensor outputGradient = inputGradient.broadcast(reduceDim, broadcastSize);
   outputGradient.setRequiresGrad(false);
 
   if (nextFunctions[0] != nullptr) {

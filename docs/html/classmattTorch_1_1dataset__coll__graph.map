@@ -1,5 +1,0 @@
-<map id="mattTorch::dataset" name="mattTorch::dataset">
-<area shape="rect" id="Node000001" title="A dataset class for loading, storing and batching training data from CSV files." alt="" coords="18,125,148,152"/>
-<area shape="rect" id="Node000002" href="$classmattTorch_1_1TensorView.html" title="An arbitrary&#45;dimension tensor with automatic differentiation support." alt="" coords="5,5,161,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,47,86,125,80,124,81,49"/>
-</map>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <mattTorch/function/gradFunction.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
 
 namespace mattTorch::function {
 
@@ -40,10 +40,6 @@ namespace mattTorch::function {
  */
 class GradSubtract : public GradFunction {
  private:
-  /// The input tensors from the forward pass, saved for potential use in
-  /// higher-order derivative computation
-  std::vector<TensorView> savedTensors;
-
   /// Pointers to the GradFunction objects of the parent tensors in the
   /// computational graph
   std::vector<std::shared_ptr<GradFunction>> nextFunctions;
@@ -56,13 +52,10 @@ class GradSubtract : public GradFunction {
    * forward pass and pointers to the parent GradFunction objects for gradient
    * propagation during backpropagation.
    *
-   * @param savedTensors A vector containing the two input tensors that
-   * participated in the subtraction during the forward pass
    * @param nextFunctions A vector containing shared pointers to the
    * GradFunction objects of the parent tensors for gradient propagation
    */
-  GradSubtract(std::vector<TensorView> savedTensors,
-               std::vector<std::shared_ptr<GradFunction>> nextFunctions);
+  GradSubtract(std::vector<std::shared_ptr<GradFunction>> nextFunctions);
 
   /**
    * @brief Computes and propagates gradients for the subtraction operation
@@ -84,6 +77,6 @@ class GradSubtract : public GradFunction {
    * graph during the backward pass for higher-order derivatives; if false,
    * disables gradient tracking on saved tensors
    */
-  void backward(TensorView& inputGradient, bool higherDerivative) override;
+  void backward(Tensor& inputGradient, bool higherDerivative) override;
 };
 }  // namespace mattTorch::function

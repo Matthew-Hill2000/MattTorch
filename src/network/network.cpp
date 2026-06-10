@@ -3,7 +3,7 @@
 #include <mattTorch/layer/layer.h>
 #include <mattTorch/layer/tanh/tanh.h>
 #include <mattTorch/network/network.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
 
 #include <fstream>
 #include <iostream>
@@ -18,27 +18,24 @@ Network::Network(std::vector<Layer*> layers) : layers{layers} {}
 
 void Network::addLayer(Layer* layer) { layers.push_back(layer); }
 
-void Network::addParameter(std::shared_ptr<TensorView> parameter) {
+void Network::addParameter(std::shared_ptr<Tensor> parameter) {
   parameters.push_back(parameter);
 }
 
-std::vector<std::shared_ptr<TensorView>> Network::getParameters() {
+std::vector<std::shared_ptr<Tensor>> Network::getParameters() {
   return parameters;
 }
 
 std::vector<Layer*> Network::getLayers() const { return layers; }
 
-TensorView Network::forward(TensorView& input) {
-  // No layers case
+Tensor Network::forward(Tensor& input) {
   if (layers.empty()) {
     return input;
   }
 
-  // Pass through first layer
-  TensorView current = layers[0]->forward(input);
+  Tensor current = layers[0]->forward(input);
 
-  // Pass through remaining layers
-  for (int layer{1}; layer < static_cast<int>(layers.size()); layer++) {
+  for (std::size_t layer{1}; layer < layers.size(); layer++) {
     current = layers[layer]->forward(current);
   }
 
@@ -69,9 +66,13 @@ NetworkBuilder& NetworkBuilder::addSoftmaxLayer() {
 NetworkBuilder& NetworkBuilder::addFullyConnectedLayer(int inputSize,
                                                        int outputSize) {
   FullyConnectedLayer* newFCL = new FullyConnectedLayer(inputSize, outputSize);
+
   layers.push_back(newFCL);
-  std::vector<std::shared_ptr<TensorView>> newParams = newFCL->getParameters();
+
+  std::vector<std::shared_ptr<Tensor>> newParams = newFCL->getParameters();
+
   parameters.insert(parameters.end(), newParams.begin(), newParams.end());
+
   return *this;
 }
 
@@ -80,7 +81,7 @@ NetworkBuilder& NetworkBuilder::addLayer(Layer* layer) {
     throw std::invalid_argument("Cannot add nullptr as a layer");
   }
   layers.push_back(layer);
-  std::vector<std::shared_ptr<TensorView>> newParams = layer->getParameters();
+  std::vector<std::shared_ptr<Tensor>> newParams = layer->getParameters();
   parameters.insert(parameters.end(), newParams.begin(), newParams.end());
   return *this;
 }
@@ -107,7 +108,7 @@ std::string Network::summary() const {
   ss << "----------------" << std::endl;
   ss << "Total layers: " << layers.size() << std::endl;
 
-  for (int i{0}; i < static_cast<int>(layers.size()); ++i) {
+  for (std::size_t i{0}; i < layers.size(); ++i) {
     ss << "Layer " << i + 1 << ": ";
     // Using RTTI to determine layer type
     const auto& layer = layers[i];
@@ -133,7 +134,6 @@ void Network::saveParameters(const std::string& path) {
   }
 
   for (auto param : this->parameters) {
-    std::string params;
     double* paramData = param->getData();
     for (int i{0}; i < param->getNValues(); i++) {
       file << paramData[i];

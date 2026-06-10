@@ -1,7 +1,0 @@
-<map id="mattTorch::TensorView::backward" name="mattTorch::TensorView::backward">
-<area shape="rect" id="Node000001" title="Performs automatic differentiation to calculate and accumulate the gradients of all of the leaf tenso..." alt="" coords="5,39,161,81"/>
-<area shape="rect" id="Node000002" href="$classmattTorch_1_1TensorView.html#a9054b67c6d0df3b951db8bbb5a66a950" title="Sets whether this tensor requires gradient computation." alt="" coords="209,5,364,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,45,196,41,190,43,161,50"/>
-<area shape="rect" id="Node000003" href="$classmattTorch_1_1TensorView.html#ae335ce0265d9a831f17cba989017d6ab" title="Default constructor creating an empty TensorView." alt="" coords="209,72,364,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,70,196,78,190,78,161,75"/>
-</map>

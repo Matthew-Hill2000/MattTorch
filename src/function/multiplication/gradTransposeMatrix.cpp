@@ -1,24 +1,30 @@
 
 #include <mattTorch/function/multiplication/gradTransposeMatrix.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
+
+#include <cassert>
+#include <utility>
 
 namespace mattTorch::function {
 
 GradTransposeMatrix::GradTransposeMatrix(
-    std::vector<TensorView> savedTensors,
+    std::vector<Tensor> savedTensors,
     std::vector<std::shared_ptr<GradFunction>> nextFunctions,
     bool transposeFirst)
-    : savedTensors{savedTensors},
-      nextFunctions{nextFunctions},
+    : savedTensors{std::move(savedTensors)},
+      nextFunctions{std::move(nextFunctions)},
       transposeFirst{transposeFirst} {
 }
 
-void GradTransposeMatrix::backward(TensorView& inputGradient,
+void GradTransposeMatrix::backward(Tensor& inputGradient,
                                    bool higherDerivative) {
+  assert(savedTensors.size() == 2);
+  assert(nextFunctions.size() == 2);
+
   if (transposeFirst) {
-    TensorView outputGradLHS =
+    Tensor outputGradLHS =
         savedTensors[1].transposeMultiply(inputGradient, false);
-    TensorView outputGradRHS = savedTensors[0].matrixMultiply(inputGradient);
+    Tensor outputGradRHS = savedTensors[0].matrixMultiply(inputGradient);
 
     if (nextFunctions[0] != nullptr) {
       nextFunctions[0]->backward(outputGradLHS, higherDerivative);
@@ -27,8 +33,8 @@ void GradTransposeMatrix::backward(TensorView& inputGradient,
       nextFunctions[1]->backward(outputGradRHS, higherDerivative);
     }
   } else {
-    TensorView outputGradLHS = inputGradient.matrixMultiply(savedTensors[1]);
-    TensorView outputGradRHS =
+    Tensor outputGradLHS = inputGradient.matrixMultiply(savedTensors[1]);
+    Tensor outputGradRHS =
         inputGradient.transposeMultiply(savedTensors[0], true);
 
     if (nextFunctions[0] != nullptr) {

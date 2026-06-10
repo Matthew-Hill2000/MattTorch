@@ -1,5 +1,0 @@
-<map id="mattTorch::TensorView::printQuadrupleMatrix" name="mattTorch::TensorView::printQuadrupleMatrix">
-<area shape="rect" id="Node000001" title="Prints a 4D tensor representation to an output stream." alt="" coords="209,5,364,48"/>
-<area shape="rect" id="Node000002" href="$classmattTorch_1_1TensorView.html#ade234a91fdcc99065ec91f2b802532c2" title="Prints the tensor values to an output stream." alt="" coords="5,5,161,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,27,161,29,161,24,196,26"/>
-</map>

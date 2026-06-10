@@ -1,15 +1,22 @@
 #include <mattTorch/function/division/gradDivide.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
+
+#include <cassert>
+#include <utility>
 
 namespace mattTorch::function {
-GradDivide::GradDivide(std::vector<TensorView> savedTensors,
+GradDivide::GradDivide(std::vector<Tensor> savedTensors,
                        std::vector<std::shared_ptr<GradFunction>> nextFunctions)
-    : savedTensors{savedTensors}, nextFunctions{nextFunctions} {
+    : savedTensors{std::move(savedTensors)},
+      nextFunctions{std::move(nextFunctions)} {
 }
 
-void GradDivide::backward(TensorView& inputGradient, bool higherDerivative) {
-  TensorView outputGradNumerator = inputGradient / savedTensors[1];
-  TensorView outputGradDenominator = (inputGradient * savedTensors[0] * -1.0) /
+void GradDivide::backward(Tensor& inputGradient, bool higherDerivative) {
+  assert(savedTensors.size() == 2);
+  assert(nextFunctions.size() == 2);
+
+  Tensor outputGradNumerator = inputGradient / savedTensors[1];
+  Tensor outputGradDenominator = (inputGradient * savedTensors[0] * -1.0) /
                                      (savedTensors[1] * savedTensors[1]);
 
   if (nextFunctions[0] != nullptr) {

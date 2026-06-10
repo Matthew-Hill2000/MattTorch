@@ -1,8 +1,0 @@
-<map id="include/mattTorch/layer" name="include/mattTorch/layer">
-<area shape="rect" id="node2" href="dir_7b4ac6a2fcf9d0b443be2ab0c990503d.html" title="fullyConnectedLayer" alt="" coords="111,64,252,91"/>
-<area shape="rect" id="node3" href="dir_05eac8843c8409e5f1670cf65428d548.html" title="ReLU" alt="" coords="275,64,330,91"/>
-<area shape="rect" id="node4" href="dir_e6274f5b2ac48d00fcc780f7317dbcba.html" title="softmax" alt="" coords="354,64,422,91"/>
-<area shape="rect" id="node5" href="dir_815cda69a2454e153f1be6e39eb35973.html" title="tanh" alt="" coords="446,64,492,91"/>
-<area shape="rect" id="clust2" href="dir_a824274abcb360783144f004657f20cc.html" alt="" coords="27,53,503,101"/>
-<area shape="rect" id="clust1" href="dir_3af1453fd1039c21cab18e7ea82e7cbe.html" title="mattTorch" alt="" coords="16,16,513,112"/>
-</map>

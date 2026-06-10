@@ -3,11 +3,13 @@ build/
 debugBuild/
 releaseBuild/
 cmake-build-*/
-examples/archive/
 *.csv
 Doxyfile
+clang-tidy.log 
+docs/html
 # Generated files
 compile_commands.json
+git_message.txt
 
 # Editor/IDE
 .cache/

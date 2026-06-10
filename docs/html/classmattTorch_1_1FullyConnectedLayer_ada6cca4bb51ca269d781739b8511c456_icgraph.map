@@ -1,5 +1,0 @@
-<map id="mattTorch::FullyConnectedLayer::getParameters" name="mattTorch::FullyConnectedLayer::getParameters">
-<area shape="rect" id="Node000001" title="Returns shared pointers to the weight and bias parameter tensors." alt="" coords="230,5,408,48"/>
-<area shape="rect" id="Node000002" href="$classmattTorch_1_1NetworkBuilder.html#ac1c20887c7d1e8bf972a837c6a6dffaa" title="Adds a fully connected (dense) layer to the network." alt="" coords="5,5,182,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,27,182,29,182,24,217,26"/>
-</map>

@@ -1,0 +1,5 @@
+add_subdirectory(kernels)
+add_subdirectory(overloads)
+add_subdirectory(tensor)
+add_subdirectory(tensorStorage)
+add_subdirectory(printing)

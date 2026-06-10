@@ -3,24 +3,24 @@
 namespace mattTorch::tensor {
 
 /**
- * @brief Contiguous data storage for TensorView objects.
+ * @brief Contiguous data storage for Tensor objects.
  *
  * The TensorStorage class is responsible for holding the raw data associated
- * with a TensorView object in a contiguous block of memory. TensorStorage
+ * with a Tensor object in a contiguous block of memory. TensorStorage
  * objects are not intended to be interacted with directly, but rather through
- * the TensorView class which provides the primary interface for all tensor
- * operations. The TensorView-TensorStorage structure is designed such that
- * multiple TensorView objects can share a single TensorStorage object,
+ * the Tensor class which provides the primary interface for all tensor
+ * operations. The Tensor-TensorStorage structure is designed such that
+ * multiple Tensor objects can share a single TensorStorage object,
  * allowing for efficient memory usage when creating sub-tensor views or
  * shallow copies of tensors.
  *
- * @see TensorView for the primary interface by which tensor objects are
+ * @see Tensor for the primary interface by which tensor objects are
  * interacted with.
  */
 class TensorStorage {
  private:
   /// Pointer to the contiguous block of memory holding the data associated
-  /// with a TensorView object
+  /// with a Tensor object
   double* mData;
 
   /// The number of elements stored in the contiguous data block
@@ -52,10 +52,10 @@ class TensorStorage {
   /**
    * @brief Copy constructor is deleted
    *
-   * The copy constructor is explicitly deleted since the TensorView class is
+   * The copy constructor is explicitly deleted since the Tensor class is
    * the primary interface by which we interact with tensor objects. The entire
-   * point of the TensorView-TensorStorage structure is to share data and only
-   * have a single TensorStorage object shared between multiple TensorView
+   * point of the Tensor-TensorStorage structure is to share data and only
+   * have a single TensorStorage object shared between multiple Tensor
    * objects. Copying TensorStorage objects would undermine this design.
    */
   TensorStorage(const TensorStorage& rOther) = delete;
@@ -64,6 +64,40 @@ class TensorStorage {
    * @brief Destructor that deallocates the contiguous data block
    */
   ~TensorStorage();
+
+  /**
+   * @brief Copy assignment operator
+   *
+   * Performs the default member-wise assignment of the TensorStorage object.
+   * This copies the data pointer and size from the other TensorStorage object.
+   *
+   * @param other The TensorStorage object to copy assign from
+   * @return Reference to this TensorStorage after assignment
+   */
+  TensorStorage& operator=(TensorStorage const& other) = default;
+
+  /**
+   * @brief Move assignment operator
+   *
+   * Performs the default member-wise move assignment of the TensorStorage
+   * object. Since the data pointer is a raw pointer, the pointer value itself
+   * is assigned from the other TensorStorage object.
+   *
+   * @param other The TensorStorage object to move assign from
+   * @return Reference to this TensorStorage after assignment
+   */
+  TensorStorage& operator=(TensorStorage&& other) = default;
+
+  /**
+   * @brief Move constructor
+   *
+   * Performs the default member-wise move construction of the TensorStorage
+   * object. Since the data pointer is a raw pointer, the pointer value itself
+   * is copied from the other TensorStorage object.
+   *
+   * @param other The TensorStorage object to move construct from
+   */
+  TensorStorage(TensorStorage&& other) = default;
 
   /**
    * @brief Returns a reference to the element at the specified index within

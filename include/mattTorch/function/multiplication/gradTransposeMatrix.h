@@ -49,7 +49,7 @@ class GradTransposeMatrix : public GradFunction {
  private:
   /// The input matrices from the forward pass, required for computing
   /// gradients during backpropagation
-  std::vector<TensorView> savedTensors;
+  std::vector<Tensor> savedTensors;
 
   /// Pointers to the GradFunction objects of the parent tensors in the
   /// computational graph
@@ -75,7 +75,7 @@ class GradTransposeMatrix : public GradFunction {
    * @param transposeFirst Flag indicating which matrix was transposed: true if
    * the first matrix was transposed, false if the second matrix was transposed
    */
-  GradTransposeMatrix(std::vector<TensorView> savedTensors,
+  GradTransposeMatrix(std::vector<Tensor> savedTensors,
                       std::vector<std::shared_ptr<GradFunction>> nextFunctions,
                       bool transposeFirst);
 
@@ -98,6 +98,6 @@ class GradTransposeMatrix : public GradFunction {
    * graph during the backward pass for higher-order derivatives; if false,
    * disables gradient tracking
    */
-  void backward(TensorView& inputGradient, bool higherDerivative) override;
+  void backward(Tensor& inputGradient, bool higherDerivative) override;
 };
 }  // namespace mattTorch::function

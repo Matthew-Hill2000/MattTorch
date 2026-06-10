@@ -24,18 +24,18 @@ namespace mattTorch {
 class Softmax : public Layer {
  private:
   /// The input tensor passed to this layer during the most recent forward pass
-  TensorView inputTensor;
+  Tensor inputTensor;
 
   /// The shape of the input tensor from the most recent forward pass
-  std::vector<int> inputShape;
+  Dims inputShape;
 
   /// The output tensor produced by this layer during the most recent forward
   /// pass
-  TensorView outputTensor;
+  Tensor outputTensor;
 
  public:
   /// @brief Default constructor
-  Softmax();
+  Softmax() = default;
 
   /**
    * @brief Performs the forward pass of this Softmax activation layer
@@ -48,16 +48,16 @@ class Softmax : public Layer {
    * the operation is applied.
    *
    * @param inputTensor The input tensor to apply Softmax activation to
-   * @return A TensorView containing the normalised probability output
+   * @return A Tensor containing the normalised probability output
    */
-  TensorView forward(TensorView& inputTensor) override;
+  Tensor forward(Tensor& inputTensor) override;
 
   /**
    * @brief Returns an empty vector as this layer has no learnable parameters
    *
    * @return An empty vector
    */
-  std::vector<std::shared_ptr<TensorView>> getParameters() override;
+  std::vector<std::shared_ptr<Tensor>> getParameters() override;
 
   /**
    * @brief Returns zero as this layer has no learnable parameters

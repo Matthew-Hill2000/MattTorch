@@ -12,15 +12,24 @@ void ReLU(double* __restrict tensor, double* __restrict result,
   int i{0};
   const __m256d zero = _mm256_setzero_pd();
   const __m256d ones = _mm256_set1_pd(1.0);
-  for (; i + 3 < nValues; i += 4) {
-    __m256d a = _mm256_load_pd(tensor + i);
-    __m256d relu = _mm256_max_pd(a, zero);
 
-    __m256d gt0 = _mm256_cmp_pd(a, zero, _CMP_GT_OQ);
-    __m256d mask = _mm256_and_pd(gt0, ones);
+  for (; i + 7 < nValues; i += 8) {
+    __m256d a0 = _mm256_load_pd(tensor + i);
+    __m256d a1 = _mm256_load_pd(tensor + i + 4);
 
-    _mm256_store_pd(backwardMask + i, mask);
-    _mm256_store_pd(result + i, relu);
+    __m256d relu0 = _mm256_max_pd(a0, zero);
+    __m256d relu1 = _mm256_max_pd(a1, zero);
+
+    __m256d gt0_0 = _mm256_cmp_pd(a0, zero, _CMP_GT_OQ);
+    __m256d gt0_1 = _mm256_cmp_pd(a1, zero, _CMP_GT_OQ);
+
+    __m256d mask0 = _mm256_and_pd(gt0_0, ones);
+    __m256d mask1 = _mm256_and_pd(gt0_1, ones);
+
+    _mm256_stream_pd(backwardMask + i, mask0);
+    _mm256_stream_pd(backwardMask + i + 4, mask1);
+    _mm256_stream_pd(result + i, relu0);
+    _mm256_stream_pd(result + i + 4, relu1);
   }
 
   for (; i < nValues; i++) {
@@ -43,26 +52,37 @@ void broadcast(double* __restrict tensor, double* __restrict result,
     }
   }
 }
+
 void tanh(double* __restrict tensor, double* __restrict result, int nValues) {
   int i{0};
-  for (; i + 3 < nValues; i += 4) {
-    __m256d a = _mm256_load_pd(tensor + i);
-    __m256d b = Sleef_tanhd4_u35avx2(a);
+  for (; i + 7 < nValues; i += 8) {
+    __m256d a0 = _mm256_load_pd(tensor + i);
+    __m256d a1 = _mm256_load_pd(tensor + i + 4);
 
-    _mm256_store_pd(result + i, b);
+    __m256d b0 = Sleef_tanhd4_u35avx2(a0);
+    __m256d b1 = Sleef_tanhd4_u35avx2(a1);
+
+    _mm256_stream_pd(result + i, b0);
+    _mm256_stream_pd(result + i + 4, b1);
   }
 
   for (; i < nValues; i++) {
     result[i] = std::tanh(tensor[i]);
   }
 }
-void exponential(double* __restrict tensor, double* __restrict result, int nValues) {
-  int i{0};
-  for (; i + 3 < nValues; i += 4) {
-    __m256d a = _mm256_load_pd(tensor + i);
-    __m256d b = Sleef_expd4_u10avx2(a);
 
-    _mm256_store_pd(result + i, b);
+void exponential(double* __restrict tensor, double* __restrict result,
+                 int nValues) {
+  int i{0};
+  for (; i + 7 < nValues; i += 8) {
+    __m256d a0 = _mm256_load_pd(tensor + i);
+    __m256d a1 = _mm256_load_pd(tensor + i + 4);
+
+    __m256d b0 = Sleef_expd4_u10avx2(a0);
+    __m256d b1 = Sleef_expd4_u10avx2(a1);
+
+    _mm256_stream_pd(result + i, b0);
+    _mm256_stream_pd(result + i + 4, b1);
   }
 
   for (; i < nValues; i++) {
@@ -72,10 +92,15 @@ void exponential(double* __restrict tensor, double* __restrict result, int nValu
 
 void log(double* __restrict tensor, double* __restrict result, int nValues) {
   int i{0};
-  for (; i + 3 < nValues; i += 4) {
-    __m256d a = _mm256_load_pd(tensor + i);
-    __m256d b = Sleef_logd4_u35avx2(a);
-    _mm256_store_pd(result + i, b);
+  for (; i + 7 < nValues; i += 8) {
+    __m256d a0 = _mm256_load_pd(tensor + i);
+    __m256d a1 = _mm256_load_pd(tensor + i + 4);
+
+    __m256d b0 = Sleef_logd4_u35avx2(a0);
+    __m256d b1 = Sleef_logd4_u35avx2(a1);
+
+    _mm256_stream_pd(result + i, b0);
+    _mm256_stream_pd(result + i + 4, b1);
   }
 
   for (; i < nValues; i++) {

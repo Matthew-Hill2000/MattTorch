@@ -15,45 +15,34 @@ namespace mattTorch {
  * parameters.
  *
  * @see Layer for the base class from which this class derives.
- * @see TensorView::ReLU() for the underlying tensor operation that performs
+ * @see Tensor::ReLU() for the underlying tensor operation that performs
  * the elementwise ReLU computation and constructs the computational graph
  * node.
  */
 class ReLU : public Layer {
- private:
-  /// The input tensor passed to this layer during the most recent forward pass
-  TensorView inputTensor;
-
-  /// The shape of the input tensor from the most recent forward pass
-  std::vector<int> inputShape;
-
-  /// The output tensor produced by this layer during the most recent forward
-  /// pass
-  TensorView outputTensor;
-
  public:
   /// @brief Default constructor
-  ReLU();
+  ReLU() = default;
 
   /**
    * @brief Performs the forward pass of this ReLU activation layer
    *
    * Applies the ReLU function elementwise to the input tensor by delegating
-   * to TensorView::ReLU(). The input tensor and its shape are stored
+   * to Tensor::ReLU(). The input tensor and its shape are stored
    * internally before the operation is applied.
    *
    * @param inputTensor The input tensor to apply ReLU activation to
-   * @return A TensorView containing the output with ReLU applied to all
+   * @return A Tensor containing the output with ReLU applied to all
    * elements
    */
-  TensorView forward(TensorView& inputTensor) override;
+  Tensor forward(Tensor& inputTensor) override;
 
   /**
    * @brief Returns an empty vector as this layer has no learnable parameters
    *
    * @return An empty vector
    */
-  std::vector<std::shared_ptr<TensorView>> getParameters() override;
+  std::vector<std::shared_ptr<Tensor>> getParameters() override;
 
   /**
    * @brief Returns zero as this layer has no learnable parameters

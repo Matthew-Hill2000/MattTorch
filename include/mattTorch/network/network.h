@@ -1,6 +1,6 @@
 #pragma once
 #include <mattTorch/layer/layer.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
 namespace mattTorch {
 
 class NetworkBuilder;
@@ -14,7 +14,7 @@ class NetworkBuilder;
  * added. The Network holds raw pointers to its Layer objects as well as shared
  * pointers to all learnable parameter tensors across the network. Network
  * objects are intended to be constructed via the NetworkBuilder class, which
- * provides a fluent interface for assembling layers and collecting their
+ * provides an  interface for assembling layers and collecting their
  * parameters.
  *
  * The Network class also provides functionality for saving and loading the
@@ -31,7 +31,7 @@ class Network {
   std::vector<Layer*> layers;
 
   /// Shared pointers to all learnable parameter tensors across the network
-  std::vector<std::shared_ptr<TensorView>> parameters;
+  std::vector<std::shared_ptr<Tensor>> parameters;
 
   /// The NetworkBuilder class is declared as a friend so that it can access
   /// the private members of Network during construction
@@ -59,18 +59,18 @@ class Network {
   /**
    * @brief Adds a learnable parameter tensor to the network
    *
-   * @param parameter A shared pointer to the TensorView representing the
+   * @param parameter A shared pointer to the Tensor representing the
    * learnable parameter to add
    */
-  void addParameter(std::shared_ptr<TensorView> parameter);
+  void addParameter(std::shared_ptr<Tensor> parameter);
 
   /**
    * @brief Returns all learnable parameter tensors in the network
    *
-   * @return A vector of shared pointers to the TensorView objects representing
+   * @return A vector of shared pointers to the Tensor objects representing
    * all learnable parameters across the network
    */
-  std::vector<std::shared_ptr<TensorView>> getParameters();
+  std::vector<std::shared_ptr<Tensor>> getParameters();
 
   /**
    * @brief Returns all layers in the network
@@ -91,7 +91,7 @@ class Network {
    * @param input The input tensor to pass through the network
    * @return The output tensor produced by the final layer of the network
    */
-  TensorView forward(TensorView& input);
+  Tensor forward(Tensor& input);
 
   /**
    * @brief Generates a text summary of the network architecture
@@ -132,7 +132,7 @@ class Network {
 };
 
 /**
- * @brief A builder class for constructing Network objects via a fluent
+ * @brief A builder class for constructing Network objects via an
  * interface.
  *
  * The NetworkBuilder class provides a convenient way to assemble a neural
@@ -153,7 +153,7 @@ class NetworkBuilder {
 
   /// Temporary storage for learnable parameter tensors collected from layers
   /// during network construction
-  std::vector<std::shared_ptr<TensorView>> parameters;
+  std::vector<std::shared_ptr<Tensor>> parameters;
 
  public:
   /// @brief Default constructor creating an empty NetworkBuilder

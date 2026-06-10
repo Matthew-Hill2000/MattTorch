@@ -1,38 +1,20 @@
 #include <mattTorch/mattTorch.h>
 
-#include <chrono>
 #include <cmath>
-#include <iostream>
-#include <random>
+
+#include "common/testUtils.h"
 
 constexpr double TOL = 1e-9;
 
-// Creates a random tensor of given size
-mattTorch::TensorView randomTensor(int rows, int cols) {
-  static unsigned seed =
-      std::chrono::system_clock::now().time_since_epoch().count();
-  static std::default_random_engine gen(seed);
-  std::normal_distribution<double> dist(0.0, 1.0);
-
-  mattTorch::TensorView t({rows, cols});
-  double* data = t.getData();
-  for (int i = 0; i < t.getNValues(); i++) {
-    data[i] = dist(gen);
-  }
-  return t;
-}
-
 // ============ Tests ============
 
-bool testReLU(mattTorch::TensorView& a) {
-  auto result = a.ReLU();
-  mattTorch::TensorView grad(result.getDimensions());
-  grad = 1.0;
-  result.backward(grad);
+bool testReLU(mattTorch::Tensor& a) {
+  mattTorch::Tensor result = a.ReLU();
+  result.backward();
 
   double* aData = a.getData();
   double* rData = result.getData();
-  double* gData = a.detachGradient().getData();
+  double* gData = a.getGradientData();
 
   for (int i = 0; i < a.getNValues(); i++) {
     double expectedFwd = aData[i] > 0 ? aData[i] : 0;
@@ -43,15 +25,13 @@ bool testReLU(mattTorch::TensorView& a) {
   return true;
 }
 
-bool testTanh(mattTorch::TensorView& a) {
-  auto result = a.tanh();
-  mattTorch::TensorView grad(result.getDimensions());
-  grad = 1.0;
-  result.backward(grad);
+bool testTanh(mattTorch::Tensor& a) {
+  mattTorch::Tensor result = a.tanh();
+  result.backward();
 
   double* aData = a.getData();
   double* rData = result.getData();
-  double* gData = a.detachGradient().getData();
+  double* gData = a.getGradientData();
 
   for (int i = 0; i < a.getNValues(); i++) {
     double expectedFwd = std::tanh(aData[i]);
@@ -62,21 +42,19 @@ bool testTanh(mattTorch::TensorView& a) {
   return true;
 }
 
-bool testMean(mattTorch::TensorView& a) {
-  auto result = a.mean();
+bool testMean(mattTorch::Tensor& a) {
+  mattTorch::Tensor result = a.mean();
   if (result.getNValues() != 1) return false;
 
-  mattTorch::TensorView grad(result.getDimensions());
-  grad = 1.0;
-  result.backward(grad);
+  result.backward();
 
   double* aData = a.getData();
-  double* gData = a.detachGradient().getData();
+  double* gData = a.getGradientData();
   int n = a.getNValues();
 
   double sum = 0;
   for (int i = 0; i < n; i++) sum += aData[i];
-  if (std::abs(result.getData()[0] - sum / n) > 1e-6) return false;
+  if (std::abs(result.getData()[0] - sum / n) > TOL) return false;
 
   for (int i = 0; i < n; i++) {
     if (std::abs(gData[i] - 1.0 / n) > TOL) return false;
@@ -84,15 +62,13 @@ bool testMean(mattTorch::TensorView& a) {
   return true;
 }
 
-bool testExp(mattTorch::TensorView& a) {
-  auto result = a.exponential();
-  mattTorch::TensorView grad(result.getDimensions());
-  grad = 1.0;
-  result.backward(grad);
+bool testExp(mattTorch::Tensor& a) {
+  mattTorch::Tensor result = a.exponential();
+  result.backward();
 
   double* aData = a.getData();
   double* rData = result.getData();
-  double* gData = a.detachGradient().getData();
+  double* gData = a.getGradientData();
 
   for (int i = 0; i < a.getNValues(); i++) {
     double expectedFwd = std::exp(aData[i]);
@@ -103,13 +79,11 @@ bool testExp(mattTorch::TensorView& a) {
   return true;
 }
 
-bool testReductionSum(mattTorch::TensorView& a, int dim) {
-  auto result = a.reductionSum(dim);
-  mattTorch::TensorView grad(result.getDimensions());
-  grad = 1.0;
-  result.backward(grad);
+bool testReductionSum(mattTorch::Tensor& a, int dim) {
+  mattTorch::Tensor result = a.reductionSum(dim);
+  result.backward();
 
-  double* gData = a.detachGradient().getData();
+  double* gData = a.getGradientData();
 
   for (int i = 0; i < a.getNValues(); i++) {
     if (std::abs(gData[i] - 1.0) > TOL) return false;
@@ -117,13 +91,11 @@ bool testReductionSum(mattTorch::TensorView& a, int dim) {
   return true;
 }
 
-bool testBroadcast(mattTorch::TensorView& a, int pos, int dim) {
-  auto result = a.broadcast(pos, dim);
-  mattTorch::TensorView grad(result.getDimensions());
-  grad = 1.0;
-  result.backward(grad);
+bool testBroadcast(mattTorch::Tensor& a, int pos, int dim) {
+  mattTorch::Tensor result = a.broadcast(pos, dim);
+  result.backward();
 
-  double* gData = a.detachGradient().getData();
+  double* gData = a.getGradientData();
 
   for (int i = 0; i < a.getNValues(); i++) {
     if (std::abs(gData[i] - double(dim)) > TOL) return false;
@@ -131,19 +103,13 @@ bool testBroadcast(mattTorch::TensorView& a, int pos, int dim) {
   return true;
 }
 
-// ============ Test Runner ============
-
-void run(const std::string& name, bool passed) {
-  std::cout << name << ": " << (passed ? "PASSED" : "FAILED") << std::endl;
-}
-
 int main() {
-  auto a1 = randomTensor(1024, 1024);
-  auto a2 = randomTensor(1024, 1024);
-  auto a3 = randomTensor(1024, 1024);
-  auto a4 = randomTensor(1024, 1024);
-  auto a5 = randomTensor(1024, 1024);
-  auto small = randomTensor(5, 5);
+  mattTorch::Tensor a1 = randomTensor({1024, 1024});
+  mattTorch::Tensor a2 = randomTensor({1024, 1024});
+  mattTorch::Tensor a3 = randomTensor({1024, 1024});
+  mattTorch::Tensor a4 = randomTensor({1024, 1024});
+  mattTorch::Tensor a5 = randomTensor({1024, 1024});
+  mattTorch::Tensor small = randomTensor({5, 5});
 
   run("ReLU", testReLU(a1));
   run("Tanh", testTanh(a2));

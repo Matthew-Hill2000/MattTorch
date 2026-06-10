@@ -25,16 +25,16 @@ namespace mattTorch {
  * deviation of @f$\sqrt{2 / n_{in}}@f$.
  *
  * @see Layer for the base class from which this class derives.
- * @see TensorView for the tensor class used to represent the weights, biases,
+ * @see Tensor for the tensor class used to represent the weights, biases,
  * inputs and outputs.
  */
 class FullyConnectedLayer : public Layer {
  private:
   /// The weight matrix of shape (inputs x outputs)
-  TensorView weight;
+  Tensor weight;
 
   /// The bias vector of shape (outputs)
-  TensorView bias;
+  Tensor bias;
 
  public:
   /**
@@ -69,9 +69,9 @@ class FullyConnectedLayer : public Layer {
    * layer during backpropagation.
    *
    * @param inputTensor The input tensor of shape (batchSize x inputs)
-   * @return A TensorView containing the output of shape (batchSize x outputs)
+   * @return A Tensor containing the output of shape (batchSize x outputs)
    */
-  TensorView forward(TensorView& inputTensor);
+  Tensor forward(Tensor& inputTensor) override;
 
   /**
    * @brief Returns the total number of learnable parameters in this layer
@@ -81,14 +81,14 @@ class FullyConnectedLayer : public Layer {
    *
    * @return The total number of learnable parameters
    */
-  int getNumParameters();
+  int getNumParameters() override;
 
   /**
    * @brief Returns shared pointers to the weight and bias parameter tensors
    *
-   * @return A vector containing shared pointers to the weight TensorView and
-   * the bias TensorView
+   * @return A vector containing shared pointers to the weight Tensor and
+   * the bias Tensor
    */
-  std::vector<std::shared_ptr<TensorView>> getParameters();
+  std::vector<std::shared_ptr<Tensor>> getParameters() override;
 };
 }  // namespace mattTorch

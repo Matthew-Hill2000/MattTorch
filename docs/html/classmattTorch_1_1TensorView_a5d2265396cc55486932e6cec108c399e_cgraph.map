@@ -1,5 +1,0 @@
-<map id="mattTorch::TensorView::operator[]" name="mattTorch::TensorView::operator[]">
-<area shape="rect" id="Node000001" title="Returns a reference to the element at the specified indices." alt="" coords="5,5,161,48"/>
-<area shape="rect" id="Node000002" href="$classmattTorch_1_1TensorView.html#ac2dc89e4e24de90a88d7cd00c5dfd810" title="Helper function to calculate the index along the contiguous data storage for this TensorView associat..." alt="" coords="209,5,364,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,24,196,26,190,27,161,29"/>
-</map>

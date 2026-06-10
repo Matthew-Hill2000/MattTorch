@@ -1,8 +1,9 @@
 #pragma once
 
 #include <mattTorch/function/gradFunction.h>
+#include <mattTorch/tensor/tensor/tensorTypes.h>
 
-#include "mattTorch/tensor/tensorView/tensorView.h"
+#include "mattTorch/tensor/tensor/tensor.h"
 
 namespace mattTorch::function {
 
@@ -35,17 +36,17 @@ namespace mattTorch::function {
  * backward passes.
  *
  * @see GradFunction for the base class from which this class derives.
- * @see TensorView for the tensor class that uses GradAccumulator for leaf
+ * @see Tensor for the tensor class that uses GradAccumulator for leaf
  * tensors.
  */
 class GradAccumulator : public GradFunction {
  private:
-  /// A shared pointer to the gradient TensorView belonging to the leaf tensor
+  /// A shared pointer to the gradient Tensor belonging to the leaf tensor
   /// that owns this GradAccumulator
-  std::shared_ptr<TensorView> gradient;
+  std::shared_ptr<Tensor> gradient;
 
   /// The dimensions of the leaf tensor
-  const std::vector<int> dims;
+  Dims dims;
 
  public:
   /**
@@ -55,12 +56,11 @@ class GradAccumulator : public GradFunction {
    * specified gradient tensor. The dimensions of the leaf tensor are stored
    * for potential use in gradient shape validation or manipulation.
    *
-   * @param gradient A shared pointer to the TensorView that will store the
+   * @param gradient A shared pointer to the Tensor that will store the
    * accumulated gradient for the leaf tensor
    * @param dims The dimensions of the leaf tensor
    */
-  GradAccumulator(std::shared_ptr<TensorView> gradient,
-                  const std::vector<int> dims);
+  GradAccumulator(std::shared_ptr<Tensor> gradient, Dims dims);
 
   /**
    * @brief Accumulates the incoming gradient into the leaf tensor's gradient
@@ -85,7 +85,7 @@ class GradAccumulator : public GradFunction {
    * participate in a new computational graph for higher-order derivative
    * computation; if false, performs accumulation without gradient tracking
    */
-  void backward(TensorView& inputGradient, bool higherDerivative) override;
+  void backward(Tensor& inputGradient, bool higherDerivative) override;
 
   /**
    * @brief Updates the shared pointer to the gradient storage
@@ -93,8 +93,8 @@ class GradAccumulator : public GradFunction {
    * Allows the gradient tensor pointer to be updated, which may be necessary
    * when gradients are zeroed or reset between training iterations.
    *
-   * @param newGrad A shared pointer to the new gradient TensorView
+   * @param newGrad A shared pointer to the new gradient Tensor
    */
-  void setGradient(std::shared_ptr<TensorView> newGrad);
+  void setGradient(std::shared_ptr<Tensor> newGrad);
 };
 }  // namespace mattTorch::function

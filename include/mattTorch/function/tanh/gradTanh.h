@@ -2,7 +2,7 @@
 
 #include <mattTorch/function/gradFunction.h>
 
-#include "mattTorch/tensor/tensorView/tensorView.h"
+#include "mattTorch/tensor/tensor/tensor.h"
 
 namespace mattTorch::function {
 
@@ -39,7 +39,7 @@ class GradTanh : public GradFunction {
  private:
   /// The input tensor from the forward pass, saved for recomputing tanh during
   /// gradient calculation
-  TensorView savedTensor;
+  Tensor savedTensor;
 
   /// Pointer to the GradFunction object of the parent tensor in the
   /// computational graph
@@ -58,7 +58,7 @@ class GradTanh : public GradFunction {
    * @param nextFunctions A vector containing a shared pointer to the
    * GradFunction object of the parent tensor for gradient propagation
    */
-  GradTanh(TensorView tanhOutput,
+  GradTanh(Tensor tanhOutput,
            std::vector<std::shared_ptr<GradFunction>> nextFunctions);
 
   /**
@@ -81,7 +81,7 @@ class GradTanh : public GradFunction {
    * graph during the backward pass for higher-order derivatives; if false,
    * disables gradient tracking on saved tensors
    */
-  void backward(TensorView& inputGradient, bool higherDerivative) override;
+  void backward(Tensor& inputGradient, bool higherDerivative) override;
 };
 
 }  // namespace mattTorch::function

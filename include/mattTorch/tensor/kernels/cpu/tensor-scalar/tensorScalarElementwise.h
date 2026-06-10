@@ -16,8 +16,8 @@ namespace mattTorch::tensor::kernels::cpu {
  * @param result Pointer to the output data where the result is stored
  * @param nValues The number of elements to process
  */
-void tensorScalarAdd(const double* __restrict tensor, const double scalar,
-                     double* __restrict result, const int nValues);
+void tensorScalarAdd(const double* __restrict tensor, double scalar,
+                     double* __restrict result, int nValues);
 
 /**
  * @brief Subtracts a scalar from all elements of a tensor using AVX2 SIMD
@@ -34,8 +34,8 @@ void tensorScalarAdd(const double* __restrict tensor, const double scalar,
  * @param result Pointer to the output data where the result is stored
  * @param nValues The number of elements to process
  */
-void tensorScalarSubtract(const double* __restrict tensor, const double scalar,
-                          double* __restrict result, const int nValues);
+void tensorScalarSubtract(const double* __restrict tensor, double scalar,
+                          double* __restrict result, int nValues);
 
 /**
  * @brief Multiplies all elements of a tensor by a scalar using AVX2 SIMD
@@ -52,9 +52,8 @@ void tensorScalarSubtract(const double* __restrict tensor, const double scalar,
  * @param result Pointer to the output data where the result is stored
  * @param nValues The number of elements to process
  */
-void tensorScalarMultiplication(const double* __restrict tensor,
-                                const double scalar, double* __restrict result,
-                                const int nValues);
+void tensorScalarMultiplication(const double* __restrict tensor, double scalar,
+                                double* __restrict result, int nValues);
 
 /**
  * @brief Divides all elements of a tensor by a scalar using AVX2 SIMD
@@ -71,8 +70,8 @@ void tensorScalarMultiplication(const double* __restrict tensor,
  * @param result Pointer to the output data where the result is stored
  * @param nValues The number of elements to process
  */
-void tensorScalarDivision(const double* __restrict tensor, const double scalar,
-                          double* __restrict result, const int nValues);
+void tensorScalarDivision(const double* __restrict tensor, double scalar,
+                          double* __restrict result, int nValues);
 
 /**
  * @brief Subtracts all elements of a tensor from a scalar using AVX2 SIMD
@@ -89,8 +88,8 @@ void tensorScalarDivision(const double* __restrict tensor, const double scalar,
  * @param result Pointer to the output data where the result is stored
  * @param nValues The number of elements to process
  */
-void scalarTensorSubtract(const double* __restrict tensor, const double scalar,
-                          double* __restrict result, const int nValues);
+void scalarTensorSubtract(const double* __restrict tensor, double scalar,
+                          double* __restrict result, int nValues);
 
 /**
  * @brief Divides a scalar by all elements of a tensor using AVX2 SIMD
@@ -107,8 +106,8 @@ void scalarTensorSubtract(const double* __restrict tensor, const double scalar,
  * @param result Pointer to the output data where the result is stored
  * @param nValues The number of elements to process
  */
-void scalarTensorDivision(const double* __restrict tensor, const double scalar,
-                          double* __restrict result, const int nValues);
+void scalarTensorDivision(const double* __restrict tensor, double scalar,
+                          double* __restrict result, int nValues);
 
 /**
  * @brief Raises all elements of a tensor to an integer power using AVX2 SIMD
@@ -128,7 +127,7 @@ void scalarTensorDivision(const double* __restrict tensor, const double scalar,
  * @param result Pointer to the output data where the result is stored
  * @param nValues The number of elements to process
  */
-void elementwiseExponent(const double* __restrict tensor, const int scalar,
-                         double* __restrict result, const int nValues);
+void elementwiseExponent(const double* __restrict tensor, int scalar,
+                         double* __restrict result, int nValues);
 
 }  // namespace mattTorch::tensor::kernels::cpu

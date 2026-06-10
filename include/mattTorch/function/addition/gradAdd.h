@@ -1,9 +1,8 @@
 #pragma once
 
-#include <memory>
-
 #include <mattTorch/function/gradFunction.h>
 
+#include <memory>
 
 namespace mattTorch::function {
 
@@ -41,10 +40,6 @@ namespace mattTorch::function {
  */
 class GradAdd : public GradFunction {
  private:
-  /// The input tensors from the forward pass, saved for potential use in
-  /// higher-order derivative computation
-  std::vector<TensorView> savedTensors;
-
   /// Pointers to the GradFunction objects of the parent tensors in the
   /// computational graph
   std::vector<std::shared_ptr<GradFunction>> nextFunctions;
@@ -57,13 +52,10 @@ class GradAdd : public GradFunction {
    * pass and pointers to the parent GradFunction objects for gradient
    * propagation during backpropagation.
    *
-   * @param savedTensors A vector containing the two input tensors that were
-   * added during the forward pass
    * @param nextFunctions A vector containing shared pointers to the
    * GradFunction objects of the parent tensors for gradient propagation
    */
-  GradAdd(std::vector<TensorView> savedTensors,
-          std::vector<std::shared_ptr<GradFunction>> nextFunctions);
+  GradAdd(std::vector<std::shared_ptr<GradFunction>> nextFunctions);
 
   /**
    * @brief Computes and propagates gradients for the addition operation
@@ -84,6 +76,6 @@ class GradAdd : public GradFunction {
    * graph during the backward pass for higher-order derivatives; if false,
    * disables gradient tracking on saved tensors
    */
-  void backward(TensorView& inputGradient, bool higherDerivative) override;
+  void backward(Tensor& inputGradient, bool higherDerivative) override;
 };
-}
+}  // namespace mattTorch::function

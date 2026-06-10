@@ -1,84 +1,63 @@
 #include <mattTorch/mattTorch.h>
 
-#include <chrono>
 #include <cmath>
-#include <iostream>
-#include <random>
 
-mattTorch::TensorView randomTensor(int rows, int cols) {
-  static unsigned seed =
-      std::chrono::system_clock::now().time_since_epoch().count();
-  static std::default_random_engine gen(seed);
-  std::normal_distribution<double> dist(0.0, 1.0);
-
-  mattTorch::TensorView t({rows, cols});
-  double* data = t.getData();
-  for (int i = 0; i < t.getNValues(); i++) {
-    data[i] = dist(gen);
-  }
-  return t;
-}
-
-double randomScalar() {
-  static unsigned seed =
-      std::chrono::system_clock::now().time_since_epoch().count();
-  static std::default_random_engine gen(seed);
-  std::normal_distribution<double> dist(0.0, 1.0);
-  return dist(gen);
-}
+#include "common/testUtils.h"
 
 // ============ Tests ============
 
-bool testScalarAdd(mattTorch::TensorView& a, double b) {
-  auto result = a + b;
-  mattTorch::TensorView grad(result.getDimensions());
+bool testScalarAdd(mattTorch::Tensor& a, double b) {
+  mattTorch::Tensor result = a + b;
+  mattTorch::Tensor grad(result.getDimensions());
   grad = 1.0;
   result.backward(grad);
 
   return a.detachGradient() == grad;
 }
 
-bool testScalarSub(mattTorch::TensorView& a, double b) {
-  auto result = a - b;
-  mattTorch::TensorView grad(result.getDimensions());
+bool testScalarSub(mattTorch::Tensor& a, double b) {
+  mattTorch::Tensor result = a - b;
+  mattTorch::Tensor grad(result.getDimensions());
   grad = 1.0;
   result.backward(grad);
 
   return a.detachGradient() == grad;
 }
 
-bool testScalarMul(mattTorch::TensorView& a, double b) {
-  auto result = a * b;
-  mattTorch::TensorView grad(result.getDimensions());
+bool testScalarMul(mattTorch::Tensor& a, double b) {
+  mattTorch::Tensor result = a * b;
+  mattTorch::Tensor grad(result.getDimensions());
   grad = 1.0;
   result.backward(grad);
 
-  mattTorch::TensorView expected(a.getDimensions());
+  mattTorch::Tensor expected(a.getDimensions());
   expected = b;
   return a.detachGradient() == expected;
 }
 
-bool testScalarDiv(mattTorch::TensorView& a, double b) {
-  auto result = a / b;
-  mattTorch::TensorView grad(result.getDimensions());
+bool testScalarDiv(mattTorch::Tensor& a, double b) {
+  mattTorch::Tensor result = a / b;
+  mattTorch::Tensor grad(result.getDimensions());
   grad = 1.0;
   result.backward(grad);
 
-  mattTorch::TensorView expected(a.getDimensions());
+  mattTorch::Tensor expected(a.getDimensions());
   expected = 1.0 / b;
   return a.detachGradient() == expected;
 }
 
-bool testExponent(mattTorch::TensorView& a, int b) {
-  auto result = a.elementwiseExponent(b);
-  mattTorch::TensorView grad(result.getDimensions());
+bool testExponent(mattTorch::Tensor& a, int b) {
+  mattTorch::Tensor result = a.elementwiseExponent(b);
+  mattTorch::Tensor grad(result.getDimensions());
   grad = 1.0;
   result.backward(grad);
 
-  mattTorch::TensorView expected(a.getDimensions());
+  mattTorch::Tensor expected(a.getDimensions());
   expected.setRequiresGrad(false);
+
   double* expData = expected.getData();
   double* aData = a.getData();
+
   for (int i = 0; i < a.getNValues(); i++) {
     expData[i] = b * std::pow(aData[i], b - 1);
   }
@@ -87,58 +66,52 @@ bool testExponent(mattTorch::TensorView& a, int b) {
 
 // ============ Inplace Tests ============
 
-bool testInplaceScalarAdd(mattTorch::TensorView& a, double b) {
+bool testInplaceScalarAdd(mattTorch::Tensor& a, double b) {
   a += b;
-  mattTorch::TensorView grad(a.getDimensions());
+  mattTorch::Tensor grad(a.getDimensions());
   grad = 1.0;
   a.backward(grad);
 
   return a.detachGradient() == grad;
 }
 
-bool testInplaceScalarSub(mattTorch::TensorView& a, double b) {
+bool testInplaceScalarSub(mattTorch::Tensor& a, double b) {
   a -= b;
-  mattTorch::TensorView grad(a.getDimensions());
+  mattTorch::Tensor grad(a.getDimensions());
   grad = 1.0;
   a.backward(grad);
 
   return a.detachGradient() == grad;
 }
 
-bool testInplaceScalarMul(mattTorch::TensorView& a, double b) {
+bool testInplaceScalarMul(mattTorch::Tensor& a, double b) {
   a *= b;
-  mattTorch::TensorView grad(a.getDimensions());
+  mattTorch::Tensor grad(a.getDimensions());
   grad = 1.0;
   a.backward(grad);
 
-  mattTorch::TensorView expected(a.getDimensions());
+  mattTorch::Tensor expected(a.getDimensions());
   expected = b;
   return a.detachGradient() == expected;
 }
 
-bool testInplaceScalarDiv(mattTorch::TensorView& a, double b) {
+bool testInplaceScalarDiv(mattTorch::Tensor& a, double b) {
   a /= b;
-  mattTorch::TensorView grad(a.getDimensions());
+  mattTorch::Tensor grad(a.getDimensions());
   grad = 1.0;
   a.backward(grad);
 
-  mattTorch::TensorView expected(a.getDimensions());
+  mattTorch::Tensor expected(a.getDimensions());
   expected = 1.0 / b;
   return a.detachGradient() == expected;
 }
 
-// ============ Test Runner ============
-
-void run(const std::string& name, bool passed) {
-  std::cout << name << ": " << (passed ? "PASSED" : "FAILED") << std::endl;
-}
-
 int main() {
-  auto a1 = randomTensor(6, 6);
-  auto a2 = randomTensor(6, 6);
-  auto a3 = randomTensor(6, 6);
-  auto a4 = randomTensor(6, 6);
-  auto a5 = randomTensor(6, 6);
+  mattTorch::Tensor a1 = randomTensor({6, 6});
+  mattTorch::Tensor a2 = randomTensor({6, 6});
+  mattTorch::Tensor a3 = randomTensor({6, 6});
+  mattTorch::Tensor a4 = randomTensor({6, 6});
+  mattTorch::Tensor a5 = randomTensor({6, 6});
   double b = randomScalar();
 
   run("Scalar Add", testScalarAdd(a1, b));
@@ -147,10 +120,10 @@ int main() {
   run("Scalar Div", testScalarDiv(a4, b));
   run("Exponent", testExponent(a5, 3));
 
-  auto a6 = randomTensor(6, 6);
-  auto a7 = randomTensor(6, 6);
-  auto a8 = randomTensor(6, 6);
-  auto a9 = randomTensor(6, 6);
+  mattTorch::Tensor a6 = randomTensor({6, 6});
+  mattTorch::Tensor a7 = randomTensor({6, 6});
+  mattTorch::Tensor a8 = randomTensor({6, 6});
+  mattTorch::Tensor a9 = randomTensor({6, 6});
 
   run("Inplace Scalar Add", testInplaceScalarAdd(a6, b));
   run("Inplace Scalar Sub", testInplaceScalarSub(a7, b));

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "mattTorch/tensor/tensorView/tensorView.h"
+#include "mattTorch/tensor/tensor/tensor.h"
 #include <mattTorch/function/gradFunction.h>
 
 
@@ -37,7 +37,7 @@ class GradLog : public GradFunction {
 private:
   /// The input tensor from the forward pass, required for computing the
   /// gradient as 1/A
-  TensorView savedTensor;
+  Tensor savedTensor;
 
   /// Pointer to the GradFunction object of the parent tensor in the
   /// computational graph
@@ -56,7 +56,7 @@ public:
    * @param nextFunction A vector containing a shared pointer to the
    * GradFunction object of the parent tensor for gradient propagation
    */
-  GradLog(TensorView savedTensor,
+  GradLog(Tensor savedTensor,
              std::vector<std::shared_ptr<GradFunction>> nextFunction);
 
   /**
@@ -79,6 +79,6 @@ public:
    * graph during the backward pass for higher-order derivatives; if false,
    * disables gradient tracking on saved tensors
    */
-  void backward(TensorView &inputGradient, bool higherDerivative) override;
+  void backward(Tensor &inputGradient, bool higherDerivative) override;
 };
 }

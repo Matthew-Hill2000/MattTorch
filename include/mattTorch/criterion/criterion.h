@@ -1,5 +1,5 @@
 #pragma once
-#include "mattTorch/tensor/tensorView/tensorView.h"
+#include "mattTorch/tensor/tensor/tensor.h"
 namespace mattTorch {
 
 /**
@@ -12,7 +12,7 @@ namespace mattTorch {
  * loss tensor participates in the computational graph, allowing gradients to
  * be propagated back through the loss function during backpropagation.
  *
- * @see TensorView for the tensor class used to represent inputs, targets and
+ * @see Tensor for the tensor class used to represent inputs, targets and
  * loss values.
  */
 class Criterion {
@@ -28,9 +28,9 @@ class Criterion {
    *
    * @param input The predicted values produced by the network
    * @param target The ground truth target values
-   * @return A TensorView containing the computed loss value
+   * @return A Tensor containing the computed loss value
    */
-  virtual TensorView calculateLoss(TensorView& input, TensorView& target) = 0;
+  virtual Tensor calculateLoss(Tensor& input, Tensor& target) = 0;
 
   /**
    * @brief Virtual destructor for safe polymorphic destruction

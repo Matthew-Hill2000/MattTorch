@@ -1,22 +1,29 @@
 #include <mattTorch/function/multiplication/gradMultiplyMatrix.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
+
+#include <cassert>
+#include <utility>
 
 namespace mattTorch::function {
 
 GradMultiplyMatrix::GradMultiplyMatrix(
-    std::vector<TensorView> savedTensors,
+    std::vector<Tensor> savedTensors,
     std::vector<std::shared_ptr<GradFunction>> nextFunctions)
-    : savedTensors{savedTensors}, nextFunctions{nextFunctions} {}
+    : savedTensors{std::move(savedTensors)},
+      nextFunctions{std::move(nextFunctions)} {}
 
-void GradMultiplyMatrix::backward(TensorView& inputGradient,
+void GradMultiplyMatrix::backward(Tensor& inputGradient,
                                   bool higherDerivative) {
+  assert(savedTensors.size() == 2);
+  assert(nextFunctions.size() == 2);
+
   if (!higherDerivative) {
     savedTensors[0].setRequiresGrad(false);
     savedTensors[1].setRequiresGrad(false);
   }
-  TensorView outputGradLHS =
+  Tensor outputGradLHS =
       inputGradient.transposeMultiply(savedTensors[1], false);
-  TensorView outputGradRHS =
+  Tensor outputGradRHS =
       savedTensors[0].transposeMultiply(inputGradient, true);
 
   if (nextFunctions[0] != nullptr) {

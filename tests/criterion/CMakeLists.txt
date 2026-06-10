@@ -1,13 +1,13 @@
-add_executable(criterionTests
-    criterionTest.cpp
-)
+add_executable(criterionAccuracyTests criterionAccuracyTest.cpp)
 
-target_link_libraries(criterionTests
-    PRIVATE mattTorch::mattTorch
-)
+add_executable(criterionSpeedTests criterionSpeedTest.cpp)
 
-set_target_properties(
-    criterionTests
-    PROPERTIES
-        FOLDER "tests/criterion/"
-)
+target_link_libraries(criterionAccuracyTests PRIVATE mattTorch::mattTorch)
+
+target_include_directories(criterionAccuracyTests PRIVATE ${TESTS_COMMON_DIR})
+
+target_link_libraries(criterionSpeedTests PRIVATE mattTorch::mattTorch)
+target_include_directories(criterionSpeedTests PRIVATE ${TESTS_COMMON_DIR})
+
+set_target_properties(criterionAccuracyTests criterionSpeedTests PROPERTIES FOLDER
+                                                                            "tests/criterion/")

@@ -1,5 +1,0 @@
-<map id="mattTorch::function::GradMean::backward" name="mattTorch::function::GradMean::backward">
-<area shape="rect" id="Node000001" title="Computes and propagates gradients for the mean operation." alt="" coords="5,5,159,48"/>
-<area shape="rect" id="Node000002" href="$classmattTorch_1_1TensorView.html#a86a90cc1d974b9595e0f6c77f6a6263b" title="Returns a raw pointer to the underlying contiguous data storage." alt="" coords="207,5,362,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,24,194,26,188,27,159,29"/>
-</map>

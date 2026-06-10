@@ -41,7 +41,7 @@ class GradMultiply : public GradFunction {
  private:
   /// The input tensors from the forward pass, required for computing gradients
   /// during backpropagation
-  std::vector<TensorView> savedTensors;
+  std::vector<Tensor> savedTensors;
 
   /// Pointers to the GradFunction objects of the parent tensors in the
   /// computational graph
@@ -60,7 +60,7 @@ class GradMultiply : public GradFunction {
    * @param nextFunctions A vector containing shared pointers to the
    * GradFunction objects of the parent tensors for gradient propagation
    */
-  GradMultiply(std::vector<TensorView> savedTensors,
+  GradMultiply(std::vector<Tensor> savedTensors,
                std::vector<std::shared_ptr<GradFunction>> nextFunctions);
 
   /**
@@ -84,6 +84,6 @@ class GradMultiply : public GradFunction {
    * graph during the backward pass for higher-order derivatives; if false,
    * disables gradient tracking on saved tensors
    */
-  void backward(TensorView& inputGradient, bool higherDerivative) override;
+  void backward(Tensor& inputGradient, bool higherDerivative) override;
 };
 }  // namespace mattTorch::function

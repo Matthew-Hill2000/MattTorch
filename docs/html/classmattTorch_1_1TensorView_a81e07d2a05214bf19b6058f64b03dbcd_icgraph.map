@@ -1,7 +1,0 @@
-<map id="mattTorch::TensorView::matrixMultiply" name="mattTorch::TensorView::matrixMultiply">
-<area shape="rect" id="Node000001" title="Matrix multiplication of two Tensors." alt="" coords="232,51,387,93"/>
-<area shape="rect" id="Node000002" href="$classmattTorch_1_1function_1_1GradTransposeMatrix.html#a2a672419dc53eee8e4371114edd806d1" title="Computes and propagates gradients for the transposed matrix multiplication operation." alt="" coords="17,5,172,64"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="214,56,172,51,172,45,219,55"/>
-<area shape="rect" id="Node000003" href="$classmattTorch_1_1FullyConnectedLayer.html#aedc671a5d50953e0f4f9342c7af8c687" title="Performs the forward pass of this fully connected layer." alt="" coords="5,88,184,131"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="214,89,185,96,184,91,219,88"/>
-</map>

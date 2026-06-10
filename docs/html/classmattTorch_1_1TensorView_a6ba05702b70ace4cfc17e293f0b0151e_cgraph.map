@@ -1,9 +1,0 @@
-<map id="mattTorch::TensorView::operator+=" name="mattTorch::TensorView::operator+=">
-<area shape="rect" id="Node000001" title="In&#45;place addition of a scalar to all elements of this Tensor." alt="" coords="5,72,161,115"/>
-<area shape="rect" id="Node000002" href="$classmattTorch_1_1TensorView.html#a86a90cc1d974b9595e0f6c77f6a6263b" title="Returns a raw pointer to the underlying contiguous data storage." alt="" coords="209,5,364,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,69,207,52,202,55,151,74"/>
-<area shape="rect" id="Node000003" href="$classmattTorch_1_1TensorView.html#a254bbcb6575618123825a826fded2022" title="Sets the pointer to the GradFunction object for this tensor." alt="" coords="209,72,364,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,91,196,93,190,94,161,96"/>
-<area shape="rect" id="Node000004" href="$classmattTorch_1_1TensorView.html#ae335ce0265d9a831f17cba989017d6ab" title="Default constructor creating an empty TensorView." alt="" coords="209,139,364,181"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="150,113,207,133,202,134,150,118"/>
-</map>

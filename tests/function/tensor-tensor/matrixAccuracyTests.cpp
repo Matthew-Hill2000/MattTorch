@@ -1,109 +1,99 @@
 #include <mattTorch/mattTorch.h>
 
-#include <chrono>
-#include <iostream>
-#include <random>
-
-mattTorch::TensorView randomTensor(int rows, int cols) {
-  static unsigned seed =
-      std::chrono::system_clock::now().time_since_epoch().count();
-  static std::default_random_engine gen(seed);
-  std::normal_distribution<double> dist(0.0, 1.0);
-
-  mattTorch::TensorView t({rows, cols});
-  double* data = t.getData();
-  for (int i = 0; i < t.getNValues(); i++) {
-    data[i] = dist(gen);
-  }
-  return t;
-}
+#include "common/testUtils.h"
 
 // ============ Tests ============
 
-bool testMatMul(mattTorch::TensorView& a, mattTorch::TensorView& b) {
-  auto c = a.matrixMultiply(b);
-  mattTorch::TensorView grad(c.getDimensions());
+bool testMatMul(mattTorch::Tensor& a, mattTorch::Tensor& b) {
+  mattTorch::Tensor c = a.matrixMultiply(b);
+  mattTorch::Tensor grad(c.getDimensions());
   grad = 1.0;
   c.backward(grad);
 
-  mattTorch::TensorView aGrad(a.getDimensions());
-  mattTorch::TensorView bGrad(b.getDimensions());
+  mattTorch::Tensor aGrad(a.getDimensions());
+  mattTorch::Tensor bGrad(b.getDimensions());
 
-  int m = a.getDimensions()[0], k = a.getDimensions()[1],
-      n = b.getDimensions()[1];
+  int I = a.getDimensions()[0], K = a.getDimensions()[1],
+      J = b.getDimensions()[1];
 
-  for (int i = 0; i < m; i++)
-    for (int j = 0; j < k; j++)
-      for (int l = 0; l < n; l++) aGrad[{i, j}] += grad[{i, l}] * b[{j, l}];
+  for (int i = 0; i < I; i++)
+    for (int k = 0; k < K; k++)
+      for (int j = 0; j < J; j++) {
+        aGrad[{i, k}] += grad[{i, j}] * b[{k, j}];
+      }
 
-  for (int i = 0; i < k; i++)
-    for (int j = 0; j < n; j++)
-      for (int l = 0; l < m; l++) bGrad[{i, j}] += a[{l, i}] * grad[{l, j}];
+  for (int k = 0; k < K; k++)
+    for (int j = 0; j < J; j++)
+      for (int i = 0; i < I; i++) {
+        bGrad[{k, j}] += a[{i, k}] * grad[{i, j}];
+      }
 
   return a.detachGradient() == aGrad && b.detachGradient() == bGrad;
 }
 
-bool testTransposeLHS(mattTorch::TensorView& a, mattTorch::TensorView& b) {
-  auto c = a.transposeMultiply(b, true);
-  mattTorch::TensorView grad(c.getDimensions());
+bool testTransposeLHS(mattTorch::Tensor& a, mattTorch::Tensor& b) {
+  mattTorch::Tensor c = a.transposeMultiply(b, true);
+  mattTorch::Tensor grad(c.getDimensions());
   grad = 1.0;
   c.backward(grad);
 
-  mattTorch::TensorView aGrad(a.getDimensions());
-  mattTorch::TensorView bGrad(b.getDimensions());
+  mattTorch::Tensor aGrad(a.getDimensions());
+  mattTorch::Tensor bGrad(b.getDimensions());
 
-  int m = a.getDimensions()[0], n = a.getDimensions()[1],
-      k = b.getDimensions()[1];
+  int I = a.getDimensions()[0], J = a.getDimensions()[1],
+      K = b.getDimensions()[1];
 
-  for (int p = 0; p < m; p++)
-    for (int q = 0; q < n; q++)
-      for (int j = 0; j < k; j++) aGrad[{p, q}] += grad[{q, j}] * b[{p, j}];
+  for (int i = 0; i < I; i++)
+    for (int j = 0; j < J; j++)
+      for (int k = 0; k < K; k++) {
+        aGrad[{i, j}] += grad[{j, k}] * b[{i, k}];
+      }
 
-  for (int p = 0; p < m; p++)
-    for (int q = 0; q < k; q++)
-      for (int i = 0; i < n; i++) bGrad[{p, q}] += a[{p, i}] * grad[{i, q}];
+  for (int i = 0; i < I; i++)
+    for (int k = 0; k < K; k++)
+      for (int j = 0; j < J; j++) {
+        bGrad[{i, k}] += a[{i, j}] * grad[{j, k}];
+      }
 
   return a.detachGradient() == aGrad && b.detachGradient() == bGrad;
 }
 
-bool testTransposeRHS(mattTorch::TensorView& a, mattTorch::TensorView& b) {
-  auto c = a.transposeMultiply(b, false);
-  mattTorch::TensorView grad(c.getDimensions());
+bool testTransposeRHS(mattTorch::Tensor& a, mattTorch::Tensor& b) {
+  mattTorch::Tensor c = a.transposeMultiply(b, false);
+  mattTorch::Tensor grad(c.getDimensions());
   grad = 1.0;
   c.backward(grad);
 
-  mattTorch::TensorView aGrad(a.getDimensions());
-  mattTorch::TensorView bGrad(b.getDimensions());
+  mattTorch::Tensor aGrad(a.getDimensions());
+  mattTorch::Tensor bGrad(b.getDimensions());
 
-  int m = a.getDimensions()[0], n = a.getDimensions()[1],
-      k = b.getDimensions()[0];
+  int I = a.getDimensions()[0], J = a.getDimensions()[1],
+      K = b.getDimensions()[0];
 
-  for (int p = 0; p < m; p++)
-    for (int q = 0; q < n; q++)
-      for (int j = 0; j < k; j++) aGrad[{p, q}] += grad[{p, j}] * b[{j, q}];
+  for (int i = 0; i < I; i++)
+    for (int j = 0; j < J; j++)
+      for (int k = 0; k < K; k++) {
+        aGrad[{i, j}] += grad[{i, k}] * b[{k, j}];
+      }
 
-  for (int p = 0; p < k; p++)
-    for (int q = 0; q < n; q++)
-      for (int i = 0; i < m; i++) bGrad[{p, q}] += grad[{i, p}] * a[{i, q}];
+  for (int k = 0; k < K; k++)
+    for (int j = 0; j < J; j++)
+      for (int i = 0; i < I; i++) {
+        bGrad[{k, j}] += grad[{i, k}] * a[{i, j}];
+      }
 
   return a.detachGradient() == aGrad && b.detachGradient() == bGrad;
-}
-
-// ============ Test Runner ============
-
-void run(const std::string& name, bool passed) {
-  std::cout << name << ": " << (passed ? "PASSED" : "FAILED") << std::endl;
 }
 
 int main() {
-  auto a1 = randomTensor(128, 128);
-  auto b1 = randomTensor(128, 128);
+  mattTorch::Tensor a1 = randomTensor({128, 128});
+  mattTorch::Tensor b1 = randomTensor({128, 128});
 
-  auto a2 = randomTensor(128, 64);
-  auto b2 = randomTensor(128, 96);
+  mattTorch::Tensor a2 = randomTensor({128, 64});
+  mattTorch::Tensor b2 = randomTensor({128, 96});
 
-  auto a3 = randomTensor(128, 64);
-  auto b3 = randomTensor(96, 64);
+  mattTorch::Tensor a3 = randomTensor({128, 64});
+  mattTorch::Tensor b3 = randomTensor({96, 64});
 
   run("MatMul", testMatMul(a1, b1));
   run("Transpose LHS (A^T * B)", testTransposeLHS(a2, b2));

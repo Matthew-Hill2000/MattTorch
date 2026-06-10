@@ -1,87 +1,20 @@
 #include <mattTorch/dataset/dataset.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
 
 #include <algorithm>
 #include <cassert>
 #include <cstring>
-#include <fstream>
-#include <iostream>
-#include <numeric>
 #include <random>
-#include <sstream>
-#include <stdexcept>
-#include <string>
 #include <vector>
 
 namespace mattTorch {
 
-dataset::dataset(int batchSize)
-    : numExamples(0), exampleSize(0), batchSize(batchSize) {}
-
-void dataset::loadData(const std::string& csvPath) {
-  std::ifstream file(csvPath);
-  if (!file.is_open()) {
-    throw std::runtime_error("Failed to open CSV file: " + csvPath);
-  }
-
-  std::vector<double> examplesBuffer;
-  std::vector<double> labelsBuffer;
-
-  std::string line;
-  int detectedColumnCount = -1;
-  int rowCount = 0;
-
-  // Skip header
-  std::getline(file, line);
-
-  while (std::getline(file, line)) {
-    if (line.empty()) continue;
-
-    std::stringstream ss(line);
-    std::string cell;
-    int columnCount = 0;
-
-    while (std::getline(ss, cell, ',')) {
-      double value = std::stod(cell);
-
-      if (columnCount == 0) {
-        labelsBuffer.push_back(value);
-      } else {
-        examplesBuffer.push_back(value);
-      }
-
-      columnCount++;
-    }
-
-    if (detectedColumnCount == -1) {
-      detectedColumnCount = columnCount;
-    } else {
-      assert(columnCount == detectedColumnCount &&
-             "Inconsistent number of columns in CSV");
-    }
-
-    rowCount++;
-  }
-
-  assert(rowCount > 0);
-  assert(detectedColumnCount >= 2);
-
-  numExamples = rowCount;
-  exampleSize = detectedColumnCount - 1;
-
-  assert(static_cast<int>(labelsBuffer.size()) == numExamples);
-  assert(static_cast<int>(examplesBuffer.size()) == numExamples * exampleSize);
-
-  examples = TensorView({numExamples, exampleSize});
-  labels = TensorView({numExamples, 1});
-
-  std::memcpy(examples.getData(), examplesBuffer.data(),
-              examplesBuffer.size() * sizeof(double));
-
-  std::memcpy(labels.getData(), labelsBuffer.data(),
-              labelsBuffer.size() * sizeof(double));
-
-  indices.resize(numExamples);
+dataset::dataset(int batchSize, Tensor& examples, Tensor& labels)
+    : examples{std::move(examples)},
+      labels{std::move(labels)},
+      batchSize(batchSize),
+      batchIndex{0} {
+  indices.resize(this->examples.getDimensions()[0]);
   std::iota(indices.begin(), indices.end(), 0);
 }
 
@@ -98,53 +31,48 @@ void dataset::shuffle() {
   }
 }
 
-std::vector<TensorView> dataset::getBatch(int batchIndex) {
-  assert(numExamples > 0);
+std::vector<Tensor> dataset::getBatch() {
+  assert(this->examples.getDimensions()[0] > 0);
   assert(batchSize > 0);
 
   int batchStart = batchIndex * batchSize;
-  int batchEnd = batchStart + batchSize;
+  int batchEnd =
+      std::min(batchStart + batchSize, this->examples.getDimensions()[0]);
 
-  assert(batchEnd <= numExamples && "Batch index out of range");
+  assert(batchEnd <= this->examples.getDimensions()[0] &&
+         "Batch index out of range");
 
-  TensorView batchExamples({batchSize, exampleSize});
-  TensorView batchLabels({batchSize, 1});
+  Dims batchExamplesDims = this->examples.getDimensions();
+  batchExamplesDims[0] = batchEnd - batchStart;
+  Tensor batchExamples(batchExamplesDims);
 
-  double* dstExamples = batchExamples.getData();
-  double* dstLabels = batchLabels.getData();
+  Dims batchLabelsDims = this->labels.getDimensions();
+  batchLabelsDims[0] = batchEnd - batchStart;
+  Tensor batchLabels(batchLabelsDims);
 
-  double* srcExamples = examples.getData();
-  double* srcLabels = labels.getData();
+  double* examplesData = examples.getData();
+  double* labelsData = labels.getData();
 
-  for (int j = 0; j < batchSize; ++j) {
-    int datasetIdx = indices[batchStart + j];
+  double* batchExamplesData = batchExamples.getData();
+  double* batchLabelsData = batchLabels.getData();
 
-    // Copy example row
-    std::memcpy(dstExamples + j * exampleSize,
-                srcExamples + datasetIdx * exampleSize,
-                exampleSize * sizeof(double));
+  for (int i = 0; i < batchEnd - batchStart; i++) {
+    int datasetIdx = indices[batchStart + i];
 
-    // Copy label
-    dstLabels[j] = srcLabels[datasetIdx];
+    std::memcpy(batchExamplesData + i * batchExamples.getStrides()[0],
+                examplesData + this->examples.getStrides()[0] * datasetIdx,
+                batchExamples.getStrides()[0] * sizeof(double));
+
+    std::memcpy(batchLabelsData + i * batchLabels.getStrides()[0],
+                labelsData + this->labels.getStrides()[0] * datasetIdx,
+                batchLabels.getStrides()[0] * sizeof(double));
   }
+
+  batchIndex++;
+  batchIndex = batchIndex %
+               ((examples.getDimensions()[0] + (batchSize - 1)) / batchSize);
 
   return {batchExamples, batchLabels};
-}
-
-void dataset::printNumber() {
-  TensorView number({28, 28});
-  double* numberData = number.getData();
-  double* thisData = examples.getData();
-
-  for (int i{0}; i < number.getNValues(); i++) {
-    if (thisData[i] > 50) {
-      numberData[i] = 1.11;
-    } else {
-      numberData[i] = 0.0;
-    }
-  }
-
-  std::cout << number << std::endl;
 }
 
 }  // namespace mattTorch

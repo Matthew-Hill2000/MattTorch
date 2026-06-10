@@ -2,9 +2,9 @@
 
 namespace mattTorch {
 
-TensorView Tanh::forward(TensorView& input) { return input.tanh(); }
+Tensor Tanh::forward(Tensor& input) { return input.tanh(); }
 
-std::vector<std::shared_ptr<TensorView>> Tanh::getParameters() { return {}; }
+std::vector<std::shared_ptr<Tensor>> Tanh::getParameters() { return {}; }
 
 int Tanh::getNumParameters() { return 0; }
 

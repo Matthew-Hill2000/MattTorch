@@ -1,8 +1,0 @@
-<map id="mattTorch::NetworkBuilder::addLayer" name="mattTorch::NetworkBuilder::addLayer">
-<area shape="rect" id="Node000001" title="Adds a custom layer to the network." alt="" coords="5,39,182,81"/>
-<area shape="rect" id="Node000002" href="$classmattTorch_1_1Layer.html#ae2081002ad607f80ec045c8dedd23bbf" title="Returns shared pointers to all learnable parameter tensors in this layer." alt="" coords="230,5,442,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,42,241,34,236,36,183,48"/>
-<area shape="rect" id="Node000003" href="$classmattTorch_1_1NetworkBuilder.html#aae593fdd009e261e86aed4c3da28d54e" title="Default constructor creating an empty NetworkBuilder." alt="" coords="248,80,424,123"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="182,72,235,83,230,84,182,78"/>
-<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="290,78,288,70,296,61,312,55,336,53,362,56,379,65,374,64,360,61,336,59,313,61,299,65,293,71,295,81"/>
-</map>

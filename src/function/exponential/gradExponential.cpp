@@ -1,18 +1,23 @@
 
-
 #include <mattTorch/function/exponential/gradExponential.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
+
+#include <cassert>
+#include <utility>
 
 namespace mattTorch::function {
 GradExponential::GradExponential(
-    TensorView savedTensor,
+    Tensor savedTensor,
     std::vector<std::shared_ptr<GradFunction>> nextFunctions)
-    : savedTensor{savedTensor}, nextFunctions{nextFunctions} {
+    : savedTensor{std::move(savedTensor)},
+      nextFunctions{std::move(nextFunctions)} {
 }
 
-void GradExponential::backward(TensorView& inputGradient,
+void GradExponential::backward(Tensor& inputGradient,
                                bool higherDerivative) {
-  TensorView outputGrad = inputGradient * savedTensor.exponential();
+  assert(nextFunctions.size() == 1);
+
+  Tensor outputGrad = inputGradient * savedTensor.exponential();
   if (nextFunctions[0] != nullptr) {
     nextFunctions[0]->backward(outputGrad, higherDerivative);
   }

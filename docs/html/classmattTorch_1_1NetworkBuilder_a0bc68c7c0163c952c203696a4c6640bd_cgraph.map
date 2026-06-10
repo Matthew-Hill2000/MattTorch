@@ -1,7 +1,0 @@
-<map id="mattTorch::NetworkBuilder::build" name="mattTorch::NetworkBuilder::build">
-<area shape="rect" id="Node000001" title="Builds and returns the configured Network." alt="" coords="5,39,182,81"/>
-<area shape="rect" id="Node000002" href="$classmattTorch_1_1Network.html#a7f1016389a1d8e85d797a8e52cac8832" title="Adds a single layer to the end of the network." alt="" coords="230,5,366,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,43,217,39,212,41,183,48"/>
-<area shape="rect" id="Node000003" href="$classmattTorch_1_1Network.html#ae2f1e3bca144800e2b3713cf20dc8a36" title="Adds a learnable parameter tensor to the network." alt="" coords="230,72,366,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="182,72,217,80,212,80,182,77"/>
-</map>

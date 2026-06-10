@@ -1,16 +1,14 @@
 #include <mattTorch/function/accumulator/gradAccumulator.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
 
 #include <cstring>
 
 namespace mattTorch::function {
-GradAccumulator::GradAccumulator(std::shared_ptr<TensorView> gradient,
-                                 const std::vector<int> dims)
+GradAccumulator::GradAccumulator(std::shared_ptr<Tensor> gradient, Dims dims)
     : gradient{gradient}, dims{dims} {}
 
-void GradAccumulator::backward(TensorView& inputGradient,
-                               bool higherDerivative) {
-  if (gradient->getHasGrad() == false) {
+void GradAccumulator::backward(Tensor& inputGradient, bool higherDerivative) {
+  if (!gradient->getHasGrad()) {
     std::memcpy(gradient->getData(), inputGradient.getData(),
                 gradient->getNValues() * sizeof(double));
 
@@ -18,21 +16,15 @@ void GradAccumulator::backward(TensorView& inputGradient,
       gradient->setGradFunction(inputGradient.getGradFunction());
       gradient->setRequiresGrad(true);
     }
+
     gradient->setHasGrad(true);
-  } else {
-    if (higherDerivative) {
-      *gradient += inputGradient;
-    } else {
-      double* gradData = gradient->getData();
-      double* inputData = inputGradient.getData();
-      int nVals = gradient->getNValues();
-      for (int i = 0; i < nVals; i++) {
-        gradData[i] += inputData[i];
-      }
-    }
+    return;
   }
+
+  *gradient += inputGradient;
 }
-void GradAccumulator::setGradient(std::shared_ptr<TensorView> newGrad) {
+
+void GradAccumulator::setGradient(std::shared_ptr<Tensor> newGrad) {
   gradient = newGrad;
 }
 }  // namespace mattTorch::function

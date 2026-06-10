@@ -48,7 +48,7 @@ class GradBroadcast : public GradFunction {
  private:
   /// The input tensor from the forward pass, saved to determine the shape for
   /// gradient reduction
-  TensorView savedTensor;
+  Tensor savedTensor;
 
   /// The position (dimension index) at which broadcasting was performed in the
   /// forward pass
@@ -74,7 +74,7 @@ class GradBroadcast : public GradFunction {
    * @param nextFunctions A vector containing a shared pointer to the
    * GradFunction object of the parent tensor for gradient propagation
    */
-  GradBroadcast(TensorView savedTensor, int broadcastPos,
+  GradBroadcast(Tensor savedTensor, int broadcastPos,
                 std::vector<std::shared_ptr<GradFunction>> nextFunctions);
 
   /**
@@ -98,6 +98,6 @@ class GradBroadcast : public GradFunction {
    * graph during the backward pass for higher-order derivatives; if false,
    * disables gradient tracking on saved tensors
    */
-  void backward(TensorView& inputGradient, bool higherDerivative) override;
+  void backward(Tensor& inputGradient, bool higherDerivative) override;
 };
 }  // namespace mattTorch::function

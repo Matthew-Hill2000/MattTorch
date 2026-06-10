@@ -22,10 +22,14 @@ namespace mattTorch::tensor::kernels::cpu {
  * number of rows in the right-hand side matrix
  * @param rhsCols The number of columns in the right-hand side matrix
  */
-void matrixMultiplication(const double* __restrict lhs,
-                          const double* __restrict rhs,
-                          double* __restrict result, int lhsRows, int lhsCols,
-                          int rhsCols);
+void matrixMult(const double* __restrict lhs, const double* __restrict rhs,
+                double* __restrict result, int lhsRows, int lhsCols,
+                int rhsCols);
+
+void matrixMultBlockPackedVector(const double* __restrict lhs,
+                                 const double* __restrict rhs,
+                                 double* __restrict result, int lhsRows,
+                                 int lhsCols, int rhsCols);
 
 /**
  * @brief Performs matrix multiplication of two matrices with an explicit
@@ -50,10 +54,10 @@ void matrixMultiplication(const double* __restrict lhs,
  * number of rows in the right-hand side matrix
  * @param rhsCols The number of columns in the right-hand side matrix
  */
-void matrixMultiplicationInverse(const double* __restrict lhs,
-                                 const double* __restrict rhs,
-                                 double* __restrict result, int lhsRows,
-                                 int lhsCols, int rhsCols);
+void matrixMultTranspose(const double* __restrict lhs,
+                         const double* __restrict rhs,
+                         double* __restrict result, int lhsRows, int lhsCols,
+                         int rhsCols);
 
 /**
  * @brief Performs matrix multiplication of two matrices with an explicit
@@ -81,10 +85,10 @@ void matrixMultiplicationInverse(const double* __restrict lhs,
  * number of rows in the right-hand side matrix
  * @param rhsCols The number of columns in the right-hand side matrix
  */
-void matrixMultiplicationInverseVector(const double* __restrict lhs,
-                                       const double* __restrict rhs,
-                                       double* __restrict result, int lhsRows,
-                                       int lhsCols, int rhsCols);
+void matrixMultTransposeVector(const double* __restrict lhs,
+                               const double* __restrict rhs,
+                               double* __restrict result, int lhsRows,
+                               int lhsCols, int rhsCols);
 
 /**
  * @brief Performs matrix multiplication of two matrices using cache blocking
@@ -115,10 +119,10 @@ void matrixMultiplicationInverseVector(const double* __restrict lhs,
  * number of rows in the right-hand side matrix
  * @param rhsCols The number of columns in the right-hand side matrix
  */
-void matrixMultiplicationBlock(const double* __restrict lhs,
-                               const double* __restrict rhs,
-                               double* __restrict result, int lhsRows,
-                               int lhsCols, int rhsCols);
+void matrixMultBlockTranspose(const double* __restrict lhs,
+                              const double* __restrict rhs,
+                              double* __restrict result, int lhsRows,
+                              int lhsCols, int rhsCols);
 /**
  * @brief Performs matrix multiplication of two matrices using AVX2 SIMD
  * intrinsics with cache blocking and OpenMP parallelisation
@@ -162,10 +166,10 @@ void matrixMultiplicationBlock(const double* __restrict lhs,
  * number of rows in the right-hand side matrix
  * @param rhsCols The number of columns in the right-hand side matrix
  */
-void matrixMultiplicationBlockVector(const double* __restrict lhs,
-                                     const double* __restrict rhs,
-                                     double* __restrict result, int lhsRows,
-                                     int lhsCols, int rhsCols);
+void matrixMultBlockTransposeVector(const double* __restrict lhs,
+                                    const double* __restrict rhs,
+                                    double* __restrict result, int lhsRows,
+                                    int lhsCols, int rhsCols);
 
 /**
  * @brief Performs matrix multiplication of the transpose of the left-hand
@@ -212,11 +216,10 @@ void matrixMultiplicationBlockVector(const double* __restrict lhs,
  * @param rhsCols The number of columns in the right-hand side matrix and the
  * number of columns in the result matrix
  */
-void transposeMultiplicationBlockVectorLHS(const double* __restrict lhs,
-                                           const double* __restrict rhs,
-                                           double* __restrict result,
-                                           int lhsRows, int lhsCols,
-                                           int rhsCols);
+void transposeMultBlockVectorLHS(const double* __restrict lhs,
+                                 const double* __restrict rhs,
+                                 double* __restrict result, int lhsRows,
+                                 int lhsCols, int rhsCols);
 
 /**
  * @brief Performs matrix multiplication of the left-hand side matrix with
@@ -264,9 +267,8 @@ void transposeMultiplicationBlockVectorLHS(const double* __restrict lhs,
  * @param rhsRows The number of rows in the right-hand side matrix and the
  * number of columns in the result matrix
  */
-void transposeMultiplicationBlockVectorRHS(const double* __restrict lhs,
-                                           const double* __restrict rhs,
-                                           double* __restrict result,
-                                           int lhsRows, int lhsCols,
-                                           int rhsRows);
+void transposeMultBlockVectorRHS(const double* __restrict lhs,
+                                 const double* __restrict rhs,
+                                 double* __restrict result, int lhsRows,
+                                 int lhsCols, int rhsRows);
 }  // namespace mattTorch::tensor::kernels::cpu

@@ -1,6 +1,6 @@
 #pragma once
 #include <mattTorch/layer/layer.h>
-#include <mattTorch/tensor/tensorView/tensorView.h>
+#include <mattTorch/tensor/tensor/tensor.h>
 namespace mattTorch {
 
 /**
@@ -12,10 +12,10 @@ namespace mattTorch {
  *     f(x) = \tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}
  * @f]
  * to the input tensor during the forward pass by delegating to
- * TensorView::tanh(). This layer contains no learnable parameters.
+ * Tensor::tanh(). This layer contains no learnable parameters.
  *
  * @see Layer for the base class from which this class derives.
- * @see TensorView::tanh() for the underlying tensor operation that performs
+ * @see Tensor::tanh() for the underlying tensor operation that performs
  * the elementwise tanh computation and constructs the computational graph
  * node.
  */
@@ -28,20 +28,20 @@ class Tanh : public Layer {
    * @brief Performs the forward pass of this Tanh activation layer
    *
    * Applies the tanh function elementwise to the input tensor by delegating
-   * to TensorView::tanh().
+   * to Tensor::tanh().
    *
    * @param input The input tensor to apply Tanh activation to
-   * @return A TensorView containing the output with tanh applied to all
+   * @return A Tensor containing the output with tanh applied to all
    * elements
    */
-  TensorView forward(TensorView& input) override;
+  Tensor forward(Tensor& input) override;
 
   /**
    * @brief Returns an empty vector as this layer has no learnable parameters
    *
    * @return An empty vector
    */
-  std::vector<std::shared_ptr<TensorView>> getParameters() override;
+  std::vector<std::shared_ptr<Tensor>> getParameters() override;
 
   /**
    * @brief Returns zero as this layer has no learnable parameters

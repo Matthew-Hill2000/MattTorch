@@ -1,5 +1,0 @@
-<map id="mattTorch::TensorView::getDimensions" name="mattTorch::TensorView::getDimensions">
-<area shape="rect" id="Node000001" title="Returns the dimensions vector specifying the size of each dimension." alt="" coords="232,5,387,48"/>
-<area shape="rect" id="Node000002" href="$classmattTorch_1_1FullyConnectedLayer.html#aedc671a5d50953e0f4f9342c7af8c687" title="Performs the forward pass of this fully connected layer." alt="" coords="5,5,184,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,27,184,29,184,24,219,26"/>
-</map>
