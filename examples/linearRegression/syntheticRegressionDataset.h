@@ -16,8 +16,8 @@ class SyntheticRegressionDataset : public dataset {
   SyntheticRegressionDataset(GeneratedData data, int batchSize)
       : dataset(batchSize, data.inputs, data.labels) {};
 
-  static GeneratedData generate(Tensor weight, Tensor bias, double noise,
-                                int numTrain) {
+  static GeneratedData generate(const Tensor& weight, const Tensor& bias,
+                                double noise, int numTrain) {
     Tensor inputs({numTrain, weight.getNValues()});
     Tensor error({numTrain, 1});
 
