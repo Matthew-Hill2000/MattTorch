@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <iostream>
 #include <memory>
+#include <plotlypp/traits.hpp>
 #include <sstream>
 
 #include "mattTorch/tensor/tensor/tensorTypes.h"
@@ -195,3 +196,4 @@ std::ostream& operator<<(std::ostream& out, const Tensor& tensor) {
   return out;
 }
 }  // namespace mattTorch
+   //

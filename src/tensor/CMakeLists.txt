@@ -12,4 +12,5 @@ target_sources(
           tensor/tensor.cpp
           tensor/tensorAccesssors.cpp
           tensor/tensorBackProp.cpp
-          tensor/tensorOverloads.cpp)
+          tensor/tensorOverloads.cpp
+          tensor/json_support.cpp)

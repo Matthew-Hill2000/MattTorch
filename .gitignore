@@ -10,6 +10,7 @@ docs/html
 # Generated files
 compile_commands.json
 git_message.txt
+js/
 
 # Editor/IDE
 .cache/
@@ -19,6 +20,7 @@ git_message.txt
 *.swo
 .vscode/
 .idea/
+*.html
 
 # OS
 .DS_Store

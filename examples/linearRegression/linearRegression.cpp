@@ -1,45 +1,60 @@
 #include <mattTorch/mattTorch.h>
 
-#include <cmath>
-#include <iomanip>
 #include <iostream>
+#include <plotlypp/figure.hpp>
+#include <plotlypp/traces/scatter.hpp>
 
-#include "mattTorch/dataset/dataset.h"
 #include "mattTorch/optimiser/sgd/sgd.h"
-#include "mattTorch/tensor/tensor/tensor.h"
+#include "syntheticRegressionDataset.h"
+
+// Regression problems are concerned with the prediction of numerical values,
+// though not every prediction problem is a regression problem. We typically
+// might want to develop a model for predicting some numerical value, given
+// some collection of input values. When training the model to perform this
+// prediction, the entire dataset is called the training dataset, each input to
+// the model is known as an example. The expected output is known as the
+// label and the associated input variables are known as the features.
+//
+// Linear regression is the simplest tool for tackling regession problems and it
+// relies on a few simplifying assumptions. First, we assume that the
+// relationship between the features and targets is linear, i.e that the
+// conditional mean E[Y | X=x] can be expressed as a weighted sum of features.
+// This allows that the target value may still deviate from its expected value
+// on account of observation noise. Next, we assume that any such noies is well
+// behaved, following a Gaussian distribution. We typically denote number of
+// examples in our dataset with n and we use superscripts to enumerate samples
+// and targets and subscripts to index coordinates. So, x^i_j denotes the jth
+// coordinate of the ith sample.
 
 int main() {
-  double LearningRate{0.1};
-  int NUMEPOCHS{3000};
+  double LearningRate{0.01};
+  int NUMEPOCHS{600};
   int NUMSAMPLES{1000};
-  int BATCHSIZE{256};
+  int BATCHSIZE{32};
   int NUMBATCHES = (NUMSAMPLES + (BATCHSIZE - 1)) / BATCHSIZE;
+  int NUMINPUTS{2};
 
-  mattTorch::Network net = mattTorch::NetworkBuilder()
-                               .addFullyConnectedLayer(1, 64)
-                               .addTanhLayer()
-                               .addFullyConnectedLayer(64, 64)
-                               .addTanhLayer()
-                               .addFullyConnectedLayer(64, 1)
-                               .build();
+  mattTorch::Network net =
+      mattTorch::NetworkBuilder().addFullyConnectedLayer(NUMINPUTS, 1).build();
 
   mattTorch::SGD sgd(net.getParameters(), LearningRate);
   mattTorch::criterion::MSELoss mse;
 
   // Generate training data as vectors of individual tensors
-  mattTorch::Tensor inputs({NUMSAMPLES, 1});
-  mattTorch::Tensor targets({NUMSAMPLES, 1});
-  targets.setRequiresGrad(false);
 
-  for (int i = 0; i < NUMSAMPLES; i++) {
-    double x = -3.14159 + (6.28318 * i / NUMSAMPLES);
-    double y = std::sin(x);
+  std::vector<double> epochs;
+  std::vector<double> lossValues;
 
-    inputs[{i, 0}] = x;
-    targets[{i, 0}] = y;
-  }
+  mattTorch::Tensor weights({NUMINPUTS, 1});
+  mattTorch::Tensor bias({1});
 
-  mattTorch::dataset data(BATCHSIZE, inputs, targets);
+  weights[{0, 0}] = 2.0;
+  weights[{1, 0}] = -3.4;
+
+  bias.setValueDirect(0, 4.2);
+
+  mattTorch::SyntheticRegressionDataset data(weights, bias, 0.01, 1000,
+                                             BATCHSIZE);
 
   // Training loop
   for (int epoch = 0; epoch < NUMEPOCHS; epoch++) {
@@ -59,31 +74,43 @@ int main() {
     }
     data.shuffle();
 
-    if (epoch % 500 == 0) {
-      std::cout << "Epoch " << epoch << " Loss: " << epoch_loss / NUMSAMPLES
+    lossValues.push_back(epoch_loss / NUMBATCHES);
+    epochs.push_back(epoch);
+
+    if (epoch % 50 == 0) {
+      std::cout << "Epoch " << epoch << " Loss: " << epoch_loss / NUMBATCHES
                 << std::endl;
     }
   }
 
   // Test
   std::cout << "\nTesting:\n";
-  std::cout << std::left << std::setw(12) << "x" << std::setw(14) << "predicted"
-            << std::setw(14) << "actual" << std::setw(14) << "error" << '\n';
 
-  for (int i = 0; i < 10; i++) {
-    double x = -3.14159 + (6.28318 * i / 10);
+  std::cout << "Trained weight values: \n" << *(net.getParameters()[0]) << "\n";
+  std::cout << "Trained bias values: \n" << *(net.getParameters()[1]) << "\n";
 
-    mattTorch::Tensor testInput({1, 1});
-    testInput.setRequiresGrad(false);
-    testInput.getData()[0] = x;
+  // Plot
+  auto scatterPlot = plotlypp::Scatter()
+                         .x(epochs)
+                         .y(lossValues)
+                         .mode({plotlypp::Scatter::Mode::Lines,
+                                plotlypp::Scatter::Mode::Markers})
+                         .name("Loss against Epoch");
 
-    mattTorch::Tensor pred = net.forward(testInput);
-    double predicted = pred.getData()[0];
-    double actual = std::sin(x);
+  auto layout = plotlypp::Layout()
+                    .title(plotlypp::Layout::Title().text("Loss against epoch"))
+                    .xaxis(plotlypp::Layout::Xaxis().title(
+                        plotlypp::Layout::Xaxis::Title().text("Epoch")))
+                    .yaxis(plotlypp::Layout::Yaxis().title(
+                        plotlypp::Layout::Yaxis::Title().text("Loss")));
 
-    std::cout << std::left << std::setw(12) << x << std::setw(14) << predicted
-              << std::setw(14) << actual << std::setw(14)
-              << std::abs(predicted - actual) << '\n';
-  }
+  auto figure = plotlypp::Figure()
+                    .addTrace(std::move(scatterPlot))
+                    .setLayout(std::move(layout));
+
+  figure.show();
+
+  figure.writeHtml("loss_against_epoch.html");
+
   return 0;
 }

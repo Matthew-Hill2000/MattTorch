@@ -1,3 +1,1 @@
-target_sources(mattTorch PRIVATE 
-        network.cpp
-)
+target_sources(mattTorch PRIVATE network.cpp)
