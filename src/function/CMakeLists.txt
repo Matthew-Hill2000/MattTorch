@@ -1,25 +1,23 @@
 
-
-target_sources(mattTorch
-    PRIVATE
-        accumulator/gradAccumulator.cpp
-        addition/gradAdd.cpp
-        addition/gradAddScalar.cpp
-        subtraction/gradSubtract.cpp
-        subtraction/gradSubtractScalar.cpp
-        multiplication/gradMultiply.cpp
-        multiplication/gradMultiplyScalar.cpp
-        multiplication/gradMultiplyMatrix.cpp
-        multiplication/gradTransposeMatrix.cpp
-
-        division/gradDivide.cpp
-        division/gradDivideScalar.cpp
-        exponent/gradExponent.cpp
-        ReLU/gradReLU.cpp
-        reductionSum/gradReductionSum.cpp
-        broadcast/gradBroadcast.cpp
-        tanh/gradTanh.cpp
-        log/gradLog.cpp
-        mean/gradMean.cpp
-        exponential/gradExponential.cpp
-)
+target_sources(
+  mattTorch
+  PRIVATE accumulator/gradAccumulator.cpp
+          addition/gradAdd.cpp
+          addition/gradAddScalar.cpp
+          subtraction/gradSubtract.cpp
+          subtraction/gradSubtractScalar.cpp
+          multiplication/gradMultiply.cpp
+          multiplication/gradMultiplyScalar.cpp
+          multiplication/gradMultiplyMatrix.cpp
+          multiplication/gradTransposeMatrix.cpp
+          division/gradDivide.cpp
+          division/gradDivideScalar.cpp
+          exponent/gradExponent.cpp
+          ReLU/gradReLU.cpp
+          reductionSum/gradReductionSum.cpp
+          broadcast/gradBroadcast.cpp
+          tanh/gradTanh.cpp
+          log/gradLog.cpp
+          mean/gradMean.cpp
+          sum/gradSum.cpp
+          exponential/gradExponential.cpp)

@@ -305,6 +305,25 @@ Tensor Tensor::mean() {
   return result;
 }
 
+Tensor Tensor::sum() {
+  Tensor result({1});
+
+  tensor::kernels::cpu::sum(this->getData(), result.getData(), getNValues());
+
+  if (!this->gradData.requiresGrad) {
+    result.setRequiresGrad(false);
+  } else {
+    result.setRequiresGrad(true);
+    std::vector<std::shared_ptr<GradFunction>> nextFunctions;
+
+    nextFunctions.push_back(this->gradFunction);
+
+    result.setGradFunction(
+        std::make_shared<function::GradSum>(*this, nextFunctions));
+  }
+  return result;
+}
+
 Tensor Tensor::log() {
   Tensor result(tensorData.dimensions);
 

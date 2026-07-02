@@ -46,3 +46,6 @@
 
 // Tanh
 #include <mattTorch/function/tanh/gradTanh.h>
+
+// sum
+#include <mattTorch/function/sum/gradSum.h>

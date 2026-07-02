@@ -708,6 +708,8 @@ class Tensor {
    */
   Tensor mean();
 
+  Tensor sum();
+
   /**
    * @brief Matrix multiplication of two Tensors
    *

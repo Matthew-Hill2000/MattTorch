@@ -127,4 +127,22 @@ void mean(double* __restrict tensor, double* __restrict result, int nValues) {
 
   *result /= nValues;
 }
+
+void sum(double* __restrict tensor, double* __restrict result, int nValues) {
+  __m256d mean = _mm256_setzero_pd();
+  int i{0};
+  for (; i + 3 < nValues; i += 4) {
+    mean = _mm256_add_pd(mean, _mm256_load_pd(tensor + i));
+  }
+
+  __m128d lower = _mm256_castpd256_pd128(mean);
+  __m128d higher = _mm256_extractf128_pd(mean, 1);
+
+  __m128d sum = _mm_add_pd(lower, higher);
+  *result = _mm_cvtsd_f64(_mm_hadd_pd(sum, sum));
+
+  for (; i < nValues; i++) {
+    *result += tensor[i];
+  }
+}
 }  // namespace mattTorch::tensor::kernels::cpu
