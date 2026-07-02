@@ -13,34 +13,48 @@ dataset::dataset(int batchSize, Tensor examples, Tensor labels)
     : examples{std::move(examples)},
       labels{std::move(labels)},
       batchSize(batchSize),
-      batchIndex{0} {
-  indices.resize(this->examples.getDimensions()[0]);
-  std::iota(indices.begin(), indices.end(), 0);
+      trainBatchIndex{0},
+      valBatchIndex{0} {
+  trainIndices.resize(this->examples.getDimensions()[0]);
+  std::iota(trainIndices.begin(), trainIndices.end(), 0);
 }
 
 void dataset::shuffle() {
-  if (indices.size() < 2) return;
+  if (trainIndices.size() < 2) return;
 
   std::random_device rd;
   std::mt19937 gen(rd());
 
-  for (size_t i = indices.size() - 1; i > 0; --i) {
+  for (size_t i = trainIndices.size() - 1; i > 0; --i) {
     std::uniform_int_distribution<size_t> dist(0, i);
     size_t j = dist(gen);
-    std::swap(indices[i], indices[j]);
+    std::swap(trainIndices[i], trainIndices[j]);
   }
 }
 
-std::vector<Tensor> dataset::getBatch() {
+void dataset::testValSplit(double trainRatio) {
+  assert(trainRatio >= 0 && trainRatio < 1.0);
+
+  this->valIndices =
+      std::vector<int>(trainIndices.begin() + trainIndices.size() * trainRatio,
+                       trainIndices.end());
+
+  this->trainIndices =
+      std::vector<int>(trainIndices.begin(),
+                       trainIndices.begin() + trainIndices.size() * trainRatio);
+}
+
+std::vector<Tensor> dataset::getBatch(bool train) {
+  const std::vector<int>& indices = train ? trainIndices : valIndices;
+  size_t* batchIndex = train ? &trainBatchIndex : &valBatchIndex;
+
   assert(this->examples.getDimensions()[0] > 0);
   assert(batchSize > 0);
 
-  int batchStart = batchIndex * batchSize;
-  int batchEnd =
-      std::min(batchStart + batchSize, this->examples.getDimensions()[0]);
+  int batchStart = *batchIndex * batchSize;
+  int batchEnd = std::min(batchStart + batchSize, int(indices.size()));
 
-  assert(batchEnd <= this->examples.getDimensions()[0] &&
-         "Batch index out of range");
+  assert(batchEnd <= int(indices.size()) && "Batch index out of range");
 
   Dims batchExamplesDims = this->examples.getDimensions();
   batchExamplesDims[0] = batchEnd - batchStart;
@@ -68,10 +82,8 @@ std::vector<Tensor> dataset::getBatch() {
                 batchLabels.getStrides()[0] * sizeof(double));
   }
 
-  batchIndex++;
-  batchIndex = batchIndex %
-               ((examples.getDimensions()[0] + (batchSize - 1)) / batchSize);
-
+  (*batchIndex)++;
+  *batchIndex = *batchIndex % ((indices.size() + (batchSize - 1)) / batchSize);
   return {batchExamples, batchLabels};
 }
 

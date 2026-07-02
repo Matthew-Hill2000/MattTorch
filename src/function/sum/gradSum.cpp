@@ -1,4 +1,4 @@
-#include <mattTorch/function/mean/gradMean.h>
+#include <mattTorch/function/sum/gradSum.h>
 
 #include <cassert>
 #include <utility>
@@ -7,12 +7,12 @@
 
 namespace mattTorch::function {
 
-GradMean::GradMean(Tensor savedTensor,
-                   std::vector<std::shared_ptr<GradFunction>> nextFunctions)
+GradSum::GradSum(Tensor savedTensor,
+                 std::vector<std::shared_ptr<GradFunction>> nextFunctions)
     : savedTensor{std::move(savedTensor)},
       nextFunctions{std::move(nextFunctions)} {}
 
-void GradMean::backward(Tensor& inputGradient, bool higherDerivative) {
+void GradSum::backward(Tensor& inputGradient, bool higherDerivative) {
   assert(nextFunctions.size() == 1);
 
   Tensor outputGradient(savedTensor.getDimensions(), false);

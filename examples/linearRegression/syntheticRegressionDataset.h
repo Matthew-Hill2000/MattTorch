@@ -12,9 +12,6 @@ class SyntheticRegressionDataset : public dataset {
                              int numTrain, int batchSize)
       : dataset(batchSize, Tensor({numTrain, weight.getNValues()}),
                 Tensor({numTrain, 1})) {
-    Tensor inputs = this->examples;
-    Tensor labels = this->labels;
-
     const int numFeatures = weight.getNValues();
 
     std::random_device rd;
@@ -22,7 +19,7 @@ class SyntheticRegressionDataset : public dataset {
     std::normal_distribution<double> d(0.0, 1.0);
 
     for (int i = 0; i < numTrain * numFeatures; ++i) {
-      inputs.setValueDirect(i, d(gen));
+      this->examples.setValueDirect(i, d(gen));
     }
 
     Tensor error({numTrain, 1});
@@ -30,8 +27,8 @@ class SyntheticRegressionDataset : public dataset {
       error.setValueDirect(i, d(gen) * noise);
     }
 
-    labels =
-        inputs.matrixMultiply(weight) + bias.broadcast(0, numTrain) + error;
+    this->labels = this->examples.matrixMultiply(weight) +
+                   bias.broadcast(0, numTrain) + error;
   }
 };
 }  // namespace mattTorch
