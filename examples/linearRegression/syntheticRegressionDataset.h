@@ -6,42 +6,32 @@
 
 namespace mattTorch {
 
-struct GeneratedData {
-  Tensor inputs;
-  Tensor labels;
-};
-
 class SyntheticRegressionDataset : public dataset {
- private:
-  SyntheticRegressionDataset(GeneratedData data, int batchSize)
-      : dataset(batchSize, data.inputs, data.labels) {};
+ public:
+  SyntheticRegressionDataset(const Tensor& weight, Tensor& bias, double noise,
+                             int numTrain, int batchSize)
+      : dataset(batchSize, Tensor({numTrain, weight.getNValues()}),
+                Tensor({numTrain, 1})) {
+    Tensor inputs = this->examples;
+    Tensor labels = this->labels;
 
-  static GeneratedData generate(Tensor weight, Tensor bias, double noise,
-                                int numTrain) {
-    Tensor inputs({numTrain, weight.getNValues()});
-    Tensor error({numTrain, 1});
+    const int numFeatures = weight.getNValues();
 
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::normal_distribution d(0.0, 1.0);
+    std::normal_distribution<double> d(0.0, 1.0);
 
-    for (int i{0}; i < inputs.getNValues(); i++) {
+    for (int i = 0; i < numTrain * numFeatures; ++i) {
       inputs.setValueDirect(i, d(gen));
     }
 
-    for (int i{0}; i < error.getNValues(); i++) {
+    Tensor error({numTrain, 1});
+    for (int i = 0; i < numTrain; ++i) {
       error.setValueDirect(i, d(gen) * noise);
     }
 
-    Tensor labels = inputs.matrixMultiply(weight) +
-                    bias.broadcast(0, inputs.getDimensions()[0]) + error;
-    return {inputs, labels};
+    labels =
+        inputs.matrixMultiply(weight) + bias.broadcast(0, numTrain) + error;
   }
-
- public:
-  SyntheticRegressionDataset(Tensor weight, Tensor bias, double noise,
-                             int numTrain, int batchSize)
-      : SyntheticRegressionDataset(generate(weight, bias, noise, numTrain),
-                                   batchSize) {}
 };
 }  // namespace mattTorch

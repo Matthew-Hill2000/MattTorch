@@ -19,7 +19,7 @@ namespace mattTorch {
  * @see Tensor for the tensor class used to store the examples and labels.
  */
 class dataset {
- private:
+ protected:
   /// Tensor of shape (numExamples x exampleSize) holding all feature data
   Tensor examples;
 
@@ -44,7 +44,7 @@ class dataset {
    * @param examples The examples of the dataset
    * @param labels The labels of the dataset
    */
-  dataset(int batchSize, Tensor& examples, Tensor& labels);
+  dataset(int batchSize, Tensor examples, Tensor labels);
 
   /**
    * @brief Returns the next batch of examples and labels within the dataset
