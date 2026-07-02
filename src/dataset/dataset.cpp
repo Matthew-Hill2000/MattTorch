@@ -9,7 +9,7 @@
 
 namespace mattTorch {
 
-dataset::dataset(int batchSize, Tensor& examples, Tensor& labels)
+dataset::dataset(int batchSize, Tensor examples, Tensor labels)
     : examples{std::move(examples)},
       labels{std::move(labels)},
       batchSize(batchSize),
