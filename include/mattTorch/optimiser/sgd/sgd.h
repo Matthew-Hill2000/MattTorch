@@ -36,6 +36,9 @@ class SGD : public Optimiser {
   /// The learning rate controlling the step size of parameter updates
   double learningRate;
 
+  ///
+  double weightDecay;
+
  public:
   /**
    * @brief Constructs an SGD optimiser for the given parameters and learning
@@ -46,7 +49,8 @@ class SGD : public Optimiser {
    * @param learningRate The learning rate controlling the step size of
    * parameter updates
    */
-  SGD(std::vector<std::shared_ptr<Tensor>> parameters, double learningRate);
+  SGD(std::vector<std::shared_ptr<Tensor>> parameters, double learningRate,
+      double weightDecay = 0);
 
   /**
    * @brief Updates all parameters using Stochastic Gradient Descent

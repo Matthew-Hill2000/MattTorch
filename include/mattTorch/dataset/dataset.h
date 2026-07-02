@@ -28,12 +28,15 @@ class dataset {
 
   /// Index array used to define the ordering of examples, shuffled to
   /// randomise the order in which batches are drawn
-  std::vector<int> indices;
+  std::vector<int> trainIndices;
+
+  std::vector<int> valIndices;
 
   /// The number of examples per batch
   int batchSize;
 
-  size_t batchIndex;
+  size_t trainBatchIndex;
+  size_t valBatchIndex;
 
  public:
   /**
@@ -45,6 +48,8 @@ class dataset {
    * @param labels The labels of the dataset
    */
   dataset(int batchSize, Tensor examples, Tensor labels);
+
+  void testValSplit(double trainRation);
 
   /**
    * @brief Returns the next batch of examples and labels within the dataset
@@ -58,7 +63,7 @@ class dataset {
    * of shape (batchSize x exampleSize) and the batch labels of shape
    * (batchSize x labelSize)
    */
-  std::vector<Tensor> getBatch();
+  std::vector<Tensor> getBatch(bool train = true);
 
   /**
    * @brief Shuffles the ordering of examples using a Fisher-Yates shuffle

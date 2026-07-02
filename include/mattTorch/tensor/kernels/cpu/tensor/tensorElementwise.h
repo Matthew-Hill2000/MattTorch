@@ -109,4 +109,6 @@ void log(double* __restrict tensor, double* __restrict result, int nValues);
  */
 void mean(double* __restrict tensor, double* __restrict result, int nValues);
 
+void sum(double* __restrict tensor, double* __restrict result, int nValues);
+
 }  // namespace mattTorch::tensor::kernels::cpu
