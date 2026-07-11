@@ -8,6 +8,6 @@ Checks: >.clang
   -modernize-use-trailing-return-type,
   -readability-identifier-length
 
-HeaderFilterRegex: '.*mattTorch/.*'
+HeaderFilterRegex: '^(src|include)/'
 
 WarningsAsErrors: ''

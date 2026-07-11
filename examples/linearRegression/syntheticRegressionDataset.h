@@ -19,7 +19,7 @@ class SyntheticRegressionDataset : public dataset {
     std::normal_distribution<double> d(0.0, 1.0);
 
     for (int i = 0; i < numTrain * numFeatures; ++i) {
-      this->examples.setValueDirect(i, d(gen));
+      this->features.setValueDirect(i, d(gen));
     }
 
     Tensor error({numTrain, 1});
@@ -27,7 +27,7 @@ class SyntheticRegressionDataset : public dataset {
       error.setValueDirect(i, d(gen) * noise);
     }
 
-    this->labels = this->examples.matrixMultiply(weight) +
+    this->labels = this->features.matrixMultiply(weight) +
                    bias.broadcast(0, numTrain) + error;
   }
 };

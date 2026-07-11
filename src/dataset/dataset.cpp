@@ -9,13 +9,13 @@
 
 namespace mattTorch {
 
-dataset::dataset(int batchSize, Tensor examples, Tensor labels)
-    : examples{std::move(examples)},
+dataset::dataset(int batchSize, Tensor features, Tensor labels)
+    : features{std::move(features)},
       labels{std::move(labels)},
       batchSize(batchSize),
       trainBatchIndex{0},
       valBatchIndex{0} {
-  trainIndices.resize(this->examples.getDimensions()[0]);
+  trainIndices.resize(this->features.getDimensions()[0]);
   std::iota(trainIndices.begin(), trainIndices.end(), 0);
 }
 
@@ -48,7 +48,7 @@ std::vector<Tensor> dataset::getBatch(bool train) {
   const std::vector<int>& indices = train ? trainIndices : valIndices;
   size_t* batchIndex = train ? &trainBatchIndex : &valBatchIndex;
 
-  assert(this->examples.getDimensions()[0] > 0);
+  assert(this->features.getDimensions()[0] > 0);
   assert(batchSize > 0);
 
   int batchStart = *batchIndex * batchSize;
@@ -56,7 +56,7 @@ std::vector<Tensor> dataset::getBatch(bool train) {
 
   assert(batchEnd <= int(indices.size()) && "Batch index out of range");
 
-  Dims batchExamplesDims = this->examples.getDimensions();
+  Dims batchExamplesDims = this->features.getDimensions();
   batchExamplesDims[0] = batchEnd - batchStart;
   Tensor batchExamples(batchExamplesDims);
 
@@ -64,7 +64,7 @@ std::vector<Tensor> dataset::getBatch(bool train) {
   batchLabelsDims[0] = batchEnd - batchStart;
   Tensor batchLabels(batchLabelsDims);
 
-  double* examplesData = examples.getData();
+  double* featuresData = features.getData();
   double* labelsData = labels.getData();
 
   double* batchExamplesData = batchExamples.getData();
@@ -74,7 +74,7 @@ std::vector<Tensor> dataset::getBatch(bool train) {
     int datasetIdx = indices[batchStart + i];
 
     std::memcpy(batchExamplesData + i * batchExamples.getStrides()[0],
-                examplesData + this->examples.getStrides()[0] * datasetIdx,
+                featuresData + this->features.getStrides()[0] * datasetIdx,
                 batchExamples.getStrides()[0] * sizeof(double));
 
     std::memcpy(batchLabelsData + i * batchLabels.getStrides()[0],

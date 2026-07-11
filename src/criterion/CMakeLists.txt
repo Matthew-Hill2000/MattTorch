@@ -1,4 +1,2 @@
-target_sources(mattTorch PRIVATE 
-        mseLoss/mseLoss.cpp
-        crossEntropyLoss/crossEntropyLoss.cpp
-)
+target_sources(mattTorch PRIVATE mseLoss/mseLoss.cpp crossEntropyLoss/crossEntropyLoss.cpp
+                                 crossEntropyLoss/softmaxCrossEntropyLoss.cpp)
