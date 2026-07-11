@@ -18,6 +18,10 @@ void GradExponent::backward(Tensor& inputGradient, bool higherDerivative) {
   assert(savedTensors.size() == 1);
   assert(nextFunctions.size() == 1);
 
+  if (!higherDerivative) {
+    savedTensors[0].setRequiresGrad(false);
+  }
+
   Tensor outputGradient = savedScalars[0] * inputGradient;
   for (int i{0}; i < savedScalars[0] - 1; i++) {
     outputGradient *= savedTensors[0];

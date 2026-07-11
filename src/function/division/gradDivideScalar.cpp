@@ -19,6 +19,10 @@ void GradDivideScalar::backward(Tensor& inputGradient,
                                 bool higherDerivative) {
   assert(nextFunctions.size() == 1);
 
+  if (!higherDerivative && savedTensor != nullptr) {
+    savedTensor->setRequiresGrad(false);
+  }
+
   if (numerator) {
     Tensor outputGradient = inputGradient / savedScalar;
 
