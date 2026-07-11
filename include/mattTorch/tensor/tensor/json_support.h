@@ -16,4 +16,5 @@ struct range_element_type<mattTorch::Tensor> {
 
 namespace mattTorch {
 void to_json(nlohmann::json& j, const Tensor& t);
+void saveTensorToJson(const Tensor& t, const std::string& path, int indent = 2);
 }  // namespace mattTorch

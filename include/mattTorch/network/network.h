@@ -183,7 +183,8 @@ class NetworkBuilder {
    * @param output_size The number of output features from the layer
    * @return Reference to this NetworkBuilder for method chaining
    */
-  NetworkBuilder& addFullyConnectedLayer(int input_size, int output_size);
+  NetworkBuilder& addFullyConnectedLayer(int input_size, int output_size,
+                                         std::string initialisation = "xavier");
 
   /**
    * @brief Adds a Tanh activation layer to the network

@@ -1,4 +1,3 @@
-
 target_sources(
   mattTorch
   PRIVATE accumulator/gradAccumulator.cpp
@@ -20,4 +19,5 @@ target_sources(
           log/gradLog.cpp
           mean/gradMean.cpp
           sum/gradSum.cpp
-          exponential/gradExponential.cpp)
+          exponential/gradExponential.cpp
+          reshape/gradReshape.cpp)

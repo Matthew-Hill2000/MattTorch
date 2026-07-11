@@ -49,3 +49,6 @@
 
 // sum
 #include <mattTorch/function/sum/gradSum.h>
+
+// reshape
+#include <mattTorch/function/reshape/gradReshape.h>

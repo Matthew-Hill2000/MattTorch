@@ -104,9 +104,11 @@ class Tensor {
    * @return An integer representing the index along the contiguous data storage
    * at which the element associated with the input dimensions shall be found
    */
-  int calculateIndex(const Dims& indices) const;
+  int contiguousIndex(const Dims& indices) const;
 
  public:
+  Dims vectorIndex(int index) const;
+
   /**
    * @brief Default constructor creating an empty Tensor
    */
@@ -284,7 +286,7 @@ class Tensor {
    * @brief Sets the value of an element at the specified indices
    *
    * Sets the value of an element at the specified indices. Uses the helper
-   * function calculateIndex() to convert the Dims indices into the equivalent
+   * function contiguousIndex() to convert the Dims indices into the equivalent
    * index for the contiguous data storage.
    *
    * @param indices Dims specifying the element location
@@ -296,7 +298,7 @@ class Tensor {
    * @brief Gets the value of an element at the specified indices
    *
    * Returns a copy of the value of an element at the specified indices. Uses
-   * the helper function calculateIndex() to convert the Dims indices
+   * the helper function contiguousIndex() to convert the Dims indices
    * indices into the equivalent index for the contiguous data storage.
    *
    * @param indices Dims specifying the element location
@@ -391,7 +393,7 @@ class Tensor {
    * @brief Returns a reference to the element at the specified indices
    *
    * Returns a reference to the value of an element at the specified indices.
-   * Uses the helper function calculateIndex() to convert the Dims indices
+   * Uses the helper function contiguousIndex() to convert the Dims indices
    * into the equivalent index for the contiguous data storage.
    *
    * @param indices Dims specifying the element index
@@ -403,7 +405,7 @@ class Tensor {
    * @brief Returns a const reference to the element at the specified indices
    *
    * Returns a const reference to the value of an element at the specified
-   * indices. Uses the helper function calculateIndex() to convert the
+   * indices. Uses the helper function contiguousIndex() to convert the
    * Dims indices into the equivalent index for the contiguous data storage.
    *
    * @param indices Dims specifying the element index
@@ -709,6 +711,12 @@ class Tensor {
   Tensor mean();
 
   Tensor sum();
+
+  double max();
+
+  Dims argmax();
+
+  Tensor reshape(Dims newDims);
 
   /**
    * @brief Matrix multiplication of two Tensors
