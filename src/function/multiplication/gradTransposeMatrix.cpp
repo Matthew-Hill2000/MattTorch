@@ -21,6 +21,11 @@ void GradTransposeMatrix::backward(Tensor& inputGradient,
   assert(savedTensors.size() == 2);
   assert(nextFunctions.size() == 2);
 
+  if (!higherDerivative) {
+    savedTensors[0].setRequiresGrad(false);
+    savedTensors[1].setRequiresGrad(false);
+  }
+
   if (transposeFirst) {
     Tensor outputGradLHS =
         savedTensors[1].transposeMultiply(inputGradient, false);

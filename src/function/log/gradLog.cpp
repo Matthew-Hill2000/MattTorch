@@ -15,6 +15,10 @@ GradLog::GradLog(Tensor savedTensor,
 void GradLog::backward(Tensor& inputGradient, bool higherDerivative) {
   assert(nextFunctions.size() == 1);
 
+  if (!higherDerivative) {
+    savedTensor.setRequiresGrad(false);
+  }
+
   Tensor outputGrad = inputGradient / savedTensor;
   if (nextFunctions[0] != nullptr) {
   nextFunctions[0]->backward(outputGrad, higherDerivative);

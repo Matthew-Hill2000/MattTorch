@@ -15,6 +15,11 @@ void GradDivide::backward(Tensor& inputGradient, bool higherDerivative) {
   assert(savedTensors.size() == 2);
   assert(nextFunctions.size() == 2);
 
+  if (!higherDerivative) {
+    savedTensors[0].setRequiresGrad(false);
+    savedTensors[1].setRequiresGrad(false);
+  }
+
   Tensor outputGradNumerator = inputGradient / savedTensors[1];
   Tensor outputGradDenominator = (inputGradient * savedTensors[0] * -1.0) /
                                      (savedTensors[1] * savedTensors[1]);
