@@ -1,4 +1,4 @@
-Checks: >.clang
+Checks: >
   clang-analyzer-*,
   bugprone-*,
   performance-*,
@@ -6,8 +6,11 @@ Checks: >.clang
   cppcoreguidelines-*,
   readability-*,
   -modernize-use-trailing-return-type,
+  -cppcoreguidelines-pro-bounds-avoid-unchecked-container-access, 
+  -modernize-use-nodiscard,
   -readability-identifier-length
 
-HeaderFilterRegex: '^(src|include)/'
+HeaderFilterRegex: '.*/MattTorch/(include|src|examples|tests)/.*'
+ExcludeHeaderFilterRegex: '.*/(_deps|build|debugBuild|releaseBuild)/.*'
 
 WarningsAsErrors: ''

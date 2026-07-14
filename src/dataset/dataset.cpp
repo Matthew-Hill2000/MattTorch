@@ -5,6 +5,7 @@
 #include <cassert>
 #include <cstring>
 #include <random>
+#include <utility>
 #include <vector>
 
 namespace mattTorch {
@@ -20,7 +21,9 @@ dataset::dataset(int batchSize, Tensor features, Tensor labels)
 }
 
 void dataset::shuffle() {
-  if (trainIndices.size() < 2) return;
+  if (trainIndices.size() < 2) {
+    return;
+  }
 
   std::random_device rd;
   std::mt19937 gen(rd());
@@ -52,9 +55,11 @@ std::vector<Tensor> dataset::getBatch(bool train) {
   assert(batchSize > 0);
 
   int batchStart = *batchIndex * batchSize;
-  int batchEnd = std::min(batchStart + batchSize, int(indices.size()));
+  int batchEnd =
+      std::min(batchStart + batchSize, static_cast<int>(indices.size()));
 
-  assert(batchEnd <= int(indices.size()) && "Batch index out of range");
+  assert(std::cmp_less_equal(batchEnd, indices.size()) &&
+         "Batch index out of range");
 
   Dims batchExamplesDims = this->features.getDimensions();
   batchExamplesDims[0] = batchEnd - batchStart;

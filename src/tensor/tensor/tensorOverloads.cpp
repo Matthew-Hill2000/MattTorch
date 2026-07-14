@@ -3,7 +3,11 @@
 #include <mattTorch/tensor/tensor/tensor.h>
 
 #include <cmath>
+#include <cstring>
+#include <functional>
+#include <limits>
 #include <memory>
+#include <numeric>
 #include <stdexcept>
 #include <utility>
 
@@ -324,6 +328,65 @@ Tensor Tensor::sum() {
   return result;
 }
 
+double Tensor::max() {
+  double max = getValueDirect(0);
+
+  for (int i{1}; i < getNValues(); i++) {
+    max = this->getValueDirect(i) > max ? this->getValueDirect(i) : max;
+  }
+
+  return max;
+}
+
+Dims Tensor::argmax() {
+  double maxValue = std::numeric_limits<double>::lowest();
+
+  Dims maxDims;
+
+  for (int i{0}; i < getNValues(); i++) {
+    double v = getValueDirect(i);
+    if (v > maxValue) {
+      maxDims = vectorIndex(i);
+      maxValue = v;
+    }
+  }
+
+  return maxDims;
+}
+
+Tensor Tensor::reshape(Dims newDims) {
+  int initProd = std::accumulate(this->tensorData.dimensions.begin(),
+                                 this->tensorData.dimensions.end(), 1,
+                                 std::multiplies<int>());
+
+  int newProd = std::accumulate(newDims.begin(), newDims.end(), 1,
+                                std::multiplies<int>());
+
+  if (initProd != newProd) {
+    throw std::invalid_argument(
+        "Product of new dimensions must equal the product of previous "
+        "dimensions when reshaping Tensor");
+  }
+
+  Tensor result(newDims, false);
+
+  std::memcpy(result.getData(), this->getData(),
+              this->getNValues() * sizeof(double));
+
+  if (!this->gradData.requiresGrad) {
+    result.setRequiresGrad(false);
+  } else {
+    result.setRequiresGrad(true);
+    std::vector<std::shared_ptr<GradFunction>> nextFunctions;
+
+    nextFunctions.push_back(this->gradFunction);
+
+    result.setGradFunction(
+        std::make_shared<function::GradReshape>(*this, nextFunctions));
+  }
+  return result;
+}
+
 Tensor Tensor::log() {
   Tensor result(tensorData.dimensions);
 
@@ -392,10 +455,9 @@ Tensor Tensor::transposeMultiply(const Tensor& other, bool transposeFirst) {
 
   Tensor result;
 
-  result =
-      Tensor(Dims{tensorData.dimensions[transposeFirst == true ? 1 : 0],
-                  other.tensorData.dimensions[transposeFirst == true ? 1 : 0]},
-             false);
+  result = Tensor(Dims{tensorData.dimensions[transposeFirst ? 1 : 0],
+                       other.tensorData.dimensions[transposeFirst ? 1 : 0]},
+                  false);
 
   if (transposeFirst) {
     tensor::kernels::cpu::transposeMultBlockVectorLHS(
@@ -421,7 +483,7 @@ Tensor Tensor::transposeMultiply(const Tensor& other, bool transposeFirst) {
     nextFunctions.push_back(other.gradFunction);
 
     result.setGradFunction(std::make_shared<function::GradTransposeMatrix>(
-        savedTensors, nextFunctions, transposeFirst == true ? true : false));
+        savedTensors, nextFunctions, transposeFirst));
   }
   return result;
 }

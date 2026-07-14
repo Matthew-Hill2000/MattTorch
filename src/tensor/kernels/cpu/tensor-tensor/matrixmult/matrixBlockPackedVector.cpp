@@ -1,3 +1,5 @@
+// NOLINTBEGIN(cppcoreguidelines-pro-bounds-pointer-arithmetic,
+// bugprone-easily-swappable-parameters)
 #include <immintrin.h>
 #include <mattTorch/tensor/kernels/cpu/tensor-tensor/matrix.h>
 #include <mm_malloc.h>
@@ -8,6 +10,8 @@
 constexpr int BIGBLOCKSIZE_I = 128;
 constexpr int BIGBLOCKSIZE_J = 128;
 constexpr int BIGBLOCKSIZE_K = 128;
+constexpr int RHS_PACK_WIDTH = 8;
+constexpr int LHS_PACK_WIDTH = 6;
 
 namespace mattTorch::tensor::kernels::cpu {
 
@@ -15,27 +19,29 @@ void inline rhsBigPack(double* block, const double* rhs, const int lhsCol,
                        const int rhsCol, const int rhsCols, const int kMax,
                        const int jMax) {
   int j{0};
-  for (; j + 7 < jMax; j += 8) {
+  for (; j + RHS_PACK_WIDTH - 1 < jMax; j += RHS_PACK_WIDTH) {
     for (int k{0}; k < kMax; k++) {
-      __m256d src0 = _mm256_loadu_pd(&rhs[(lhsCol + k) * rhsCols + rhsCol + j]);
+      __m256d src0 =
+          _mm256_loadu_pd(&rhs[((lhsCol + k) * rhsCols) + rhsCol + j]);
       __m256d src1 =
-          _mm256_loadu_pd(&rhs[(lhsCol + k) * rhsCols + rhsCol + j + 4]);
-      _mm256_store_pd(&block[j * kMax + 8 * k + 0], src0);
-      _mm256_store_pd(&block[j * kMax + 8 * k + 4], src1);
+          _mm256_loadu_pd(&rhs[((lhsCol + k) * rhsCols) + rhsCol + j + 4]);
+      _mm256_store_pd(&block[(j * kMax) + (RHS_PACK_WIDTH * k) + 0], src0);
+      _mm256_store_pd(&block[(j * kMax) + (RHS_PACK_WIDTH * k) + 4], src1);
     }
   }
 
   if (j + 3 < jMax) {
     for (int k{0}; k < kMax; k++) {
-      __m256d src = _mm256_loadu_pd(&rhs[(lhsCol + k) * rhsCols + rhsCol + j]);
-      _mm256_store_pd(&block[j * kMax + 4 * k], src);
+      __m256d src =
+          _mm256_loadu_pd(&rhs[((lhsCol + k) * rhsCols) + rhsCol + j]);
+      _mm256_store_pd(&block[(j * kMax) + (4 * k)], src);
     }
     j += 4;
   }
 
   for (; j < jMax; j++) {
     for (int k{0}; k < kMax; k++) {
-      block[j * kMax + k] = rhs[(lhsCol + k) * rhsCols + rhsCol + j];
+      block[(j * kMax) + k] = rhs[((lhsCol + k) * rhsCols) + rhsCol + j];
     }
   }
 }
@@ -44,19 +50,20 @@ void inline lhsBigPack(double* block, const double* lhs, const int lhsRow,
                        const int lhsCol, const int lhsCols, const int iMax,
                        const int kMax) {
   int i{0};
-  for (; i + 5 < iMax; i += 6) {
+  for (; i + LHS_PACK_WIDTH - 1 < iMax; i += LHS_PACK_WIDTH) {
     for (int k{0}; k < kMax; k++) {
-      block[i * kMax + 6 * k] = lhs[(lhsRow + i) * lhsCols + lhsCol + k];
-      block[i * kMax + 6 * k + 1] =
-          lhs[(lhsRow + i + 1) * lhsCols + lhsCol + k];
-      block[i * kMax + 6 * k + 2] =
-          lhs[(lhsRow + i + 2) * lhsCols + lhsCol + k];
-      block[i * kMax + 6 * k + 3] =
-          lhs[(lhsRow + i + 3) * lhsCols + lhsCol + k];
-      block[i * kMax + 6 * k + 4] =
-          lhs[(lhsRow + i + 4) * lhsCols + lhsCol + k];
-      block[i * kMax + 6 * k + 5] =
-          lhs[(lhsRow + i + 5) * lhsCols + lhsCol + k];
+      block[(i * kMax) + (LHS_PACK_WIDTH * k)] =
+          lhs[((lhsRow + i) * lhsCols) + lhsCol + k];
+      block[(i * kMax) + (LHS_PACK_WIDTH * k) + 1] =
+          lhs[((lhsRow + i + 1) * lhsCols) + lhsCol + k];
+      block[(i * kMax) + (LHS_PACK_WIDTH * k) + 2] =
+          lhs[((lhsRow + i + 2) * lhsCols) + lhsCol + k];
+      block[(i * kMax) + (LHS_PACK_WIDTH * k) + 3] =
+          lhs[((lhsRow + i + 3) * lhsCols) + lhsCol + k];
+      block[(i * kMax) + (LHS_PACK_WIDTH * k) + 4] =
+          lhs[((lhsRow + i + 4) * lhsCols) + lhsCol + k];
+      block[(i * kMax) + (LHS_PACK_WIDTH * k) + 5] =
+          lhs[((lhsRow + i + 5) * lhsCols) + lhsCol + k];
     }
   }
 
@@ -71,9 +78,9 @@ void inline matrixMultMicroKernel(const double* lhsBlock,
                                   const double* rhsBlock, double* result,
                                   int lhsRow, int rhsCol, const int rhsCols,
                                   int iMax, int jMax, int kMax) {
-  for (int i{0}; i + 5 < iMax; i += 6) {
+  for (int i{0}; i + LHS_PACK_WIDTH - 1 < iMax; i += LHS_PACK_WIDTH) {
     int j = 0;
-    for (; j + 7 < jMax; j += 8) {
+    for (; j + RHS_PACK_WIDTH - 1 < jMax; j += RHS_PACK_WIDTH) {
       __m256d c00 =
           _mm256_loadu_pd(&result[(lhsRow + i) * rhsCols + rhsCol + j]);
       __m256d c10 =
@@ -281,3 +288,5 @@ void matrixMultBlockPackedVector(const double* __restrict lhs,
   }
 }
 }  // namespace mattTorch::tensor::kernels::cpu
+// NOLINTEND(cppcoreguidelines-pro-bounds-pointer-arithmetic,
+// bugprone-easily-swappable-parameters)

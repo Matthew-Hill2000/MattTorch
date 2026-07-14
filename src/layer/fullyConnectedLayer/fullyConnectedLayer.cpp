@@ -8,7 +8,7 @@
 namespace mattTorch {
 
 FullyConnectedLayer::FullyConnectedLayer(int inputs, int outputs,
-                                         std::string initialisation) {
+                                         const std::string& initialisation) {
   this->weight = Tensor({inputs, outputs});
   this->bias = Tensor({outputs});
 

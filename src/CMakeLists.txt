@@ -6,8 +6,9 @@ target_compile_features(mattTorch PUBLIC cxx_std_23)
 
 include(FetchContent)
 
+# Pinned to plotlypp main as of 2026-02-05
 FetchContent_Declare(plotlypp GIT_REPOSITORY https://github.com/jimmyorourke/plotlypp.git
-                     GIT_TAG main)
+                     GIT_TAG b786c47750d0e8ee2eeb340fcb86a8fa082d19ff SYSTEM)
 
 FetchContent_MakeAvailable(plotlypp)
 

@@ -8,13 +8,14 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <utility>
 #include <vector>
 
 #include "mattTorch/layer/softmax/softmax.h"
 
 namespace mattTorch {
 
-Network::Network(std::vector<Layer*> layers) : layers{layers} {}
+Network::Network(std::vector<Layer*> layers) : layers{std::move(layers)} {}
 
 void Network::addLayer(Layer* layer) { layers.push_back(layer); }
 
@@ -43,7 +44,7 @@ Tensor Network::forward(Tensor& input) {
 }
 
 NetworkBuilder::~NetworkBuilder() {
-  for (auto layer : layers) {
+  for (auto* layer : layers) {
     delete layer;
   }
   layers.clear();
@@ -63,9 +64,10 @@ NetworkBuilder& NetworkBuilder::addSoftmaxLayer() {
   return *this;
 }
 
-NetworkBuilder& NetworkBuilder::addFullyConnectedLayer(int inputSize,
-                                                       int outputSize) {
-  FullyConnectedLayer* newFCL = new FullyConnectedLayer(inputSize, outputSize);
+NetworkBuilder& NetworkBuilder::addFullyConnectedLayer(
+    int inputSize, int outputSize, std::string initialisation) {
+  FullyConnectedLayer* newFCL =
+      new FullyConnectedLayer(inputSize, outputSize, std::move(initialisation));
 
   layers.push_back(newFCL);
 
@@ -89,11 +91,11 @@ NetworkBuilder& NetworkBuilder::addLayer(Layer* layer) {
 Network NetworkBuilder::build() {
   Network network;
 
-  for (auto layer : layers) {
+  for (auto* layer : layers) {
     network.addLayer(layer);
   }
 
-  for (auto parameter : parameters) {
+  for (const auto& parameter : parameters) {
     network.addParameter(parameter);
   }
 
@@ -104,9 +106,9 @@ Network NetworkBuilder::build() {
 
 std::string Network::summary() const {
   std::stringstream ss;
-  ss << "Network Summary:" << std::endl;
-  ss << "----------------" << std::endl;
-  ss << "Total layers: " << layers.size() << std::endl;
+  ss << "Network Summary:" << '\n';
+  ss << "----------------" << '\n';
+  ss << "Total layers: " << layers.size() << '\n';
 
   for (std::size_t i{0}; i < layers.size(); ++i) {
     ss << "Layer " << i + 1 << ": ";
@@ -121,7 +123,7 @@ std::string Network::summary() const {
     } else {
       ss << "Unknown Layer Type";
     }
-    ss << std::endl;
+    ss << '\n';
   }
 
   return ss.str();
@@ -133,7 +135,7 @@ void Network::saveParameters(const std::string& path) {
     throw std::runtime_error("Failed to open CSV file: " + path);
   }
 
-  for (auto param : this->parameters) {
+  for (const auto& param : this->parameters) {
     double* paramData = param->getData();
     for (int i{0}; i < param->getNValues(); i++) {
       file << paramData[i];

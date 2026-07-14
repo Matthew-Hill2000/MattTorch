@@ -1,3 +1,5 @@
+// NOLINTBEGIN(cppcoreguidelines-pro-bounds-pointer-arithmetic,
+// bugprone-easily-swappable-parameters)
 #include <immintrin.h>
 #include <mattTorch/tensor/kernels/cpu/tensor-tensor/matrix.h>
 #include <mm_malloc.h>
@@ -18,23 +20,35 @@ void packRhs(double* block, const double* rhs, int kBase, int nBase,
   int j{0};
   for (; j + 7 < nMax; j += 8) {
     for (int k{0}; k < kMax; k++) {
-      block[j * kMax + 8 * k + 0] = rhs[(nBase + j + 0) * rowStride + kBase + k];
-      block[j * kMax + 8 * k + 1] = rhs[(nBase + j + 1) * rowStride + kBase + k];
-      block[j * kMax + 8 * k + 2] = rhs[(nBase + j + 2) * rowStride + kBase + k];
-      block[j * kMax + 8 * k + 3] = rhs[(nBase + j + 3) * rowStride + kBase + k];
-      block[j * kMax + 8 * k + 4] = rhs[(nBase + j + 4) * rowStride + kBase + k];
-      block[j * kMax + 8 * k + 5] = rhs[(nBase + j + 5) * rowStride + kBase + k];
-      block[j * kMax + 8 * k + 6] = rhs[(nBase + j + 6) * rowStride + kBase + k];
-      block[j * kMax + 8 * k + 7] = rhs[(nBase + j + 7) * rowStride + kBase + k];
+      block[j * kMax + 8 * k + 0] =
+          rhs[(nBase + j + 0) * rowStride + kBase + k];
+      block[j * kMax + 8 * k + 1] =
+          rhs[(nBase + j + 1) * rowStride + kBase + k];
+      block[j * kMax + 8 * k + 2] =
+          rhs[(nBase + j + 2) * rowStride + kBase + k];
+      block[j * kMax + 8 * k + 3] =
+          rhs[(nBase + j + 3) * rowStride + kBase + k];
+      block[j * kMax + 8 * k + 4] =
+          rhs[(nBase + j + 4) * rowStride + kBase + k];
+      block[j * kMax + 8 * k + 5] =
+          rhs[(nBase + j + 5) * rowStride + kBase + k];
+      block[j * kMax + 8 * k + 6] =
+          rhs[(nBase + j + 6) * rowStride + kBase + k];
+      block[j * kMax + 8 * k + 7] =
+          rhs[(nBase + j + 7) * rowStride + kBase + k];
     }
   }
 
   if (j + 3 < nMax) {
     for (int k{0}; k < kMax; k++) {
-      block[j * kMax + 4 * k + 0] = rhs[(nBase + j + 0) * rowStride + kBase + k];
-      block[j * kMax + 4 * k + 1] = rhs[(nBase + j + 1) * rowStride + kBase + k];
-      block[j * kMax + 4 * k + 2] = rhs[(nBase + j + 2) * rowStride + kBase + k];
-      block[j * kMax + 4 * k + 3] = rhs[(nBase + j + 3) * rowStride + kBase + k];
+      block[j * kMax + 4 * k + 0] =
+          rhs[(nBase + j + 0) * rowStride + kBase + k];
+      block[j * kMax + 4 * k + 1] =
+          rhs[(nBase + j + 1) * rowStride + kBase + k];
+      block[j * kMax + 4 * k + 2] =
+          rhs[(nBase + j + 2) * rowStride + kBase + k];
+      block[j * kMax + 4 * k + 3] =
+          rhs[(nBase + j + 3) * rowStride + kBase + k];
     }
     j += 4;
   }
@@ -51,12 +65,18 @@ void packLhs(double* block, const double* lhs, int mBase, int kBase,
   int i{0};
   for (; i + 5 < mMax; i += 6) {
     for (int k{0}; k < kMax; k++) {
-      block[i * kMax + 6 * k + 0] = lhs[(mBase + i + 0) * rowStride + kBase + k];
-      block[i * kMax + 6 * k + 1] = lhs[(mBase + i + 1) * rowStride + kBase + k];
-      block[i * kMax + 6 * k + 2] = lhs[(mBase + i + 2) * rowStride + kBase + k];
-      block[i * kMax + 6 * k + 3] = lhs[(mBase + i + 3) * rowStride + kBase + k];
-      block[i * kMax + 6 * k + 4] = lhs[(mBase + i + 4) * rowStride + kBase + k];
-      block[i * kMax + 6 * k + 5] = lhs[(mBase + i + 5) * rowStride + kBase + k];
+      block[i * kMax + 6 * k + 0] =
+          lhs[(mBase + i + 0) * rowStride + kBase + k];
+      block[i * kMax + 6 * k + 1] =
+          lhs[(mBase + i + 1) * rowStride + kBase + k];
+      block[i * kMax + 6 * k + 2] =
+          lhs[(mBase + i + 2) * rowStride + kBase + k];
+      block[i * kMax + 6 * k + 3] =
+          lhs[(mBase + i + 3) * rowStride + kBase + k];
+      block[i * kMax + 6 * k + 4] =
+          lhs[(mBase + i + 4) * rowStride + kBase + k];
+      block[i * kMax + 6 * k + 5] =
+          lhs[(mBase + i + 5) * rowStride + kBase + k];
     }
   }
 
@@ -299,3 +319,5 @@ void transposeMultBlockVectorRHS(const double* __restrict lhs,
 }
 
 }  // namespace mattTorch::tensor::kernels::cpu
+// NOLINTEND(cppcoreguidelines-pro-bounds-pointer-arithmetic,
+// bugprone-easily-swappable-parameters)

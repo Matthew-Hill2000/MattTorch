@@ -1,3 +1,5 @@
+// NOLINTBEGIN(cppcoreguidelines-pro-bounds-pointer-arithmetic,
+// bugprone-easily-swappable-parameters)
 #include <immintrin.h>
 #include <mattTorch/tensor/kernels/cpu/tensor-tensor/matrix.h>
 #include <mm_malloc.h>
@@ -240,3 +242,5 @@ void matrixMultBlockTransposeVector(const double* __restrict lhs,
   }
 }
 }  // namespace mattTorch::tensor::kernels::cpu
+// NOLINTEND(cppcoreguidelines-pro-bounds-pointer-arithmetic,
+// bugprone-easily-swappable-parameters)

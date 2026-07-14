@@ -1,12 +1,19 @@
+// NOLINTBEGIN(cppcoreguidelines-pro-bounds-pointer-arithmetic,
+// bugprone-easily-swappable-parameters)
 #include <immintrin.h>
 #include <mattTorch/tensor/kernels/cpu/tensor-scalar/tensorScalarElementwise.h>
 
 namespace mattTorch::tensor::kernels::cpu {
+
+const int CACHE_LINE_SIZE_BYTES = 64;
+const int N_DOUBLE_PER_CACHE_LINE = CACHE_LINE_SIZE_BYTES / sizeof(double);
+
 void tensorScalarAdd(const double* __restrict tensor, const double scalar,
                      double* __restrict result, const int nValues) {
   __m256d a = _mm256_set_pd(scalar, scalar, scalar, scalar);
   int i = 0;
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d b0 = _mm256_load_pd(tensor + i);
     __m256d b1 = _mm256_load_pd(tensor + i + 4);
 
@@ -25,7 +32,8 @@ void tensorScalarSubtract(const double* __restrict tensor, const double scalar,
                           double* __restrict result, const int nValues) {
   __m256d a = _mm256_set_pd(scalar, scalar, scalar, scalar);
   int i = 0;
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d b0 = _mm256_load_pd(tensor + i);
     __m256d b1 = _mm256_load_pd(tensor + i + 4);
 
@@ -44,7 +52,8 @@ void scalarTensorSubtract(const double* __restrict tensor, const double scalar,
                           double* __restrict result, const int nValues) {
   __m256d a = _mm256_set_pd(scalar, scalar, scalar, scalar);
   int i = 0;
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d b0 = _mm256_load_pd(tensor + i);
     __m256d b1 = _mm256_load_pd(tensor + i + 4);
 
@@ -63,7 +72,8 @@ void tensorScalarMultiplication(const double* __restrict tensor,
                                 const int nValues) {
   __m256d a = _mm256_set_pd(scalar, scalar, scalar, scalar);
   int i = 0;
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d b0 = _mm256_load_pd(tensor + i);
     __m256d b1 = _mm256_load_pd(tensor + i + 4);
 
@@ -82,7 +92,8 @@ void tensorScalarDivision(const double* __restrict tensor, const double scalar,
                           double* __restrict result, const int nValues) {
   __m256d a = _mm256_set_pd(scalar, scalar, scalar, scalar);
   int i = 0;
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d b0 = _mm256_load_pd(tensor + i);
     __m256d b1 = _mm256_load_pd(tensor + i + 4);
 
@@ -100,7 +111,8 @@ void scalarTensorDivision(const double* __restrict tensor, const double scalar,
                           double* __restrict result, const int nValues) {
   __m256d a = _mm256_set_pd(scalar, scalar, scalar, scalar);
   int i = 0;
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d b0 = _mm256_load_pd(tensor + i);
     __m256d b1 = _mm256_load_pd(tensor + i + 4);
 
@@ -118,7 +130,8 @@ void scalarTensorDivision(const double* __restrict tensor, const double scalar,
 void elementwiseExponent(const double* __restrict tensor, const int scalar,
                          double* __restrict result, const int nValues) {
   int i = 0;
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d b0 = _mm256_load_pd(tensor + i);
     __m256d b1 = _mm256_load_pd(tensor + i + 4);
     __m256d c0 = b0;
@@ -140,3 +153,6 @@ void elementwiseExponent(const double* __restrict tensor, const int scalar,
   }
 }
 }  // namespace mattTorch::tensor::kernels::cpu
+//
+// NOLINTEND(cppcoreguidelines-pro-bounds-pointer-arithmetic,
+// bugprone-easily-swappable-parameters)

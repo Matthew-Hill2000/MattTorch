@@ -1,12 +1,18 @@
+// NOLINTBEGIN(cppcoreguidelines-pro-bounds-pointer-arithmetic,
+// bugprone-easily-swappable-parameters)
 #include <immintrin.h>
 #include <mattTorch/tensor/kernels/cpu/tensor-tensor/elementwise.h>
 
 namespace mattTorch::tensor::kernels::cpu {
 
+const int CACHE_LINE_SIZE_BYTES = 64;
+const int N_DOUBLE_PER_CACHE_LINE = CACHE_LINE_SIZE_BYTES / sizeof(double);
+
 void elementwiseAdd(const double* __restrict lhs, const double* __restrict rhs,
                     double* __restrict result, const int nValues) {
   int i = 0;
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d a0 = _mm256_load_pd(lhs + i);
     __m256d b0 = _mm256_load_pd(rhs + i);
 
@@ -28,7 +34,8 @@ void elementwiseSubtract(const double* __restrict lhs,
                          const double* __restrict rhs,
                          double* __restrict result, const int nValues) {
   int i = 0;
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d a0 = _mm256_load_pd(lhs + i);
     __m256d b0 = _mm256_load_pd(rhs + i);
 
@@ -50,7 +57,8 @@ void elementwiseMultiplication(const double* __restrict lhs,
                                const double* __restrict rhs,
                                double* __restrict result, const int nValues) {
   int i = 0;
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d a0 = _mm256_load_pd(lhs + i);
     __m256d b0 = _mm256_load_pd(rhs + i);
 
@@ -72,7 +80,8 @@ void elementwiseDivision(const double* __restrict lhs,
                          const double* __restrict rhs,
                          double* __restrict result, const int nValues) {
   int i = 0;
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d a0 = _mm256_load_pd(lhs + i);
     __m256d b0 = _mm256_load_pd(rhs + i);
 
@@ -96,10 +105,10 @@ void reductionSum(const double* __restrict input, double* __restrict result,
     for (int inner = 0; inner < innerSize; inner++) {
       double acc = 0.0;
       for (int r = 0; r < reduceSize; r++) {
-        int idx = outer * reduceSize * innerSize + r * innerSize + inner;
+        int idx = (outer * reduceSize * innerSize) + (r * innerSize) + inner;
         acc += input[idx];
       }
-      result[outer * innerSize + inner] = acc;
+      result[(outer * innerSize) + inner] = acc;
     }
   }
 }
@@ -107,7 +116,8 @@ void reductionSum(const double* __restrict input, double* __restrict result,
 void inplaceElementwiseAdd(double* __restrict lhs, const double* __restrict rhs,
                            int nValues) {
   int i = 0;
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d a0 = _mm256_loadu_pd(rhs + i);
     __m256d b0 = _mm256_loadu_pd(lhs + i);
 
@@ -126,3 +136,5 @@ void inplaceElementwiseAdd(double* __restrict lhs, const double* __restrict rhs,
   }
 }
 }  // namespace mattTorch::tensor::kernels::cpu
+// NOLINTEND(cppcoreguidelines-pro-bounds-pointer-arithmetic,
+// bugprone-easily-swappable-parameters)

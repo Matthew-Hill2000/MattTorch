@@ -159,6 +159,11 @@ class NetworkBuilder {
   /// @brief Default constructor creating an empty NetworkBuilder
   NetworkBuilder() = default;
 
+  NetworkBuilder(const NetworkBuilder&) = default;
+  NetworkBuilder(NetworkBuilder&&) = delete;
+  NetworkBuilder& operator=(const NetworkBuilder&) = default;
+  NetworkBuilder& operator=(NetworkBuilder&&) = delete;
+
   /**
    * @brief Destructor that deallocates any layers that have not been
    * transferred to a Network via build()
