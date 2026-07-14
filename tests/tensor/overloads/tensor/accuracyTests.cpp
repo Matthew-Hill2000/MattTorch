@@ -111,6 +111,30 @@ bool testBroadcastAllPositions(mattTorch::Tensor& a, int dim) {
   return true;
 }
 
+bool testArgmax(mattTorch::Tensor& a) {
+  // Independently find the flat index of the maximum element.
+  int maxFlat = 0;
+  double maxValue = a.getValueDirect(0);
+  for (int i = 1; i < a.getNValues(); i++) {
+    if (a.getValueDirect(i) > maxValue) {
+      maxValue = a.getValueDirect(i);
+      maxFlat = i;
+    }
+  }
+
+  // Unravel the flat index into its row-major multi-dimensional indices.
+  auto dims = a.getDimensions();
+  mattTorch::Dims expected;
+  for (size_t k = 0; k < dims.size(); k++) expected.push_back(0);
+  int rem = maxFlat;
+  for (int k = static_cast<int>(dims.size()) - 1; k >= 0; k--) {
+    expected[k] = rem % dims[k];
+    rem /= dims[k];
+  }
+
+  return a.argmax() == expected;
+}
+
 int main() {
   mattTorch::Tensor a2d = randomTensor({128, 128}, false);
   mattTorch::Tensor a3d = randomTensor({32, 32, 32}, false);
@@ -121,6 +145,8 @@ int main() {
   run("Log", testLog(a2d));
   run("Exp", testExp(a2d));
   run("Mean", testMean(a2d));
+  run("Argmax (2D)", testArgmax(a2d));
+  run("Argmax (3D)", testArgmax(a3d));
   run("ReductionSum (all dims)", testReductionSumAllDims(a3d));
   run("Broadcast (all positions)", testBroadcastAllPositions(small, 4));
 }

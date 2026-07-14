@@ -27,7 +27,9 @@ constexpr int PADDING = 0;
 constexpr int BATCH_SIZE = 256;
 constexpr int NUM_CLASSES = 10;
 constexpr int INPUT_SIZE =
-    (IMAGE_ROWS + 2 * PADDING) * (IMAGE_COLS + 2 * PADDING);
+    (IMAGE_ROWS + (2 * PADDING)) * (IMAGE_COLS + (2 * PADDING));
+
+constexpr int PRINT_EVERY = 5;
 
 int numBatches(int numExamples) {
   return (numExamples + BATCH_SIZE - 1) / BATCH_SIZE;
@@ -85,6 +87,8 @@ int main() {
                                .addFullyConnectedLayer(128, NUM_CLASSES, "he")
                                .build();
 
+  testData.plotImage(0);
+
   mattTorch::SGD sgd(net.getParameters(), LEARNING_RATE, WEIGHT_DECAY);
   mattTorch::criterion::SoftmaxCrossEntropyLoss lossFunc;
 
@@ -95,7 +99,9 @@ int main() {
     double totalLoss = 0.0;
     int totalCount = 0;
     for (int batch = 0; batch < batches; batch++) {
-      if (train) sgd.zeroGrad();
+      if (train) {
+        sgd.zeroGrad();
+      }
 
       std::vector<Tensor> batchData = dataset.getBatch(train);
       Tensor features = flatten(batchData[0]);
@@ -117,7 +123,10 @@ int main() {
   const int trainExamples = static_cast<int>(NUM_TRAIN * TRAIN_VAL_SPLIT);
   const int valExamples = NUM_TRAIN - trainExamples;
 
-  std::vector<double> epochs, trainLoss, valLoss;
+  std::vector<double> epochs;
+  std::vector<double> trainLoss;
+  std::vector<double> valLoss;
+
   for (int epoch = 0; epoch < NUM_EPOCHS; epoch++) {
     double trainEpochLoss = runEpoch(data, numBatches(trainExamples), true);
     data.shuffle();
@@ -127,13 +136,16 @@ int main() {
     trainLoss.push_back(trainEpochLoss);
     valLoss.push_back(valEpochLoss);
 
-    if (epoch % 5 == 0) {
+    if (epoch % PRINT_EVERY == 0) {
       std::cout << "Epoch " << epoch << " Loss: " << trainEpochLoss
-                << " Validation Loss: " << valEpochLoss << std::endl;
+                << " Validation Loss: " << valEpochLoss << '\n';
     }
   }
 
   // ---- Test accuracy ----
+
+  Tensor confusionMatrix({NUM_CLASSES, NUM_CLASSES});
+
   int correct = 0;
   for (int batch = 0; batch < numBatches(NUM_TEST); batch++) {
     std::vector<Tensor> batchData = testData.getBatch();
@@ -142,11 +154,32 @@ int main() {
     Tensor& labels = batchData[1];
 
     for (int i = 0; i < output.getDimensions()[0]; i++) {
-      if (output[i].argmax() == labels[i].argmax()) correct++;
+      confusionMatrix[{output[i].argmax()[0], labels[i].argmax()[0]}] += 1;
+      if (output[i].argmax() == labels[i].argmax()) {
+        correct++;
+      }
     }
   }
-  std::cout << "Accuracy: " << 100.0 * correct / NUM_TEST << "%" << std::endl;
+  std::cout << "Accuracy: " << 100.0 * correct / NUM_TEST << "%" << '\n';
 
   plotLosses(epochs, trainLoss, valLoss);
+
+  auto heat = plotlypp::Heatmap()
+                  .z(confusionMatrix)
+                  .colorscale("Greys")
+                  .reversescale(true);
+
+  auto layout =
+      plotlypp::Layout()
+          .title(plotlypp::Layout::Title().text("Confusion Matrix"))
+          .yaxis(plotlypp::Layout::Yaxis()
+                     .autorange(plotlypp::Layout::Yaxis::Autorange::Reversed)
+                     .scaleanchor("x"));
+
+  auto figure = plotlypp::Figure()
+                    .addTraces(std::vector<plotlypp::Trace>{std::move(heat)})
+                    .setLayout(std::move(layout));
+
+  figure.show();
   return 0;
 }

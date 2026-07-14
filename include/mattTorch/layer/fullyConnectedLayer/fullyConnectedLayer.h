@@ -55,7 +55,7 @@ class FullyConnectedLayer : public Layer {
    * or "he"
    */
   FullyConnectedLayer(int inputs, int outputs,
-                      std::string initialisation = "xavier");
+                      const std::string& initialisation = "xavier");
 
   /**
    * @brief Performs the forward pass of this fully connected layer

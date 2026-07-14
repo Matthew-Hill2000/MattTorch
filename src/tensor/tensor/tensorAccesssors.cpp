@@ -28,16 +28,16 @@ Tensor Tensor::operator[](int index) {
 }
 
 double& Tensor::operator[](const Dims& indices) {
-  int index = calculateIndex(indices);
+  int index = contiguousIndex(indices);
   return storage->at(index);
 }
 
 const double& Tensor::operator[](const Dims& indices) const {
-  int index = calculateIndex(indices);
+  int index = contiguousIndex(indices);
   return storage->at(index);
 }
 
-int Tensor::calculateIndex(const Dims& indices) const {
+int Tensor::contiguousIndex(const Dims& indices) const {
   if (indices.size() != getRank()) {
     throw std::invalid_argument("Number of indices doesn't match tensor rank");
   }
@@ -57,13 +57,25 @@ int Tensor::calculateIndex(const Dims& indices) const {
   return index;
 }
 
+Dims Tensor::vectorIndex(int contiguousIndex) const {
+  std::vector<int> dims;
+
+  for (size_t i{0}; i < getRank(); i++) {
+    int index = contiguousIndex / tensorData.strides[i];
+    contiguousIndex = contiguousIndex % tensorData.strides[i];
+    dims.push_back(index);
+  }
+
+  return Dims(dims.begin(), dims.end());
+}
+
 void Tensor::setValue(const Dims& indices, double value) {
-  int index = calculateIndex(indices);
+  int index = contiguousIndex(indices);
   storage->at(index) = value;
 }
 
 double Tensor::getValue(const Dims& indices) const {
-  int index = calculateIndex(indices);
+  int index = contiguousIndex(indices);
   return storage->at(index);
 }
 

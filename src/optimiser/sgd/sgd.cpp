@@ -3,12 +3,13 @@
 #include <mattTorch/tensor/tensor/tensor.h>
 
 #include <memory>
+#include <utility>
 #include <vector>
 
 namespace mattTorch {
 SGD::SGD(std::vector<std::shared_ptr<Tensor>> parameters, double learningRate,
          double weightDecay)
-    : parameters{parameters},
+    : parameters{std::move(parameters)},
       learningRate{learningRate},
       weightDecay{weightDecay} {}
 
@@ -17,10 +18,10 @@ void SGD::updateParameters() {
       _mm256_set_pd(learningRate, learningRate, learningRate, learningRate);
 
   __m256d weightDecayVec = _mm256_set_pd(
-      (1 - learningRate * weightDecay), (1 - learningRate * weightDecay),
-      (1 - learningRate * weightDecay), (1 - learningRate * weightDecay));
+      (1 - (learningRate * weightDecay)), (1 - (learningRate * weightDecay)),
+      (1 - (learningRate * weightDecay)), (1 - (learningRate * weightDecay)));
 
-  for (auto parameter : parameters) {
+  for (const auto& parameter : parameters) {
     double* paramData = parameter->getData();
     double* paramGradData = parameter->getGradientData();
 
@@ -35,14 +36,14 @@ void SGD::updateParameters() {
     }
 
     for (; i < parameter->getNValues(); i++) {
-      paramData[i] = paramData[i] * (1 - learningRate * weightDecay) -
-                     learningRate * paramGradData[i];
+      paramData[i] = (paramData[i] * (1 - (learningRate * weightDecay))) -
+                     (learningRate * paramGradData[i]);
     }
   }
 }
 
 void SGD::zeroGrad() {
-  for (auto parameter : parameters) {
+  for (const auto& parameter : parameters) {
     double* paramGradData = parameter->getGradientData();
     std::fill(paramGradData, paramGradData + parameter->getNValues(), 0);
   }

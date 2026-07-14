@@ -59,7 +59,7 @@ Tensor::Tensor(std::shared_ptr<tensor::TensorStorage> storage,
       gradient{std::move(gradient)},
       gradFunction{std::move(gradFunction)},
       tensorData{std::move(tensorData)},
-      gradData{std::move(gradData)} {}
+      gradData{gradData} {}
 
 Tensor Tensor::deepCopy() const {
   Tensor result(this->tensorData.dimensions);

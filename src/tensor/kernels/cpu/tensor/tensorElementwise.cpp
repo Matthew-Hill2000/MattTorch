@@ -1,3 +1,5 @@
+// NOLINTBEGIN(cppcoreguidelines-pro-bounds-pointer-arithmetic,
+// bugprone-easily-swappable-parameters)
 #include <immintrin.h>
 #include <mattTorch/tensor/kernels/cpu/tensor/tensorElementwise.h>
 #include <sleef.h>
@@ -7,13 +9,17 @@
 
 namespace mattTorch::tensor::kernels::cpu {
 
+const int CACHE_LINE_SIZE_BYTES = 64;
+const int N_DOUBLE_PER_CACHE_LINE = CACHE_LINE_SIZE_BYTES / sizeof(double);
+
 void ReLU(double* __restrict tensor, double* __restrict result,
           double* __restrict backwardMask, int nValues) {
   int i{0};
   const __m256d zero = _mm256_setzero_pd();
   const __m256d ones = _mm256_set1_pd(1.0);
 
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d a0 = _mm256_load_pd(tensor + i);
     __m256d a1 = _mm256_load_pd(tensor + i + 4);
 
@@ -55,7 +61,8 @@ void broadcast(double* __restrict tensor, double* __restrict result,
 
 void tanh(double* __restrict tensor, double* __restrict result, int nValues) {
   int i{0};
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d a0 = _mm256_load_pd(tensor + i);
     __m256d a1 = _mm256_load_pd(tensor + i + 4);
 
@@ -74,7 +81,8 @@ void tanh(double* __restrict tensor, double* __restrict result, int nValues) {
 void exponential(double* __restrict tensor, double* __restrict result,
                  int nValues) {
   int i{0};
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d a0 = _mm256_load_pd(tensor + i);
     __m256d a1 = _mm256_load_pd(tensor + i + 4);
 
@@ -92,7 +100,8 @@ void exponential(double* __restrict tensor, double* __restrict result,
 
 void log(double* __restrict tensor, double* __restrict result, int nValues) {
   int i{0};
-  for (; i + 7 < nValues; i += 8) {
+  for (; i + N_DOUBLE_PER_CACHE_LINE - 1 < nValues;
+       i += N_DOUBLE_PER_CACHE_LINE) {
     __m256d a0 = _mm256_load_pd(tensor + i);
     __m256d a1 = _mm256_load_pd(tensor + i + 4);
 
@@ -146,3 +155,7 @@ void sum(double* __restrict tensor, double* __restrict result, int nValues) {
   }
 }
 }  // namespace mattTorch::tensor::kernels::cpu
+//
+// NOLINTEND(cppcoreguidelines-pro-bounds-pointer-arithmetic,
+// bugprone-easily-swappable-parameters)
+//
